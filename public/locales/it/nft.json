@@ -1,0 +1,85 @@
+{
+    "asset": {
+      "asset_ownership_burned": "La proprietà delle risorse è stata «bruciata» per essere inviata a «null-account»; le impostazioni di questo NFT sono ora definitive.",
+      "asset_ownership_warning": "Avviso: la proprietà del cespite non è stata ancora trasferita a «null-account»; le impostazioni e la quantità emesse potrebbero cambiare dopo l'acquisto.",
+      "encoding": "Codificazione dei file",
+      "file_type": "Tipo di file",
+      "issuer": "Emittente di attività",
+      "name": "Nome cespite",
+      "offchain": "Questo NFT non può essere memorizzato completamente sulla catena.",
+      "onchain": "Questo NFT è completamente memorizzato sulla blockchain Bitshares!",
+      "owner": "Proprietario attuale",
+      "precision": "Precisione",
+      "precision_bad": "A causa di non avere una precisione di 0, questo è un token fungibile.",
+      "precision_good": "Con una precisione di 0, '{{short_name}}' è un token non fungibile!",
+      "quantity": "Emissione quantità"
+    },
+    "buy": {
+      "button": "App desktop",
+      "header": "Il NFT intitolato '{{title}}' ({{symbol}}) può essere scambiato/trasferito sullo scambio decentralizzato Bitshare",
+      "tooltip": "All'interno dell'app desktop cerca UIA '{{symbol}}'"
+    },
+    "by": " da ",
+    "flags": {
+      "none": "Al momento non sono attivati flag."
+    },
+    "license": {
+      "header1": "Licenza",
+      "header2": "Licenza titolare",
+      "none1": "La licenza in base alla quale è stato rilasciato questo NFT non è stata fornita.",
+      "none2": "Le informazioni sulla licenza del titolare non sono state fornite."
+    },
+    "nft": {
+      "acknowledgments": "Riconoscimenti",
+      "attestation": "Attestato",
+      "narrative": "Narrativa"
+    },
+    "permissionTips": {
+      "disabled": {
+        "charge_market_fee": "Non è possibile addebitare commissioni di mercato per questa attività; saranno richieste solo commissioni BTS.",
+        "committee_fed_asset": "Il comitato non può alimentare un prezzo per questo bene.",
+        "disable_confidential": "Le transazioni riservate di questo bene sono permanentemente possibili.",
+        "disable_force_settle": "Questa attività non può essere regolata con forza.",
+        "global_settle": "Questo cespite non può essere regolato a livello globale.",
+        "override_authority": "L'emittente di attività non è in grado di trasferire questo NFT a se stesso.",
+        "transfer_restricted": "I trasferimenti di questo bene sono illimitati.",
+        "white_list": "Non esiste un elenco di mercati approvato per questo asset. Sentiti libero di scambiarlo per qualsiasi cosa sullo scambio decentrato Bitshares.",
+        "witness_fed_asset": "I testimoni non possono pagare un prezzo per questa risorsa."
+      },
+      "enabled": {
+        "charge_market_fee": "L'emittente di attività può abilitare commissioni di mercato.",
+        "committee_fed_asset": "Questo asset emesso dal mercato può avere i suoi feed di prezzo forniti dai membri del comitato Bitshare.",
+        "disable_confidential": "L'emittente di questo bene può disabilitare le transazioni stealth.",
+        "disable_force_settle": "Gli utenti possono richiedere il regolamento forzato di questo asset emesso dal mercato.",
+        "global_settle": "L'emittente di questa attività emessa dal mercato ha la capacità di regolare l'attività a livello globale",
+        "override_authority": "L'emittente di attività può trasferire questo NFT a se stesso.",
+        "transfer_restricted": "Questa attività può essere trasferita solo da/per l'emittente o ordini di mercato",
+        "white_list": "L'emittente di asset può creare un elenco di mercati approvati",
+        "witness_fed_asset": "Questo asset emesso dal mercato può avere i suoi feed di prezzo forniti da testimoni Bitshares."
+      }
+    },
+    "permissions": {
+      "none": "Tutte le autorizzazioni sono state disattivate."
+    },
+    "signature": {
+      "header": "Firma",
+      "password": "Hash multihash della password",
+      "signature": "Firma pubkey/indirizzo"
+    },
+    "tabs": {
+      "asset": "Asset",
+      "buy": "Dove acquistare",
+      "flags": "Bandiere",
+      "json": "Dati JSON",
+      "license": "Licenza",
+      "nft": "NFT",
+      "permissions": "Autorizzazioni",
+      "share": "Condividi",
+      "signature": "Firma",
+      "tags": "Etichette"
+    },
+    "tags": {
+      "no_nft_tags": "Nessun tag NFT",
+      "no_tags": "Nessun cartellino di argomento/interesse"
+    }
+}

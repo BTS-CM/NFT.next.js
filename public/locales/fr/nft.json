@@ -1,0 +1,85 @@
+{
+    "asset": {
+      "asset_ownership_burned": "La propriété de l'actif a été « gravée » en étant envoyée à « null-account » ; les paramètres de ce NFT sont maintenant définitifs.",
+      "asset_ownership_warning": "Avertissement : la propriété de l'actif n'a pas encore été transférée vers « null-account » ; les paramètres et la quantité émis peuvent changer après l'achat.",
+      "encoding": "Codage de fichiers",
+      "file_type": "Type de fichier",
+      "issuer": "Émetteur d'actifs",
+      "name": "Nom de l'actif",
+      "offchain": "Ce TVN ne peut pas être stocké entièrement sur la chaîne.",
+      "onchain": "Ce NFT est entièrement stocké sur la blockchain Bitshares !",
+      "owner": "Propriétaire actuel",
+      "precision": "Précision",
+      "precision_bad": "En raison de ne pas avoir une précision de 0, il s'agit d'un jeton fongible.",
+      "precision_good": "Avec une précision de 0, '{{short_name}}' est un jeton non fongible !",
+      "quantity": "Problème de quantité"
+    },
+    "buy": {
+      "button": "Application de bureau",
+      "header": "Le NFT intitulé '{{title}}' ({{symbol}}) peut être échangé/transféré sur l'échange décentralisé Bitshares",
+      "tooltip": "Dans l'application de bureau, recherchez l'UIA '{{symbol}}'"
+    },
+    "by": " Par ",
+    "flags": {
+      "none": "Aucun indicateur n'est actuellement activé."
+    },
+    "license": {
+      "header1": "Licence",
+      "header2": "Licence du titulaire",
+      "none1": "La licence en vertu de laquelle cette TVN a été libérée n'a pas été fournie.",
+      "none2": "Les informations relatives à la licence du titulaire n'ont pas été fournies."
+    },
+    "nft": {
+      "acknowledgments": "Remerciements",
+      "attestation": "Attestation",
+      "narrative": "Récit"
+    },
+    "permissionTips": {
+      "disabled": {
+        "charge_market_fee": "Aucun frais de marché ne peut être exigé pour cet actif ; seuls des frais BTS seront exigés.",
+        "committee_fed_asset": "Le comité ne peut pas alimenter un prix pour cet actif.",
+        "disable_confidential": "Les transactions confidentielles de cet actif sont en permanence possibles.",
+        "disable_force_settle": "Cet actif ne peut pas être réglé par la force.",
+        "global_settle": "Cet actif ne peut pas être réglé globalement.",
+        "override_authority": "L'émetteur d'actifs n'est pas en mesure de transférer ce TVN à lui-même.",
+        "transfer_restricted": "Les transferts de cet actif sont illimités.",
+        "white_list": "Il n'existe pas de liste approuvée de marchés pour cet actif. N'hésitez pas à l'échanger contre quoi que ce soit sur l'échange décentralisé Bitshares.",
+        "witness_fed_asset": "Les témoins ne peuvent pas alimenter un prix pour cet actif."
+      },
+      "enabled": {
+        "charge_market_fee": "L'émetteur d'actifs peut autoriser des frais de marché.",
+        "committee_fed_asset": "Cet actif émis par le marché peut avoir ses flux de prix fournis par les membres du comité Bitshares.",
+        "disable_confidential": "L'émetteur de cet actif peut désactiver les transactions furtives.",
+        "disable_force_settle": "Les utilisateurs peuvent demander le règlement forcé de cet actif émis par le marché.",
+        "global_settle": "L'émetteur de cet actif émis sur le marché a la capacité de régler l'actif à l'échelle mondiale",
+        "override_authority": "L'émetteur d'actifs peut transférer ce NFT à lui-même.",
+        "transfer_restricted": "Cet actif ne peut être transféré vers/depuis l'émetteur ou les ordres de marché",
+        "white_list": "L'émetteur d'actifs peut créer une liste de marchés approuvés",
+        "witness_fed_asset": "Cet actif émis par le marché peut avoir ses flux de prix fournis par des témoins Bitshares."
+      }
+    },
+    "permissions": {
+      "none": "Toutes les autorisations ont été désactivées."
+    },
+    "signature": {
+      "header": "Signature",
+      "password": "Mot de passe multihachage",
+      "signature": "Signature clé publique / adresse"
+    },
+    "tabs": {
+      "asset": "Actif",
+      "buy": "Où acheter",
+      "flags": "Drapeaux",
+      "json": "Données JSON",
+      "license": "Licence",
+      "nft": "NFT",
+      "permissions": "Autorisations",
+      "share": "Partager",
+      "signature": "Signature",
+      "tags": "Mots clés"
+    },
+    "tags": {
+      "no_nft_tags": "Pas de balises NFT",
+      "no_tags": "Pas de balises de sujet/intérêt"
+    }
+}

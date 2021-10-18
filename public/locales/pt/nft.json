@@ -1,0 +1,85 @@
+{
+    "asset": {
+      "asset_ownership_burned": "A propriedade do ativo foi 'queimada' ao ser enviada para “null-account”; as configurações desta NFT agora são finais.",
+      "asset_ownership_warning": "Aviso: A propriedade do ativo ainda não foi transferida para “null-account”; as configurações e a quantidade emitidas podem ser alteradas após a compra.",
+      "encoding": "Codificação de arquivos",
+      "file_type": "Tipo de ficheiro",
+      "issuer": "Emissor de ativos",
+      "name": "Nome do ativo",
+      "offchain": "Este NFT pode não ser armazenado totalmente na corrente.",
+      "onchain": "Este NFT está totalmente armazenado no blockchain Bitshares!",
+      "owner": "Proprietário atual",
+      "precision": "Precisão",
+      "precision_bad": "Devido a não ter uma precisão de 0, este é um token fungível.",
+      "precision_good": "Com uma precisão de 0, '{{short_name}}' é um token não fungível!",
+      "quantity": "Problema de quantidade"
+    },
+    "buy": {
+      "button": "Aplicativo para desktop",
+      "header": "O NFT intitulado '{{title}}' ({{symbol}}) pode ser negociado/transferido na troca descentralizada Bitshares",
+      "tooltip": "Dentro do aplicativo para desktop, procure a UIA '{{symbol}}'"
+    },
+    "by": " por ",
+    "flags": {
+      "none": "Nenhum sinalizador está habilitado no momento."
+    },
+    "license": {
+      "header1": "Licença",
+      "header2": "Licença do titular",
+      "none1": "A licença sob a qual este NFT foi liberado não foi provied.",
+      "none2": "As informações da licença do titular não foram fornecidas."
+    },
+    "nft": {
+      "acknowledgments": "Agradecimentos",
+      "attestation": "Atestado",
+      "narrative": "Narrativa"
+    },
+    "permissionTips": {
+      "disabled": {
+        "charge_market_fee": "Nenhuma taxa de mercado pode ser cobrada por este ativo; apenas as taxas BTS serão necessárias.",
+        "committee_fed_asset": "O comitê não pode alimentar um preço por esse ativo.",
+        "disable_confidential": "As transações confidenciais deste ativo são permanentemente possíveis.",
+        "disable_force_settle": "Este ativo não pode ser liquidado por força.",
+        "global_settle": "Este ativo não pode ser liquidado globalmente.",
+        "override_authority": "O emitente de ativos não pode transferir esta NFT de volta para si.",
+        "transfer_restricted": "As transferências deste ativo são irrestritas.",
+        "white_list": "Não há lista aprovada de mercados para este ativo. Sinta-se livre para negociá-lo por qualquer coisa na troca descentralizada Bitshares.",
+        "witness_fed_asset": "As testemunhas não podem alimentar um preço por esse ativo."
+      },
+      "enabled": {
+        "charge_market_fee": "O emissor de ativos pode permitir taxas de mercado.",
+        "committee_fed_asset": "Este ativo emitido pelo mercado pode ter seus feeds de preços fornecidos pelos membros do comitê Bitshares.",
+        "disable_confidential": "O emissor deste ativo pode desativar transações furtivas.",
+        "disable_force_settle": "Os utilizadores podem solicitar a liquidação forçada deste activo emitido pelo mercado.",
+        "global_settle": "O emissor deste ativo emitido pelo mercado tem a capacidade de liquidar globalmente o ativo",
+        "override_authority": "O emissor de ativos pode transferir este NFT de volta para si mesmo.",
+        "transfer_restricted": "Este ativo só pode ser transferido de/para o emitente ou ordens de mercado",
+        "white_list": "O emissor de ativos pode criar uma lista de mercados aprovados",
+        "witness_fed_asset": "Este ativo emitido pelo mercado pode ter seus feeds de preços fornecidos por testemunhas Bitshares."
+      }
+    },
+    "permissions": {
+      "none": "Todas as permissões foram desativadas."
+    },
+    "signature": {
+      "header": "Assinatura",
+      "password": "Senha multihash",
+      "signature": "Assinatura pubkey/endereço"
+    },
+    "tabs": {
+      "asset": "Ativo",
+      "buy": "Onde comprar",
+      "flags": "Bandeiras",
+      "json": "Dados JSON",
+      "license": "Licença",
+      "nft": "NFT",
+      "permissions": "Permissões",
+      "share": "Compartilhar",
+      "signature": "Assinatura",
+      "tags": "Tags"
+    },
+    "tags": {
+      "no_nft_tags": "Sem etiquetas NFT",
+      "no_tags": "Sem tags de tópico/interesse"
+    }
+}

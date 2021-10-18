@@ -1,0 +1,85 @@
+{
+    "asset": {
+      "asset_ownership_burned": "Der Besitz von Vermögenswerten wurde „verbrannt“, indem er an ein „null-account“ gesendet wurde. Die Einstellungen dieser NFT sind jetzt endgültig.",
+      "asset_ownership_warning": "Warnung: Der Besitz von Vermögenswerten wurde noch nicht auf „null-account“ übertragen. Die Einstellungen und die Menge können sich nach dem Kauf ändern.",
+      "encoding": "Datei-Kodierung",
+      "file_type": "Dateityp",
+      "issuer": "Asset-Emittent",
+      "name": "Asset-Name",
+      "offchain": "Diese NFT wird möglicherweise nicht vollständig in der Kette gespeichert.",
+      "onchain": "Diese NFT ist vollständig in der Bitshares Blockchain gespeichert!",
+      "owner": "Derzeitiger Eigentümer",
+      "precision": "Genauigkeit",
+      "precision_bad": "Da dies keine Genauigkeit von 0 hat, ist dies ein fungibles Token.",
+      "precision_good": "Mit einer Genauigkeit von 0 ist '{{short_name}}' ein nicht fungibles Token!",
+      "quantity": "Mengenproblem"
+    },
+    "buy": {
+      "button": "Desktop-App",
+      "header": "Die NFT mit dem Titel '{{title}}' ({{symbol}}) kann an der dezentralen Börse von Bitshares handelt/übertragen werden",
+      "tooltip": "Suchen Sie in der Desktop-App nach der UIA '{{symbol}}'"
+    },
+    "by": " von ",
+    "flags": {
+      "none": "Derzeit sind keine Flags aktiviert."
+    },
+    "license": {
+      "header1": "Lizenz",
+      "header2": "Holder-Liz",
+      "none1": "Die Lizenz, unter der diese NFT veröffentlicht wurde, wurde nicht bereitgestellt.",
+      "none2": "Informationen zur Inhaberlizenz wurden nicht bereitgestellt."
+    },
+    "nft": {
+      "acknowledgments": "Danksagungen",
+      "attestation": "Bescheinigung",
+      "narrative": "narrativ"
+    },
+    "permissionTips": {
+      "disabled": {
+        "charge_market_fee": "Für diesen Vermögenswert können keine Marktgebühren erhoben werden, es sind nur BTS-Gebühren erforderlich.",
+        "committee_fed_asset": "Der Ausschuss kann keinen Preis für diesen Vermögenswert ernähren.",
+        "disable_confidential": "Vertrauliche Transaktionen dieses Vermögenswerts sind dauerhaft möglich.",
+        "disable_force_settle": "Dieser Vermögenswert kann nicht zwangsabgewickelt werden.",
+        "global_settle": "Dieser Vermögenswert kann nicht global beglichen werden.",
+        "override_authority": "Der Asset-Emittent kann diese NFT nicht an sich selbst zurückübertragen.",
+        "transfer_restricted": "Die Übertragungen dieses Vermögenswerts sind uneingeschränkt.",
+        "white_list": "Es gibt keine genehmigte Liste von Märkten für diesen Vermögenswert. Tauschen Sie es gerne gegen alles an der dezentralen Börse von Bitshares ein.",
+        "witness_fed_asset": "Die Zeugen können keinen Preis für diesen Vermögenswert ernähren."
+      },
+      "enabled": {
+        "charge_market_fee": "Der Asset-Emittent kann Marktgebühren ermöglichen.",
+        "committee_fed_asset": "Dieser marktgegebene Vermögenswert kann seine Preisfeeds von Bitshares-Komiteemitgliedern liefern lassen.",
+        "disable_confidential": "Der Emittent dieses Vermögenswerts kann Stealth-Transaktionen deaktivieren.",
+        "disable_force_settle": "Benutzer können die Zwangsabwicklung dieses vom Markt ausgegebenen Vermögenswerts beantragen.",
+        "global_settle": "Der Emittent dieses marktgegebenen Vermögenswerts hat die Möglichkeit, den Vermögenswert global zu begleichen",
+        "override_authority": "Der Asset-Emittent kann diese NFT an sich selbst zurückübertragen.",
+        "transfer_restricted": "Dieser Vermögenswert kann nur zu/von dem Emittenten oder Marktorders übertragen werden",
+        "white_list": "Der Asset-Emittent kann eine Liste der zugelassenen Märkte erstellen",
+        "witness_fed_asset": "Dieser marktgegebene Vermögenswert kann seine Preisfeeds von Bitshares-Zeugen liefern lassen."
+      }
+    },
+    "permissions": {
+      "none": "Alle Berechtigungen wurden deaktiviert."
+    },
+    "signature": {
+      "header": "Signatur",
+      "password": "Passwort multihash",
+      "signature": "Unterschrift pubkey/Adresse"
+    },
+    "tabs": {
+      "asset": "Vermögenswert",
+      "buy": "Wo kaufen",
+      "flags": "Fahnen",
+      "json": "JSON-Daten",
+      "license": "Lizenz",
+      "nft": "NFT",
+      "permissions": "Berechtigungen",
+      "share": "Teilen",
+      "signature": "Signatur",
+      "tags": "Stichworte"
+    },
+    "tags": {
+      "no_nft_tags": "Keine NFT-Tags",
+      "no_tags": "Keine Thema/Interessen-Tags"
+    }
+}

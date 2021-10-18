@@ -1,0 +1,85 @@
+{
+    "asset": {
+      "asset_ownership_burned": "La propiedad de activos se ha 'quemado' enviándose a 'null-account'; la configuración de este NFT ahora es definitiva.",
+      "asset_ownership_warning": "Advertencia: todavía no se ha transferido la propiedad de los activos a «null-account»; la configuración y la cantidad emitida podrían cambiar después de la compra.",
+      "encoding": "Codificación de archivos",
+      "file_type": "Tipo de archivo",
+      "issuer": "Emisor de activos",
+      "name": "Nombre del activo",
+      "offchain": "Es posible que este NFT no se almacene completamente en la cadena.",
+      "onchain": "¡Este NFT está completamente almacenado en Bitshares blockchain!",
+      "owner": "Propietario actual",
+      "precision": "Precisión",
+      "precision_bad": "Debido a que no tiene una precisión de 0, este es un token fungible.",
+      "precision_good": "Con una precisión de 0, '{{short_name}}' es un token no fungible!",
+      "quantity": "Emisión de cantidad"
+    },
+    "buy": {
+      "button": "Aplicación de escritorio",
+      "header": "El NFT titulado '{{title}}' ({{symbol}}) se puede comerciar/transferir en el intercambio descentralizado Bitshares",
+      "tooltip": "En la aplicación de escritorio, busque el UIA '{{symbol}}'"
+    },
+    "by": " por ",
+    "flags": {
+      "none": "Actualmente no hay ningún indicador habilitado."
+    },
+    "license": {
+      "header1": "Licencia",
+      "header2": "Licencia de titular",
+      "none1": "La licencia bajo la cual esta NFT ha sido liberada no ha sido provisada.",
+      "none2": "No se ha proporcionado información sobre la licencia del titular."
+    },
+    "nft": {
+      "acknowledgments": "Agradecimientos",
+      "attestation": "Atestación",
+      "narrative": "Narrativa"
+    },
+    "permissionTips": {
+      "disabled": {
+        "charge_market_fee": "No se pueden cobrar comisiones de mercado por este activo; solo se requerirán tarifas BTS.",
+        "committee_fed_asset": "El comité no puede alimentar un precio por este activo.",
+        "disable_confidential": "Las transacciones confidenciales de este activo son posibles de forma permanente.",
+        "disable_force_settle": "Este activo no se puede liquidar por la fuerza.",
+        "global_settle": "Este activo no se puede liquidar globalmente.",
+        "override_authority": "El emisor de activos no puede transferir este NFT de nuevo a sí mismos.",
+        "transfer_restricted": "Las transferencias de este activo no están restringidas.",
+        "white_list": "No hay una lista aprobada de mercados para este activo. Siéntase libre de cambiarlo por cualquier cosa en el intercambio descentralizado Bitshares.",
+        "witness_fed_asset": "Los testigos no pueden alimentar un precio por este activo."
+      },
+      "enabled": {
+        "charge_market_fee": "El emisor de activos puede habilitar comisiones de mercado.",
+        "committee_fed_asset": "Este activo emitido por el mercado puede tener sus fuentes de precios suministradas por los miembros del comité de Bitshares.",
+        "disable_confidential": "El emisor de este activo puede desactivar las transacciones ocultas.",
+        "disable_force_settle": "Los usuarios pueden solicitar la liquidación forzosa de este activo emitido por el mercado.",
+        "global_settle": "El emisor de este activo emitido por el mercado tiene la capacidad de liquidar globalmente el activo",
+        "override_authority": "El emisor de activos puede transferir este NFT de nuevo a sí mismos.",
+        "transfer_restricted": "Este activo solo puede transferirse a/desde el emisor o órdenes de mercado",
+        "white_list": "El emisor de activos puede crear una lista de mercados aprobados",
+        "witness_fed_asset": "Este activo emitido por el mercado puede tener sus fuentes de precios suministradas por testigos de Bitshares."
+      }
+    },
+    "permissions": {
+      "none": "Se han deshabilitado todos los permisos."
+    },
+    "signature": {
+      "header": "Firma",
+      "password": "Contraseña multihash",
+      "signature": "Firma pubkey/dirección"
+    },
+    "tabs": {
+      "asset": "Activo",
+      "buy": "Dónde comprar",
+      "flags": "Banderas",
+      "json": "Datos JSON",
+      "license": "Licencia",
+      "nft": "NFT",
+      "permissions": "Permisos",
+      "share": "Compartir",
+      "signature": "Firma",
+      "tags": "Etiquetas"
+    },
+    "tags": {
+      "no_nft_tags": "Sin etiquetas NFT",
+      "no_tags": "Sin etiquetas de tema/interés"
+    }
+}

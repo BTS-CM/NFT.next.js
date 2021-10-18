@@ -1,0 +1,47 @@
+{
+  "name": "nftea.gallery.next",
+  "version": "0.2.0",
+  "private": true,
+  "homepage": "/",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "postbuild": "next-sitemap",
+    "start": "next start",
+    "lint": "next lint",
+    "testProxy": "lcp --port 8082 --proxyUrl  https://api.testnet.bitshares.ws",
+    "prodProxy": "lcp --port 8082 --proxyUrl  https://api.bitshares.ws"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@fontsource/roboto": "^4.5.1",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@mui/material": "^5.0.4",
+    "@react-three/drei": "^7.2.2",
+    "@react-three/fiber": "^7.0.6",
+    "@react-three/postprocessing": "^2.0.5",
+    "atob": "^2.1.2",
+    "axios": "^0.22.0",
+    "fuse.js": "^6.4.6",
+    "i18next": "^21.2.4",
+    "next": "11.1.2",
+    "next-i18next": "^8.9.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-ga4": "^1.0.4",
+    "react-lazy-load-image-component": "^1.5.1",
+    "react-responsive-carousel": "^3.2.21",
+    "react-share": "^4.4.0",
+    "swr": "^1.0.1",
+    "three": "^0.130.1",
+    "use-local-storage-state": "^11.0.0"
+  },
+  "devDependencies": {
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.2",
+    "next-sitemap": "^1.6.184",
+    "sharp": "^0.29.1"
+  }
+}

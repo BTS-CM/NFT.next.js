@@ -1,0 +1,85 @@
+{
+    "permissionTips": {
+      "enabled": {
+        "charge_market_fee" : "The asset issuer can enable market fees.",
+        "white_list" : "The asset issuer can create a list of approved markets",
+        "override_authority" : "The asset issuer can transfer this NFT back to themselves.",
+        "transfer_restricted" : "This asset may only be transferred to/from the issuer or market orders",
+        "disable_force_settle": "Users may request force-settlement of this market-issued asset.",
+        "global_settle": "The issuer of this market-issued asset has the ability to globally settle the asset",
+        "disable_confidential": "The issuer of this asset can disable stealth transactions.",
+        "witness_fed_asset": "This market-issued asset can have its price feeds supplied by Bitshares witnesses.",
+        "committee_fed_asset": "This market-issued asset can have its price feeds supplied by Bitshares committee members."
+      },
+      "disabled": {
+        "charge_market_fee" : "No market fees can be charged for this asset; only BTS fees will be required.",
+        "white_list" : "There is no approved list of markets for this asset. Feel free to trade it for anything on the Bitshares decentralized exchange.",
+        "override_authority" : "The asset issuer is unable to transfer this NFT back to themselves.",
+        "transfer_restricted" : "This asset's transfers are unrestricted.",
+        "disable_force_settle": "This asset cannot be force settled.",
+        "global_settle": "This asset cannot be globally settled.",
+        "disable_confidential": "Confidential transactions of this asset are permanently possible.",
+        "witness_fed_asset": "The witnesses cannot feed a price for this asset.",
+        "committee_fed_asset": "The committee cannot feed a price for this asset."
+      }
+    },
+    "by": " by ",
+    "tabs": {
+      "nft": "NFT",
+      "asset": "Asset",
+      "tags": "Tags",
+      "share": "Share",
+      "buy": "Where to buy",
+      "flags": "Flags",
+      "permissions": "Permissions",
+      "signature": "Signature",
+      "license": "License",
+      "json": "JSON Data"
+    },
+    "nft": {
+      "attestation": "Attestation",
+      "narrative": "Narrative",
+      "acknowledgments": "Acknowledgments"
+    },
+    "asset": {
+      "name": "Asset name",
+      "owner": "Current owner",
+      "quantity": "Quantity issue",
+      "file_type": "File type",
+      "onchain": "This NFT is fully stored on the Bitshares blockchain!",
+      "offchain": "This NFT may not be stored fully on chain.",
+      "encoding": "File encoding",
+      "precision_good": "With a precision of 0, '{{short_name}}' is a non-fungible token!",
+      "precision_bad": "Due to not having a precision of 0, this is a fungible token.",
+      "precision": "Precision",
+      "asset_ownership_burned": "Asset ownership has been 'burned' by being sent to 'null-account'; this NFT's settings are now final.",
+      "asset_ownership_warning": "Warning: Asset ownership has not been transfered to 'null-account' yet; the settings and quantity issued could change after purchase.",
+      "issuer": "Asset issuer"
+    },
+    "tags": {
+      "no_tags": "No topic/interest tags",
+      "no_nft_tags": "No NFT tags"
+    },
+    "buy": {
+      "header": "The NFT titled '{{title}}' ({{symbol}}) can be traded/transfered on the Bitshares decentralized exchange",
+      "tooltip": "Within the desktop app search for the UIA '{{symbol}}'",
+      "button": "Desktop app"
+    },
+    "flags": {
+      "none": "No flags are currently enabled."
+    },
+    "permissions": {
+      "none": "All permissions have been disabled."
+    },
+    "signature": {
+      "header": "Signature",
+      "signature": "Signature pubkey/address",
+      "password": "Password multihash"
+    },
+    "license": {
+      "header1": "License",
+      "none1": "The license under which this NFT has been released has not been provied.",
+      "header2": "Holder license",
+      "none2": "Holder license information has not been provided."
+    }
+}

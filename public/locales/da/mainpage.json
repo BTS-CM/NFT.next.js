@@ -1,0 +1,44 @@
+{
+    "artists": {
+      "body1": "Er du interesseret i at tjene penge på din kunst?",
+      "body2": "Udsted din NFT på Bitshares decentraliseret udveksling!",
+      "header": "Ringer til alle kunstnere!"
+    },
+    "benefits": {
+      "a1": "konkurrencedygtig lav",
+      "a2": "er lav",
+      "a3": "ydeevne er uovertruffen",
+      "body1": "Gebyrer på BTS DEX er ",
+      "body2": "Det miljømæssige fodaftryk ",
+      "body3": "Det",
+      "body4": " Lad være med at nøjes med mindre!",
+      "header": "Usikker på Bitshares?"
+    },
+    "featured": "Fremhævede NFT",
+    "galleries": {
+      "a1": "fuldt åben kildekode",
+      "a2": "MIT licenseret",
+      "body1": "Interesseret i at skabe dit eget galleri?",
+      "body2a": "Dette galleri er ",
+      "body2b": " og ",
+      "header": "Mulige galleri ejere"
+    },
+    "new": "Nye NFT",
+    "stat1": {
+      "header": "NFT"
+    },
+    "stat2": {
+      "header": "Udvalgte kunstnere"
+    },
+    "stat3": {
+      "header": "År siden Bitshares lanceringen",
+      "years": " år"
+    },
+    "traders": {
+      "a1": "hvordan du opretter en Bitshares konto",
+      "a2": "Desktop app",
+      "body1a": "Find ud af ",
+      "body1b": " & få handel i dag!",
+      "header": "Interesseret i handel NFT på BTS DEX?"
+    }
+}

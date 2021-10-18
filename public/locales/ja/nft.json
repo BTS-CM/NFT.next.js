@@ -1,0 +1,85 @@
+{
+    "asset": {
+      "asset_ownership_burned": "資産の所有権は「null-account」に送信されることによって「焼かれた」ため、このNFTの設定は最終的なものになりました。",
+      "asset_ownership_warning": "警告:資産の所有権は、まだ「NULL-account」に移されていません。購入後に設定や発行数量が変更される可能性があります。",
+      "encoding": "ファイルのエンコーディング",
+      "file_type": "ファイルの種類",
+      "issuer": "資産発行者",
+      "name": "アセット名",
+      "offchain": "このNFTは、チェーン上に完全に格納されていない可能性があります。",
+      "onchain": "このNFTは完全にBitsharesブロックチェーンに格納されています！",
+      "owner": "現在の所有者",
+      "precision": "精度",
+      "precision_bad": "精度が 0 ではないため、これは可笑可能なトークンです。",
+      "precision_good": "精度が 0 の場合、'{{short_name}}' は解決できないトークンです！",
+      "quantity": "数量発行"
+    },
+    "buy": {
+      "button": "デスクトップアプリ",
+      "header": "「{{title}}」（{{symbol}}）というタイトルのNFTは、Bitshares分散型取引所で取引/譲渡することができます",
+      "tooltip": "デスクトップアプリ内でUIA '{{symbol}}' を検索します"
+    },
+    "by": " によって ",
+    "flags": {
+      "none": "現在有効なフラグはありません。"
+    },
+    "license": {
+      "header1": "ライセンス",
+      "header2": "ホルダーライセンス",
+      "none1": "このNFTがリリースされたライセンスは提供されていません。",
+      "none2": "所有者のライセンス情報が提供されていません。"
+    },
+    "nft": {
+      "acknowledgments": "謝辞",
+      "attestation": "アテステーション",
+      "narrative": "物語性"
+    },
+    "permissionTips": {
+      "disabled": {
+        "charge_market_fee": "この資産には市場手数料は請求できません。BTSの手数料のみが必要となります。",
+        "committee_fed_asset": "委員会はこの資産の価格を養うことができません。",
+        "disable_confidential": "この資産の機密取引は永久に可能です。",
+        "disable_force_settle": "この資産は強制決済できません。",
+        "global_settle": "この資産はグローバルに決済できません。",
+        "override_authority": "資産発行者は、このNFTを自分自身に戻すことができません。",
+        "transfer_restricted": "この資産の譲渡は制限されません。",
+        "white_list": "この資産に承認された市場のリストはありません。Bitshares分散型取引所で何でもそれを交換してください。",
+        "witness_fed_asset": "証人は、この資産の価格を養うことはできません。"
+      },
+      "enabled": {
+        "charge_market_fee": "資産発行者は、市場手数料を有効にすることができます。",
+        "committee_fed_asset": "この市場発行資産は、Bitshares 委員会のメンバーによって提供される価格フィードを持つことができます。",
+        "disable_confidential": "この資産の発行者は、ステルストランザクションを無効にすることができます。",
+        "disable_force_settle": "ユーザーは、この市場発行資産の強制決済を要求することができます。",
+        "global_settle": "この市場発行資産の発行者は、資産をグローバルに決済する能力を持っています",
+        "override_authority": "資産発行者は、このNFTを自分自身に譲渡することができます。",
+        "transfer_restricted": "この資産は、発行者または成行注文にのみ転送できます",
+        "white_list": "資産発行者は、承認された市場のリストを作成できます",
+        "witness_fed_asset": "この市場発行資産は、Bitshares 証人によって提供される価格フィードを持つことができます。"
+      }
+    },
+    "permissions": {
+      "none": "すべての権限が無効になっています。"
+    },
+    "signature": {
+      "header": "署名",
+      "password": "パスワードマルチハッシュ",
+      "signature": "署名公開鍵/アドレス"
+    },
+    "tabs": {
+      "asset": "資産",
+      "buy": "購入する場所",
+      "flags": "フラグ",
+      "json": "JSONデータ",
+      "license": "ライセンス",
+      "nft": "NFT",
+      "permissions": "アクセス許可",
+      "share": "シェア",
+      "signature": "署名",
+      "tags": "タグ"
+    },
+    "tags": {
+      "no_nft_tags": "NFTタグなし",
+      "no_tags": "トピック/インタレストタグなし"
+    }
+}

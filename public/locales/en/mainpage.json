@@ -1,0 +1,44 @@
+{
+    "featured": "Featured NFTs",
+    "new": "New NFTs",
+    "artists": {
+      "header": "Calling all artists!",
+      "body1": "Are you interested in monetizing your art?",
+      "body2": "Issue your NFT on the Bitshares decentralized exchange!"
+    },
+    "galleries": {
+      "header": "Prospective gallery owners",
+      "body1": "Interested in creating your own gallery?",
+      "body2a": "This gallery is ",
+      "a1": "fully open-source",
+      "body2b": " and ",
+      "a2": "MIT licensed"
+    },
+    "traders": {
+      "header": "Interested in trading NFT on the BTS DEX?",
+      "body1a": "Find out ",
+      "a1": "how to create a Bitshares account",
+      "body1b": " & get trading today!",
+      "a2": "Desktop app"
+    },
+    "benefits": {
+      "header": "Unsure about Bitshares?",
+      "body1": "Fees on the BTS DEX are ",
+      "a1": "competitively low",
+      "body2": "Its' environmental footprint ",
+      "a2": "is low",
+      "body3": "Its' ",
+      "a3": "performance is unrivaled",
+      "body4": " don't settle for less!"
+    },
+    "stat1": {
+      "header": "Listed NFTs"
+    },
+    "stat2": {
+      "header": "Featured artists"
+    },
+    "stat3": {
+      "header": "Years since Bitshares launch",
+      "years": " years"
+    }
+}

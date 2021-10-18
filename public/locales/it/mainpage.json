@@ -1,0 +1,44 @@
+{
+    "artists": {
+      "body1": "Sei interessato a monetizzare la tua arte?",
+      "body2": "Emetti il tuo NFT sullo scambio decentralizzato Bitshare!",
+      "header": "Chiamo tutti gli artisti!"
+    },
+    "benefits": {
+      "a1": "competitivamente basso",
+      "a2": "è basso",
+      "a3": "prestazioni ineguagliabili",
+      "body1": "Le tariffe sul BTS DEX sono ",
+      "body2": "L'impronta ambientale ",
+      "body3": "It' ",
+      "body4": " non accontentarti di meno!",
+      "header": "Non sei sicuro dei Bitshare?"
+    },
+    "featured": "NFT in vetrina",
+    "galleries": {
+      "a1": "completamente open source",
+      "a2": "Licenza MIT",
+      "body1": "Sei interessato a creare la tua galleria?",
+      "body2a": "Questa galleria è ",
+      "body2b": " e ",
+      "header": "Prospettivi proprietari di gallerie"
+    },
+    "new": "Nuovi NFT",
+    "stat1": {
+      "header": "NFT elencati"
+    },
+    "stat2": {
+      "header": "Artisti in evidenza"
+    },
+    "stat3": {
+      "header": "Anni dal lancio di Bitshares",
+      "years": " anni"
+    },
+    "traders": {
+      "a1": "come creare un account Bitshare",
+      "a2": "App desktop",
+      "body1a": "Scopra ",
+      "body1b": " & ottieni trading oggi stesso!",
+      "header": "Interessato a negoziare NFT sul BTS DEX?"
+    }
+}

@@ -135,6 +135,9 @@ export default function Nav(properties) {
                 <ListItem button component={CustomLink} key={'Other Viewers'} href={"/viewers"} locale={language}>
                     <ListItemText className={classes.a} primary={t('link7')} />
                 </ListItem>
+                <ListItem button component={CustomLink} key={'Settings'} href={"/settings"} locale={language}>
+                    <ListItemText className={classes.a} primary={t('link8')} />
+                </ListItem>
               </List>
             </div>
           </Drawer>

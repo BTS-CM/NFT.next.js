@@ -3,13 +3,16 @@
 This is the code for the nftea.gallery website. If you're going to use this for your own website, please change all branding to your own.
 
 
+
 ---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+First configure the `/components/art.json` file, specifying the NFTs you want to display in staging/production. 
+
+Run the development server:
 
 ```bash
 npm run dev

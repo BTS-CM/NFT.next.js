@@ -39,10 +39,10 @@ for (let i = 0; i < assets.length; i++) {
             fileName = `../../public/images/${name}.png`;
           } else if (nft_object.media_gif || nft_object.media_GIF || nft_object.image_GIF || nft_object.image_gif) {
             image = nft_object.media_gif || nft_object.media_GIF || nft_object.image_GIF || nft_object.image_gif || undefined;
-            fileName = `../../public/images/${name}.png`;
+            fileName = `../../public/images/${name}.gif`;
           } else if (nft_object.media_jpeg || nft_object.image_jpeg) {
             image = nft_object.media_jpeg || nft_object.image_jpeg || undefined;
-            fileName = `../../public/images/${name}.png`;
+            fileName = `../../public/images/${name}.jpeg`;
           }
 
           if (image && fileName) {

@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
+import { useRouter } from 'next/router';
 
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useGateway } from './states';
 
 import Typography from '@material-ui/core/Typography';
 import Layout from '../components/Layout';
@@ -12,8 +12,12 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-
 import ReactGA from 'react-ga4';
+
+import { useGateway, useLanguage } from '../components/states';
+const ipfsJSON = require('../components/ipfsJSON.json');
+import CustomLink from '../components/CustomLink';
+
 ReactGA.initialize('G-CTZ1V9EXWY');
 
 const useStyles = makeStyles((theme) => ({
@@ -29,8 +33,11 @@ const useStyles = makeStyles((theme) => ({
 
 function License(properties) {
   const classes = useStyles();
+  const router = useRouter();
+
   const { t } = useTranslation('license');
 
+  const [language, setLanguage] = useLanguage();
   const [gateway, setGateway] = useGateway('cf-ipfs.com');
   const [anchorIPFS, setAnchorIPFS] = useState(null);
   const openIPFS = Boolean(anchorIPFS);
@@ -53,15 +60,14 @@ function License(properties) {
 
   return (
     <Layout
-      description={`Learn about the license behind the NFTEA Gallery software.`}
-      title={`License`}
+      description={`Modify the NFTEA gallery settings.`}
+      title={`Settings`}
       siteTitle={'NFTEA Gallery'}
     >
       <Paper className={classes.paper}>
 
         <Button
           aria-label="more"
-          style={{'marginRight': '5px', 'float': 'right'}}
           aria-controls="long-menu2"
           aria-haspopup="true"
           size="small"
@@ -79,7 +85,7 @@ function License(properties) {
           onClose={handleCloseIPFS}
           PaperProps={{
             style: {
-              maxHeight: ITEM_HEIGHT * 4.5,
+              maxHeight: 48 * 4.5,
               width: '20ch',
             },
           }}
@@ -91,24 +97,6 @@ function License(properties) {
           ))}
         </Menu>
 
-        <Typography variant="body1" gutterBottom color="textSecondary">
-          {t('type')}
-        </Typography>
-        <Typography variant="body1" gutterBottom color="textSecondary">
-          {t('copyright')}
-        </Typography>
-        <Typography variant="body1" gutterBottom color="textSecondary">
-          {t('permission')}
-        </Typography>
-        <Typography variant="body1" gutterBottom color="textSecondary">
-          {t('notice')}
-        </Typography>
-        <Typography variant="body1" gutterBottom color="textSecondary">
-          {t('disclaimer')}
-        </Typography>
-        <Typography variant="body1" gutterBotto color="textPrimary"m>
-          <a className={classes.a} href="https://github.com/BTS-CM/NFT">{t('repo')}</a>
-        </Typography>
       </Paper>
     </Layout>
   );

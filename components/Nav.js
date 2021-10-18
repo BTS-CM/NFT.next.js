@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
-import { useTheme, useLanguage, useGateway } from './states';
+import { useTheme, useLanguage } from './states';
 import { useRouter } from 'next/router';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -27,7 +27,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
 import CustomLink from './CustomLink';
-const ipfsJSON = require('./ipfsJSON.json');
 
 const locales = [
   {'language': 'en', 'aka': 'English'},
@@ -69,7 +68,6 @@ export default function Nav(properties) {
 
   let environment = properties.environment;
 
-  const [gateway, setGateway] = useGateway('cf-ipfs.com');
   const [theme, setTheme] = useTheme('light');
   const [language, setLanguage] = useLanguage();
 
@@ -87,29 +85,13 @@ export default function Nav(properties) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  const [anchorIPFS, setAnchorIPFS] = useState(null);
-  const openIPFS = Boolean(anchorIPFS);
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-  };
-
-  const handleClickIPFS = (event) => {
-    setAnchorIPFS(event.currentTarget);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  const handleCloseIPFS = () => {
-    setAnchorIPFS(null);
-  };
-
-  const handleGateway = (gateway) => {
-    setGateway(gateway);
-    handleCloseIPFS();
-  }
 
   const handleClicked = (language) => {
     setLanguage(language);
@@ -180,38 +162,6 @@ export default function Nav(properties) {
           <Button
             aria-label="more"
             style={{'marginRight': '5px', 'float': 'right'}}
-            aria-controls="long-menu2"
-            aria-haspopup="true"
-            size="small"
-            variant="contained"
-            onClick={handleClickIPFS}
-          >
-            <SettingsIcon />
-          </Button>
-
-          <Menu
-            id="long-menu2"
-            anchorEl={anchorIPFS}
-            keepMounted
-            open={openIPFS}
-            onClose={handleCloseIPFS}
-            PaperProps={{
-              style: {
-                maxHeight: ITEM_HEIGHT * 4.5,
-                width: '20ch',
-              },
-            }}
-          >
-            {ipfsJSON.map((key, value) => (
-              <MenuItem component={CustomLink} locale={language} href={`${router.asPath}`} key={`ipfs gateway ${value}`} selected={key === gateway} onClick={() => { handleGateway(key) }}>
-                <a className={classes.a}>{key}</a>
-              </MenuItem>
-            ))}
-          </Menu>
-
-          <Button
-            aria-label="more"
-            style={{'marginRight': '5px', 'float': 'right'}} 
             aria-controls="long-menu"
             aria-haspopup="true"
             size="small"

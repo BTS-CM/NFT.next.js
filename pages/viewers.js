@@ -10,9 +10,10 @@ import Button from '@material-ui/core/Button';
 import Link from 'next/link';
 
 import Layout from '../components/Layout';
+import config from '../components/config.json';
 
 import ReactGA from 'react-ga4';
-ReactGA.initialize('G-CTZ1V9EXWY');
+ReactGA.initialize(config.google_analytics);
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,7 +39,7 @@ function Viewers(properties) {
     <Layout
       description={`There are severeal Bitshares blockchain powered NFT galleries already, check them out!`}
       title={`Other Bitshares blockchain powered NFT galleries`}
-      siteTitle={'NFTEA Gallery'}
+      siteTitle={config.title}
     >
       <Grid item xs={12} key={"Viewer grid"}>
         <Paper className={classes.paper}>

@@ -16,10 +16,11 @@ import Paper from '@material-ui/core/Paper';
 
 //import { useTranslation } from 'next-i18next';
 import art from '../components/art.json';
+import config from './config.json';
 
 const { getImage } = require("../components/images");
 
-ReactGA.initialize('G-CTZ1V9EXWY');
+ReactGA.initialize(config.google_analytics);
 
 const useStyles = makeStyles((theme) => ({
   table: {

@@ -21,6 +21,7 @@ import Zoom from '@material-ui/core/Zoom';
 import { makeStyles } from '@material-ui/core/styles';
 
 import OBJT from "./OBJT";
+import config from "./config.json";
 
 import IssuerDetails from "./IssuerDetails";
 import NFTHolder from "./NFTHolder";
@@ -71,7 +72,7 @@ export default function ANFT (properties) {
 
   if (!id || !id.includes(".")) {
     return (<Typography gutterBottom variant="h6" component="h4">
-            Loading NFTEA info...
+            Loading NFT info...
           </Typography>);
   }
 
@@ -234,7 +235,7 @@ export default function ANFT (properties) {
       })
     : undefined;
 
-  const shareUrl = `https://www.nftea.gallery/nft/${symbol}`;
+  const shareUrl = `https://www.${config.domain}/nft/${symbol}`;
 
   const detailsOfIssuer = issuer
                 ? <IssuerDetails issuer={issuer} />

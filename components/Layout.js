@@ -11,6 +11,7 @@ import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Nav from "./Nav";
+import config from "./config.json";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,8 +71,8 @@ function Layout({ description, title, siteTitle, imageURL, children }) {
           <meta property="og:site_name" content={siteTitle} />
           <meta property="twitter:card" content="summary" key="twcard" />
           <meta property="twitter:title" content={title} />
-          <meta name="twitter:site" content="@NFTEA_Gallery" />
-          <meta name="twitter:creator" content="@NFTEA_Gallery" />
+          <meta name="twitter:site" content={`@${config ? config.twitter : ''}`} />
+          <meta name="twitter:creator" content={`@${config ? config.twitter : ''}`} />
           <meta property="twitter:description" content={description} />
           <meta name="twitter:image" content={imageURL} />
           <meta property="og:image" content={imageURL} />

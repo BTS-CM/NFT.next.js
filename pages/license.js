@@ -7,9 +7,10 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Typography from '@material-ui/core/Typography';
 import Layout from '../components/Layout';
+import config from '../components/config.json';
 
 import ReactGA from 'react-ga4';
-ReactGA.initialize('G-CTZ1V9EXWY');
+ReactGA.initialize(config.google_analytics);
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -32,9 +33,9 @@ function License(properties) {
 
   return (
     <Layout
-      description={`Learn about the license behind the NFTEA Gallery software.`}
+      description={`Learn about the license behind the ${config.title} website.`}
       title={`License`}
-      siteTitle={'NFTEA Gallery'}
+      siteTitle={config.title}
     >
       <Paper className={classes.paper}>
         <Typography variant="body1" gutterBottom color="textSecondary">
@@ -52,7 +53,7 @@ function License(properties) {
         <Typography variant="body1" gutterBottom color="textSecondary">
           {t('disclaimer')}
         </Typography>
-        <Typography variant="body1" gutterBotto color="textPrimary"m>
+        <Typography variant="body1" gutterBottom color="textPrimary">
           <a className={classes.a} href="https://github.com/BTS-CM/NFT">{t('repo')}</a>
         </Typography>
       </Paper>

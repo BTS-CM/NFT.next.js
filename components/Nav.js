@@ -27,6 +27,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
 import CustomLink from './CustomLink';
+import config from './config.json';
 
 const locales = [
   {'language': 'en', 'aka': 'English'},
@@ -157,7 +158,7 @@ export default function Nav(properties) {
             aria-haspopup="true"
             size="small"
             variant="contained"
-            href={"https://twitter.com/NFTEA_Gallery"}
+            href={`https://twitter.com/${config.twitter}`}
           >
             <TwitterIcon />
           </Button>

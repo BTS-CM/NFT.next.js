@@ -16,8 +16,9 @@ import Button from '@material-ui/core/Button';
 import CarouselElement from "../components/Carousel";
 import Layout from '../components/Layout';
 import artJSON from '../components/art.json';
+import config from '../components/config.json';
 
-ReactGA.initialize('G-CTZ1V9EXWY');
+ReactGA.initialize(config ? config.google_analytics: '');
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -98,9 +99,9 @@ function Home() {
 
   return (
     <Layout
-      description={"The NFTEA Gallery is a Bitshares (BTS) blockchain powered NFT gallery. Buy, Trade and Collect BTS NFTs on the BTS DEX!"}
+      description={`The ${config ? config.title : ''} is a Bitshares (BTS) blockchain powered NFT gallery. Buy, Trade and Collect BTS NFTs on the BTS DEX!`}
       title={"Bitshares blockchain powered NFTs"}
-      siteTitle={"NFTEA Gallery"}
+      siteTitle={config ? config.title : ''}
     >
       <Grid container style={{'maxWidth': '100%'}} key="index">
         <Grid item xs={12} sm={6} key={"Index featured NFT"}>

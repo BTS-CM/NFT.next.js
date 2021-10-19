@@ -17,8 +17,9 @@ import ReactGA from 'react-ga4';
 import { useGateway, useLanguage } from '../components/states';
 const ipfsJSON = require('../components/ipfsJSON.json');
 import CustomLink from '../components/CustomLink';
+import config from '../components/config.json';
 
-ReactGA.initialize('G-CTZ1V9EXWY');
+ReactGA.initialize(config.google_analytics);
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -60,9 +61,9 @@ function License(properties) {
 
   return (
     <Layout
-      description={`Modify the NFTEA gallery settings.`}
+      description={`Modify the ${config.title} settings.`}
       title={`Settings`}
-      siteTitle={'NFTEA Gallery'}
+      siteTitle={config.title}
     >
       <Paper className={classes.paper}>
 

@@ -5,8 +5,9 @@ import ReactGA from 'react-ga4';
 import ANFT from "../components/ANFT";
 import Layout from '../components/Layout';
 import artJSON from '../components/art.json';
+import config from '../components/config.json';
 
-ReactGA.initialize('G-CTZ1V9EXWY');
+ReactGA.initialize(config ? config.google_analytics : '');
 
 function All() {
   const art = artJSON && artJSON.production ? artJSON.production : [];
@@ -23,9 +24,9 @@ function Gallery() {
 
   return (
     <Layout
-      description={'Check out all of the Bitshares NFTs featured on the NFTEA Gallery!'}
+      description={`Check out all of the Bitshares NFTs featured on the ${config ? config.title : ''}!`}
       title={'All featured NFTs'}
-      siteTitle={'NFTEA Gallery'}
+      siteTitle={config ? config.title: ''}
     >
       <All />
     </Layout>

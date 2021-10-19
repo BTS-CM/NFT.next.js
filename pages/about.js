@@ -5,8 +5,10 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Layout from '../components/Layout';
 
+import config from '../components/config.json';
+
 import ReactGA from 'react-ga4';
-ReactGA.initialize('G-CTZ1V9EXWY');
+ReactGA.initialize(config.google_analytics);
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -29,9 +31,9 @@ function About() {
 
   return (
     <Layout
-      description={'Learn more about the NFTEA gallery'}
+      description={`Learn more about the ${config.title}`}
       title={'About'}
-      siteTitle={'NFTEA Gallery'}
+      siteTitle={config.title}
     >
       <Paper className={classes.paper}>
         <p>

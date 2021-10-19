@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import art from '../components/art.json';
+import config from '../components/config.json';
 
 import ReactGA from 'react-ga4';
 
@@ -18,7 +19,7 @@ import Layout from '../components/Layout';
 import Fuse from 'fuse.js';
 import Link from 'next/link';
 
-ReactGA.initialize('G-CTZ1V9EXWY');
+ReactGA.initialize(config ? config.google_analytics : '');
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -87,7 +88,7 @@ function SearchPanel (properties) {
     <Layout
       description={`Search for Bitshares blockchain based NFTs by ID and name here!`}
       title={`Search for Bitshares based NFTs`}
-      siteTitle={'NFTEA Gallery'}
+      siteTitle={config.title}
     >
       <Grid item xs={12} key={"Search Window"}>
         <Paper className={classes.paper} style={{'padding': '20px'}}>

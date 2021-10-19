@@ -6,8 +6,9 @@ import Layout from '../../components/Layout';
 import ANFT from "../../components/ANFT";
 
 import art from '../../components/art.json';
+import config from '../../components/config.json';
 
-ReactGA.initialize('G-CTZ1V9EXWY');
+ReactGA.initialize(config ? config.google_analytics : '');
 
 const NFT = () => {
   const router = useRouter()
@@ -19,7 +20,7 @@ const NFT = () => {
     return <Layout
       description={`"${nft}" is an Bitshares blockchain powered NFT; buy, trade, collect it on the BTS DEX!`}
       title={`"${nft}" Bitshares NFT`}
-      siteTitle={'NFTEA Gallery'}
+      siteTitle={config.title}
     >
       <ANFT id={nft} key={nft} individual={true} />
     </Layout>
@@ -28,14 +29,12 @@ const NFT = () => {
     return <Layout
               description={"Unable to load this NFT"}
               title={`Unknown NFT`}
-              siteTitle={'NFTEA Gallery'}
+              siteTitle={config.title}
             >
               <p>Unable to load NFT</p>
             </Layout>
   }
 }
-
-
 
 export const getStaticPaths = async ({ locales }) => {
 

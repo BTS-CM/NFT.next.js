@@ -1,12 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
+import Image from 'next/image';
+
 import { useGateway } from './states';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import { useInView } from 'react-intersection-observer';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,40 +24,40 @@ function CarouselItem (properties) {
   const [gateway, setGateway] = useGateway();
 
   let asset = properties.asset;
+  let value = properties.value;
   let media_png_multihash = properties.media_png_multihash;
 
   let symbol = asset && asset.symbol ? asset.symbol : undefined;
 
-  let imgURL;
-  let icon;
-  let first = properties.first;
-  if (first) {
-    imgURL = `/images/${symbol}.webp`;
-    icon = `/images/${symbol}_icon.webp`;
-  } else {
-    imgURL = `https://${gateway}${media_png_multihash.url}`;
-    icon = `data:image/png;base64,${media_png_multihash.icon}`;
-  }
+  let imgURL = require(`../public/images/${symbol}/${value}.webp`);
+  let linkURL= `https://${gateway}${media_png_multihash.url}`;
 
   let itrs = media_png_multihash.url.split(".")[0].split("/");
   let itr = itrs[itrs.length - 1];
 
-  return itr && icon && symbol && imgURL
-          ? <div key={symbol + "_featured_div_" + itr}>
-                <Link href={imgURL} passHref>
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
+
+  return (itr && symbol && imgURL
+          ? <div ref={ref} key={symbol + "_featured_div_" + itr}>
+                <Link href={linkURL} passHref>
                   <a>
-                    <LazyLoadImage
-                      alt={`${symbol}_featured_div_${itr}`}
-                      effect="blur"
-                      src={imgURL}
-                      placeholderSrc={icon}
-                    />
+                    {inView ? (
+                      <Image
+                        alt={`${symbol}_featured_div_${itr}`}
+                        src={imgURL}
+                        placeholder="blur"
+                        width={500}
+                        height={500}
+                      />
+                    ) : null}
                   </a>
                 </Link>
              </div>
           : <div key={symbol + "_featured_div_loading"}>
               Loading..
-             </div>;
+             </div>);
 }
 
 export default function IPFSCarouselElement(properties) {
@@ -71,6 +72,7 @@ export default function IPFSCarouselElement(properties) {
 
           return <CarouselItem
                     media_png_multihash={key}
+                    value={value}
                     { ...properties }
                     key={symbol + "_carousel_item_" + itr}
                     first={value === 0 ? true : false}

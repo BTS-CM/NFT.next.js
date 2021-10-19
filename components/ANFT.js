@@ -264,7 +264,9 @@ export default function ANFT (properties) {
           </Typography>
           {
             imgURL && !media_png_multihashes
-              ? <Image src={imgURL} height={height} width={width} alt={short_name + " image"} className={classes.media} />
+              ? <a href={imgURL}>
+                  <Image src={imgURL} height={height} width={width} alt={short_name + " image"} className={classes.media} />
+                </a>
               : <OBJT data={image} />
           }
 

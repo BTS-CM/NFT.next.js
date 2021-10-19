@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import ReactGA from 'react-ga4';
-
-import { LazyLoadImage  } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import { useInView } from 'react-intersection-observer';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -34,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
 
 function ListRow (properties) {
   const classes = useStyles();
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
 
   let id = properties.id;
   const initAssetData = require(`./assets/${id}.json`);
@@ -60,19 +62,22 @@ function ListRow (properties) {
     const typeEncoding = `${fileType ? fileType : ''} (${encoding})`;
     const symbolID = `${symbol} (ID: ${id})`;
 
+    let imageSRC = require(`../public/images/${symbol}/0_thumb.webp`);
+
     return (
       <TableRow key={`tr ${symbol}`}>
-          <TableCell component="th" scope="row">
+          <TableCell ref={ref} component="th" scope="row">
             <Link href={`/nft/${symbol}`} key={`/nft/${symbol}/img`} passHref>
               <a>
-                <LazyLoadImage
-                  alt={`${symbol} thumbnail`}
-                  effect="blur"
-                  width={128}
-                  height={128}
-                  placeholderSrc={`/images/${symbol}_icon.webp`}
-                  src={`/images/${symbol}_thumb.webp`}
-                />
+                {inView ? (
+                  <Image
+                    alt={`${symbol} thumbnail`}
+                    effect="blur"
+                    width={128}
+                    height={128}
+                    src={imageSRC}
+                  />
+                ) : null}
               </a>
             </Link>
           </TableCell>

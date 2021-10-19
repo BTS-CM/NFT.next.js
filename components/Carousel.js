@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useGateway } from './states';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import { LazyLoadImage  } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import { useInView } from 'react-intersection-observer';
+
 import Typography from '@material-ui/core/Typography';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -44,21 +45,28 @@ function CarouselItem (properties) {
   let title = nft_object && nft_object.title ? nft_object.title : undefined;
   let artist = nft_object && nft_object.artist ? nft_object.artist : undefined;
 
-  let icon = `/images/${symbol}_icon.webp`;
-  let imgURL = `/images/${symbol}.webp`;
+  let imgURL = require(`../public/images/${symbol}/0.webp`);
 
-  return title && artist && symbol
-          ? <div key={id + "_featured_div"}>
-                <Link href={`/nft/${symbol}`} key={`/nft/${symbol}/img`} passHref>
-                  <a>
-                    <LazyLoadImage
-                      alt={`${id}_featured_div`}
-                      effect="blur"
-                      placeholderSrc={icon}
-                      src={imgURL}
-                    />
-                  </a>
-                </Link>
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
+
+  return (title && artist && symbol
+          ? <div ref={ref} key={id + "_featured_div"}>
+
+                  <Link href={`/nft/${symbol}`} key={`/nft/${symbol}/img`} passHref>
+                    <a>
+                      {inView ? (
+                        <Image
+                          alt={`${id}_featured_div`}
+                          src={imgURL}
+                          placeholder="blur"
+                          width={500}
+                          height={500}
+                        />
+                      ) : null}
+                    </a>
+                  </Link>
                 <Link href={`/nft/${symbol}`} key={`/nft/${symbol}/button`} passHref>
                   <a className={classes.a}>
                     <Button className={classes.button} variant="contained">
@@ -69,7 +77,7 @@ function CarouselItem (properties) {
              </div>
           : <div key={id + "_featured_div"}>
               Loading..
-             </div>;
+             </div>);
 }
 
 export default function CarouselElement(properties) {

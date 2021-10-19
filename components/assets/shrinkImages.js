@@ -2,25 +2,32 @@ const fs = require('fs');
 const sharp = require('sharp');
 
 const fileList = fs.readdirSync(`../../public/images/`);
-let filteredFiles = fileList.filter(file => file.includes(".png") && !file.includes("_icon") && !file.includes("_thumb"));
 
 (async () => {
 
-  for (let i = 0; i < filteredFiles.length; i++) {
-    let file = filteredFiles[i];
+  for (let i = 0; i < fileList.length; i++) {
+    let file = fileList[i];
+    let folderImages = fs.readdirSync(`../../public/images/${file}/`);
 
-    console.log(file.split(".png")[0])
+    for (let k = 0; k < folderImages.length; k++) {
+      const currentImageName = folderImages[k];
+      const currentNum = currentImageName.split(".")[0];
 
-    await sharp(`../../public/images/${file}`)
-            .toFile(`../../public/images/${file.split(".png")[0]}.webp`);
+      await sharp(`../../public/images/${file}/${currentImageName}`)
+            .toFile(`../../public/images/${file}/${currentNum}.webp`);
 
-    await sharp(`../../public/images/${file}`)
-            .resize(32, 32)
-            .toFile(`../../public/images/${file.split(".png")[0]}_icon.webp`);
-
-    await sharp(`../../public/images/${file}`)
+      await sharp(`../../public/images/${file}/${currentImageName}`)
             .resize(128, 128)
-            .toFile(`../../public/images/${file.split(".png")[0]}_thumb.webp`);
+            .toFile(`../../public/images/${file}/${currentNum}_thumb.webp`);
+
+      try {
+        fs.unlinkSync(`../../public/images/${file}/${currentImageName}`);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+
   }
 
 })();

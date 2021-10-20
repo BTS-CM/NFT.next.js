@@ -71,6 +71,9 @@ function Viewers(properties) {
           <Link href={`https://ex.xbts.io/explorer/assets`} passHref>
             <Button size="small" className={classes.button} variant="contained">XBTS.io</Button>
           </Link>
+          <Link href={`https://dex.iobanker.com/explorer/assets`} passHref>
+            <Button size="small" className={classes.button} variant="contained">ioBanker DEX</Button>
+          </Link>
           <Link href={`https://www.gdex.io/explorer/assets`} passHref>
             <Button size="small" className={classes.button} variant="contained">GDEX.io</Button>
           </Link>

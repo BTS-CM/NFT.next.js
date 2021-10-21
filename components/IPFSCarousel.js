@@ -7,6 +7,7 @@ import { useGateway } from './states';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+
 import { useInView } from 'react-intersection-observer';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -45,6 +46,7 @@ function CarouselItem (properties) {
                   <a>
                     {inView ? (
                       <Image
+                        key={`${symbol}_featured_div_${itr}`}
                         alt={`${symbol}_featured_div_${itr}`}
                         src={imgURL}
                         placeholder="blur"

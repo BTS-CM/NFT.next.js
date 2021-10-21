@@ -71,6 +71,7 @@ function ListRow (properties) {
               <a>
                 {inView ? (
                   <Image
+                    key={`${symbol} thumbnail`}
                     alt={`${symbol} thumbnail`}
                     effect="blur"
                     width={128}

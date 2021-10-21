@@ -25,7 +25,9 @@
     "atob": "^2.1.2",
     "axios": "^0.22.0",
     "fuse.js": "^6.4.6",
+    "gray-matter": "^4.0.3",
     "i18next": "^21.2.4",
+    "moment": "^2.29.1",
     "next": "11.1.2",
     "next-i18next": "^8.9.0",
     "react": "17.0.2",
@@ -34,6 +36,8 @@
     "react-intersection-observer": "^8.32.1",
     "react-responsive-carousel": "^3.2.21",
     "react-share": "^4.4.0",
+    "remark": "^14.0.1",
+    "remark-html": "^15.0.0",
     "swr": "^1.0.1",
     "three": "^0.130.1",
     "use-local-storage-state": "^11.0.0"

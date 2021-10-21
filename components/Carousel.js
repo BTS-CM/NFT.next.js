@@ -58,7 +58,8 @@ function CarouselItem (properties) {
                     <a>
                       {inView ? (
                         <Image
-                          alt={`${id}_featured_div`}
+                          key={`${id}_image`}
+                          alt={`${id}_image`}
                           src={imgURL}
                           placeholder="blur"
                           width={500}

@@ -265,7 +265,14 @@ export default function ANFT (properties) {
           {
             imgURL && !media_png_multihashes
               ? <a href={imgURL}>
-                  <Image src={imgURL} height={height} width={width} alt={short_name + " image"} className={classes.media} />
+                  <Image
+                    key={short_name + " Image"}
+                    src={imgURL}
+                    height={height}
+                    width={width}
+                    alt={short_name + " image"}
+                    className={classes.media}
+                  />
                 </a>
               : <OBJT data={image} />
           }

@@ -36,3 +36,4 @@ yarn-error.log*
 # data
 *.webp
 *.png
+components/config.json

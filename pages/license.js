@@ -54,7 +54,7 @@ function License(properties) {
           {t('disclaimer')}
         </Typography>
         <Typography variant="body1" gutterBottom color="textPrimary">
-          <a className={classes.a} href="https://github.com/BTS-CM/NFT">{t('repo')}</a>
+          <a className={classes.a} href="https://github.com/BTS-CM/NFT.next.js">{t('repo')}</a>
         </Typography>
       </Paper>
     </Layout>

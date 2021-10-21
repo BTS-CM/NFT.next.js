@@ -129,7 +129,7 @@ function Home() {
               <a href={`https://ex.xbts.io/`}>
                 <Button size="small" className={classes.button} variant="contained">XBTS.io</Button>
               </a>
-              <a href={`https://dex.iobanker.com/market/${symbol}_${market ? market : 'BTS'}`}>
+              <a href={`https://dex.iobanker.com/`}>
                 <Button size="small" className={classes.button} variant="contained">ioBanker DEX</Button>
               </a>
               <a href={`https://www.gdex.io/`}>

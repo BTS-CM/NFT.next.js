@@ -77,8 +77,8 @@ export async function getStaticProps({ params, locale }) {
         ...post,
         content,
       },
+      ...await serverSideTranslations(locale, ['nav']),
     },
-    ...await serverSideTranslations(locale, ['license', 'nav']),
   }
 }
 

@@ -31,6 +31,11 @@ function CarouselItem (properties) {
   let symbol = asset && asset.symbol ? asset.symbol : undefined;
 
   let imgURL = require(`../public/images/${symbol}/${value}.webp`);
+
+  if (!gateway) {
+    setGateway('gateway.ipfs.io');
+  }
+
   let linkURL= `https://${gateway}${media_png_multihash.url}`;
 
   let itrs = media_png_multihash.url.split(".")[0].split("/");

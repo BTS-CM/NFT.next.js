@@ -40,14 +40,14 @@ export default function Post({ post, morePosts, preview }) {
         ) : (
           <>
             <article>
-              <h4>{post.title}</h4>
-              <h5>
+              <h2>{post.title}</h2>
+              <h3>
                 <time dateTime={post.date}>
                   {
                     moment(post.date).format("Do MMMM YYYY")
                   }
                 </time>
-              </h5>
+              </h3>
               <div className={classes.markdown}
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
@@ -82,17 +82,23 @@ export async function getStaticProps({ params, locale }) {
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths = async ({ locales }) => {
+
   const posts = getAllPosts(['slug'])
 
+  let postParams = posts.map(post => ({params: {slug: post.slug}}));
+  let paths = [];
+
+  for (let i = 0; i < postParams.length; i++) {
+    const currentPost = postParams[i];
+
+    paths.push(
+      ...locales.map(locale => ({...currentPost, locale: locale}))
+    )
+  }
+
   return {
-    paths: posts.map((post) => {
-      return {
-        params: {
-          slug: post.slug,
-        },
-      }
-    }),
-    fallback: false,
+      paths: paths, //indicates that no page needs be created at build time
+      fallback: 'blocking' //indicates the type of fallback
   }
 }

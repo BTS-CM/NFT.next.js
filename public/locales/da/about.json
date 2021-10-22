@@ -6,5 +6,7 @@
     "p2": "Ikke-fungible tokens (NFT) kan nemt udstedes af alle på Bitshares blockchain ved at følge ",
     "p3": " Du er velkommen til at gaffel denne NFT-fremviser til dit eget Bitshares baseret NFT-galleri.",
     "p4": "Gebyrer på Bitshares blockchain er ",
-    "p5": "Disse gebyrer kan reduceres yderligere ved at købe et livstidsmedlemskab samt udstede underaktiver som“ gallery_name.nft_name“"
+    "p5": "Disse gebyrer kan reduceres yderligere ved at købe et livstidsmedlemskab samt udstede underaktiver som 'gallery_name.nft_name'",
+    "header_description": "Lær mere om {{title}}",
+    "header_title": "Om"
 }

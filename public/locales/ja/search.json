@@ -1,4 +1,11 @@
 {
     "body": "検索するNFTの名前またはIDを入力してください",
-    "header": "NFTで検索する"
+    "header": "NFTで検索する",
+    "help_header": "あなたが知っているNFTが見つかりませんか？",
+    "not_all": "Bitsharesブロックチェーンで発行されたすべてのNFTがこのBitsharesNFTビューアに表示されるわけではありません。",
+    "pre_a": "考えているNFTを検索してみてください",
+    "a1":"他の視聴者",
+    "a2": "ブロックチェーンエクスプローラー",
+    "header_description": "ここでIDと名前でBitsharesブロックチェーンベースのNFTを検索してください！",
+    "header_title": "ビットシェアベースのNFTを検索"
 }

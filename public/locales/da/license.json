@@ -4,5 +4,7 @@
     "notice": "Ovenstående meddelelse om ophavsret og denne meddelelse om tilladelse skal indgå i alle kopier eller væsentlige dele af Softwaren.",
     "permission": "Der gives hermed gratis tilladelse til enhver person, der får en kopi af denne software og tilhørende dokumentationsfiler (Softwaren), til at handle i Softwaren uden begrænsning, herunder, men ikke begrænset til, retten til at bruge, kopiere, ændre, fusionere, udgive, distribuere, underlicensere og/eller sælge kopier af Softwaren, og for at tillade personer, som Softwaren leveres til, at gøre det, forudsat at følgende betingelser er opfyldt:",
     "repo": "GitHub-arkiv",
-    "type": "MIT licens"
+    "type": "MIT licens",
+    "header_description": "Lær mere om licensen bag webstedet {{title}}.",
+    "header_title": "Licens"
 }

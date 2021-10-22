@@ -36,7 +36,7 @@ function License(properties) {
   const classes = useStyles();
   const router = useRouter();
 
-  const { t } = useTranslation('license');
+  const { t } = useTranslation('settings');
 
   const [language, setLanguage] = useLanguage();
   const [gateway, setGateway] = useGateway('cf-ipfs.com');
@@ -56,13 +56,13 @@ function License(properties) {
   }
 
   useEffect(() => {
-    ReactGA.pageview('License')
+    ReactGA.pageview('Settings')
   }, []);
 
   return (
     <Layout
-      description={`Modify the ${config.title} settings.`}
-      title={`Settings`}
+      description={t('header_description', {title: config.title})}
+      title={t('header_title')}
       siteTitle={config.title}
     >
       <Paper className={classes.paper}>
@@ -105,7 +105,7 @@ function License(properties) {
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['license', 'nav']),
+    ...await serverSideTranslations(locale, ['settings', 'nav']),
   },
 })
 

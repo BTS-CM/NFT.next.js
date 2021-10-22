@@ -81,5 +81,7 @@
       "none1": "The license under which this NFT has been released has not been provied.",
       "header2": "Holder license",
       "none2": "Holder license information has not been provided."
-    }
+    },
+    "header_description": "'{{nft}}' is an Bitshares blockchain powered NFT; buy, trade, collect it on the BTS DEX!",
+    "header_title": "'{{nft}}' Bitshares NFT"
 }

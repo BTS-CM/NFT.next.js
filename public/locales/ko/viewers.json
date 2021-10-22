@@ -6,5 +6,7 @@
     "nft": {
       "body": "신뢰할 수 있는 비트쉐어 NFT 시청자를 확인해 보세요!",
       "header": "NFT 시청자"
-    }
+    },
+    "header_description": "Bitshares 블록체인 기반 NFT 갤러리가 이미 많이 있습니다. 확인하세요!",
+    "header_title": "기타 Bitshares 블록체인 기반 NFT 갤러리"
 }

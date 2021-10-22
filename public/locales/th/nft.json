@@ -81,5 +81,7 @@
     "tags": {
       "no_nft_tags": "ไม่มีแท็ก NFT",
       "no_tags": "ไม่มีแท็กหัวข้อ/ดอกเบี้ย"
-    }
+    },
+    "header_description": "'{{nft}}' เป็น NFT ที่ขับเคลื่อนด้วยบล็อกเชนของ Bitshares ซื้อ แลกเปลี่ยน รวบรวมบน BTS DEX!",
+    "header_title": "'{{nft}}' Bitshares NFT"
 }

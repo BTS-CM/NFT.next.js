@@ -81,5 +81,7 @@
     "tags": {
       "no_nft_tags": "Pas de balises NFT",
       "no_tags": "Pas de balises de sujet/intérêt"
-    }
+    },
+    "header_description": "'{{nft}}' est un NFT alimenté par la blockchain Bitshares ; achetez, échangez, récupérez-le sur le BTS DEX !",
+    "header_title": "'{{nft}}' Bitshares NFT"
 }

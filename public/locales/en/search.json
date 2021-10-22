@@ -1,4 +1,11 @@
 {
     "header": "Search for NFT",
-    "body": "Either enter the name or ID for the NFT you wish to find"
+    "body": "Either enter the name or ID for the NFT you wish to find",
+    "help_header": "Can't locate an NFT you know of?",
+    "not_all": "Not all NFT issued on the Bitshares blockchain will be displayed on this Bitshares NFT viewer.",
+    "pre_a": "Try searching for the NFT you have in mind on ",
+    "a1": "other viewers",
+    "a2": "blockchain explorers",
+    "header_description": "Search for Bitshares blockchain based NFTs by ID and name here!",
+    "header_title": "Search for Bitshares based NFTs"
 }

@@ -1,5 +1,7 @@
 {
     "acknowledgments": "Anerkendelser",
     "attestation": "Attestation",
-    "narrative": "Fortælling"
+    "narrative": "Fortælling",
+    "header_description": "'{{nft}}' er en Bitshares blockchain -drevet NFT; køb, byt, saml den på BTS DEX!",
+    "header_title": "'{{nft}}' Bitshares NFT"
 }

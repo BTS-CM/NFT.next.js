@@ -37,8 +37,8 @@ function Viewers(properties) {
 
   return (
     <Layout
-      description={`There are severeal Bitshares blockchain powered NFT galleries already, check them out!`}
-      title={`Other Bitshares blockchain powered NFT galleries`}
+      description={t('header_description')}
+      title={t('header_title')}
       siteTitle={config.title}
     >
       <Grid item xs={12} key={"Viewer grid"}>

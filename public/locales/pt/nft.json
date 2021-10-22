@@ -81,5 +81,7 @@
     "tags": {
       "no_nft_tags": "Sem etiquetas NFT",
       "no_tags": "Sem tags de tópico/interesse"
-    }
+    },
+    "header_description": "'{{nft}}' é um blockchain NFT Bitshares; compre, troque, colete no BTS DEX!",
+    "header_title": "'{{nft}}' Bitshares NFT"
 }

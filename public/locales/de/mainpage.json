@@ -40,5 +40,7 @@
       "body1a": "Finde es heraus ",
       "body1b": " & Traden Sie noch heute!",
       "header": "Interessiert, NFT an der BTS DEX zu handeln?"
-    }
+    },
+    "header_description": "Der {{title}} ist eine von Bitshares (BTS) betriebene NFT-Galerie mit Blockchain. Kaufen, handeln und sammeln Sie BTS-NFTs auf dem BTS DEX!",
+    "header_title": "Bitshares blockchain-betriebene NFTs"
 }

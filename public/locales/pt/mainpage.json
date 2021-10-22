@@ -40,5 +40,7 @@
       "body1a": "Descobrir ",
       "body1b": " & obter negociação hoje!",
       "header": "Interessado em negociar NFT no BTS DEX?"
-    }
+    },
+    "header_description": "O {{title}} é uma galeria NFT com blockchain de Bitshares (BTS). Compre, troque e colete NFTs de BTS no BTS DEX!",
+    "header_title": "NFTs com blockchain de Bitshares"
 }

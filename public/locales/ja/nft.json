@@ -81,5 +81,7 @@
     "tags": {
       "no_nft_tags": "NFTタグなし",
       "no_tags": "トピック/インタレストタグなし"
-    }
+    },
+    "header_description": "'{{nft}}'はBitsharesブロックチェーンを利用したNFTです。BTSDEXで購入、取引、収集してください！",
+    "header_title": "'{{nft}}' Bitshares NFT"
 }

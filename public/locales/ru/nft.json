@@ -81,5 +81,7 @@
     "tags": {
       "no_nft_tags": "Нет тегов NFT",
       "no_tags": "Нет темы/тегов интереса"
-    }
+    },
+    "header_description": "'{{nft}}' - это NFT на основе блокчейна Bitshares; покупайте, торгуйте, собирайте его на BTS DEX!",
+    "header_title": "'{{nft}}' Bitshares NFT"
 }

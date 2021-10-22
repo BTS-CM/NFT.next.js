@@ -81,5 +81,7 @@
     "tags": {
       "no_nft_tags": "Sin etiquetas NFT",
       "no_tags": "Sin etiquetas de tema/interés"
-    }
+    },
+    "header_description": "'{{nft}}' es un NFT impulsado por blockchain de Bitshares; ¡cómprelo, intercambie, recójalo en BTS DEX!",
+    "header_title": "'{{nft}}' Bitshares NFT"
 }

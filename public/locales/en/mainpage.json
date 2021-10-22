@@ -40,5 +40,7 @@
     "stat3": {
       "header": "Years since Bitshares launch",
       "years": " years"
-    }
+    },
+    "header_description": "The {{title}} is a Bitshares (BTS) blockchain powered NFT gallery. Buy, Trade and Collect BTS NFTs on the BTS DEX!",
+    "header_title": "Bitshares blockchain powered NFTs"
 }

@@ -99,8 +99,8 @@ function Home() {
 
   return (
     <Layout
-      description={`The ${config ? config.title : ''} is a Bitshares (BTS) blockchain powered NFT gallery. Buy, Trade and Collect BTS NFTs on the BTS DEX!`}
-      title={"Bitshares blockchain powered NFTs"}
+      description={t('header_description', {title: config.title})}
+      title={t('header_title')}
       siteTitle={config ? config.title : ''}
     >
       <Grid container style={{'maxWidth': '100%'}} key="index">

@@ -33,8 +33,8 @@ function License(properties) {
 
   return (
     <Layout
-      description={`Learn about the license behind the ${config.title} website.`}
-      title={`License`}
+      description={t('header_description', {title: config.title})}
+      title={t('header_title')}
       siteTitle={config.title}
     >
       <Paper className={classes.paper}>

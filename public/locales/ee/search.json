@@ -1,0 +1,11 @@
+{
+     "header": "Otsi NFT",
+     "body": "Sisestage otsitava NFT nimi või ID",
+     "help_header": "Kas te ei leia NFT -d, millest teate?",
+     "not_all": "Sellel Bitsharesi NFT -vaatajal ei kuvata kõiki Bitsharesi plokiahelas välja antud NFT -sid.",
+     "pre_a": "Proovige otsida soovitud NFT -d",
+     "a1": "teised vaatajad",
+     "a2": "plokiahela uurijad",
+     "header_description": "Otsige Bitsharesi plokiahelal põhinevaid NFT -sid ID ja nime järgi siit!",
+    "header_title": "Otsige Bitshares põhinevaid NFT -sid"
+}

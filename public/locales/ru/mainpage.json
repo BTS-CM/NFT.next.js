@@ -40,5 +40,7 @@
       "body1a": "УЗНАТЬ ",
       "body1b": " & получите торговлю уже сегодня!",
       "header": "Заинтересованы в торговле NFT на BTS DEX?"
-    }
+    },
+    "header_description": "{{title}} представляет собой галерею NFT на основе блокчейна Bitshares (BTS). Покупайте, торгуйте и собирайте NFT BTS на BTS DEX!",
+    "header_title": "NFT на основе блокчейна Bitshares"
 }

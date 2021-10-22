@@ -40,5 +40,7 @@
       "body1a": "Find ud af ",
       "body1b": " & få handel i dag!",
       "header": "Interesseret i handel NFT på BTS DEX?"
-    }
+    },
+    "header_description": "{{title}} er et Bitshares (BTS) blockchain -drevet NFT -galleri. Køb, handel og indsaml BTS NFT'er på BTS DEX!",
+    "header_title": "Bitshares blockchain -drevne NFT'er"
 }

@@ -81,5 +81,7 @@
     "tags": {
       "no_nft_tags": "NFT 태그 없음",
       "no_tags": "주제/관심 태그 없음"
-    }
+    },
+    "header_description": "'{{nft}}'는 Bitshares 블록체인 기반 NFT입니다. BTS DEX에서 구매, 거래, 수집하세요!",
+    "header_title": "'{{nft}}' Bitshares NFT"
 }

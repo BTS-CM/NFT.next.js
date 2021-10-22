@@ -40,5 +40,7 @@
       "body1a": "자세히 보기 ",
       "body1b": " 오늘 거래하세요!",
       "header": "BTS DEX에서 NFT를 거래하는 데 관심이 있으십니까?"
-    }
+    },
+    "header_description": "{{title}}은(는) Bitshares(BTS) 블록체인 기반 NFT 갤러리입니다. BTS DEX에서 BTS NFT를 구매, 거래 및 수집하세요!",
+    "header_title": "Bitshares 블록체인 기반 NFT"
 }

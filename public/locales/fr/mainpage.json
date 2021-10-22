@@ -40,5 +40,7 @@
       "body1a": "EN SAVOIR PLUS ",
       "body1b": " & obtenir le trading aujourd'hui !",
       "header": "Vous êtes intéressé par le trading NFT sur le BTS DEX ?"
-    }
+    },
+    "header_description": "Le {{title}} est une galerie NFT alimentée par la blockchain Bitshares (BTS). Achetez, échangez et collectez des NFT BTS sur le BTS DEX !",
+    "header_title": "NFT alimentés par la blockchain Bitshares"
 }

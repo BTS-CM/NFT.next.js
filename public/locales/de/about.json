@@ -6,5 +6,7 @@
     "p2": "Non-Fungible Tokens (NFTs) können leicht von jedem in der Bitshares-Blockchain ausgegeben werden, indem Sie dem ",
     "p3": " Fühlen Sie sich frei, diesen NFT-Viewer für Ihre eigene Bitshares-basierte NFT-Galerie zu forken.",
     "p4": "Die Gebühren für die Bitshares Blockchain sind ",
-    "p5": "Diese Gebühren können durch den Kauf einer lebenslangen Mitgliedschaft sowie die Ausgabe von Unter-Assets wie „gallery_name.nft_name“ weiter reduziert werden"
+    "p5": "Diese Gebühren können durch den Kauf einer lebenslangen Mitgliedschaft sowie die Ausgabe von Unter-Assets wie „gallery_name.nft_name“ weiter reduziert werden",
+    "header_description": "Erfahren Sie mehr über {{title}}",
+    "header_title": "Über"
 }

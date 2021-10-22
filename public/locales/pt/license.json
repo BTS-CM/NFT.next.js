@@ -4,5 +4,7 @@
     "notice": "O aviso de direitos autorais acima e este aviso de permissão serão incluídos em todas as cópias ou partes substanciais do Software.",
     "permission": "A permissão é concedida, gratuitamente, a qualquer pessoa que obtenha uma cópia deste software e arquivos de documentação associados (o Software), para lidar com o Software sem restrições, incluindo, sem limitação, os direitos de usar, copiar, modificar, fundir, publicar, distribuir, sublicenciar e/ou vender cópias de o Software, e para permitir que as pessoas a quem o Software é fornecido para fazê-lo, sujeito às seguintes condições:",
     "repo": "Repositório do GitHub",
-    "type": "Licença MIT"
+    "type": "Licença MIT",
+    "header_description": "Saiba mais sobre a licença do site do {{title}}.",
+    "header_title": "Licença"
 }

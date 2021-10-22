@@ -6,5 +6,7 @@
     "p2": "Les jetons non fongibles (NFT) peuvent facilement être émis par n'importe qui sur la blockchain Bitshares en suivant la ",
     "p3": " N'hésitez pas à fourcher cette visionneuse NFT pour votre propre galerie NFT basée sur Bitshares.",
     "p4": "Les frais sur la blockchain Bitshares sont ",
-    "p5": "Ces frais peuvent être encore réduits en achetant un abonnement à vie et en émettant des sous-actifs comme 'nom_galerie.nft_name'"
+    "p5": "Ces frais peuvent être encore réduits en achetant un abonnement à vie et en émettant des sous-actifs comme 'nom_galerie.nft_name'",
+    "header_description": "En savoir plus sur {{title}}",
+    "header_title": "À propos"
 }

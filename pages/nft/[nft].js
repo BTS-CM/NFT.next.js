@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import ReactGA from 'react-ga4';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next';
 
 import Layout from '../../components/Layout';
 import ANFT from "../../components/ANFT";
@@ -15,11 +16,13 @@ const NFT = () => {
   const { nft } = router.query
   const artNames = art && art.production ? art.production.map(item => item.name) : [];
 
+  const { t } = useTranslation('nft');
+
   if (nft && artNames.includes(nft)) {
     ReactGA.pageview(`NFT ${nft}`);
     return <Layout
-      description={`"${nft}" is an Bitshares blockchain powered NFT; buy, trade, collect it on the BTS DEX!`}
-      title={`"${nft}" Bitshares NFT`}
+      description={t('header_description', {nft: nft})}
+      title={t('header_title', {nft: nft})}
       siteTitle={config.title}
     >
       <ANFT id={nft} key={nft} individual={true} />

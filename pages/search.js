@@ -86,8 +86,8 @@ function SearchPanel (properties) {
 
   return (
     <Layout
-      description={`Search for Bitshares blockchain based NFTs by ID and name here!`}
-      title={`Search for Bitshares based NFTs`}
+      description={t('header_description')}
+      title={t('header_title')}
       siteTitle={config.title}
     >
       <Grid item xs={12} key={"Search Window"}>
@@ -116,13 +116,13 @@ function SearchPanel (properties) {
         </Paper>
         <Paper className={classes.paper} style={{'padding': '20px', 'marginTop': '20px'}}>
             <Typography gutterBottom variant="h5" component="h5">
-              Can&apos;t locate an NFT you know of?
+              {t('help_header')}
             </Typography>
             <Typography variant="body2" gutterBottom>
-              Not all NFT issued on the Bitshares blockchain will be displayed on this Bitshares NFT viewer.
+              {t('not_all')}
             </Typography>
             <Typography variant="body2" gutterBottom>
-              Try searching for the NFT you have in mind on <Link href="/viewers">other viewers</Link> & <Link href="/viewers">blockchain explorers</Link>!
+              {t('pre_a')}<Link href="/viewers">{t('a1')}</Link> & <Link href="/viewers">{t('a2')}</Link>!
             </Typography>
         </Paper>
       </Grid>

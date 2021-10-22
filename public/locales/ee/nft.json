@@ -1,0 +1,87 @@
+{
+    "permissionTips": {
+      "enabled": {
+        "charge_market_fee": "Varaemitent saab lubada turutasusid.",
+        "white_list": "Varaemitent saab luua heakskiidetud turgude loendi",
+        "override_authority": "Varaemitent võib selle NFT endale tagasi anda.",
+        "transfer_restricted": "Seda vara võib üle anda ainult emitendile/emitendilt või turukorraldustest",
+        "disable_force_settle": "Kasutajad võivad taotleda selle turul emiteeritud vara sundarveldust.",
+        "global_settle": "Selle turul emiteeritud vara emitendil on võimalus vara üleilmselt arveldada",
+        "disable_confidential": "Selle vara väljaandja saab varjatud tehingud keelata.",
+        "itness_fed_asset ":" Selle turul emiteeritud vara hinnavoo võivad edastada Bitsharesi tunnistajad. ",
+        "Committee_fed_asset": "Selle turul emiteeritud vara hinnavoo saavad esitada Bitsharesi komitee liikmed."
+      },
+      "disabled": {
+        "charge_market_fee": "Selle vara eest ei saa turutasusid küsida; nõutakse ainult BTS -i tasusid.",
+        "white_list": "Selle vara jaoks pole kinnitatud turgude loendit. Vahetage see Bitsharesi detsentraliseeritud börsil mis tahes vastu.",
+        "override_authority": "Vara emitent ei saa seda NFT -d endale tagasi kanda.",
+        "transfer_restricted": "Selle vara ülekanded on piiramatud.",
+        "disable_force_settle": "Seda vara ei saa sundarveldada.",
+        "global_settle": "Seda vara ei saa ülemaailmselt arveldada.",
+        "disable_confidential": "Selle vara konfidentsiaalsed tehingud on jäädavalt võimalikud.",
+        "witness_fed_asset": "Tunnistajad ei saa selle vara eest hinda anda.",
+        "Committee_fed_asset": "Komisjon ei saa selle vara eest hinda anda."
+      }
+    },
+    "by": " poolt ",
+    "tabs": {
+      "nft": "NFT",
+      "asset": "Vara",
+      "tags": "Sildid",
+      "share": "jaga",
+      "buy": "Kust osta",
+      "flags": "Lipud",
+      "permissions": "load",
+      "signature": "Allkiri",
+      "license": "litsents",
+      "json": "JSONi andmed"
+    },
+    "nft": {
+      "attestation": "tõend",
+      "narrative": "Narratiiv",
+      "acknowledgments": "Tänud"
+    },
+    "asset": {
+      "name": "Vara nimi",
+      "owner": "Praegune omanik",
+      "quantity": "Koguse probleem",
+      "file_type": "Faili tüüp",
+      "onchain": "See NFT on täielikult salvestatud Bitsharesi plokiahelasse!",
+      "offchain": "Seda NFT -d ei pruugita täielikult ahelale salvestada.",
+      "encoding": "Faili kodeering",
+      "precision_good": "Täpsusega 0 on '{{short_name}}' asendamatu märk!",
+      "precision_bad": "Kuna täpsus pole 0, on see asendatav märk.",
+      "precision": "täpsus",
+      "asset_ownership_burned": "Vara omandiõigus on 'põletatud', kuna see saadeti nullkontole; selle NFT seaded on nüüd lõplikud.",
+      "asset_ownership_warning": "Hoiatus: vara omandiõigust ei ole veel nullkontole üle kantud; väljastatud seaded ja kogus võivad pärast ostmist muutuda.",
+      "issuer": "varade emitent"
+    },
+    "tags": {
+      "no_tags": "Teemat/huvimärgendeid pole",
+      "no_nft_tags": "NFT -märgendeid pole"
+    },
+    "buy": {
+      "header": "NFT -d pealkirjaga '{{title}}' ({{symbol}}) saab Bitsharesi detsentraliseeritud börsil kaubelda/üle kanda",
+      "tooltip": "Otsige töölauarakenduses UIA '{{symbol}}'",
+      "button": "Töölauarakendus"
+    },
+    "flags": {
+      "none": "Praegu pole ühtegi lippu lubatud."
+    },
+    "permissions": {
+      "none": "Kõik õigused on keelatud."
+    },
+    "signature": {
+      "header": "Allkiri",
+      "signature": "Signature pubkey/address",
+      "password": "Multihash parool"
+    },
+    "license": {
+      "header1": "Litsents",
+      "none1": "Litsentsi, mille alusel see NFT on vabastatud, pole väljastatud.",
+      "header2": "Omaniku litsents",
+      "none2": "Omaniku litsentsiteavet pole esitatud."
+    },
+    "header_description": "'{{nft}}' on Bitsharesi plokiahela jõul töötav NFT; ostke, vahetage, koguge see BTS DEX -is!",
+    "header_title": "'{{nft}}' Bitshares NFT"
+}

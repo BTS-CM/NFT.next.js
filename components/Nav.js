@@ -33,6 +33,7 @@ const locales = [
   {'language': 'en', 'aka': 'English'},
   {'language': 'da', 'aka': 'Dansk'},
   {'language': 'de', 'aka': 'Deutsche'},
+  {'language': 'ee', 'aka': 'Eestlane'},
   {'language': 'es', 'aka': 'Español'},
   {'language': 'th', 'aka': 'ไทย'},
   {'language': 'it', 'aka': 'Italiano'},

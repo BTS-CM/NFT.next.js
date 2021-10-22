@@ -1,4 +1,11 @@
 {
     "body": "Indtast enten navnet eller id'et for den NFT, du ønsker at finde",
-    "header": "Søg efter NFT"
+    "header": "Søg efter NFT",
+    "help_header": "Kan du ikke finde et NFT, du kender?",
+    "not_all": "Ikke alle NFT udstedt på Bitshares blockchain vil blive vist på denne Bitshares NFT viewer.",
+    "pre_a": "Prøv at søge efter det NFT, du har i tankerne om",
+    "a1": "andre seere",
+    "a2": "blockchain -opdagelsesrejsende",
+    "header_description": "Søg efter Bitshares blockchain -baserede NFT'er efter id og navn her!",
+    "header_title": "Søg efter Bitshares -baserede NFT'er"
 }

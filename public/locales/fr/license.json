@@ -4,5 +4,7 @@
     "notice": "L'avis de copyright ci-dessus et cet avis d'autorisation doivent être inclus dans toutes les copies ou parties substantielles du Logiciel.",
     "permission": "L'autorisation est accordée, gratuitement, à toute personne obtenant une copie de ce logiciel et des fichiers de documentation associés (le Logiciel), de traiter le Logiciel sans restriction, y compris, sans limitation, les droits d'utilisation, de copie, de modification, de fusion, de publication, de distribution, de sous-licence et/ou de vente de copies de le Logiciel, et de permettre aux personnes à qui le Logiciel est fourni de le faire, sous réserve des conditions suivantes :",
     "repo": "Référentiel GitHub",
-    "type": "Licence MIT"
+    "type": "Licence MIT",
+    "header_description": "En savoir plus sur la licence du site Web {{title}}.",
+    "header_title": "Licence"
 }

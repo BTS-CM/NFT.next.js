@@ -4,5 +4,7 @@
     "notice": "La suddetta informativa sul copyright e la presente informativa di autorizzazione devono essere inclusi in tutte le copie o parti sostanziali del Software.",
     "permission": "L'autorizzazione è concessa, gratuitamente, a chiunque ottenga una copia di questo software e dei relativi file di documentazione (il Software), a trattare il Software senza restrizioni, inclusi, a titolo esemplificativo, i diritti di utilizzare, copiare, modificare, fondere, pubblicare, distribuire, concedere in sublicenza e/o vendere copie di il Software, e per consentire alle persone cui il Software è fornito a farlo, alle seguenti condizioni:",
     "repo": "Repository GitHub",
-    "type": "Licenza MIT"
+    "type": "Licenza MIT",
+    "header_description": "Scopri la licenza dietro il sito web {{title}}.",
+    "header_title": "Licenza"
 }

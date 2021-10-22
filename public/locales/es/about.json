@@ -6,5 +6,7 @@
     "p2": "Los tokens no fungibles (NFT) pueden ser fácilmente emitidos por cualquier persona en la cadena de bloques Bitshares siguiendo las ",
     "p3": " Siéntase libre de bifurcar este visor NFT para su propia galería NFT basada en Bitshares.",
     "p4": "Las tarifas en la cadena de bloques Bitshares son ",
-    "p5": "Estas tarifas se pueden reducir aún más comprando una membresía de por vida, así como la emisión de subactivos como 'gallery_nombre.nft_name'"
+    "p5": "Estas tarifas se pueden reducir aún más comprando una membresía de por vida, así como la emisión de subactivos como 'gallery_nombre.nft_name'",
+    "header_description": "Obtenga más información sobre {{title}}",
+    "header_title": "Acerca de"
 }

@@ -40,5 +40,7 @@
       "body1a": "調べて ",
       "body1b": " ＆今日取引をゲットしよう！",
       "header": "BTS DEXでNFTの取引に興味がありますか？"
-    }
+    },
+    "header_description": "{{title}}はBitshares（BTS）ブロックチェーンを利用したNFTギャラリーです。BTSDEXでBTS NFTを購入、取引、収集してください！",
+    "header_title": "Bitsharesブロックチェーンを利用したNFT"
 }

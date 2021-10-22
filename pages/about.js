@@ -31,8 +31,8 @@ function About() {
 
   return (
     <Layout
-      description={`Learn more about the ${config.title}`}
-      title={'About'}
+      description={t('header_description', {title: config.title})}
+      title={t('header_title')}
       siteTitle={config.title}
     >
       <Paper className={classes.paper}>

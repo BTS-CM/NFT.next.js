@@ -4,5 +4,7 @@
     "notice": "Der oben genannte Urheberrechtsvermerk und dieser Genehmigungshinweis müssen in allen Kopien oder wesentlichen Teilen der Software enthalten sein.",
     "permission": "Jeder Person, die eine Kopie dieser Software und zugehöriger Dokumentationsdateien (der Software) erhält, wird hiermit kostenlos die Erlaubnis erteilt, mit der Software uneingeschränkt zu handeln, einschließlich, jedoch nicht beschränkt auf die Rechte zur Verwendung, zum Kopieren, Ändern, Zusammenführen, Veröffentlichen, Verteilen, Unterlizenzieren und/oder Verkaufen von die Software, und um Personen zu gestatten, denen die Software dies zur Fall ist, unter folgenden Bedingungen:",
     "repo": "GitHub Repository",
-    "type": "MIT Lizenz"
+    "type": "MIT Lizenz",
+    "header_description": "Erfahren Sie mehr über die Lizenz hinter der {{title}}-Website.",
+    "header_title": "Lizenz"
 }

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import ReactGA from 'react-ga4';
+import { useTranslation } from 'next-i18next';
 
 import ANFT from "../components/ANFT";
 import Layout from '../components/Layout';
@@ -17,6 +18,7 @@ function All() {
 }
 
 function Gallery() {
+  const { t } = useTranslation('gallery');
 
   useEffect(() => {
     ReactGA.pageview('Gallery')
@@ -24,8 +26,8 @@ function Gallery() {
 
   return (
     <Layout
-      description={`Check out all of the Bitshares NFTs featured on the ${config ? config.title : ''}!`}
-      title={'All featured NFTs'}
+      description={t('header_description', {title: config.title})}
+      title={t('header_title')}
       siteTitle={config ? config.title: ''}
     >
       <All />
@@ -35,7 +37,7 @@ function Gallery() {
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['nft', 'nav']),
+    ...await serverSideTranslations(locale, ['gallery', 'nav']),
   },
 })
 

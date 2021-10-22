@@ -6,5 +6,7 @@
     "p2": "I token non fungibili (NFTS) possono essere facilmente emessi da chiunque sulla blockchain Bitshares seguendo la ",
     "p3": " Sentiti libero di biforcare questo visualizzatore NFT per la tua galleria NFT basata su Bitshare.",
     "p4": "Le tariffe sulla blockchain Bitshare sono ",
-    "p5": "Queste commissioni possono essere ulteriormente ridotte acquistando un'iscrizione a vita e emettendo sottoasset come «gallery_name.nft_name»"
+    "p5": "Queste commissioni possono essere ulteriormente ridotte acquistando un'iscrizione a vita e emettendo sottoasset come «gallery_name.nft_name»",
+    "header_description": "Ulteriori informazioni sul {{title}}",
+    "header_title": "Informazioni su"
 }

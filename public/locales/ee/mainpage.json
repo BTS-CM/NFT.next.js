@@ -1,0 +1,46 @@
+{
+    "featured": "Esiletoodud NFT -d",
+    "new": "Uued NFT -d",
+    "artists": {
+      "header": "Kõigi kunstnike kutsumine!",
+      "body1": "Kas olete huvitatud oma kunsti raha teenimisest?",
+      "body2": "Andke oma NFT välja Bitsharesi detsentraliseeritud vahetuses!"
+    },
+    "galleries": {
+      "header": "Tulevased galeriiomanikud",
+      "body1": "Kas olete huvitatud oma galerii loomisest?",
+      "body2a": "See galerii on",
+      "a1": "täielikult avatud lähtekoodiga",
+      "body2b": "ja",
+      "a2": "MIT litsentsitud"
+    },
+    "traders": {
+      "header": "Kas olete huvitatud NFT -ga kauplemisest BTS DEX -is?",
+      "body1a": "Uuri välja",
+      "a1": "kuidas luua Bitsharesi konto",
+      "body1b": "& kauple juba täna!",
+      "a2": "Töölauarakendus"
+    },
+    "benefits": {
+      "header": "Kas pole Bitsharesi osas kindel?",
+      "body1": "BTS DEXi tasud on",
+      "a1": "konkurentsivõimeline madal",
+      "body2": "Selle keskkonnajalajälg",
+      "a2": "on madal",
+      "body3": "See",
+      "a3": "jõudlus on ületamatu",
+      "body4": "ära lepi vähemaga!"
+    },
+    "stat1": {
+      "header": "Loetletud NFT -d"
+    },
+    "stat2": {
+      "header": "Soovitatavad kunstnikud"
+    },
+    "stat3": {
+      "header": "Aastaid Bitsharesi käivitamisest",
+      "years": "aastat"
+    },
+    "header_description": "{{title}} on Bitshares (BTS) plokiahelaga varustatud NFT galerii. Ostke, kaubelge ja koguge BTS NFT -sid BTS DEX -is!",
+    "header_title": "Bitsharesi plokiahelaga töötavad NFT -d"
+}

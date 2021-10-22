@@ -6,5 +6,7 @@
     "blockchain": {
       "header": "Blockchain explorers",
       "body": "Verify NFT info and discover NFT trading rates"
-    }
+    },
+    "header_description": "There are severeal Bitshares blockchain powered NFT galleries already, check them out!",
+    "header_title": "Other Bitshares blockchain powered NFT galleries"
 }

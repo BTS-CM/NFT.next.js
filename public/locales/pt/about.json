@@ -6,5 +6,7 @@
     "p2": "Tokens não fungíveis (NFTs) podem ser facilmente emitidos por qualquer pessoa no blockchain Bitshares seguindo o ",
     "p3": " Sinta-se livre para bifurcar este visualizador NFT para sua própria galeria NFT baseado Bitshares.",
     "p4": "Taxas sobre o blockchain Bitshares são ",
-    "p5": "Estas taxas podem ser ainda mais reduzidas através da compra de uma associação ao tempo de vida, bem como a emissão de subativos como 'gallery_name.nft_name'"
+    "p5": "Estas taxas podem ser ainda mais reduzidas através da compra de uma associação ao tempo de vida, bem como a emissão de subativos como 'gallery_name.nft_name'",
+    "header_description": "Saiba mais sobre o {{title}}",
+    "header_title": "Sobre"
 }

@@ -40,5 +40,7 @@
     "body1a": "ค้นหาข้อมูล ",
     "body1b": " & รับการซื้อขายวันนี้!",
     "header": "สนใจซื้อขาย NFT บน BTS DEX หรือไม่?"
-  }
+  },
+  "header_description": "{{title}} เป็นแกลเลอรี NFT ที่ขับเคลื่อนด้วยบล็อกเชนของ Bitshares (BTS) ซื้อ แลกเปลี่ยน และรวบรวม NFT ของ BTS บน BTS DEX!",
+  "header_title": "Bitshares blockchain ขับเคลื่อน NFTs"
 }

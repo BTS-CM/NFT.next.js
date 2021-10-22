@@ -3,6 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next';
 
 import Layout from '../components/Layout'
 import { getAllPosts } from '../lib/api'
@@ -22,13 +23,15 @@ const useStyles = makeStyles((theme) => ({
 const Index = ({ allPosts }) => {
   const classes = useStyles();
 
+  const { t } = useTranslation('news');
+
   return allPosts && allPosts.length
     ? allPosts.map(heroPost => {
         return (
           <>
             <Layout
-              title={`${config.title} news articles`}
-              description={`News about Bitshares NFTs, new drops and tutorials!`}
+              description={t('header_description')}
+              title={t('header_title', {title: config.title})}
               siteTitle={config.title}
             >
                 {heroPost && (
@@ -69,7 +72,7 @@ export const getStaticProps = async ({locale}) => {
   return {
     props: {
       allPosts,
-      ...await serverSideTranslations(locale, ['nav']),
+      ...await serverSideTranslations(locale, ['news', 'nav']),
     },
   }
 }

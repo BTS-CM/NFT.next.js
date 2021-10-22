@@ -1,4 +1,11 @@
 {
     "body": "찾으려는 NFT의 이름 또는 ID를 입력하십시오.",
-    "header": "NFT 검색"
+    "header": "NFT 검색",
+    "help_header": "알고 있는 NFT를 찾을 수 없습니까?",
+    "not_all": "Bitshares 블록체인에서 발행된 모든 NFT가 이 Bitshares NFT 뷰어에 표시되지는 않습니다.",
+    "pre_a": "생각하고 있는 NFT를 검색해 보세요. ",
+    "a1": "다른 뷰어",
+    "a2": "블록체인 탐색기",
+    "header_description": "여기에서 ID와 이름으로 Bitshares 블록체인 기반 NFT를 검색하세요!",
+    "header_title": "Bitshares 기반 NFT 검색"
 }

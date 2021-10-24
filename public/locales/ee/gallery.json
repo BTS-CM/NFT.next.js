@@ -1,4 +1,7 @@
 {
    "header_description": "Vaadake kõiki Bitsharesi NFT -sid {{title}}!",
-   "header_title": "Kõik esiletõstetud NFT -d"
+   "header_title": "Kõik esiletõstetud NFT -d",
+   "created_text": "Looja: {{artist}}",
+   "button_buy": "Osta",
+   "button_info": "Lisateave"
 }

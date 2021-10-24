@@ -7,6 +7,6 @@
     "p4": "Fees on the Bitshares blockchain are ",
     "a3": "considerably lower than competitor platforms",
     "p5": "These fees can be further reduced by purchasing a life-time membership as well as issuing sub-assets like 'gallery_name.nft_name'",
-    "header_description": "Lisateave {{title}} kohta",
-    "header_title": "Teave"
+    "header_description": "About the {{title}}",
+    "header_title": "About"
 }

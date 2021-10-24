@@ -1,4 +1,7 @@
 {
    "header_description": "{{title}}에 소개된 모든 Bitshares NFT를 확인하세요!",
-   "header_title": "모든 추천 NFT"
+   "header_title": "모든 추천 NFT",
+   "created_text": "{{artist}}에 의해 작성됨",
+   "button_buy": "구매",
+   "button_info": "추가 정보"
 }

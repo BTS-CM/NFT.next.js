@@ -1,4 +1,7 @@
 {
    "header_description": "Tjek alle Bitshares NFT'er på {{title}}!",
-   "header_title": "Alle fremhævede NFT'er"
+   "header_title": "Alle fremhævede NFT'er",
+   "created_text": "Oprettet af {{artist}}",
+   "button_buy": "Køb",
+   "button_info": "Flere oplysninger"
 }

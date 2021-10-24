@@ -1,4 +1,7 @@
 {
    "header_description": "Ознакомьтесь со всеми NFT Bitshares, представленными на {{title}}!",
-   "header_title": "Все популярные NFT"
+   "header_title": "Все популярные NFT",
+   "created_text": "Создано {{artist}}",
+   "button_buy": "Купить",
+   "button_info": "Подробнее"
 }

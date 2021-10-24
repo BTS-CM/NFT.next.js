@@ -38,9 +38,7 @@ export default function IssuerDetails(properties) {
     return null;
   };
 
-  let issuerDetails = data.data;
-
-  let issuerName = issuerDetails ? issuerDetails.name : undefined;
+  let issuerName = data && data.name ? data.name : undefined;
 
   return (
     <Tooltip

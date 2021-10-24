@@ -1,4 +1,7 @@
 {
    "header_description": "{{title}}で紹介されているすべてのBitsharesNFTをチェックしてください！",
-   "header_title": "すべての注目のNFT"
+   "header_title": "すべての注目のNFT",
+   "created_text": "によって作成された {{artist}}",
+   "button_buy": "購入",
+   "button_info": "詳細情報"
 }

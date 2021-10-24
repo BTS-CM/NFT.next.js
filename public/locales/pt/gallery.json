@@ -1,4 +1,7 @@
 {
    "header_description": "Confira todos os Bitshares NFTs apresentados no {{title}}!",
-   "header_title": "Todos os NFTs em destaque"
+   "header_title": "Todos os NFTs em destaque",
+   "created_text": "Criado por {{artist}}",
+   "button_buy": "Compre",
+   "button_info": "Mais informações"
 }

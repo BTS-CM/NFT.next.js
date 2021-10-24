@@ -1,4 +1,7 @@
 {
    "header_description": "ลองดู Bitshares NFT ทั้งหมดที่มีใน {{title}}!",
-   "header_title": "NFT เด่นทั้งหมด"
+   "header_title": "NFT เด่นทั้งหมด",
+   "created_text": "สร้างโดย {{artist}}",
+   "button_buy": "ซื้อ",
+   "button_info": "ข้อมูลเพิ่มเติม"
 }

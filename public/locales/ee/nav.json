@@ -1,13 +1,17 @@
 {
- "header": "NFTEA galerii",
- "staging": "(lavastus)",
- "link1": "Kodu",
- "link2": "Galerii",
- "link3": "Kirjed",
- "link4": "Otsi",
- "link5": "Teave",
- "link6": "Litsents",
- "link7": "Muud vaatajad",
- "link8": "Seaded",
- "link9": "Uudised"
+  "header": "NFTEA galerii",
+  "staging": "(lavastus)",
+  "link1": "Kodu",
+  "link2": "Galerii",
+  "link3": "Kirjed",
+  "link4": "Otsi",
+  "link5": "Teave",
+  "link6": "Litsents",
+  "link7": "Muud vaatajad",
+  "link8": "Seaded",
+  "link9": "Uudised",
+  "footer_1": "Avatud lähtekoodiga NFT galerii, mida toetab Bitsharesi plokiahel!",
+  "footer_2": "Kõik kuvatud NFT -d on Bitsharesi detsentraliseeritud börsil kaubeldavad, koguge!",
+  "footer_3": "Loodud kasutades",
+  "footer_4": " ja töötab edasi "
 }

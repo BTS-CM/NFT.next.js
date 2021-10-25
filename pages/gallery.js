@@ -15,7 +15,7 @@ ReactGA.initialize(config ? config.google_analytics : '');
 function All() {
   const art = artJSON && artJSON.production ? artJSON.production : [];
   return art && art.length
-          ? art.map(asset => <NFTCard id={asset.name} key={asset.name + "_card"} />)
+          ? art.map(asset => <NFTCard smSize={4} id={asset.name} key={asset.name + "_card"} />)
           : <p>loading</p>
 }
 

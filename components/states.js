@@ -6,9 +6,11 @@ const useTheme = createLocalStorageStateHook('light');
 
 const useGateway = createLocalStorageStateHook('cf-ipfs.com');
 
+const useAnalytics = createLocalStorageStateHook(false);
 
 export {
   useLanguage,
   useTheme,
-  useGateway
+  useGateway,
+  useAnalytics
 };

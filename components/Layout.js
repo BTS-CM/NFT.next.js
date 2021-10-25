@@ -1,14 +1,20 @@
 // components/Layout.js
 import React, { useState } from 'react';
+import { useTranslation } from 'next-i18next';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Head from 'next/head'
-import { useTheme, useLanguage } from './states';
+import { useTheme, useLanguage, useAnalytics } from './states';
 
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
+import Link from 'next/link';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import Button from '@material-ui/core/Button';
 
 import Nav from "./Nav";
 import config from "./config.json";
@@ -33,14 +39,23 @@ const useStyles = makeStyles((theme) => ({
   },
   fullList: {
     width: 'auto',
-  }
+  },
+  a: {
+    color: theme.palette.text.primary,
+    textDecoration: 'none'
+  },
+  a2: {
+    color: theme.palette.text.primary,
+  },
 }));
 
 function Layout({ description, title, siteTitle, imageURL, children }) {
   const classes = useStyles();
+  const { t } = useTranslation('nav');
 
   const [theme, setTheme] = useTheme();
   const [language, setLanguage] = useLanguage();
+  const [analytics, setAnalytics] = useAnalytics();
 
   const themeMemo = React.useMemo(
     () =>
@@ -83,7 +98,6 @@ function Layout({ description, title, siteTitle, imageURL, children }) {
             <div className={classes.root}>
               <Container maxWidth="lg">
                 <Grid container spacing={4}>
-
                   <Grid item xs={12}>
                     <Nav />
                   </Grid>
@@ -91,10 +105,200 @@ function Layout({ description, title, siteTitle, imageURL, children }) {
                   <Grid item xs={12}>
                     <main>{children}</main>
                   </Grid>
+
+                  <Grid item xs={12} key={"footer 0"} style={{textAlign: 'center'}}>
+                    <Divider/>
+                  </Grid>
+
+                  <Grid item xs={12} sm={6} key={"footer 1"}>
+                    <Typography variant="h6">
+                      {config.title}
+                    </Typography>
+                    <Typography variant="body1">
+                      {t('footer_1')}
+                    </Typography>
+                    <Typography variant="body2">
+                      {t('footer_2')}
+                    </Typography>
+                    <Typography variant="body2">
+                      {t('footer_3')}<Link href={"https://nextjs.org/"} passHref><a className={classes.a2}>Next.js</a></Link>{t('footer_4')}<Link href={"https://vercel.com"} passHref><a className={classes.a2}>Vercel</a></Link>
+                    </Typography>
+                    <Divider style={{marginTop: '10px', marginBottom: '10px'}} />
+                    <Button
+                      style={{'marginRight': '5px', 'float': 'left'}}
+                      aria-label="more"
+                      aria-controls="long-menu"
+                      aria-haspopup="true"
+                      size="small"
+                      variant="contained"
+                      href={`https://twitter.com/${config.twitter}`}
+                    >
+                      <TwitterIcon />
+                    </Button>
+                  </Grid>
+                  <Grid item xs={12} sm={2} key={"footer 2"}>
+                    <Typography variant="h6">
+                      {config.title}
+                    </Typography>
+                    <Link href={"/"} passHref>
+                      <a className={classes.a}>
+                        {t('link1')}
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"/gallery"} passHref>
+                      <a className={classes.a}>
+                        {t('link2')}
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"/listings"} passHref>
+                      <a className={classes.a}>
+                        {t('link3')}
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"/search"} passHref>
+                      <a className={classes.a}>
+                        {t('link4')}
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"/news"} passHref>
+                      <a className={classes.a}>
+                        {t('link9')}
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"/about"} passHref>
+                      <a className={classes.a}>
+                        {t('link5')}
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"/settings"} passHref>
+                      <a className={classes.a}>
+                        {t('link8')}
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"/viewers"} passHref>
+                      <a className={classes.a}>
+                        {t('link7')}
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"/license"} passHref>
+                      <a className={classes.a}>
+                        {t('link6')}
+                      </a>
+                    </Link>
+                  </Grid>
+                  <Grid item xs={12} sm={2} key={"footer 3"}>
+                    <Typography variant="h6">
+                      BTS links
+                    </Typography>
+                    <Link href={"https://bitshares.org/"} passHref>
+                      <a className={classes.a}>
+                        Bitshares.org
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"https://github.com/bitshares"} passHref>
+                      <a className={classes.a}>
+                        GitHub
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"https://bitsharestalk.org/"} passHref>
+                      <a className={classes.a}>
+                        Forum
+                      </a>
+                    </Link>
+                    <Typography variant="h6">
+                      BTS wallets
+                    </Typography>
+                    <Link href={"https://wallet.bitshares.org"} passHref>
+                      <a className={classes.a}>
+                        Bitshares.org
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"https://ex.xbts.io/"} passHref>
+                      <a className={classes.a}>
+                        XBTS.io
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"https://dex.iobanker.com/"} passHref>
+                      <a className={classes.a}>
+                        ioBanker DEX
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"https://www.gdex.io/"} passHref>
+                      <a className={classes.a}>
+                        GDEX.io
+                      </a>
+                    </Link>
+                  </Grid>
+                  <Grid item xs={12} sm={2} key={"footer 3"}>
+                    <Typography variant="h6">
+                      BTS markets
+                    </Typography>
+                    <Link href={"https://cryptoindex.org/coin/bitshares"} passHref>
+                      <a className={classes.a}>
+                        CryptoIndex
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"https://www.coingecko.com/en/coins/bitshares"} passHref>
+                      <a className={classes.a}>
+                        CoinGecko
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"https://coinmarketcap.com/currencies/bitshares/"} passHref>
+                      <a className={classes.a}>
+                        CoinMarketCap
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"https://www.worldcoinindex.com/coin/bitshares"} passHref>
+                      <a className={classes.a}>
+                        WorldCoinIndex
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"https://coincodex.com/crypto/bitshares/"} passHref>
+                      <a className={classes.a}>
+                        CoinCodex
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"https://nomics.com/assets/bts-bitshares"} passHref>
+                      <a className={classes.a}>
+                        Nomics
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"https://bitgur.com/coin/BTS"} passHref>
+                      <a className={classes.a}>
+                        Bitgur
+                      </a>
+                    </Link>
+                    <br/>
+                    <Link href={"https://messari.io/asset/bitshares"} passHref>
+                      <a className={classes.a}>
+                        Messari
+                      </a>
+                    </Link>
+                  </Grid>
                 </Grid>
               </Container>
             </div>
           </ThemeProvider>
+
         </body>
       </html>
     </>

@@ -27,6 +27,11 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  featured: {
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    marginBottom: theme.spacing(2)
+  },
   leftPaper: {
     padding: theme.spacing(2),
     marginRight: theme.spacing(1),
@@ -104,102 +109,56 @@ function Home() {
       siteTitle={config ? config.title : ''}
     >
       <Grid container style={{'maxWidth': '100%'}} key="index">
-        <Grid item xs={12} sm={6} key={"Index featured NFT"}>
-          <Paper className={classes.leftPaper}>
+        <Grid item xs={12} key={"Index featured NFT"} className={classes.featured}>
             <Typography gutterBottom variant="h5" color="textSecondary">
               {t("mainpage:featured")}
             </Typography>
             <CarouselElement art={art} featured={true} />
+        </Grid>
+
+        <Grid item xs={12} sm={6} key={"Trading"}>
+          <Paper className={classes.leftPaper}>
+            <Typography gutterBottom variant="h5" color="textSecondary">
+              {t("mainpage:traders.header")}
+            </Typography>
+            <Typography variant="body1" gutterBottom color="textSecondary">
+              {t("mainpage:traders.body1a")}<a className={classes.textLink} href="https://how.bitshares.works/en/master/user_guide/create_account.html">{t("mainpage:traders.a1")}</a>{t("mainpage:traders.body1b")}
+            </Typography>
+            <a href={`https://wallet.bitshares.org`}>
+              <Button size="small" className={classes.button} variant="contained">Bitshares.org</Button>
+            </a>
+            <a href={`https://ex.xbts.io/`}>
+              <Button size="small" className={classes.button} variant="contained">XBTS.io</Button>
+            </a>
+            <a href={`https://dex.iobanker.com/`}>
+              <Button size="small" className={classes.button} variant="contained">ioBanker DEX</Button>
+            </a>
+            <a href={`https://www.gdex.io/`}>
+              <Button size="small" className={classes.button} variant="contained">GDEX.io</Button>
+            </a>
+            <a href={`https://github.com/bitshares/bitshares-ui/releases`}>
+              <Button size="small" className={classes.button} variant="contained">{t("mainpage:traders.a2")}</Button>
+            </a>
           </Paper>
         </Grid>
 
-        <Grid item xs={12} sm={6} key={"Right info"}>
-
-          <Grid item xs={12} key={"Trading"}>
-            <Paper className={classes.leftPaper}>
-              <Typography gutterBottom variant="h5" color="textSecondary">
-                {t("mainpage:traders.header")}
-              </Typography>
-              <Typography variant="body1" gutterBottom color="textSecondary">
-                {t("mainpage:traders.body1a")}<a className={classes.textLink} href="https://how.bitshares.works/en/master/user_guide/create_account.html">{t("mainpage:traders.a1")}</a>{t("mainpage:traders.body1b")}
-              </Typography>
-              <a href={`https://wallet.bitshares.org`}>
-                <Button size="small" className={classes.button} variant="contained">Bitshares.org</Button>
-              </a>
-              <a href={`https://ex.xbts.io/`}>
-                <Button size="small" className={classes.button} variant="contained">XBTS.io</Button>
-              </a>
-              <a href={`https://dex.iobanker.com/`}>
-                <Button size="small" className={classes.button} variant="contained">ioBanker DEX</Button>
-              </a>
-              <a href={`https://www.gdex.io/`}>
-                <Button size="small" className={classes.button} variant="contained">GDEX.io</Button>
-              </a>
-              <a href={`https://github.com/bitshares/bitshares-ui/releases`}>
-                <Button size="small" className={classes.button} variant="contained">{t("mainpage:traders.a2")}</Button>
-              </a>
-            </Paper>
-          </Grid>
-
-          <Grid item xs={12} key={"BTS_Info"}>
-            <Paper className={classes.leftPaper}>
-              <Typography gutterBottom variant="h5" color="textSecondary">
-                {t("mainpage:benefits.header")}
-              </Typography>
-              <Typography variant="body1" gutterBottom color="textSecondary">
-                {t("mainpage:benefits.body1")}<a className={classes.textLink} href="https://news.bitshares.org/ethereum-vs-bitshares-sustainability-fees-comparison/">{t("mainpage:benefits.a1")}</a>.
-              </Typography>
-              <Typography variant="body1" gutterBottom color="textSecondary">
-                {t("mainpage:benefits.body2")}<a className={classes.textLink} href="https://how.bitshares.works/en/master/technology/dpos.html">{t("mainpage:benefits.a2")}</a>.
-              </Typography>
-              <Typography variant="body1" gutterBottom color="textSecondary">
-                {t("mainpage:benefits.body3")}<a className={classes.textLink} href="https://how.bitshares.works/en/master/technology/bitshares_features.html#industrial-performance-and-scalability">{t("mainpage:benefits.a3")}</a>;{t("mainpage:benefits.body4")}
-              </Typography>
-            </Paper>
-          </Grid>
-
-          <Grid item xs={12} key={"stats 1"}>
-            <Card className={classes.stats}>
-              <CardContent>
-                <Typography variant="h5" color="textSecondary">
-                  {t("mainpage:stat1.header")}
-                </Typography>
-                <Typography variant="body1" className={classes.pos} color="textSecondary">
-                  {art.length}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} key={"stats 2"}>
-            <Card className={classes.stats}>
-              <CardContent>
-                <Typography variant="h5" color="textSecondary">
-                  {t("mainpage:stat2.header")}
-                </Typography>
-                <Typography variant="body1" className={classes.pos} color="textSecondary">
-                  2
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} key={"stats 3"}>
-            <Card className={classes.stats}>
-              <CardContent>
-                <Typography variant="h5" color="textSecondary">
-                  {t("mainpage:stat3.header")}
-                </Typography>
-                <Typography variant="body1" className={classes.pos} color="textSecondary">
-                  {
-                    diff_years(genesis, now) + t("mainpage:stat3.years")
-                  }
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-
+        <Grid item xs={12} sm={6} key={"BTS_Info"}>
+          <Paper className={classes.leftPaper}>
+            <Typography gutterBottom variant="h5" color="textSecondary">
+              {t("mainpage:benefits.header")}
+            </Typography>
+            <Typography variant="body1" gutterBottom color="textSecondary">
+              {t("mainpage:benefits.body1")}<a className={classes.textLink} href="https://news.bitshares.org/ethereum-vs-bitshares-sustainability-fees-comparison/">{t("mainpage:benefits.a1")}</a>.
+            </Typography>
+            <Typography variant="body1" gutterBottom color="textSecondary">
+              {t("mainpage:benefits.body2")}<a className={classes.textLink} href="https://how.bitshares.works/en/master/technology/dpos.html">{t("mainpage:benefits.a2")}</a>.
+            </Typography>
+            <Typography variant="body1" gutterBottom color="textSecondary">
+              {t("mainpage:benefits.body3")}<a className={classes.textLink} href="https://how.bitshares.works/en/master/technology/bitshares_features.html#industrial-performance-and-scalability">{t("mainpage:benefits.a3")}</a>;{t("mainpage:benefits.body4")}
+            </Typography>
+          </Paper>
         </Grid>
+
       </Grid>
     </Layout>
   )
@@ -207,7 +166,7 @@ function Home() {
 
 export const getStaticProps = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['mainpage', 'nav']),
+    ...await serverSideTranslations(locale, ['gallery', 'mainpage', 'nav']),
   },
 })
 

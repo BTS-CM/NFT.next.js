@@ -16,11 +16,12 @@ const useStyles = makeStyles((theme) => ({
   card: {
     padding: theme.spacing(2),
     textAlign: 'center',
-    color: theme.palette.text.secondary,
     margin: theme.spacing(2)
   },
-  button: {
-    margin: theme.spacing(1)
+  bigcard: {
+    padding: theme.spacing(3),
+    textAlign: 'center',
+    margin: theme.spacing(0.75)
   },
   a: {
     color: theme.palette.text.secondary
@@ -33,6 +34,7 @@ import { useLanguage } from './states';
 export default function NFTCard(properties) {
 
   let id = properties.id;
+  let smSize = properties.smSize;
   const { t } = useTranslation('gallery');
   const classes = useStyles();
   const [language, setLanguage] = useLanguage();
@@ -73,8 +75,8 @@ export default function NFTCard(properties) {
   let address = language && !language.includes("en") ? `/${language}` : ``;
 
   return (
-    <Grid item xs={12} sm={4} key={"Right info"}>
-      <Card className={classes.card}>
+    <Grid item xs={12} sm={smSize} key={"Right info"}>
+      <Card className={smSize > 4 ? classes.bigcard : classes.card}>
         <CardActionArea href={address + "/nft/" + symbol}>
           <CardMedia
             component="img"
@@ -87,56 +89,65 @@ export default function NFTCard(properties) {
         <CardActionArea href={address + "/nft/" + symbol}>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {title} ({symbol})
+              {title}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" className={classes.a}>
               {t('created_text', {artist: artist})}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button
-            id="basic-button"
-            aria-controls="basic-menu"
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
-            onClick={handleClick}
-          >
-            {t('button_buy')}
-          </Button>
+          <Grid item xs={6} key={"left button"}>
+            <Button
+              color="success"
+              id="basic-button"
+              aria-controls="basic-menu"
+              aria-haspopup="true"
+              aria-expanded={open ? 'true' : undefined}
+              onClick={handleClick}
+              variant="contained"
+            >
+              {t('button_buy')}
+            </Button>
 
-          <Menu
-            id={"basic-menu-" + symbol}
-            anchorEl={anchor}
-            open={open}
-            onClose={handleClose}
-            PaperProps={{
-              style: {
-                maxHeight: 48 * 4.5,
-                width: '20ch',
-              },
-            }}
-            MenuListProps={{
-              'aria-labelledby': 'basic-button',
-            }}
-          >
-            <MenuItem component={CustomLink} href={`https://wallet.bitshares.org/#/market/${symbol}_${market ? market : 'BTS'}`} key={`bitshares.org buy ${symbol}`} onClick={handleClose}>
-              Bitshares.org
-            </MenuItem>
-            <MenuItem component={CustomLink} href={`https://ex.xbts.io/market/${symbol}_${market ? market : 'BTS'}`} key={`XBTS buy ${symbol}`} onClick={handleClose}>
-              XBTS.io
-            </MenuItem>
-            <MenuItem component={CustomLink} href={`https://dex.iobanker.com/market/${symbol}_${market ? market : 'BTS'}`} key={`ioBanker buy ${symbol}`} onClick={handleClose}>
-              ioBanker DEX
-            </MenuItem>
-            <MenuItem component={CustomLink} href={`https://www.gdex.io/market/${symbol}_${market ? market : 'BTS'}`} key={`GDEX buy ${symbol}`} onClick={handleClose}>
-              GDEX.io
-            </MenuItem>
-          </Menu>
-
-          <Button size="small" color="primary" href={address + "/nft/" + symbol}>
-            {t('button_info')}
-          </Button>
+            <Menu
+              id={"basic-menu-" + symbol}
+              anchorEl={anchor}
+              open={open}
+              onClose={handleClose}
+              PaperProps={{
+                style: {
+                  maxHeight: 48 * 4.5,
+                  width: '20ch',
+                },
+              }}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
+              }}
+            >
+              <MenuItem component={CustomLink} href={`https://wallet.bitshares.org/#/market/${symbol}_${market ? market : 'BTS'}`} key={`bitshares.org buy ${symbol}`} onClick={handleClose}>
+                Bitshares.org
+              </MenuItem>
+              <MenuItem component={CustomLink} href={`https://ex.xbts.io/market/${symbol}_${market ? market : 'BTS'}`} key={`XBTS buy ${symbol}`} onClick={handleClose}>
+                XBTS.io
+              </MenuItem>
+              <MenuItem component={CustomLink} href={`https://dex.iobanker.com/market/${symbol}_${market ? market : 'BTS'}`} key={`ioBanker buy ${symbol}`} onClick={handleClose}>
+                ioBanker DEX
+              </MenuItem>
+              <MenuItem component={CustomLink} href={`https://www.gdex.io/market/${symbol}_${market ? market : 'BTS'}`} key={`GDEX buy ${symbol}`} onClick={handleClose}>
+                GDEX.io
+              </MenuItem>
+            </Menu>
+          </Grid>
+          <Grid item xs={6} key={"right button"}>
+            <Button
+              color="success"
+              href={address + "/nft/" + symbol}
+              variant="contained"
+            >
+              {t('button_info')}
+            </Button>
+          </Grid>
         </CardActions>
       </Card>
     </Grid>

@@ -196,7 +196,7 @@ function Layout({ description, title, siteTitle, imageURL, children }) {
                   </Grid>
                   <Grid item xs={12} sm={2} key={"footer 3"}>
                     <Typography variant="h6">
-                      BTS links
+                      {t('footer_links')}
                     </Typography>
                     <Link href={"https://bitshares.org/"} passHref>
                       <a className={classes.a}>
@@ -216,7 +216,7 @@ function Layout({ description, title, siteTitle, imageURL, children }) {
                       </a>
                     </Link>
                     <Typography variant="h6">
-                      BTS wallets
+                      {t('footer_wallets')}
                     </Typography>
                     <Link href={"https://wallet.bitshares.org"} passHref>
                       <a className={classes.a}>
@@ -244,7 +244,7 @@ function Layout({ description, title, siteTitle, imageURL, children }) {
                   </Grid>
                   <Grid item xs={12} sm={2} key={"footer 3"}>
                     <Typography variant="h6">
-                      BTS markets
+                      {t('footer_markets')}
                     </Typography>
                     <Link href={"https://cryptoindex.org/coin/bitshares"} passHref>
                       <a className={classes.a}>

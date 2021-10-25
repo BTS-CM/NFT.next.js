@@ -12,6 +12,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { Fade } from "react-awesome-reveal";
+import { motion } from "framer-motion"
 
 //import { useTranslation } from 'next-i18next';
 import art from '../components/art.json';
@@ -66,37 +68,51 @@ function ListRow (properties) {
 
     return (
       <TableRow key={`tr ${symbol}`}>
-          <TableCell ref={ref} component="th" scope="row">
-            <Link href={`/nft/${symbol}`} key={`/nft/${symbol}/img`} passHref>
-              <a>
-                {inView ? (
-                  <Image
-                    key={`${symbol} thumbnail`}
-                    alt={`${symbol} thumbnail`}
-                    effect="blur"
-                    width={128}
-                    height={128}
-                    src={imageSRC}
-                  />
-                ) : null}
-              </a>
-            </Link>
-          </TableCell>
-          <TableCell component="th" scope="row">
+        <TableCell ref={ref} component="th" scope="row">
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Fade triggerOnce={true}>
+              <Link href={`/nft/${symbol}`} key={`/nft/${symbol}/img`} passHref>
+                <a>
+                  {inView ? (
+                    <Image
+                      key={`${symbol} thumbnail`}
+                      alt={`${symbol} thumbnail`}
+                      effect="blur"
+                      width={128}
+                      height={128}
+                      src={imageSRC}
+                    />
+                  ) : null}
+                </a>
+              </Link>
+            </Fade>
+          </motion.div>
+
+        </TableCell>
+        <TableCell component="th" scope="row">
+          <Fade triggerOnce={true}>
             <Link href={`/nft/${symbol}`}>
               <a className={classes.a}>{titleArtist}</a>
             </Link>
-          </TableCell>
-          <TableCell component="th" scope="row">
+          </Fade>
+        </TableCell>
+        <TableCell component="th" scope="row">
+          <Fade triggerOnce={true}>
             <Link href={`/nft/${symbol}`}>
               <a className={classes.a}>{typeEncoding}</a>
             </Link>
-          </TableCell>
-          <TableCell>
+          </Fade>
+        </TableCell>
+        <TableCell>
+          <Fade triggerOnce={true}>
             <Link href={`/nft/${symbol}`}>
               <a className={classes.a}>{symbolID}</a>
             </Link>
-          </TableCell>
+          </Fade>
+        </TableCell>
       </TableRow>
     );
   } else {

@@ -1,0 +1,96 @@
+{
+    "id": "1.3.6103",
+    "symbol": "NFTEA.CURRENT",
+    "precision": 0,
+    "issuer": "1.2.1803677",
+    "dynamic_asset_data_id": "2.3.6103",
+    "total_in_collateral": 0,
+    "dynamic_asset_data": {
+        "id": "2.3.6103",
+        "current_supply": 0,
+        "confidential_supply": 0,
+        "accumulated_fees": 0,
+        "accumulated_collateral_fees": 0,
+        "fee_pool": 48339293
+    },
+    "permissions": {
+        "charge_market_fee": false,
+        "white_list": false,
+        "override_authority": false,
+        "transfer_restricted": false,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": false,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "flags": {
+        "charge_market_fee": false,
+        "white_list": false,
+        "override_authority": false,
+        "transfer_restricted": false,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": false,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "description": {
+        "main": "NFTEA.CURRENT is an NFT created by nft.artist, deployed on the BitShares network. To view this token and others, visit https://nftea.gallery",
+        "market": "BTS",
+        "nft_object": {
+            "acknowledgements": "This NFT's images were generated from a combination of positive & negative text prompts with VQGAN and CLIP (z+quantize method).",
+            "artist": "nft.artist",
+            "attestation": "This is original artwork for which no prior tokenization exists or has been authorized by me.",
+            "encoding": "ipfs",
+            "holder_license": "CC BY-4.0",
+            "license": "CC BY-NC-SA-4.0",
+            "media_png_multihash": "/ipfs/bafybeid4yszswgz3liwxvnr62v7wemamjek234xn42dxleoqi6fbfwcubu/900.png",
+            "media_png_multihashes": [
+                {
+                    "sha512": "1267dd503268b2e3c1dfa8a37c68426a6af2452fae41277f7a9d0069a38d987015ee3d20af0d819b7bcff7ba33eb67cb80f2102b79ac9b56ba03a0291fd5c142",
+                    "url": "/ipfs/bafybeid4yszswgz3liwxvnr62v7wemamjek234xn42dxleoqi6fbfwcubu/900.png"
+                },
+                {
+                    "sha512": "3eec2dc59986e839ed5fef4f0241da2168fe481fb84eca3cd96064ff9f0726bdfabbbdc98f9f5bdd06e30780d257dad510a58981156ddec7cf32b483fe63e478",
+                    "url": "/ipfs/bafybeid4yszswgz3liwxvnr62v7wemamjek234xn42dxleoqi6fbfwcubu/800.png"
+                },
+                {
+                    "sha512": "3dc062867088b3874529f7a698969e21822522d3fcb3e089a289d4182e442eb307e0700ea827c9aab23057d26e3e99373b056c4848cb63fa8bbe14369dd0c6ab",
+                    "url": "/ipfs/bafybeid4yszswgz3liwxvnr62v7wemamjek234xn42dxleoqi6fbfwcubu/700.png"
+                },
+                {
+                    "sha512": "02dbd1d1cd1af6f9347b0ce0f5b34063b062891a1eba3f3a7459488559d3dd750881bc96cb2cbd11b858533a2dd3b80bea3610dc42a534f1d00e34c9b38a5be4",
+                    "url": "/ipfs/bafybeid4yszswgz3liwxvnr62v7wemamjek234xn42dxleoqi6fbfwcubu/600.png"
+                },
+                {
+                    "sha512": "281529ea3d7bcc34c42df297c05f1ad3011dff1c009a12f91d5b6dbdc5e5123911b295a1185000d8367087b594893aba8816a90c95c4ab5c924ecc8eed950286",
+                    "url": "/ipfs/bafybeid4yszswgz3liwxvnr62v7wemamjek234xn42dxleoqi6fbfwcubu/500.png"
+                },
+                {
+                    "sha512": "51a7c92eef294d3ca8820856c55223e72767fdc9d225abb2e3c0504d96d255af946a84693727d88781dade05c84a2dc9fef4ab3b693e1d4aa45c166e04e169a1",
+                    "url": "/ipfs/bafybeid4yszswgz3liwxvnr62v7wemamjek234xn42dxleoqi6fbfwcubu/400.png"
+                },
+                {
+                    "sha512": "91c5524114eb7aef317dda17eb5070853a920e52e688add6fe36ab6040f2bacfe1cf02fdcb7a1cfa61e077060c912154ac2e14fe10ae7713ad1b0b1e79f08787",
+                    "url": "/ipfs/bafybeid4yszswgz3liwxvnr62v7wemamjek234xn42dxleoqi6fbfwcubu/300.png"
+                },
+                {
+                    "sha512": "9da8bd752cd955fe401330ceebda0888130b1e1e26ef321eebedd037476ba9db4e6fc6280530ce4a9e8b396979dccf672bc6fca8e9f347d7ee1d0153a1d7da59",
+                    "url": "/ipfs/bafybeid4yszswgz3liwxvnr62v7wemamjek234xn42dxleoqi6fbfwcubu/200.png"
+                },
+                {
+                    "sha512": "d2c8c2e0933a09f2f7532b7c46d5aec76d9b633e8718a11bdab643714cc614cfab9979b14c2e7c80afd45c5a4a1ec1b860363ab522abf45d2a0cd11778f74d1b",
+                    "url": "/ipfs/bafybeid4yszswgz3liwxvnr62v7wemamjek234xn42dxleoqi6fbfwcubu/100.png"
+                }
+            ],
+            "narrative": "Input: current modern ongoing present prevailing fad now afoot circulating cutting-edge extant prevalent rampant rife topical widespread trendy. Style: corporate propaganda acrylic painting",
+            "sig_pubkey_or_address": "BTS67jhuEUeWqSDi3R1Hq4ZPZPZspN5d2nApy2HRueJEkJTt6udVw",
+            "title": "current",
+            "tags": "VQGAN,CLIP,Artificial Intelligence,Machine Learning",
+            "type": "NFT/ART/VISUAL"
+        },
+        "nft_signature": "20552b0c427b9d06763ee2f85b315b954745b1f47219d5436750238a09d5f1c21c2e6548fb693e5bc1739cee4872e09eb1704d2bf71fac9411b343b642a622c38d",
+        "short_name": "NFTEA.CURRENT"
+    }
+}

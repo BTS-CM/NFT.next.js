@@ -1,0 +1,152 @@
+{
+    "id": "1.3.6099",
+    "symbol": "NFTEA.DIRECTION",
+    "precision": 0,
+    "issuer": "1.2.1803677",
+    "dynamic_asset_data_id": "2.3.6099",
+    "total_in_collateral": 0,
+    "dynamic_asset_data": {
+        "id": "2.3.6099",
+        "current_supply": 0,
+        "confidential_supply": 0,
+        "accumulated_fees": 0,
+        "accumulated_collateral_fees": 0,
+        "fee_pool": 48413993
+    },
+    "permissions": {
+        "charge_market_fee": false,
+        "white_list": false,
+        "override_authority": false,
+        "transfer_restricted": false,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": false,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "flags": {
+        "charge_market_fee": false,
+        "white_list": false,
+        "override_authority": false,
+        "transfer_restricted": false,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": false,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "description": {
+        "main": "NFTEA.DIRECTION is an NFT created by nft.artist, deployed on the BitShares network. To view this token and others, visit https://nftea.gallery",
+        "market": "BTS",
+        "nft_object": {
+            "acknowledgements": "This NFT's images were generated from a combination of positive & negative text prompts with VQGAN and CLIP (z+quantize method).",
+            "artist": "nft.artist",
+            "attestation": "This is original artwork for which no prior tokenization exists or has been authorized by me.",
+            "encoding": "ipfs",
+            "holder_license": "CC BY-4.0",
+            "license": "CC BY-NC-SA-4.0",
+            "media_png_multihash": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/2200.png",
+            "media_png_multihashes": [
+                {
+                    "sha512": "923502e02c7169eab46acf7f5d32bb1dd289bbd44fe9e0324bcdcdd6fba4fb7ccb361ef92ca51cd7f66fd908a775eb8ed7e975260f9ee28795b65d3d16db11ed",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/2200.png"
+                },
+                {
+                    "sha512": "0dc66c756c521e32f9219b412895ae252de0d8133038848e0f2d4d557949deba8481f8b17c7f025bf74b0825843f347a553be8cd8c36a437043ac2b2d2a75348",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/2100.png"
+                },
+                {
+                    "sha512": "e450f349748f68a455d3f365aa4cd50b7978b8c36ca5f8486d991437ce615bc364b847ad58752f970a6b1269bd26e76999ac5eefdf3b82d8caa484c22bd2ef0f",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/2000.png"
+                },
+                {
+                    "sha512": "211ba1503a5f9c383286a60515d0555f12f0d435d058212f7036b70e6f12b3bd103ed2920b13778b49082f1a0e6cab6baf7da08b58454a20918e8663e992c138",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/1900.png"
+                },
+                {
+                    "sha512": "830b72c07e5634db4120e67e031b8eebb10fd2858c5f67f58fc428da4edb4f653dbc26e81e3adf871ec0f9f074ffe31021a404209d220607a77ac7b2513ffb0e",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/1800.png"
+                },
+                {
+                    "sha512": "e708415e6fc4ca0d02d7525140ee548cc143081110cf205eadd125d5dfd0da19ea78bb0962bfac03f9ee82f817e7a45cf76c655b8d010ca2d855eb0566b8df6d",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/1700.png"
+                },
+                {
+                    "sha512": "43af0cd0cc9b95b3ed899fa15673a90f95e9eaa539b946d2b51ca5add72fafe18076c2a2c629e4486101c41349c3b3f3ca8c3d75e38548586f113925d4471059",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/1600.png"
+                },
+                {
+                    "sha512": "20719da7455280b7e8d7660f3462b50c5fa62b0f80380132288f511a994e58b8a3dcab4c0d7575f7a0aa961281466ca77f1070e144214756dc3c2efa61307400",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/1500.png"
+                },
+                {
+                    "sha512": "4522c25003664af91768961d88a55b1a940db3c97ffb3ee27863fb4d8b3eb1df7396b304e988c26beb5522800e314cd6450fd02ef973a45b3b7d1790f93c4581",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/1400.png"
+                },
+                {
+                    "sha512": "05115d1385c3724e58fb78e99b1f4785421ac84f4ae5f83922d9fa50502d3c2952af59fc6f1b97467b9b8999125acaaaa837143ad5dd6f4c818bc4179ae63215",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/1300.png"
+                },
+                {
+                    "sha512": "11c086deb3a72cd4c2072ae955bfcc2f2ae2a4c19985233255577bc1150c89eaebf0cc5cb4892dceb21e149bf1e84a4a3594233e9ad741bf3c8ae732e9d822c5",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/1200.png"
+                },
+                {
+                    "sha512": "0a0eeb65913f82957f0020fd0b232173dd56c7c9f1a8d1576278cd5dcf74008664f891b20bb22a8a5220b7977785ac21174a3bdd28f86014d56e3d9ac0e5b267",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/1100.png"
+                },
+                {
+                    "sha512": "ce51b39524267a2a82f3eaafca61c84cb2d344eaa8b0437d36df2c1331faee465f7f9af600d1932cd416f6455eb28d1f2897323a043cb6e1f372c5d91e59edf8",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/1000.png"
+                },
+                {
+                    "sha512": "e38a949cb7893ce58a7be2c6232e9cc5b099c05fc85df79a8d0b3a221cdb1c28a4212fd356e6b058406cfb183e45f3e2a222b7b7fb696163edbe1ed9302b5778",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/900.png"
+                },
+                {
+                    "sha512": "86b00636adfc4ff569da7ba49522400edad00fcfe97331398c1ca9bda6f54c5207a4452065942f679658bf65f548946527ab667bb71467ca38d43ffa2e9d3cdd",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/800.png"
+                },
+                {
+                    "sha512": "6c8cd7169a90c4f2a17a2edc8cf621984bd75bebdee2b330659bdc6fd62cfb0f08e16090d623e2043077932d61d0fe988ec3efa4aa2a4c7e70f19a952ab1c5f6",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/700.png"
+                },
+                {
+                    "sha512": "e501da37459dccb5393941e92cb68b8561d344a2f14a5e198c480424d74e800f1b6ad0329f8814eeafe2fbf65844a267320c0cd71960d9f4e59b78eebf6fd7a6",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/600.png"
+                },
+                {
+                    "sha512": "022837b9c64eb4c8f8217c7537c72ed10afff2cd9e5b7ef5e6ca66114c961de906751c57a02876970af1a711f0186def729705d9b06cdae98aa51d348b2dfc9b",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/500.png"
+                },
+                {
+                    "sha512": "a08b99e325739be10da9a0d3a7b145f1191a761f7d2e141e5a5e6737616af90f923404c55d4fffe4181882b3ab038a64395bfd57225877e807d7634ab544e43b",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/400.png"
+                },
+                {
+                    "sha512": "744973297087bccf93ce2d7a47e03714801efe9c5c8c80de898bdcb0520206844425c86f2f192eadfc3cfc3ee12a60aafbe261fcb9b6fbfd10d35dfc08ad9764",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/300.png"
+                },
+                {
+                    "sha512": "6830f08102a2f347993398b54f5c33d9222229923a04d57c9d193a01dcf3f49e1c9f9f8f03006da6292a3e7e1afd16d791fade512e72fb9910173c55abeb1b71",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/200.png"
+                },
+                {
+                    "sha512": "6d4594bbaed2eda61b59932a674ea98088b50f2ee6f0457db738d247da25d277a85be2bfce9228e455637efa14e34a45a6f279a7520f974f74ad20ba43fa875b",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/100.png"
+                },
+                {
+                    "sha512": "cbde690a099c2ebfbfc4729d3ee4e2e98e22df92d0776c6ec560584826aa83bf20a60a06bda418dd42f817c451ba60d411b38f65b54043e591caabecb7c19b50",
+                    "url": "/ipfs/bafybeigplftnsxpmnvotwo3qxdfer5zzq2trk6yahpuxv7nlqzyftq23fy/0.png"
+                }
+            ],
+            "narrative": "Input: direction control guidance leadership order administration charge command government oversight supervision aspect objective outlook path trend bearing. Style: corporate propaganda acrylic painting",
+            "sig_pubkey_or_address": "BTS67jhuEUeWqSDi3R1Hq4ZPZPZspN5d2nApy2HRueJEkJTt6udVw",
+            "title": "direction",
+            "tags": "VQGAN,CLIP,Artificial Intelligence,Machine Learning",
+            "type": "NFT/ART/VISUAL"
+        },
+        "nft_signature": "2026b8c19d1c13c0378b958c968892208414d18f889f71416cced5237fa35cc1485a4c03b8a4446b0452af7847d025059fc2454e2c5bb74b94832c22d63e0203ce",
+        "short_name": "NFTEA.DIRECTION"
+    }
+}

@@ -1,0 +1,112 @@
+{
+    "id": "1.3.6108",
+    "symbol": "NFTEA.COPYB",
+    "precision": 0,
+    "issuer": "1.2.1803677",
+    "dynamic_asset_data_id": "2.3.6108",
+    "total_in_collateral": 0,
+    "dynamic_asset_data": {
+        "id": "2.3.6108",
+        "current_supply": 0,
+        "confidential_supply": 0,
+        "accumulated_fees": 0,
+        "accumulated_collateral_fees": 0,
+        "fee_pool": 48360313
+    },
+    "permissions": {
+        "charge_market_fee": false,
+        "white_list": false,
+        "override_authority": false,
+        "transfer_restricted": false,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": false,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "flags": {
+        "charge_market_fee": false,
+        "white_list": false,
+        "override_authority": false,
+        "transfer_restricted": false,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": false,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "description": {
+        "main": "NFTEA.COPYB is an NFT created by nft.artist, deployed on the BitShares network. To view this token and others, visit https://nftea.gallery",
+        "market": "BTS",
+        "nft_object": {
+            "acknowledgements": "This NFT's images were generated from a combination of positive & negative text prompts with VQGAN and CLIP (z+quantize method).",
+            "artist": "nft.artist",
+            "attestation": "The artwork stored in NFTEA.COPYB is original and no prior tokenization exists or has been authorized by me.",
+            "encoding": "ipfs",
+            "holder_license": "CC BY-4.0",
+            "license": "CC BY-NC-SA-4.0",
+            "media_png_multihash": "/ipfs/bafybeiev4e57pugjyjmncifggswbw7sppbalsu2pgkluxkm7njsfmu6ypu/1200.png",
+            "media_png_multihashes": [
+                {
+                    "sha512": "a13c233f9eab71597a6cfaa39e14078ae0c04bafddc101257f05c6153f14c554b7f0f7626603b0f79240821d72b061219499855d44d0496f346ba8b0c0603b95",
+                    "url": "/ipfs/bafybeiev4e57pugjyjmncifggswbw7sppbalsu2pgkluxkm7njsfmu6ypu/1200.png"
+                },
+                {
+                    "sha512": "7394d3300a9c0820ed11070f155a85202be7d30227dae99897ee35c55c34185b723805e6136e10744a9bc313f7551c3537bf7aaf42ba5906ea9daa0dd76b8bdd",
+                    "url": "/ipfs/bafybeiev4e57pugjyjmncifggswbw7sppbalsu2pgkluxkm7njsfmu6ypu/1100.png"
+                },
+                {
+                    "sha512": "cf521a55c6b14a5a05096ade01b4837807f20f8e6f9f180c0c3e6039b7f2c94cdb2d8cf59b75e53c2d0428e10a8faa967a3071a14f7fd058110bfafbfddc76fa",
+                    "url": "/ipfs/bafybeiev4e57pugjyjmncifggswbw7sppbalsu2pgkluxkm7njsfmu6ypu/1000.png"
+                },
+                {
+                    "sha512": "8f6e0571d1343b4078c2ce5ad552f292ae02831e548cc63d1bb47290633d9356ad57c488272fe2be156f0e6555a3a2085c0fb07eda3708738d88ac4464a1d43c",
+                    "url": "/ipfs/bafybeiev4e57pugjyjmncifggswbw7sppbalsu2pgkluxkm7njsfmu6ypu/900.png"
+                },
+                {
+                    "sha512": "b50612ea7767b4c210958f45275a761aebabade5d571a9b7dc53ccd24be56b6ad0d66727d6619a6e7fa5947843cd889b1053b08b6f4901c51826fc2d888577a5",
+                    "url": "/ipfs/bafybeiev4e57pugjyjmncifggswbw7sppbalsu2pgkluxkm7njsfmu6ypu/800.png"
+                },
+                {
+                    "sha512": "4d23399b4573f2d29ce8e764c73d6cd11b7c702df9ac03d5e55d53eb45394fd5401ce9633dcfdb0d214d53252a9d66ddccc03b62d07044b0da9778b15e66d5c4",
+                    "url": "/ipfs/bafybeiev4e57pugjyjmncifggswbw7sppbalsu2pgkluxkm7njsfmu6ypu/700.png"
+                },
+                {
+                    "sha512": "172bf7d35a18ab60bb1b335f5912b9cfbdc86772e577cd7285bc7a80b099399cba230c0d293d0a37a833230ad7cfc3a3c1da4c0e3350742c12bff7b83ada022b",
+                    "url": "/ipfs/bafybeiev4e57pugjyjmncifggswbw7sppbalsu2pgkluxkm7njsfmu6ypu/600.png"
+                },
+                {
+                    "sha512": "2da40cfc84f390d079e96a1376e1d6bbf8da8450d6135ae2e293bc0ab8164f0a70212f79377c6ba8d04757366888366d90aea68e0c1f063335fc476889aaa5c5",
+                    "url": "/ipfs/bafybeiev4e57pugjyjmncifggswbw7sppbalsu2pgkluxkm7njsfmu6ypu/500.png"
+                },
+                {
+                    "sha512": "eb2d5afaa555389dfb38dbb3bb4e810e10d64ed36c29bc9eaa971c61f2272af2df99b3c9120877a37380b26eedef3c8fd45acea75977e0e22b841b2a22f58585",
+                    "url": "/ipfs/bafybeiev4e57pugjyjmncifggswbw7sppbalsu2pgkluxkm7njsfmu6ypu/400.png"
+                },
+                {
+                    "sha512": "e196eba692c1ee273b3f3e5b2fb9478a4a3f9e0be45a4f6ab203634488f961804688836968b120d4cdcfe51a02f50135f391d18a0d877860dab2425020c654fd",
+                    "url": "/ipfs/bafybeiev4e57pugjyjmncifggswbw7sppbalsu2pgkluxkm7njsfmu6ypu/300.png"
+                },
+                {
+                    "sha512": "cb0a34977226a6f5fa470241d73c36ab36e8ba3c55701504447dd8e76a0ec0f025b5ac63f625883ea69d396e75e649be05b944c78ccb60193bd75ff953b4478b",
+                    "url": "/ipfs/bafybeiev4e57pugjyjmncifggswbw7sppbalsu2pgkluxkm7njsfmu6ypu/200.png"
+                },
+                {
+                    "sha512": "9b44a02ff877fa20d99878cbe07341f53c865a98305c3f87f3040ffe4a611e7fba5f30ee87f0d6aaca82b1a3836d2505c2eba769bf332d8b58ccf9a4d8364d9a",
+                    "url": "/ipfs/bafybeiev4e57pugjyjmncifggswbw7sppbalsu2pgkluxkm7njsfmu6ypu/100.png"
+                },
+                {
+                    "sha512": "7eb3704cace2046834ff34eef2bd1d94c2d6552040c597b569310dba894761794733041556a591eba2529a9c7076e87b510256dd6cb038dc1b4084288bd776b6",
+                    "url": "/ipfs/bafybeiev4e57pugjyjmncifggswbw7sppbalsu2pgkluxkm7njsfmu6ypu/0.png"
+                }
+            ],
+            "narrative": "Input: copy imitate photocopy plagiarize repeat replicate reproduce rewrite counterfeit emulate mimic pirate steal echo trace embody fake. Style: abstract",
+            "sig_pubkey_or_address": "BTS67jhuEUeWqSDi3R1Hq4ZPZPZspN5d2nApy2HRueJEkJTt6udVw",
+            "title": "Copy B",
+            "tags": "VQGAN,CLIP,Artificial Intelligence,AI,Machine Learning,ML,Generative Art",
+            "type": "NFT/ART/VISUAL"
+        },
+        "nft_signature": "2033db14147659fff8779dd517a5b8879db12ceda9f1035da82fae193c2772263a0a3b5a0c49af4c1b89ba93a4b1819d2a9c7807928c618d1f27386dd84e49cb7f",
+        "short_name": "NFTEA.COPYB"
+    }
+}

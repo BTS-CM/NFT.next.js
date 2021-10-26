@@ -284,7 +284,7 @@ export default function ANFT (properties) {
           }
 
           <Typography gutterBottom variant="h6" component="h4">
-            {main}
+            {main.replace(" To view this token and others, visit https://nftea.gallery", "")}
           </Typography>
           <br/>
           <AppBar position="static" color="inherit">

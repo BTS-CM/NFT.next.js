@@ -1,0 +1,144 @@
+{
+    "id": "1.3.6098",
+    "symbol": "NFTEA.FIRE",
+    "precision": 0,
+    "issuer": "1.2.1803677",
+    "dynamic_asset_data_id": "2.3.6098",
+    "total_in_collateral": 0,
+    "dynamic_asset_data": {
+        "id": "2.3.6098",
+        "current_supply": 0,
+        "confidential_supply": 0,
+        "accumulated_fees": 0,
+        "accumulated_collateral_fees": 0,
+        "fee_pool": 48289855
+    },
+    "permissions": {
+        "charge_market_fee": false,
+        "white_list": false,
+        "override_authority": false,
+        "transfer_restricted": false,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": false,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "flags": {
+        "charge_market_fee": false,
+        "white_list": false,
+        "override_authority": false,
+        "transfer_restricted": false,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": false,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "description": {
+        "main": "NFTEA.FIRE is an NFT created by nft.artist, deployed on the BitShares network.",
+        "market": "BTS",
+        "nft_object": {
+            "acknowledgements": "This NFT's images were generated from a combination of positive & negative text prompts with VQGAN and CLIP (z+quantize method).",
+            "artist": "nft.artist",
+            "attestation": "The artwork stored in NFTEA.FIRE is original and no prior tokenization exists or has been authorized by me.",
+            "encoding": "ipfs",
+            "holder_license": "CC BY-4.0",
+            "license": "CC BY-NC-SA-4.0",
+            "media_png_multihash": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/1050.png",
+            "media_png_multihashes": [
+                {
+                    "sha512": "445abbd8f6a13a7f49f582ae4d8f0e44ce611806b22df74daf2a35a7231e07a2233f02274804de722f6c5e41dd5d50c8000c94eb2830edc7181ba538e58f13a5",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/1050.png"
+                },
+                {
+                    "sha512": "758340b0f2fbccf5df70101b86ca662d1b3336db1b2a12bd3454a42adf9189f7cf1625fbc1ab0bd2bf31ccf82374d4abba97800d7abda63fb7c1a7520054ac7f",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/1000.png"
+                },
+                {
+                    "sha512": "65d36026c5b54d72746a67e9c9edf403118c43d84c84cf77f8c8fc05b0d53bad25dae38525c61513d247c0d4d61602974c1202b0d363fdc390965f5af0a5b3ac",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/950.png"
+                },
+                {
+                    "sha512": "ce34f8ec3a23342acaa808bf05976435cbee78134b1f9d4cfd838ace7eb5b723aee650bc19885d117d038988793d33acfec7723bff1191f6a6b49e6a02c61321",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/900.png"
+                },
+                {
+                    "sha512": "f0d4364de0a8c1ad3fc69440f91550431cd6d814d40fe89fdb203ba4daedd0f09c9dd5f9343bf730ca826fe7206d3f9b0def825941bd7b567617deb2f63b124d",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/850.png"
+                },
+                {
+                    "sha512": "dfaf83dd8d7244595443152245b5007d6880c06f88f704a5fd22b3c5cbae2cc2ae48f134f4bf0d81770cb4d4738686f988fb7a63c0f86f8cf308923cdbf15df0",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/800.png"
+                },
+                {
+                    "sha512": "9fe90f12f83c098aa901d4298095032a3120fa69398c41a765d65a36f110356693cc0143175d0df707a0b0496b71699eb2645ed5c2fb590a6c8e62e81e1d6b45",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/750.png"
+                },
+                {
+                    "sha512": "7824fe60dd75f4ebf10eef515cac68e2c479b87e6137062cbfaca800c213d972b5b53177eeff708aee4a2f42ae82a61c3f6f6300852a40b3390d9275f2a3a19c",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/700.png"
+                },
+                {
+                    "sha512": "69c661a73a66024ef83a226e645187b9617bf79677e7cb2cd5190763808605d019a132f3904f6c561213af27acaf940d1897bf604278786433e04f90490ec682",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/600.png"
+                },
+                {
+                    "sha512": "acfa700838bfd67bd21a4f6f96a16c84aeaef700c3565bcb5a00e8ce360247f9240ea5584f6b3a8e043b63c65a9cdb6ab194c3a30fdb749eba2e1ab2ee53969d",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/550.png"
+                },
+                {
+                    "sha512": "1d0bc8f1343378debc8965e096b47b84baa36ce9efb1757bbb71f87e083a56eeef7f567f402a80cef334ea305b6cac255bf792d0037bd9c08238610563e0f58f",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/500.png"
+                },
+                {
+                    "sha512": "f6a3a2a83a507f39b6643ebb8962cd62b7fb0191320e95da9e53a8edc727fc1702bf7c5b911420ba9211a0f934b49986af20e3816042fd85d7dc7d84add82e87",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/450.png"
+                },
+                {
+                    "sha512": "5236cb9f172ecc1aa96737f1572abc496b53ef5e216f93801352f197bc9cb4761fe5da14bcaacee93491eed83fe5ae3d4f5c7aa9e0a8acf148b95e8026768786",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/400.png"
+                },
+                {
+                    "sha512": "6a7bfa2b2087b5301d10bbde28ca07db1842fb903eb497e2368b25b23f8e81e4df4e8b0014cef928309030bce06f6636f2841e6a8f92bf9792a900806d933665",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/350.png"
+                },
+                {
+                    "sha512": "610d771f2e9d1b58fa13805a6e98137134563e9548ff9e2c4212e25b08b3093708eacbfe3fd09fd68ecf545adf79dddd80a1d1f4a2f0e88eb5af642d875d332b",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/300.png"
+                },
+                {
+                    "sha512": "5b4917c421c6d2c19e6adbf9d5d642a0bf15cacf7860806d2c63c0878d60f6a2ca9b7298ae1f035d576ceedfdd053c00035664630447f3ea096f3127d84696fa",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/250.png"
+                },
+                {
+                    "sha512": "f5ae5adeb175a165e549c795a739df8edf311f73eae7cd1d7984672d892af7467f08c1fc7aae1b94fccda09e44d2db8aca0bc29011e32ae568df4ee8c4998e7e",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/200.png"
+                },
+                {
+                    "sha512": "0220be934cf29410e01124919a71669a39c864bb51b83d64fd9d28074b636610d8a3dcb5f78831efb311b501dd71ca7dceb009cd5e408bff028cfe4f2a59d3a8",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/150.png"
+                },
+                {
+                    "sha512": "ef090f968bc17baecce354b36f586be2d9c55f01386fb1e9671a8356ba2cb62f241bc4ad3778d161c43cfe12665568f9e1bd200f0e14c011f5bb129e442aea61",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/100.png"
+                },
+                {
+                    "sha512": "78587375e02624f84e007007c6db47f288785530ee5eb3601268ce11d36b84f1fd63319f14c340c7147fe8f4b0f202c0bc17744dd18a3187d589986922b8eb7e",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/50.png"
+                },
+                {
+                    "sha512": "817e31c3ab890b5a6e52ea7120282e79e840d99577385adbaaa0140b5fe8e5a6eacff2db12b44cbe98e1328f0669a3cec3237d51f06c99bc9d448259d6a833a4",
+                    "url": "/ipfs/bafybeihcucttzwvblgfda4qqchs7knqbuctkiuumntmotvuwekysiu4mze/0.png"
+                }
+            ],
+            "narrative": "Input: Fire flames lava explosions solar heat extreme volcanic alight engulfed ablaze inferno combustion flare. Style: rendered in unreal engine",
+            "sig_pubkey_or_address": "BTS67jhuEUeWqSDi3R1Hq4ZPZPZspN5d2nApy2HRueJEkJTt6udVw",
+            "title": "fire",
+            "tags": "VQGAN,CLIP,Artificial Intelligence,AI,Machine Learning,ML,Generative Art",
+            "type": "NFT/ART/VISUAL"
+        },
+        "nft_signature": "205620b7b593e29be3f4d36d1cc95ff046271986fe86fd7c1a13554c98d15baee71da4b21e87ec9988bdd9895182f8418008bde72f40ad89c5321ed9a7f19dd7ab",
+        "short_name": "NFTEA.FIRE"
+    }
+}

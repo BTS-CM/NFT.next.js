@@ -1,0 +1,108 @@
+{
+    "id": "1.3.6104",
+    "symbol": "NFTEA.CRIME",
+    "precision": 0,
+    "issuer": "1.2.1803677",
+    "dynamic_asset_data_id": "2.3.6104",
+    "total_in_collateral": 0,
+    "dynamic_asset_data": {
+        "id": "2.3.6104",
+        "current_supply": 0,
+        "confidential_supply": 0,
+        "accumulated_fees": 0,
+        "accumulated_collateral_fees": 0,
+        "fee_pool": 48355859
+    },
+    "permissions": {
+        "charge_market_fee": false,
+        "white_list": false,
+        "override_authority": false,
+        "transfer_restricted": false,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": false,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "flags": {
+        "charge_market_fee": false,
+        "white_list": false,
+        "override_authority": false,
+        "transfer_restricted": false,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": false,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "description": {
+        "main": "NFTEA.CRIME is an NFT created by nft.artist, deployed on the BitShares network. To view this token and others, visit https://nftea.gallery",
+        "market": "BTS",
+        "nft_object": {
+            "acknowledgements": "This NFT's images were generated from a combination of positive & negative text prompts with VQGAN and CLIP (z+quantize method).",
+            "artist": "nft.artist",
+            "attestation": "The artwork stored in NFTEA.CRIME is original and no prior tokenization exists or has been authorized by me.",
+            "encoding": "ipfs",
+            "holder_license": "CC BY-4.0",
+            "license": "CC BY-NC-SA-4.0",
+            "media_png_multihash": "/ipfs/bafybeifotezo6332jv6b35nlkss7eca4eds2vkkzbeujcmdbedfohziycy/1100.png",
+            "media_png_multihashes": [
+                {
+                    "sha512": "655bc62eceaa32a191efe0f3bb7d19ac6abae1aab5bae15e722b224ffdb6a75d86e69969230496a0ca8aca48c646146cf4f6d72ec31f8ee17d3e5aa10f58edef",
+                    "url": "/ipfs/bafybeifotezo6332jv6b35nlkss7eca4eds2vkkzbeujcmdbedfohziycy/1100.png"
+                },
+                {
+                    "sha512": "714d9a0025538db6458487121d0b5e00b583d33160ae92429d62c9fc8cba6cf08cccb8e18eeada4f42364e585ab9f96243abec8cf5fd287726792a9dfe60c91a",
+                    "url": "/ipfs/bafybeifotezo6332jv6b35nlkss7eca4eds2vkkzbeujcmdbedfohziycy/1000.png"
+                },
+                {
+                    "sha512": "078426891d51bc00e66bc43ccaabdc501c650f77d9b87f2cfc0cacc8df65213a26ce4f0b38baf0ddf59da2ed60a72e810fb3be0f65f3feb80a1bb1fbe89bd841",
+                    "url": "/ipfs/bafybeifotezo6332jv6b35nlkss7eca4eds2vkkzbeujcmdbedfohziycy/900.png"
+                },
+                {
+                    "sha512": "40fb8bad8eb91a24f70910df59c0bbf6888f228b2290e77c6babb9d0a54bf969dcb779ce1c97c7106c0392a7a6455b3abf3b471da41231b1496fb60fc37651bb",
+                    "url": "/ipfs/bafybeifotezo6332jv6b35nlkss7eca4eds2vkkzbeujcmdbedfohziycy/800.png"
+                },
+                {
+                    "sha512": "ba425dea86ade393cab76b9e9241757b572c53abef32adc84fdbc1d6c2a819d4e8346150a56330e0bda65ad777303ea885ecb60e50280d2aa3cd5f89cfd2c645",
+                    "url": "/ipfs/bafybeifotezo6332jv6b35nlkss7eca4eds2vkkzbeujcmdbedfohziycy/700.png"
+                },
+                {
+                    "sha512": "9f7b6ef9321dcc398d1d550884e03b7196aaa0ab7e19765dbfe5c6480ca160dbc9db1ab41ffd51957f51e044eecad36ea3db6e9013d989b2ae9d6a63ede4606e",
+                    "url": "/ipfs/bafybeifotezo6332jv6b35nlkss7eca4eds2vkkzbeujcmdbedfohziycy/600.png"
+                },
+                {
+                    "sha512": "9cddd4d38a827ef032066d9d8c092a2ac63108e371c635348421da26b24f7d0f5ded268954ecd8bc80105f2df165d6b77a8760d99699879c6f86223a02bd31a0",
+                    "url": "/ipfs/bafybeifotezo6332jv6b35nlkss7eca4eds2vkkzbeujcmdbedfohziycy/500.png"
+                },
+                {
+                    "sha512": "192c68cbc1943bb59a408a66413977ab048462d257deff605477fcbe16d122690f71dd44a20b5af77877f9bc18647f6a128ae77b6282d2363d7fba0e370279d0",
+                    "url": "/ipfs/bafybeifotezo6332jv6b35nlkss7eca4eds2vkkzbeujcmdbedfohziycy/400.png"
+                },
+                {
+                    "sha512": "e554a06937fd0047d4a3b0f56bf140ff6fd20ed67c8441f8ff3d2a4011bb37d16676aa7bd49537bc661e20dc9b2376292ccc1240a5a8c260db173ccda4d71af9",
+                    "url": "/ipfs/bafybeifotezo6332jv6b35nlkss7eca4eds2vkkzbeujcmdbedfohziycy/300.png"
+                },
+                {
+                    "sha512": "a65ed41d13bb9b97e9052fb8e99cdc62655c80a691fb662ca5aa834a4b90b4ef04357b44e2ffd7707e4233082afe35bd8881d22b17b14c1840d503c47e90f397",
+                    "url": "/ipfs/bafybeifotezo6332jv6b35nlkss7eca4eds2vkkzbeujcmdbedfohziycy/200.png"
+                },
+                {
+                    "sha512": "46ba044cb0b63d2f20f273d7f0ac5badcbc119d56662cac55ca3fe3b0902472382c3960358585bb2213cd1506d92484df545b868512526a8a5d3b4eacf33b655",
+                    "url": "/ipfs/bafybeifotezo6332jv6b35nlkss7eca4eds2vkkzbeujcmdbedfohziycy/100.png"
+                },
+                {
+                    "sha512": "ecca6a4557166409fc4ea2eeac1bf2a0099d4014f95fe288d9c21b126ef53bbf576bad09d90467fe7c97634e607fcc9e6efd748bf8560351a7ad7ea3b932ca3d",
+                    "url": "/ipfs/bafybeifotezo6332jv6b35nlkss7eca4eds2vkkzbeujcmdbedfohziycy/0.png"
+                }
+            ],
+            "narrative": "Input: crime atrocity corruption evil felony infraction lawlessness outlaw misconduct misdeed misdemeanor scandal transgression wrongdoing criminality delinquency dereliction. Style: abstract",
+            "sig_pubkey_or_address": "BTS67jhuEUeWqSDi3R1Hq4ZPZPZspN5d2nApy2HRueJEkJTt6udVw",
+            "title": "crime",
+            "tags": "VQGAN,CLIP,Artificial Intelligence,AI,Machine Learning,ML,Generative Art",
+            "type": "NFT/ART/VISUAL"
+        },
+        "nft_signature": "202388aa699503aacaaca34fae5182df5f286d6d0d9f3a3099d1c0aad00159802d5f5245e7a64dcc869378bbee332ed5f341b8e00db6e6d4269113f87fa91fbae2",
+        "short_name": "NFTEA.CRIME"
+    }
+}

@@ -8,6 +8,12 @@ import { useGateway } from './states';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
+
 import { useInView } from 'react-intersection-observer';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -17,6 +23,11 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 140,
+  },
+  bigcard: {
+    padding: theme.spacing(0),
+    textAlign: 'center',
+    margin: theme.spacing(0.75)
   }
 }));
 
@@ -29,8 +40,6 @@ function CarouselItem (properties) {
   let media_png_multihash = properties.media_png_multihash;
 
   let symbol = asset && asset.symbol ? asset.symbol : undefined;
-
-  let imgURL = require(`../public/images/${symbol}/${value}.webp`);
 
   if (!gateway) {
     setGateway('gateway.ipfs.io');
@@ -45,26 +54,20 @@ function CarouselItem (properties) {
     triggerOnce: true,
   });
 
-  return (itr && symbol && imgURL
-          ? <div ref={ref} key={symbol + "_featured_div_" + itr}>
-                <Link href={linkURL} passHref>
-                  <a>
-                    {inView ? (
-                      <Image
-                        key={`${symbol}_featured_div_${itr}`}
-                        alt={`${symbol}_featured_div_${itr}`}
-                        src={imgURL}
-                        placeholder="blur"
-                        width={500}
-                        height={500}
-                      />
-                    ) : null}
-                  </a>
-                </Link>
-             </div>
-          : <div key={symbol + "_featured_div_loading"}>
-              Loading..
-             </div>);
+  return (<Card ref={ref} key={symbol + "_featured_div_" + itr} className={classes.bigcard}>
+        <CardActionArea href={linkURL}>
+          {inView ? (
+            <CardMedia
+              component="img"
+              width="100%"
+              height="100%"
+              image={`/images/${symbol}/${value}.webp`}
+              key={`${symbol}_featured_div_${itr}`}
+              alt={`${symbol}_featured_div_${itr}`}
+            />
+          ) : null}
+        </CardActionArea>
+      </Card>);
 }
 
 export default function IPFSCarouselElement(properties) {
@@ -77,13 +80,13 @@ export default function IPFSCarouselElement(properties) {
         let itrs = key.url.split(".")[0].split("/");
         let itr = itrs[itrs.length - 1];
 
-          return <CarouselItem
-                    media_png_multihash={key}
-                    value={value}
-                    { ...properties }
-                    key={symbol + "_carousel_item_" + itr}
-                    first={value === 0 ? true : false}
-                  />;
+        return <CarouselItem
+                  media_png_multihash={key}
+                  value={value}
+                  { ...properties }
+                  key={symbol + "_carousel_item_" + itr}
+                  first={value === 0 ? true : false}
+                />;
       }).filter(x => x)
     : [];
 
@@ -91,6 +94,12 @@ export default function IPFSCarouselElement(properties) {
       <Carousel
         showIndicators={false}
         showThumbs={false}
+        stopOnHover={true}
+        useKeyboardArrows={true}
+        autoFocus={true}
+        autoPlay={true}
+        infiniteLoop={true}
+        interval={5000}
         statusFormatter={(current, total) => `Image ${current} of ${total} (iteration ${media_png_multihashes[current-1].url.split(".")[0].split("/").slice(-1)[0]})`}
       >
         {carouselItems}

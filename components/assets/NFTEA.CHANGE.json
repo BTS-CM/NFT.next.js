@@ -1,0 +1,108 @@
+{
+    "id": "1.3.6106",
+    "symbol": "NFTEA.CHANGE",
+    "precision": 0,
+    "issuer": "1.2.1803677",
+    "dynamic_asset_data_id": "2.3.6106",
+    "total_in_collateral": 0,
+    "dynamic_asset_data": {
+        "id": "2.3.6106",
+        "current_supply": 0,
+        "confidential_supply": 0,
+        "accumulated_fees": 0,
+        "accumulated_collateral_fees": 0,
+        "fee_pool": 48355317
+    },
+    "permissions": {
+        "charge_market_fee": false,
+        "white_list": false,
+        "override_authority": false,
+        "transfer_restricted": false,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": false,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "flags": {
+        "charge_market_fee": false,
+        "white_list": false,
+        "override_authority": false,
+        "transfer_restricted": false,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": false,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "description": {
+        "main": "NFTEA.CHANGE is an NFT created by nft.artist, deployed on the BitShares network. To view this token and others, visit https://nftea.gallery",
+        "market": "BTS",
+        "nft_object": {
+            "acknowledgements": "This NFT's images were generated from a combination of positive & negative text prompts with VQGAN and CLIP (z+quantize method).",
+            "artist": "nft.artist",
+            "attestation": "The artwork stored in NFTEA.CHANGE is original and no prior tokenization exists or has been authorized by me.",
+            "encoding": "ipfs",
+            "holder_license": "CC BY-4.0",
+            "license": "CC BY-NC-SA-4.0",
+            "media_png_multihash": "/ipfs/bafybeihylt2wrvv3tzxq3gqdunxntkxzw4tnjq6mbwgbe6kxxoexa5x5h4/1100.png",
+            "media_png_multihashes": [
+                {
+                    "sha512": "3bf1c48a2250e779f0cf7db21bfccae2c696de311029795aacc3a267f0d47397705c09403e1b22dcfa87f69d2f34de90f7ca4fe1b3f740147c891933304ac7d7",
+                    "url": "/ipfs/bafybeihylt2wrvv3tzxq3gqdunxntkxzw4tnjq6mbwgbe6kxxoexa5x5h4/1100.png"
+                },
+                {
+                    "sha512": "dd68a3ef1f6816f114c33856cef430a019e1a593cdcd6c34fa8522b64228cab53946cb07b999b46473170d07768dec5658efa96dd6126129cbcda712db45a008",
+                    "url": "/ipfs/bafybeihylt2wrvv3tzxq3gqdunxntkxzw4tnjq6mbwgbe6kxxoexa5x5h4/1000.png"
+                },
+                {
+                    "sha512": "44557a1f776f6bb4cee56a391bd4f7f6b88bf7edcc4378b3cd1f1430645eb1ea63c390f351582bc2460ca597c79053f76f81dcc098c0bf8a5a467363c00c44ed",
+                    "url": "/ipfs/bafybeihylt2wrvv3tzxq3gqdunxntkxzw4tnjq6mbwgbe6kxxoexa5x5h4/900.png"
+                },
+                {
+                    "sha512": "c0441ce1afc4cef0c2a208ba77d963b0aae41bb51a6ca23c8b02817892f17ac940b1a79893197fa4018e39a9b3b3b31e0137a0efb09b7d9fe39ba208c5028771",
+                    "url": "/ipfs/bafybeihylt2wrvv3tzxq3gqdunxntkxzw4tnjq6mbwgbe6kxxoexa5x5h4/800.png"
+                },
+                {
+                    "sha512": "f81c69059d1e674413a5d076f80f5645055ed5fd0d9edfdd7957c580fad899c339fbcce2eacaa8e7422e891d43b2cd4275613dc4bbdc4485e8350bd5d23aa672",
+                    "url": "/ipfs/bafybeihylt2wrvv3tzxq3gqdunxntkxzw4tnjq6mbwgbe6kxxoexa5x5h4/700.png"
+                },
+                {
+                    "sha512": "f18901e300f71f908652cca6aebd21b88887f42eabd87132a03d3b779962641f191929ca6f6e9ad15ac79d79734a696d30b0f73bbad7d3f43dd686799d62d4ec",
+                    "url": "/ipfs/bafybeihylt2wrvv3tzxq3gqdunxntkxzw4tnjq6mbwgbe6kxxoexa5x5h4/600.png"
+                },
+                {
+                    "sha512": "8e75165e8a9b40e2beb8f823466673f59b42cf901c38d988f38c107e970fb8ba0a5e6e6266b482ffcd135a17b3100bb8a687e260f48d256c2f17f1cea66de125",
+                    "url": "/ipfs/bafybeihylt2wrvv3tzxq3gqdunxntkxzw4tnjq6mbwgbe6kxxoexa5x5h4/500.png"
+                },
+                {
+                    "sha512": "a37a62aafe9297f338f93a046748ac092c15f14f8d80041ba074570fac8d7b9a172b54895378bca3cf4d4f6149896e9b6e5526467b363924823a33f7a5f50f0c",
+                    "url": "/ipfs/bafybeihylt2wrvv3tzxq3gqdunxntkxzw4tnjq6mbwgbe6kxxoexa5x5h4/400.png"
+                },
+                {
+                    "sha512": "4689c9f013f6a76df3697c571c3673af771bb832eda2d30c038d74d055e208038c7c0d51a87764f55f8e11ef8fc639441f7087f93546b8b599c5f163a54f5665",
+                    "url": "/ipfs/bafybeihylt2wrvv3tzxq3gqdunxntkxzw4tnjq6mbwgbe6kxxoexa5x5h4/300.png"
+                },
+                {
+                    "sha512": "014a8c77ad5b30f600cd755e34622f90c1d1958642708155a2569e84e677eba8ef9dc32f5323f110ca6d585e7674edbb33966ae8432e34a298b7734955a93175",
+                    "url": "/ipfs/bafybeihylt2wrvv3tzxq3gqdunxntkxzw4tnjq6mbwgbe6kxxoexa5x5h4/200.png"
+                },
+                {
+                    "sha512": "e7eb2eab797163370171a9245eb3184ccd29dc449f77397960df863fa0ed02e9476ad00db302abed4303433375a47492bcd037392e5945e29c7c0e3460b6e7b6",
+                    "url": "/ipfs/bafybeihylt2wrvv3tzxq3gqdunxntkxzw4tnjq6mbwgbe6kxxoexa5x5h4/100.png"
+                },
+                {
+                    "sha512": "8483ad7f436dfd02ceda00742ef27dee6fa209dcc8dbbb5d7fd72b9685d4275c96e9e15cae34f1248a2d5f49cb059f52fe95ae6fbb959ae5f78117fc49fc5817",
+                    "url": "/ipfs/bafybeihylt2wrvv3tzxq3gqdunxntkxzw4tnjq6mbwgbe6kxxoexa5x5h4/0.png"
+                }
+            ],
+            "narrative": "Input: change adjustment adapt diverge diversify innovation transformation morph adjust alter evolve fluctuate modify reform resolve reshape shift. Style: abstract",
+            "sig_pubkey_or_address": "BTS67jhuEUeWqSDi3R1Hq4ZPZPZspN5d2nApy2HRueJEkJTt6udVw",
+            "title": "change",
+            "tags": "VQGAN,CLIP,Artificial Intelligence,AI,Machine Learning,ML,Generative Art",
+            "type": "NFT/ART/VISUAL"
+        },
+        "nft_signature": "20715aa81f9108dbb3d618ac2036fcf8c93fa74b4a0da1dd81e86d790c423ddca63fe887c4eb9a62b8effc0969201acee7befb9371dface4361e9e0d2a09c56eda",
+        "short_name": "NFTEA.CHANGE"
+    }
+}

@@ -21,6 +21,17 @@
     {"name": "NFTART.3DWOODAXE", "id": "1.3.1677", "featured": false}
   ],
   "production": [
+    {"name": "NFTEA.COPYB", "id": "1.3.6108", "featured": true},
+    {"name": "NFTEA.CHANCE", "id": "1.3.6107", "featured": true},
+    {"name": "NFTEA.CHANGE", "id": "1.3.6106", "featured": true},
+    {"name": "NFTEA.CONTROL", "id": "1.3.6105", "featured": true},
+    {"name": "NFTEA.CRIME", "id": "1.3.6104", "featured": true},
+    {"name": "NFTEA.CURRENT", "id": "1.3.6103", "featured": true},
+    {"name": "NFTEA.DAMAGE", "id": "1.3.6102", "featured": true},
+    {"name": "NFTEA.DESIGN", "id": "1.3.6101", "featured": true},
+    {"name": "NFTEA.DEV", "id": "1.3.6100", "featured": true},
+    {"name": "NFTEA.DIRECTION", "id": "1.3.6099", "featured": true},
+    {"name": "NFTEA.FIRE", "id": "1.3.6098", "featured": true},
     {"name": "NFTEA.DETAIL", "id": "1.3.6092", "featured": true},
     {"name": "NFTEA.DEATH", "id": "1.3.6091", "featured": true},
     {"name": "NFTEA.AGREEMENT", "id": "1.3.6090", "featured": true},

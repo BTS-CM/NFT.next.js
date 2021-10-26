@@ -1,0 +1,160 @@
+{
+    "id": "1.3.6107",
+    "symbol": "NFTEA.CHANCE",
+    "precision": 0,
+    "issuer": "1.2.1803677",
+    "dynamic_asset_data_id": "2.3.6107",
+    "total_in_collateral": 0,
+    "dynamic_asset_data": {
+        "id": "2.3.6107",
+        "current_supply": 0,
+        "confidential_supply": 0,
+        "accumulated_fees": 0,
+        "accumulated_collateral_fees": 0,
+        "fee_pool": 48424385
+    },
+    "permissions": {
+        "charge_market_fee": false,
+        "white_list": false,
+        "override_authority": false,
+        "transfer_restricted": false,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": false,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "flags": {
+        "charge_market_fee": false,
+        "white_list": false,
+        "override_authority": false,
+        "transfer_restricted": false,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": false,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "description": {
+        "main": "NFTEA.CHANCE is an NFT created by nft.artist, deployed on the BitShares network. To view this token and others, visit https://nftea.gallery",
+        "market": "BTS",
+        "nft_object": {
+            "acknowledgements": "This NFT's images were generated from a combination of positive & negative text prompts with VQGAN and CLIP (z+quantize method).",
+            "artist": "nft.artist",
+            "attestation": "The artwork stored in NFTEA.CHANCE is original and no prior tokenization exists or has been authorized by me.",
+            "encoding": "ipfs",
+            "holder_license": "CC BY-4.0",
+            "license": "CC BY-NC-SA-4.0",
+            "media_png_multihash": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/2400.png",
+            "media_png_multihashes": [
+                {
+                    "sha512": "aeafcd819f3d1d79b0106af1d895ce8e6a27a5d4096a55adda879bd059ad8029b47120a76cf95db0b84134f513084da4e7b629078607a5a37f2d75cd60f05cb4",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/2400.png"
+                },
+                {
+                    "sha512": "ec572f56fb047bf0a5f795bd5af66c6a2686c38a0069e7009ce8c58b353b36e8c60e601b9790679e1e307fd72a1d1992b7103198f221bed672b34e25487dcdda",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/2300.png"
+                },
+                {
+                    "sha512": "fd583556f51097ed953a5e5c3816c6950e50b2eb647c0c43ae188d3ec2e73a5b2f0e41652e44d40258b243791c1caf79d3d9c74b4bf000f3807f23448c4dad15",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/2200.png"
+                },
+                {
+                    "sha512": "b6c13565b1ec83a7ffdfa772c11ae1188d6e6cf373abce0165d902aff7642e93bb571582926d964fb3f5fb98fb44f279bd1a73c39b8ed98d1ca2748c0481c43c",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/2100.png"
+                },
+                {
+                    "sha512": "1a9e174bdac2ec8a9d286404a7cdba4b9f7c7a05ffa8afa3e3973a1ed0b2b14c6b34d8bf223cbcdddf1b72c10135bc9ce9fc5ae8df6810fd962a857480f38965",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/2000.png"
+                },
+                {
+                    "sha512": "7628890e13f557669e5fa0e3a35f29b7a470ed344e17fd67a4b271bd32514d664378d2783912e58bc1bdcb03a3b91d34e85d8a423be052526e053eb091fe6990",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/1900.png"
+                },
+                {
+                    "sha512": "36ce58e533693d3d57acf146a618167ee260c817a354a19e43c7322b9c64b0c3d2944e64e8eb6809675e0bca46f8bf2b686bf03326149c67d39f2d01a7d5bff5",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/1800.png"
+                },
+                {
+                    "sha512": "db8882a1704035c414be5395f4d6d558c3935f5b95c4294d144e3e95fc7cb5d6e2494a48be0eb0ed8e144547949e817284354d7c2fd5baf812ba0f6df1f377b0",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/1700.png"
+                },
+                {
+                    "sha512": "96e7bafd6fd3a00ee514465c601d8d3194e00d8a9a96e0d05bb23bb85148b3875ac872e3e58a508f3c0f8e96b9a246d95b08493ae69402bf101c6170023e135f",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/1600.png"
+                },
+                {
+                    "sha512": "96248328346d5590d71e4298a8d692244671164108120bc65a22be2d94cee4078c5cff73593969355b6bea2e5ae4c10e6fb94712c0cd5acdf0b2284ad0644b09",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/1500.png"
+                },
+                {
+                    "sha512": "b45b7c22cd8b3a03b570bca8d3751c8edfa5307e7618aff0a45943f5cca8b242224d48a007cfaa772f1e09e5a220609644fcde2c004b3be388227c4d1156e1ef",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/1400.png"
+                },
+                {
+                    "sha512": "48498ca9202912fd7e04ce0c535da49594867a028a9414ddb7c6dd3e55171ea939a1ec59167bc39cce23b5363b416b50eb711571364ca338c40e1f2f70aff532",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/1300.png"
+                },
+                {
+                    "sha512": "b05975ba56005d6e335bb0a86b65459560247fda5d6fa4c3bd311b032491e361d5c2ec1523c93062bcbfcf2aeee3c42f8e7781903bd072ce0197a3daa17e4817",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/1200.png"
+                },
+                {
+                    "sha512": "6ea59b044a2640a1b32f1458f44a4d8a18ce3c20a3eac10ed562f81f575deaa2501ca39efaf035d3bfa7c019a18d4972339f3bf357aea12302f1dafac06f9a6d",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/1100.png"
+                },
+                {
+                    "sha512": "d244d03b137955fed2755050edf9316f67d2fda31cc704d4ee30587bab01c7cade5d69a6eb38c19d761a55e6771ccdad54194471879697ad5c935973fc80fefb",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/1000.png"
+                },
+                {
+                    "sha512": "372ac291bf0044621430d239a02e83cc379c6131671795cc41f9555f8989d1e899e9e92808639926626a7ea2a9935c3b06ce7baeb1fe0735fd5fe459f7cdd0dd",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/900.png"
+                },
+                {
+                    "sha512": "51758836c744d47889838d333ec07a6a877f89d61dfc504f0c37f362cd2b428821bdfecbfa36e8e21bdf3a2659af431bfe0d8318203107009cf424eb65c9ed46",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/800.png"
+                },
+                {
+                    "sha512": "315691a89c462cf72dcc7657f36edf659a61f7c9dbbcc4f326ee1b1824398ef9b9020573586cedb5024f7fc52a96971062105c6e4b846277615e9d0fbdaaf06d",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/700.png"
+                },
+                {
+                    "sha512": "3e7071af8674952eed230ab809acb2437e1126dff183666878d22b09afcb16ef9103a696ba949fa9f5be84d33f538299ea8ade3eaf5f6aeef64f6ccde9fcfa30",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/600.png"
+                },
+                {
+                    "sha512": "fd2245149b556354a0a7b66b89ac3a0e5de41abc38c39fdca1d98eb8d958a2b83d5c490365c47e93334612a5bf47cf41260b193bde60a03641793eab56a5722f",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/500.png"
+                },
+                {
+                    "sha512": "e3bcd60713c36668a34f1c62af25a5e49590bb68fd8b27a99fcdb8a51a0affd829e5ce23a1caaf59b495e13dcba5860b3143f1aac1311db750dcb13a3ec29dfa",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/400.png"
+                },
+                {
+                    "sha512": "80f0300b0d8f3e17cd232cab416f28fd321a7397a186b95a6897892a9ac18331675766cd15f77e508f704c158034d9841fcee56164d6719bc8f34beb07847d8b",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/300.png"
+                },
+                {
+                    "sha512": "8e2e704af75b01484330ed4c2678b0153f5d8f89f242607b2d84e160090f656eff8ab56cd5b8f55561b7332b8421e62ed6b3bea07b91197b8d02948dc13d3fb6",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/200.png"
+                },
+                {
+                    "sha512": "3a635d868e33673858f10abaa43336612464c0fbc64b591f9a42be0b3049059ed3b7d8d077edbd2c15f9e9db9c897b582885d40057aa7ce83cb1cb3e582b58ed",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/100.png"
+                },
+                {
+                    "sha512": "14d27ad48314e77569153e80478a02c3abe1bfc2dffc0328fefc2925a73554e5051fcfe1231dadd91066adbbc6143d4c35975dc0177e1245a7e85b93bc719736",
+                    "url": "/ipfs/bafybeigbshdyjo34rc4fcwlc4246ngeo4j7gayd5cnxo7cgsytv7rveivi/0.png"
+                }
+            ],
+            "narrative": "Input: chance likelihood odds opportunity prospect dice roll statistics probabilities risk gamble future outcome destiny fluke fortune lottery fortunate. Style: abstract",
+            "sig_pubkey_or_address": "BTS67jhuEUeWqSDi3R1Hq4ZPZPZspN5d2nApy2HRueJEkJTt6udVw",
+            "title": "chance",
+            "tags": "VQGAN,CLIP,Artificial Intelligence,AI,Machine Learning,ML,Generative Art",
+            "type": "NFT/ART/VISUAL"
+        },
+        "nft_signature": "207defe3cf226cf0b6cf9fa99065cb2c94c7adad71fc513f3fac43a2a5d313e54d49aae18e9cfdae9fd2b7058fe23f1a0c8707e747138c1879db8a96f3d7f22512",
+        "short_name": "NFTEA.CHANCE"
+    }
+}

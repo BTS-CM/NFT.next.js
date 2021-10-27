@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Fade } from "react-awesome-reveal";
@@ -90,7 +92,7 @@ export default function NFTCard(properties) {
                 component="img"
                 width="100%"
                 height="100%"
-                image={`/images/${id}/0.webp`}
+                image={!nft_object.media_json ? `/images/${id}/0.webp` : "/images/placeholders/0.webp"}
                 alt={`${symbol} NFT image`}
               />
             </CardActionArea>

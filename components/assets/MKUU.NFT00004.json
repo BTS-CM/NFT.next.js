@@ -1,0 +1,53 @@
+{
+    "id": "1.3.1630",
+    "symbol": "MKUU.NFT00004",
+    "precision": 0,
+    "issuer": "1.2.25634",
+    "dynamic_asset_data_id": "2.3.1630",
+    "dynamic_asset_data": {
+        "id": "2.3.1630",
+        "current_supply": 1,
+        "confidential_supply": 0,
+        "accumulated_fees": 0,
+        "accumulated_collateral_fees": 0,
+        "fee_pool": 0
+    },
+    "permissions": {
+        "charge_market_fee": true,
+        "white_list": true,
+        "override_authority": true,
+        "transfer_restricted": true,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": true,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "flags": {
+        "charge_market_fee": false,
+        "white_list": false,
+        "override_authority": false,
+        "transfer_restricted": false,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": false,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "description": {
+        "main": "Issuance is a non-fungible artwork token by The Creator, deployed on the BitShares blockchain.",
+        "market": "MKUU",
+        "nft_object": {
+            "artist": "The Creator",
+            "attestation": "I, The Creator, originator of the work herein, hereby commit this piece of art to the BitShares blockchain, to live as the token named MKUU.NFT00004, and attest that no prior tokenization of this art exists or has been authorized by me. The work is original, and is fully mine to dedicate in this way. May it preserve and bring joy until the end of time.",
+            "encoding": "base64",
+            "image_png": "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",
+            "narrative": "It can't really come... from nothing.",
+            "pubkeyhex": "032ab9792e8919c601979e91d04f30bd440edea7ed07f3387a5b9a6c9dd0ee30d3",
+            "title": "Issuance",
+            "type": "NFT/ART"
+        },
+        "nft_signature": "1f0a5202219f9861fd7f71add59ae04668e59a05bc332aceb37bb876474b10b03f769f37c5e35ff076b77a329bce17fcd213b88ed8aac39f16872af6de9d391167",
+        "short_name": "Issuance"
+    }
+}

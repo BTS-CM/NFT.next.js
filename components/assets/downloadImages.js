@@ -4,13 +4,18 @@ const axios = require('axios');
 const sharp = require('sharp');
 
 const prodArt = art.production;
-let assets = prodArt.map(asset => require(`./${asset.name}.json`));
+const stagingArt = art.staging;
+let assets = stagingArt.map(asset => require(`./${asset.name}.json`));
 
 (async () => {
 
   for (let i = 0; i < assets.length; i++) {
     let asset = assets[i];
     let name = asset.symbol;
+    console.log(`downloading: ${name}`);
+
+    let description = asset && asset.description ? asset.description : undefined;
+    let nft_object = description ? description.nft_object : undefined;
 
     if (!fs.existsSync('../../public/images/' + name)) {
       fs.mkdir('../../public/images/' + name, (err) => {
@@ -21,21 +26,30 @@ let assets = prodArt.map(asset => require(`./${asset.name}.json`));
       });
     }
 
-    let description = asset && asset.description ? asset.description : undefined;
-    let nft_object = description ? description.nft_object : undefined;
-
     let url;
     if (nft_object && nft_object.media_png_multihashes) {
 
       for (let k = 0; k < nft_object.media_png_multihashes.length; k++) {
-        let currentURL = nft_object.media_png_multihashes[k].url;
+        if (!fs.existsSync(`../../public/images/${name}/${k}.webp`)) {
+          let currentURL = nft_object.media_png_multihashes[k].url;
 
-        await axios({
-            method: "get",
-            url: "https://gateway.ipfs.io" + currentURL,
-            responseType: "stream"
-        }).then(function (response) {
-            response.data.pipe(fs.createWriteStream(`../../public/images/${name}/${k}.png`));
+          await axios({
+              method: "get",
+              url: "https://gateway.ipfs.io" + currentURL,
+              responseType: "stream"
+          }).then(function (response) {
+              response.data.pipe(fs.createWriteStream(`../../public/images/${name}/${k}.png`));
+          });
+        }
+      }
+
+    } else if (nft_object && nft_object.media_json) {
+      let data = { media_json: nft_object.media_json };
+      let fileName = `../../public/images/${name}/media_json.json`;
+
+      if (data && fileName && !fs.existsSync(`../../public/images/${name}/media_json.json`)) {
+        fs.writeFile(fileName, JSON.stringify(data), function(err){
+          console.log(err ? err : '')
         });
       }
 
@@ -53,7 +67,7 @@ let assets = prodArt.map(asset => require(`./${asset.name}.json`));
         fileName = `../../public/images/${name}/0.jpeg`;
       }
 
-      if (image && fileName) {
+      if (image && fileName && !fs.existsSync(`../../public/images/${name}/0.webp`)) {
         fs.writeFile(fileName, image, {encoding: 'base64'}, function(err){
           console.log(err ? err : '')
         });

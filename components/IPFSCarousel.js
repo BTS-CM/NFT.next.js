@@ -50,22 +50,16 @@ function CarouselItem (properties) {
   let itrs = media_png_multihash.url.split(".")[0].split("/");
   let itr = itrs[itrs.length - 1];
 
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-  });
-
-  return (<Card ref={ref} key={symbol + "_featured_div_" + itr} className={classes.bigcard}>
+  return (<Card key={symbol + "_featured_div_" + itr} className={classes.bigcard}>
         <CardActionArea href={linkURL}>
-          {inView ? (
-            <CardMedia
-              component="img"
-              width="100%"
-              height="100%"
-              image={`/images/${symbol}/${value}.webp`}
-              key={`${symbol}_featured_div_${itr}`}
-              alt={`${symbol}_featured_div_${itr}`}
-            />
-          ) : null}
+          <CardMedia
+            component="img"
+            width="100%"
+            height="100%"
+            image={`/images/${symbol}/${value}.webp`}
+            key={`${symbol}_featured_div_${itr}`}
+            alt={`${symbol}_featured_div_${itr}`}
+          />
         </CardActionArea>
       </Card>);
 }
@@ -99,7 +93,7 @@ export default function IPFSCarouselElement(properties) {
         autoFocus={true}
         autoPlay={true}
         infiniteLoop={true}
-        interval={5000}
+        interval={7500}
         statusFormatter={(current, total) => `Image ${current} of ${total} (iteration ${media_png_multihashes[current-1].url.split(".")[0].split("/").slice(-1)[0]})`}
       >
         {carouselItems}

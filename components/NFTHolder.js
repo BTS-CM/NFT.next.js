@@ -31,9 +31,7 @@ export default function NFTHolder(properties) {
     return null;
   };
 
-  let nftHolder = data.data;
-
   return (
-    <Chip className={classes.chip} label={`${t('asset.owner')}: ${nftHolder && nftHolder.length ? nftHolder[0].name : '???'}`} />
+    <Chip className={classes.chip} label={`${t('asset.owner')}: ${data && data.length ? data[0].name : '???'}`} />
   );
 }

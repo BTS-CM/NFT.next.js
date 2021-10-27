@@ -8,9 +8,12 @@ const useGateway = createLocalStorageStateHook('cf-ipfs.com');
 
 const useAnalytics = createLocalStorageStateHook(false);
 
+const useEnvironment = createLocalStorageStateHook('production');
+
 export {
   useLanguage,
   useTheme,
   useGateway,
-  useAnalytics
+  useAnalytics,
+  useEnvironment
 };

@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { useRef, Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 import { useTexture, OrbitControls, Stars } from "@react-three/drei";
@@ -22,11 +22,16 @@ function OBJ(props) {
     }
   });
 
+  const group = useRef();
+
   return (
-    <mesh>
-      <primitive attach="geometry" object={obj} />
-      <meshStandardMaterial attach="material" map={texture} />
-    </mesh>
+    <group ref={group} dispose={null}>
+      <primitive
+        object={obj}
+        material={texture}
+        position={[0, -2, 0]}
+      />
+    </group>
   )
 }
 
@@ -36,6 +41,7 @@ export default function OBJT(properties) {
   }
 
   let media_json = JSON.parse(atob(properties.data));
+
   let media_obj = media_json ? media_json.media_obj : undefined;
   let media_png = media_json ? media_json.media_png : undefined;
 
@@ -43,10 +49,6 @@ export default function OBJT(properties) {
     return null;
   }
 
-  // pixelRatio={window.devicePixelRatio}
-  // pixelRatio={window.devicePixelRatio ? window.devicePixelRatio : 1}
-  //let ratio = window.devicePixelRatio || 1;
-  // size={window.innerWidth, window.innerHeight}
   return (<Canvas
             style={{
               "height": "500px",
@@ -69,7 +71,7 @@ export default function OBJT(properties) {
                 <Vignette eskil={false} offset={0.1} darkness={0.75} />
                 <SMAA />
               </EffectComposer>
-              <OrbitControls autoRotate />
+              <OrbitControls autoRotate minDistance={10} />
             </Suspense>
           </Canvas>);
 }

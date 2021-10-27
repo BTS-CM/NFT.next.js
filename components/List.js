@@ -16,6 +16,7 @@ import { Fade } from "react-awesome-reveal";
 import { motion } from "framer-motion"
 
 //import { useTranslation } from 'next-i18next';
+import { useEnvironment } from './states';
 import art from '../components/art.json';
 import config from './config.json';
 
@@ -64,7 +65,11 @@ function ListRow (properties) {
     const typeEncoding = `${fileType ? fileType : ''} (${encoding})`;
     const symbolID = `${symbol} (ID: ${id})`;
 
-    let imageSRC = require(`../public/images/${symbol}/0_thumb.webp`);
+    let imageSRC = null;
+    try {
+      imageSRC = require(`../public/images/${symbol}/0_thumb.webp`);
+    } catch (error) {
+    }
 
     return (
       <TableRow key={`tr ${symbol}`}>
@@ -76,7 +81,7 @@ function ListRow (properties) {
             <Fade triggerOnce={true}>
               <Link href={`/nft/${symbol}`} key={`/nft/${symbol}/img`} passHref>
                 <a>
-                  {inView ? (
+                  {inView && imageSRC ? (
                     <Image
                       key={`${symbol} thumbnail`}
                       alt={`${symbol} thumbnail`}
@@ -146,8 +151,10 @@ function ListRow (properties) {
 
 function ListContents(properties) {
 
+  let [environment, setEnvironment] = useEnvironment();
+  let env = environment ? environment : 'production';
+  let data = art && art[env] ? art[env] : [];
 
-  const data = art && art.production ? art.production : [];
   if (!data || !data.length) {
     return <p>List is loading NFTs...</p>;
   }

@@ -1,0 +1,53 @@
+{
+    "id": "1.3.1637",
+    "symbol": "REDBAR.NFT003",
+    "precision": 0,
+    "issuer": "1.2.24937",
+    "dynamic_asset_data_id": "2.3.1637",
+    "dynamic_asset_data": {
+        "id": "2.3.1637",
+        "current_supply": 1,
+        "confidential_supply": 0,
+        "accumulated_fees": 0,
+        "accumulated_collateral_fees": 0,
+        "fee_pool": 2541875
+    },
+    "permissions": {
+        "charge_market_fee": true,
+        "white_list": true,
+        "override_authority": true,
+        "transfer_restricted": true,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": true,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "flags": {
+        "charge_market_fee": false,
+        "white_list": false,
+        "override_authority": false,
+        "transfer_restricted": false,
+        "disable_force_settle": false,
+        "global_settle": false,
+        "disable_confidential": false,
+        "witness_fed_asset": false,
+        "committee_fed_asset": false
+    },
+    "description": {
+        "main": "This is a NFT of a gif for testing, deployed on the BitShares blockchain.",
+        "market": "REDBAR",
+        "nft_object": {
+            "artist": "iamredbar",
+            "attestation": "I, iamredbar, reserve the full right to release this art as an NFT in the future (if I choose to do so). This is being used for testing purposes and will live as the token named REDBAR.NFT003.",
+            "encoding": "base64",
+            "image_GIF": "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aaaabsppp55+Cmqooo5Kaqmmnopqqqquymqrrr4Ka6yyzkprrbbeimuuuu4qZ6S+/gpssMIOS2yxxh6LbLLK/y7LbLPOPgtttNJOS2211l7LFK/absttt95+C2644o5Lbrnmnotuuuquy2677r4Lb7zyzktvvfbei2+++u7Lb7/+YoptwAIPTHDBBh+McMIKL8xwww4/DHHEEk9MccUWX4wxGP9uzHHHHn8Mcsgij0xyySafjHLKKq+sXgAuvwxzzAGQJHPNLydps8005ywzzjzHvPPPNyMpNMxBF+1z0TOPpLTLSSPNdNNPC3001URLHbXSU/9cNddXa5011Ec2vbRIZG/Nc9dpfy12SGezbbXZWI89t9t1F/m23GCLpBXZZBPid9MIB6404IQLPfjhPxuueM6JN24z45DL/PjkMf9LbvnLlWfuMuacb/75IJxffvDoMHueOeipi25656W3HgDqlqs+O+ut0z657Lm/frvtpuMOue7B8/6776MD37jwyWelNuxri+N83kZGf/c31O89/fVxh6P99nh3/zz34OeM9vhOj2O+znCnfz707AO9PvvkvA8/3fS3L/79ZWev//z67/+9/qHvf+Uzn/8EaL/7HVCB8UvfAulXwPE98H0RBN8E5ddAAw4Qgfz7nwc/yMAEgnCEJLxeBUuIwhQS7oQqbKELyZfBF8pwhkMTIQ1vSEMW4nCHINQhD38Ywg4CcYgj9CERj6g9IyJxibBTIhOfmDknQnGKipMiFa8ovQD/YnGLo7MiF79YM5L0DYxkXJ7ByohGwiEvjWw8HfHaCMearTGOaZwjHctoxzuCMY965CIf+4jFPwKSioIcJBQLaUgmIjKRSFwkI4noyEcCMZKS5KFWmje5AWhyk5zspCc/CcpQbtJ5oiylKU+pSed58WeobKUrRwm7V8rylKqMYeNmictQkjKXvORkLW2YuV4KcwC7HGYufylEzhmTl8VcpiyRqcXROROXzZxmK6FJpGpak5ax3KYrsTkkbXpTlOIcJyjB6aFymtOT6lynL5toS8W505TtnCcx4QlMy9mTnN3c5yfR2aF6zlOg7gQohwi6ToSa06AbUug4HepNhmoI/6LbpKg1JZohi05To87EKIYqmcZVgnSHIh3pDUtq0hmiNKUvXClLW+jSl6YwpjItIU1rWsR44vSHN92pB3vqUw5GM6hHBCpRKajTo6o0qUpt6UjG2FRIvjGqlpwqVXFIyaveL6tafR9Xu5q+r4J1fGIda/fKatbroTWt0VsrW2Hn1rcW74xyfWFc67o6uuJVhXfd6/Cwgkm/EpCpgtVgPgsr1GwiloRGXewKCetYE0I2stFrLGWrF87LDvawmrXgZDvbxc+CNoqiHe3kLGta9XE2tR69EGsdWNrXPna1sg0tbWtL2tvi9rSx3S32hupb06F2t8PFbXFre1zZJve1y3BlbXNT+1zTRne00wWtGLMSXOr11bfb3W13cfvd2oZXtuN9bXlZe97Upte06x1te0H73s7GV7PzvWx9KXvJsGVXuL3dLwx161+/VbezA9ZsgS97YMomOLILdmyDF/tgxEa4sBMWbIX9euG9ZhivJCkAACH5BAgUAAAALAAAAAAAAgACAQL/hI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2jef6zvf+DwwKh8Si8YhMKpfMpvMJjUqn1Kr1is1qt9yu9wsOi8fksvmMTqvX7Lb7DY/L5/S6/Y7P6/f8vv8PGCg4SCRgeIiYqLjI2Oj4CBkpOUlZaXmJmam5ydnp+QkaKjpKWmp6ipqqusra6voKGys7S1tre4ubq7vL2+v7CxwsPExcbHyMnKy8zNzs/AwdLT1NXW19jZ2tvc3d7f0NHi4+Tl5ufo6err7O3u7+Dh8vP09fb3+Pn6+/z9/v/w8woMCBxAgZPIgwocKFDBs6fAgxosSJFCtavIgxo8aN/xw7evwIMqTIkSRLmjyJMqXKlSxbunwJM6bMmTRr2ryJM6fOnTx7+vwJNKjQoUSLGj2KNKnSpUybOn0KNarUqVSrWr2KNavWrVy7ev0KNuxTgmTLmj2LNq3atWzbun0LN67cuXTr2r2LN6/evXz7+v0LOLDgwYQLGz6MOLHixYwbO34MObLkyZQrW74sSqzmzZw7e/4MOrTo0aRLmz6NOrXq1axbu34NO7bs2bRr276NO7fu3bx7+/4NPLjw4cSLGz+OPLny5cybO38OPbr06dSrW7+OnTPm7dy7e/8OPrz48eTLmz+PPr369ezbu38PP778+fTr27+PP7/+/fz7+///D2CAj2VHYIEGHohgggouyGCDDj4IYYQSTkhhhRZeiGGGGm7IYYcefghiiCKOSGKJJp6IYooqrshiiy6+CGOMMs5IY402qiZgjjruyGOPPv4IZJBCDklkkUYeiWSSSi7JZJNOPglllFJOSWWVVl6JZZb53Mhll15+CWaYYo5JZplmnolmmmquyWabbr4JZ5xyzklnnXbeiWeeeu7JZ59+/glooIIOSmihhh4ampaKLspoo44+Cmmkkk5KaaWWXopppppuymmnnn4Kaqiijkpqqaa+g2iqqq7KaquuvgprrLLOSmuttt6Ka6667sprr77+Cmywwg5LbLHGHotsssr/Lstss84+q+Kp0k5LbbXWXottttpuy2233n4Lbrjijktuueaei2666q5bF7TuvgtvvPLOS2+99t6Lb7767stvv/7+C3DAAg9McMEGH4xwwgovzHDDDj8MccRssEtxxRZfjHHGGm/McccefwxyyCKPTHLJJp+McsoqrwxOSQG8DHPMMgfg8sw2v2zizTfXrLPMOffsM0lAB03i0DHzbPTPRtMs9NJMF+000kMrnXTTS1M9tdVVQ3211llzvbVITj894thSA4012l6rDfbXYkddotlr95w23XPrXDfed+8c99hwC+L332UHHjYghBce4uFuG6643W03TnQgkOv9+OQ4/w9iuc15T05I5jNvDnnnnh/d9+iXA2766YOnLjrrpZveOuyvjx477bN7Xjvut2eeO++7W9478L9zjnnqZIto/PF/JF/SYMmPTc7zTm8s/dLRVz809dgDff32Omvv/c3dhz8z+OTLPP75MJuv/svpt88+/OO0j77G9Mf8vvrx6z///e7b778A5O98+yNg//xXQPINUIEAROAB75fA8C1Qgg2E4APpF0HvTVCDgjlbAD8IQvWBLoQkLKHsKmfCFKowdMNboQtfuLjEwXCGNGTb6mqIwxyOMIc8LOEOewjEAP4wiEQUYQuLiMTzDTGJTHzeEpsIRduhMIpUNN4Tq4hFwv9dMYtc7NoUuwjGwG0xjGSMHPLKiEYxHjGNbCTdF9sIR+WBKI501Nwa61jGMeKxinrcYxT76McmAjKQSRwkIYtoyEMGMZGK7CEjG6nDO0Lyj5KcpCBJ4jzjDWCTnOykJz8JylCKkpPJG6UpT4nKTSYvg4pLpStfSUpNwnKWp1xlBUdHy1yKspS67GUnbZkxXvrSl8Icpi6BibFiGpOWylwmLJF5sWY605XSnCYqoWmxalrTlNrc5i6Nx8rDefOZshxnKrFZsW6a05PqXGcsUxdOwrnzmuWc5zfheUvP2ZOb9dznJ9FJsXbOU6DuBCi7CLpOhJrToOtS6Dgd6k2Gqgv/otukqDUlmi6LTlOjzsToXTxoySw+MqQwHClJXWjSk6owpSo1IUtbSsKXwhSEMp2pECtp00i+MadArClP2+fTnyoRp0ItKVGLitKjInWlSl2qS5vq1JhCNao0nSpVb7rTq64wqFq1olW7CtSvgnWoWR2rVMtq1qqiNa1YvSFbk7rWt9KPq3JtHF3reri74lWNcd1r+JonGL+qMJ6CZWAwC1tCwiJ2e4pdbPUa69jnQTay4MwnZfl32MtaMLOalR9nO2vAz4KWgqIdLWMta9rHoja1kl0taysbGJC+1qt9nW1exWrbGM4xt9XTK2t9m1rgmla4oyUuaI3bWeRqVrmXeGUuZZ0bWeg6VrqLpS5irVtY7ApWu37l7l69i1fw1lW8ciXvW83LVvSmVb1mZe9Y3QtW+HZVvloFbGB4q9rS4tdzk92v9Vzr38b1N8DcAzCBCTfgA4vPwAqGHoMb/F/9QjhwCZ7w+h5s4Z5VOMMbtnCHJ/xhCA+mAAA7",
+            "narrative": "quick gif i made for testing",
+            "pubkeyhex": "027193d3b62760db3cc6f69b8b4d68d1998716247f57de60be7d8b731ab2dc2039",
+            "title": "TestGif03",
+            "type": "NFT/ART"
+        },
+        "nft_signature": "201282e220fde777665c5d847dc60ea6fe1ac50307630ed72006ac2ad63f58d29217b8c8f90e834c9235e23ed8347b696e380b12e90ac4e0fad9417f34888ad848",
+        "short_name": "TestGif03"
+    }
+}

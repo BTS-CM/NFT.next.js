@@ -15,6 +15,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Layout from '../components/Layout';
+import { useEnvironment } from '../components/states';
 
 import Fuse from 'fuse.js';
 import Link from 'next/link';
@@ -44,7 +45,10 @@ function SearchPanel (properties) {
   const [overlay, setOverlay] = useState();
   const classes = useStyles();
 
-  const searchData = art && art.production ? art.production : [];
+  let [environment, setEnvironment] = useEnvironment();
+  let env = environment ? environment : 'production';
+
+  const searchData = art && art[env] ? art[env] : [];
   if (!searchData || !searchData.length) {
     return <p>loading search...</p>;
   }

@@ -115,7 +115,7 @@ export default function ANFT (properties) {
   let narrative = nft_object && nft_object.narrative ? nft_object.narrative : undefined;
   let encoding = nft_object && nft_object.encoding ? nft_object.encoding : undefined;
 
-  let { image, imgURL } = getImage(nft_object);
+  let { image, imgURL, fileType } = getImage(nft_object);
 
   // Optional and Proposed Keys:
   let tags = nft_object && nft_object.tags ? nft_object.tags.split(",") : undefined;
@@ -247,7 +247,7 @@ export default function ANFT (properties) {
 
   let height = 500;
   let width = 500;
-  if (imgURL && !media_png_multihashes) {
+  if (imgURL && !media_png_multihashes && fileType === 'png') {
     const dimensions = getPngDimensions(image);
     if (dimensions) {
       height = dimensions.height;
@@ -255,12 +255,14 @@ export default function ANFT (properties) {
     }
   }
 
+  console.log(`height: ${height}, width: ${width}`)
+
   return (
 
       <span style={{'paddingBottom': '25px'}} key={symbol + "NFT"}>
         <Paper className={classes.paper} id={id}>
           <Typography gutterBottom variant="h4" component="h1">
-            &quot;<Link href={`/nft/${symbol}`} className={classes.a} passHref><a>{short_name}</a></Link>&quot;{t('by')}{artist}
+            &quot;<Link href={`/nft/${symbol}`} className={classes.a} passHref><a>{title}</a></Link>&quot;{t('by')}{artist}
           </Typography>
           {
             imgURL && !media_png_multihashes
@@ -502,7 +504,6 @@ export default function ANFT (properties) {
           </TabPanel>
 
           <TabPanel value={value} index={4} id="Market">
-
             <Typography variant="body1" gutterBottom>
               {t('buy.header', {title: title, symbol: symbol})}
             </Typography>

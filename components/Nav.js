@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
-import { useTheme, useLanguage } from './states';
+import { useTheme, useLanguage, useEnvironment } from './states';
 import { useRouter } from 'next/router';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -68,10 +68,9 @@ export default function Nav(properties) {
 
   const { t } = useTranslation('nav');
 
-  let environment = properties.environment;
-
   const [theme, setTheme] = useTheme('light');
   const [language, setLanguage] = useLanguage();
+  const [environment, setEnvironment] = useEnvironment();
 
   const [drawerToggle, setDrawerToggle] = useState(false);
 
@@ -150,7 +149,7 @@ export default function Nav(properties) {
           <Typography variant="h6" color="inherit" className={classes.title}>
             <Link href="/" locale={language}>
               <a className={classes.a}>
-                {t("header")}
+                {t("header")} {environment && environment === 'staging' ? t("staging"): null}
               </a>
             </Link>
           </Typography>

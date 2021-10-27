@@ -4,10 +4,9 @@
     "precision": 0,
     "issuer": "1.2.1803677",
     "dynamic_asset_data_id": "2.3.6103",
-    "total_in_collateral": 0,
     "dynamic_asset_data": {
         "id": "2.3.6103",
-        "current_supply": 0,
+        "current_supply": 1,
         "confidential_supply": 0,
         "accumulated_fees": 0,
         "accumulated_collateral_fees": 0,

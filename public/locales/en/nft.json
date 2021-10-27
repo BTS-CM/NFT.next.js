@@ -44,7 +44,7 @@
     "asset": {
       "name": "Asset name",
       "owner": "Current owner",
-      "quantity": "Quantity issue",
+      "quantity": "Quantity issued",
       "file_type": "File type",
       "onchain": "This NFT is fully stored on the Bitshares blockchain!",
       "offchain": "This NFT may not be stored fully on chain.",

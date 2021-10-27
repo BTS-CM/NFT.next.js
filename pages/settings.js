@@ -14,7 +14,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ReactGA from 'react-ga4';
 
-import { useGateway, useLanguage } from '../components/states';
+import { useGateway, useLanguage, useEnvironment } from '../components/states';
 const ipfsJSON = require('../components/ipfsJSON.json');
 import CustomLink from '../components/CustomLink';
 import config from '../components/config.json';
@@ -39,20 +39,33 @@ function License(properties) {
   const { t } = useTranslation('settings');
 
   const [language, setLanguage] = useLanguage();
+  const [environment, setEnvironment] = useEnvironment();
   const [gateway, setGateway] = useGateway('cf-ipfs.com');
+
   const [anchorIPFS, setAnchorIPFS] = useState(null);
   const openIPFS = Boolean(anchorIPFS);
   const handleClickIPFS = (event) => {
     setAnchorIPFS(event.currentTarget);
   };
-
   const handleCloseIPFS = () => {
     setAnchorIPFS(null);
   };
-
   const handleGateway = (gateway) => {
     setGateway(gateway);
     handleCloseIPFS();
+  }
+
+  const [anchorEnv, setAnchorEnv] = useState(null);
+  const openEnv = Boolean(anchorEnv);
+  const handleClickEnvironment = (event) => {
+    setAnchorEnv(event.currentTarget);
+  };
+  const handleCloseEnvironment = () => {
+    setAnchorEnv(null);
+  };
+  const handleEnvironment = (newEnvironment) => {
+    setEnvironment(newEnvironment);
+    handleCloseEnvironment();
   }
 
   useEffect(() => {
@@ -96,6 +109,47 @@ function License(properties) {
               <a className={classes.a}>{key}</a>
             </MenuItem>
           ))}
+        </Menu>
+
+        <Button
+          aria-label="more"
+          aria-controls="long-menu3"
+          aria-haspopup="true"
+          size="small"
+          variant="contained"
+          style={{marginLeft: '5px'}}
+          onClick={handleClickEnvironment}
+        >
+          <SettingsIcon /> Change Environment
+        </Button>
+
+        <Menu
+          id="long-menu3"
+          anchorEl={anchorEnv}
+          keepMounted
+          open={openEnv}
+          onClose={handleCloseEnvironment}
+          PaperProps={{
+            style: {
+              maxHeight: 48 * 4.5,
+              width: '20ch',
+            },
+          }}
+        >
+          <MenuItem
+            key={`production button`}
+            selected={environment === 'production'}
+            onClick={() => { handleEnvironment('production') }}
+          >
+            Production
+          </MenuItem>
+          <MenuItem
+            key={`staging button`}
+            selected={environment === 'staging'}
+            onClick={() => { handleEnvironment('staging') }}
+          >
+            Staging
+          </MenuItem>
         </Menu>
 
       </Paper>

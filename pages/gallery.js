@@ -5,6 +5,7 @@ import { useTranslation } from 'next-i18next';
 
 import Grid from '@material-ui/core/Grid';
 
+import { useEnvironment } from '../components/states';
 import NFTCard from "../components/NFTCard";
 import Layout from '../components/Layout';
 import artJSON from '../components/art.json';
@@ -13,7 +14,12 @@ import config from '../components/config.json';
 ReactGA.initialize(config ? config.google_analytics : '');
 
 function All() {
-  const art = artJSON && artJSON.production ? artJSON.production : [];
+
+
+  let [environment, setEnvironment] = useEnvironment();
+  let env = environment ? environment : 'production';
+
+  const art = artJSON && artJSON[env] ? artJSON[env] : [];
   return art && art.length
           ? art.map(asset => <NFTCard smSize={4} id={asset.name} key={asset.name + "_card"} />)
           : <p>loading</p>

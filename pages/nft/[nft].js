@@ -8,13 +8,17 @@ import ANFT from "../../components/ANFT";
 
 import art from '../../components/art.json';
 import config from '../../components/config.json';
+import { useEnvironment } from '../../components/states';
 
 ReactGA.initialize(config ? config.google_analytics : '');
 
 const NFT = () => {
   const router = useRouter()
   const { nft } = router.query
-  const artNames = art && art.production ? art.production.map(item => item.name) : [];
+
+  let [environment, setEnvironment] = useEnvironment();
+  let env = environment ? environment : 'production';
+  const artNames = art && art[env] ? art[env].map(item => item.name) : [];
 
   const { t } = useTranslation('nft');
 
@@ -41,13 +45,20 @@ const NFT = () => {
 
 export const getStaticPaths = async ({ locales }) => {
 
-  let nfts = art.production.map(item => ({params: {nft: item.name}}));
+  let prodNFTS = art.production.map(item => ({params: {nft: item.name}}));
+  let stagingNFTS = art.staging.map(item => ({params: {nft: item.name}}));
 
   let paths = [];
 
-  for (let i = 0; i < nfts.length; i++) {
-    const currentNFT = nfts[i];
+  for (let i = 0; i < prodNFTS.length; i++) {
+    const currentNFT = prodNFTS[i];
+    paths.push(
+      ...locales.map(locale => ({...currentNFT, locale: locale}))
+    )
+  }
 
+  for (let i = 0; i < stagingNFTS.length; i++) {
+    const currentNFT = stagingNFTS[i];
     paths.push(
       ...locales.map(locale => ({...currentNFT, locale: locale}))
     )

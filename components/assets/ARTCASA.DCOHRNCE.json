@@ -4,7 +4,6 @@
     "precision": 0,
     "issuer": "1.2.1799854",
     "dynamic_asset_data_id": "2.3.6056",
-    "total_in_collateral": 0,
     "dynamic_asset_data": {
         "id": "2.3.6056",
         "current_supply": 2,

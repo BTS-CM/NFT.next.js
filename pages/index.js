@@ -17,6 +17,7 @@ import CarouselElement from "../components/Carousel";
 import Layout from '../components/Layout';
 import artJSON from '../components/art.json';
 import config from '../components/config.json';
+import { useEnvironment } from '../components/states';
 
 ReactGA.initialize(config ? config.google_analytics: '');
 
@@ -92,8 +93,10 @@ function Home() {
 
   const classes = useStyles();
   const { t } = useTranslation('mainpage');
+  let [environment, setEnvironment] = useEnvironment();
+  let env = environment ? environment : 'production';
 
-  const art = artJSON && artJSON.production ? artJSON.production : [];
+  const art = artJSON && artJSON[env] ? artJSON[env] : [];
 
   let genesis = new Date(2013,6,2);
   let now = new Date();

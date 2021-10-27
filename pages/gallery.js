@@ -10,8 +10,7 @@ import NFTCard from "../components/NFTCard";
 import Layout from '../components/Layout';
 import artJSON from '../components/art.json';
 import config from '../components/config.json';
-
-ReactGA.initialize(config ? config.google_analytics : '');
+import { useAnalytics } from '../components/states';
 
 function All() {
 
@@ -28,9 +27,14 @@ function All() {
 function Gallery() {
   const { t } = useTranslation('gallery');
 
+  let [analytics, setAnalytics] = useAnalytics();
+
   useEffect(() => {
-    ReactGA.pageview('Gallery')
-  }, []);
+    if (analytics && config.google_analytics.length) {
+      ReactGA.initialize(config.google_analytics);
+      ReactGA.pageview('Gallery')
+    }
+  }, [analytics]);
 
   return (
     <Layout

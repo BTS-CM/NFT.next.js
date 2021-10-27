@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 import { useTexture, OrbitControls, Stars } from "@react-three/drei";
 import { EffectComposer, Bloom, Vignette, SMAA } from '@react-three/postprocessing'
+import atob from 'atob';
 import * as THREE from 'three';
 
 function OBJ(props) {
@@ -71,7 +72,7 @@ export default function OBJT(properties) {
                 <Vignette eskil={false} offset={0.1} darkness={0.75} />
                 <SMAA />
               </EffectComposer>
-              <OrbitControls autoRotate minDistance={10} />
+              <OrbitControls autoRotate minDistance={10} maxDistance={200} />
             </Suspense>
           </Canvas>);
 }

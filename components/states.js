@@ -1,14 +1,11 @@
-import { createLocalStorageStateHook } from 'use-local-storage-state'
+import { createLocalStorageStateHook } from 'use-local-storage-state';
+import config from './config.json';
 
 const useLanguage = createLocalStorageStateHook('language', 'en');
-
-const useTheme = createLocalStorageStateHook('light');
-
-const useGateway = createLocalStorageStateHook('cf-ipfs.com');
-
-const useAnalytics = createLocalStorageStateHook(false);
-
-const useEnvironment = createLocalStorageStateHook('production');
+const useTheme = createLocalStorageStateHook('theme', 'light');
+const useGateway = createLocalStorageStateHook('gateway', 'cf-ipfs.com');
+const useAnalytics = createLocalStorageStateHook('analytics', config && config.google_analytics ? true : false);
+const useEnvironment = createLocalStorageStateHook('environment', 'production');
 
 export {
   useLanguage,

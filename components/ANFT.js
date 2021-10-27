@@ -255,8 +255,6 @@ export default function ANFT (properties) {
     }
   }
 
-  console.log(`height: ${height}, width: ${width}`)
-
   return (
 
       <span style={{'paddingBottom': '25px'}} key={symbol + "NFT"}>

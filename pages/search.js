@@ -15,12 +15,10 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Layout from '../components/Layout';
-import { useEnvironment } from '../components/states';
+import { useEnvironment, useAnalytics } from '../components/states';
 
 import Fuse from 'fuse.js';
 import Link from 'next/link';
-
-ReactGA.initialize(config ? config.google_analytics : '');
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -135,9 +133,13 @@ function SearchPanel (properties) {
 }
 
 function Search() {
+  let [analytics, setAnalytics] = useAnalytics();
   useEffect(() => {
-    ReactGA.pageview('Search')
-  }, []);
+    if (analytics && config.google_analytics.length) {
+      ReactGA.initialize(config.google_analytics);
+      ReactGA.pageview('Search')
+    }
+  }, [analytics]);
 
   return (
     <SearchPanel />

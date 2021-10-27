@@ -8,9 +8,9 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Typography from '@material-ui/core/Typography';
 import Layout from '../components/Layout';
 import config from '../components/config.json';
+import { useAnalytics } from '../components/states';
 
 import ReactGA from 'react-ga4';
-ReactGA.initialize(config.google_analytics);
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -27,9 +27,13 @@ function License(properties) {
   const classes = useStyles();
   const { t } = useTranslation('license');
 
+  let [analytics, setAnalytics] = useAnalytics();
   useEffect(() => {
-    ReactGA.pageview('License')
-  }, []);
+    if (analytics && config.google_analytics.length) {
+      ReactGA.initialize(config.google_analytics);
+      ReactGA.pageview('License')
+    }
+  }, [analytics]);
 
   return (
     <Layout

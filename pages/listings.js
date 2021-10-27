@@ -7,17 +7,21 @@ import List from '../components/List';
 import Layout from '../components/Layout';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import config from '../components/config.json';
+import { useAnalytics } from '../components/states';
 
 import ReactGA from 'react-ga4';
-ReactGA.initialize(config.google_analytics);
 
 function Listings () {
 
   const { t } = useTranslation('listings');
 
+  let [analytics, setAnalytics] = useAnalytics();
   useEffect(() => {
-    ReactGA.pageview('Listings')
-  }, []);
+    if (analytics && config.google_analytics.length) {
+      ReactGA.initialize(config.google_analytics);
+      ReactGA.pageview('Listings')
+    }
+  }, [analytics]);
 
   return (
     <Layout

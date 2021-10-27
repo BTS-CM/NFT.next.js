@@ -4,11 +4,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Layout from '../components/Layout';
+import { useAnalytics } from '../components/states';
 
 import config from '../components/config.json';
 
 import ReactGA from 'react-ga4';
-ReactGA.initialize(config.google_analytics);
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -25,9 +25,13 @@ function About() {
   const { t } = useTranslation('about');
   const classes = useStyles();
 
+  let [analytics, setAnalytics] = useAnalytics();
   useEffect(() => {
-    ReactGA.pageview('About')
-  }, []);
+    if (analytics && config.google_analytics.length) {
+      ReactGA.initialize(config.google_analytics);
+      ReactGA.pageview('About')
+    }
+  }, [analytics]);
 
   return (
     <Layout

@@ -11,9 +11,9 @@ import Link from 'next/link';
 
 import Layout from '../components/Layout';
 import config from '../components/config.json';
+import { useAnalytics } from '../components/states';
 
 import ReactGA from 'react-ga4';
-ReactGA.initialize(config.google_analytics);
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -31,9 +31,13 @@ function Viewers(properties) {
   const classes = useStyles();
   const { t } = useTranslation('viewers');
 
+  let [analytics, setAnalytics] = useAnalytics();
   useEffect(() => {
-    ReactGA.pageview('Other galleries')
-  }, []);
+    if (analytics && config.google_analytics.length) {
+      ReactGA.initialize(config.google_analytics);
+      ReactGA.pageview('Other galleries');
+    }
+  }, [analytics]);
 
   return (
     <Layout

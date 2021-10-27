@@ -14,12 +14,10 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ReactGA from 'react-ga4';
 
-import { useGateway, useLanguage, useEnvironment } from '../components/states';
+import { useGateway, useLanguage, useEnvironment, useAnalytics } from '../components/states';
 const ipfsJSON = require('../components/ipfsJSON.json');
 import CustomLink from '../components/CustomLink';
 import config from '../components/config.json';
-
-ReactGA.initialize(config.google_analytics);
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -40,6 +38,7 @@ function License(properties) {
 
   const [language, setLanguage] = useLanguage();
   const [environment, setEnvironment] = useEnvironment();
+  const [analytics, setAnalytics] = useAnalytics();
   const [gateway, setGateway] = useGateway('cf-ipfs.com');
 
   const [anchorIPFS, setAnchorIPFS] = useState(null);
@@ -68,9 +67,25 @@ function License(properties) {
     handleCloseEnvironment();
   }
 
+  const [anchor, setAnchor] = useState(null);
+  const open = Boolean(anchor);
+  const handleClick = (event) => {
+    setAnchor(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchor(null);
+  };
+  const handle = (newPreference) => {
+    setAnalytics(newPreference);
+    handleClose();
+  }
+
   useEffect(() => {
-    ReactGA.pageview('Settings')
-  }, []);
+    if (analytics && config.google_analytics.length) {
+      ReactGA.initialize(config.google_analytics);
+      ReactGA.pageview('Settings')
+    }
+  }, [analytics]);
 
   return (
     <Layout
@@ -149,6 +164,47 @@ function License(properties) {
             onClick={() => { handleEnvironment('staging') }}
           >
             Staging
+          </MenuItem>
+        </Menu>
+
+        <Button
+          aria-label="more"
+          aria-controls="long-menu4"
+          aria-haspopup="true"
+          size="small"
+          variant="contained"
+          style={{marginLeft: '5px'}}
+          onClick={handleClick}
+        >
+          <SettingsIcon /> Analytics preferences
+        </Button>
+
+        <Menu
+          id="long-menu4"
+          anchorEl={anchor}
+          keepMounted
+          open={open}
+          onClose={handleClose}
+          PaperProps={{
+            style: {
+              maxHeight: 48 * 4.5,
+              width: '20ch',
+            },
+          }}
+        >
+          <MenuItem
+            key={`analytics option`}
+            selected={analytics == true}
+            onClick={() => { handle(true) }}
+          >
+            Enable
+          </MenuItem>
+          <MenuItem
+            key={`no analytics option`}
+            selected={analytics == false}
+            onClick={() => { handle(false) }}
+          >
+            Disable
           </MenuItem>
         </Menu>
 

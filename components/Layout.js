@@ -242,7 +242,7 @@ function Layout({ description, title, siteTitle, imageURL, children }) {
                       </a>
                     </Link>
                   </Grid>
-                  <Grid item xs={12} sm={2} key={"footer 3"}>
+                  <Grid item xs={12} sm={2} key={"footer 4"}>
                     <Typography variant="h6">
                       {t('footer_markets')}
                     </Typography>

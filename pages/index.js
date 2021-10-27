@@ -17,9 +17,7 @@ import CarouselElement from "../components/Carousel";
 import Layout from '../components/Layout';
 import artJSON from '../components/art.json';
 import config from '../components/config.json';
-import { useEnvironment } from '../components/states';
-
-ReactGA.initialize(config ? config.google_analytics: '');
+import { useEnvironment, useAnalytics } from '../components/states';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -101,9 +99,13 @@ function Home() {
   let genesis = new Date(2013,6,2);
   let now = new Date();
 
+  let [analytics, setAnalytics] = useAnalytics();
   useEffect(() => {
-    ReactGA.pageview('Index');
-  }, []);
+    if (analytics && config.google_analytics.length) {
+      ReactGA.initialize(config.google_analytics);
+      ReactGA.pageview('Index');
+    }
+  }, [analytics]);
 
   return (
     <Layout

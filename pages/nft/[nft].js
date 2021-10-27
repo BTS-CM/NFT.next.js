@@ -8,38 +8,65 @@ import ANFT from "../../components/ANFT";
 
 import art from '../../components/art.json';
 import config from '../../components/config.json';
-import { useEnvironment } from '../../components/states';
+import { useEnvironment, useAnalytics } from '../../components/states';
 
-ReactGA.initialize(config ? config.google_analytics : '');
+function InvalidNFT (props) {
+  if (props.analytics) {
+    ReactGA.pageview(`Invalid NFT`);
+  }
+  return <Layout
+            description={"Unable to load this NFT"}
+            title={`Unknown NFT`}
+            siteTitle={config.title}
+          >
+            <p>Unable to load NFT</p>
+          </Layout>
+}
+
+function ValidNFT (props) {
+  let nft = props.nft;
+  if (props.analytics) {
+    ReactGA.pageview(`NFT ${nft}`);
+  }
+  const { t } = useTranslation('nft');
+  return <Layout
+    description={t('header_description', {nft: nft})}
+    title={t('header_title', {nft: nft})}
+    siteTitle={config.title}
+  >
+    <ANFT id={nft} key={nft} individual={true} {...props} />
+  </Layout>
+}
+
 
 const NFT = () => {
+
+  let [analytics, setAnalytics] = useAnalytics();
+  if (analytics && config.google_analytics.length) {
+    ReactGA.initialize(config.google_analytics);
+  }
   const router = useRouter()
   const { nft } = router.query
-
   let [environment, setEnvironment] = useEnvironment();
+
+  if (!nft) {
+    return <InvalidNFT analytics={analytics} />
+  }
+
   let env = environment ? environment : 'production';
   const artNames = art && art[env] ? art[env].map(item => item.name) : [];
 
-  const { t } = useTranslation('nft');
-
-  if (nft && artNames.includes(nft)) {
-    ReactGA.pageview(`NFT ${nft}`);
-    return <Layout
-      description={t('header_description', {nft: nft})}
-      title={t('header_title', {nft: nft})}
-      siteTitle={config.title}
-    >
-      <ANFT id={nft} key={nft} individual={true} />
-    </Layout>
+  if (artNames.includes(nft)) {
+    return <ValidNFT nft={nft} environment={env} analytics={analytics} />
   } else {
-    ReactGA.pageview(`Invalid NFT ${nft ? nft : '???'}`);
-    return <Layout
-              description={"Unable to load this NFT"}
-              title={`Unknown NFT`}
-              siteTitle={config.title}
-            >
-              <p>Unable to load NFT</p>
-            </Layout>
+
+    const stagingArt = art && art['staging'] ? art['staging'].map(item => item.name) : [];
+    if (stagingArt.includes(nft)) {
+      return <ValidNFT nft={nft} environment={'staging'} analytics={analytics} />
+    } else {
+      return <InvalidNFT analytics={analytics} />
+    }
+
   }
 }
 

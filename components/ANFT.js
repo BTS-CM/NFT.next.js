@@ -2,30 +2,28 @@ import React, {useState} from 'react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import Chip from '@material-ui/core/Chip';
-
-import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
-
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-
-import Tooltip from '@material-ui/core/Tooltip';
-import Zoom from '@material-ui/core/Zoom';
+const Grid = dynamic(() => import('@material-ui/core/Grid'));
+const Paper = dynamic(() => import('@material-ui/core/Paper'));
+const Button = dynamic(() => import('@material-ui/core/Button'));
+const Typography = dynamic(() => import('@mui/material/Typography'));
+const Avatar = dynamic(() => import('@material-ui/core/Avatar'));
+const AppBar = dynamic(() => import('@material-ui/core/AppBar'));
+const Tabs = dynamic(() => import('@material-ui/core/Tabs'));
+const Tab = dynamic(() => import('@material-ui/core/Tab'));
+const TextareaAutosize = dynamic(() => import('@material-ui/core/TextareaAutosize'));
+const Tooltip = dynamic(() => import('@material-ui/core/Tooltip'));
+const Zoom = dynamic(() => import('@material-ui/core/Zoom'));
 import { makeStyles } from '@material-ui/core/styles';
 
-import OBJT from "./OBJT";
 import config from "./config.json";
 
-import IssuerDetails from "./IssuerDetails";
-import NFTHolder from "./NFTHolder";
-import IPFSCarouselElement from "./IPFSCarousel";
+const OBJT = dynamic(() => import('./OBJT'));
+const IssuerDetails = dynamic(() => import('./IssuerDetails'));
+const NFTHolder = dynamic(() => import('./NFTHolder'));
+const IPFSCarouselElement = dynamic(() => import('./IPFSCarousel'));
+import Chip  from '@material-ui/core/Chip';
 
 import {
   LinkedinShareButton,
@@ -67,6 +65,7 @@ const { getImage, getPngDimensions } = require("./images");
 
 export default function ANFT (properties) {
   let individual = properties.individual;
+  let initAsset = properties.initAsset;
   let id = properties.id;
   const { t } = useTranslation('nft');
 
@@ -76,8 +75,7 @@ export default function ANFT (properties) {
           </Typography>);
   }
 
-  const initAssetData = require(`./assets/${id}.json`);
-  const [asset, setAsset] = useState(initAssetData ? initAssetData : undefined);
+  const [asset, setAsset] = useState(initAsset ? initAsset : undefined);
   const [value, setValue] = useState(0);
 
   let issuer = asset ? asset.issuer : undefined;

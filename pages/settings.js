@@ -1,23 +1,21 @@
 import { useEffect, useState } from 'react';
-import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import { useRouter } from 'next/router';
-
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import dynamic from 'next/dynamic';
 
-import Typography from '@material-ui/core/Typography';
-import Layout from '../components/Layout';
-import SettingsIcon from '@material-ui/icons/Settings';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
+const Typography = dynamic(() => import('@mui/material/Typography'));
+const Paper = dynamic(() => import('@mui/material/Paper'));
+
+const Layout = dynamic(() => import('../components/Layout'));
+const Button = dynamic(() => import('@mui/material/Button'));
+const Menu = dynamic(() => import('@material-ui/core/Menu'));
+const SettingsIcon = dynamic(() => import('@material-ui/icons/Settings'));
 import MenuItem from '@material-ui/core/MenuItem';
-import ReactGA from 'react-ga4';
 
 import { useGateway, useLanguage, useEnvironment, useAnalytics } from '../components/states';
-const ipfsJSON = require('../components/ipfsJSON.json');
 import CustomLink from '../components/CustomLink';
-import config from '../components/config.json';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -40,6 +38,9 @@ function License(properties) {
   const [environment, setEnvironment] = useEnvironment();
   const [analytics, setAnalytics] = useAnalytics();
   const [gateway, setGateway] = useGateway('cf-ipfs.com');
+
+  const config = properties.config;
+  const ipfsJSON = properties.ipfsJSON;
 
   const [anchorIPFS, setAnchorIPFS] = useState(null);
   const openIPFS = Boolean(anchorIPFS);
@@ -80,8 +81,9 @@ function License(properties) {
     handleClose();
   }
 
-  useEffect(() => {
+  useEffect(async () => {
     if (analytics && config.google_analytics.length) {
+      const ReactGA = (await import('react-ga4')).default
       ReactGA.initialize(config.google_analytics);
       ReactGA.pageview('Settings')
     }
@@ -103,7 +105,7 @@ function License(properties) {
           variant="contained"
           onClick={handleClickIPFS}
         >
-          <SettingsIcon /> Change IPFS
+          <SettingsIcon style={{margin: '2px'}} /> Change IPFS
         </Button>
 
         <Menu
@@ -135,7 +137,7 @@ function License(properties) {
           style={{marginLeft: '5px'}}
           onClick={handleClickEnvironment}
         >
-          <SettingsIcon /> Change Environment
+          <SettingsIcon style={{margin: '2px'}} /> Change Environment
         </Button>
 
         <Menu
@@ -176,7 +178,7 @@ function License(properties) {
           style={{marginLeft: '5px'}}
           onClick={handleClick}
         >
-          <SettingsIcon /> Analytics preferences
+          <SettingsIcon style={{margin: '2px'}} /> Analytics preferences
         </Button>
 
         <Menu
@@ -213,10 +215,18 @@ function License(properties) {
   );
 }
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['settings', 'nav']),
-  },
-})
+export const getStaticProps = async ({ locale }) => {
+
+  let config = require('../components/config.json');
+  let ipfsJSON = require('../components/ipfsJSON.json');
+
+  return {
+    props: {
+      config: config,
+      ipfsJSON: ipfsJSON,
+      ...await serverSideTranslations(locale, ['settings', 'nav']),
+    }
+  }
+}
 
 export default License;

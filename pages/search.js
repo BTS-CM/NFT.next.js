@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import art from '../components/art.json';
-import config from '../components/config.json';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
 
-import ReactGA from 'react-ga4';
+const Grid = dynamic(() => import('@material-ui/core/Grid'));
+const Paper = dynamic(() => import('@mui/material/Paper'));
+const Typography = dynamic(() => import('@mui/material/Typography'));
+const TextField = dynamic(() => import('@material-ui/core/TextField'));
+const List = dynamic(() => import('@material-ui/core/List'));
+const ListItem = dynamic(() => import('@material-ui/core/ListItem'));
+const ListItemText = dynamic(() => import('@material-ui/core/ListItemText'));
+const Layout = dynamic(() => import('../components/Layout'));
 
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Layout from '../components/Layout';
 import { useEnvironment, useAnalytics } from '../components/states';
-
-import Fuse from 'fuse.js';
-import Link from 'next/link';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,6 +39,9 @@ function SearchPanel (properties) {
   const [overlay, setOverlay] = useState();
   const classes = useStyles();
 
+  const config = properties.config;
+  const art = properties.art;
+
   let [environment, setEnvironment] = useEnvironment();
   let env = environment ? environment : 'production';
 
@@ -55,9 +54,9 @@ function SearchPanel (properties) {
     setOverlay();
   };
 
-  const updateSearchValue = (event) => {
+  const updateSearchValue = async (event) => {
     setOverlay();
-
+    const Fuse = (await import('fuse.js')).default
     const fuse = new Fuse(
       searchData,
       {
@@ -132,24 +131,34 @@ function SearchPanel (properties) {
   );
 }
 
-function Search() {
+function Search(properties) {
   let [analytics, setAnalytics] = useAnalytics();
-  useEffect(() => {
+  let config = properties.config;
+  useEffect(async () => {
     if (analytics && config.google_analytics.length) {
+      const ReactGA = (await import('react-ga4')).default
       ReactGA.initialize(config.google_analytics);
       ReactGA.pageview('Search')
     }
   }, [analytics]);
 
   return (
-    <SearchPanel />
+    <SearchPanel {...properties} />
   );
 }
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['search', 'nav']),
-  },
-})
+export const getStaticProps = async ({ locale }) => {
+
+  const art = require('../components/art.json');
+  const config = require('../components/config.json');
+
+  return {
+    props: {
+      art: art,
+      config: config,
+      ...await serverSideTranslations(locale, ['search', 'nav']),
+    }
+  }
+}
 
 export default Search

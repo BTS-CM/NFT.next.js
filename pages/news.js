@@ -4,8 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next';
+import dynamic from 'next/dynamic';
 
-import Layout from '../components/Layout'
+const Layout = dynamic(() => import('../components/Layout'));
 import { getAllPosts } from '../lib/api'
 import config from '../components/config.json';
 

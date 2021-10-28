@@ -1,40 +1,31 @@
 import React, { useEffect } from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import ReactGA from 'react-ga4';
 import { useTranslation } from 'next-i18next';
+import dynamic from 'next/dynamic';
 
-import Grid from '@material-ui/core/Grid';
+const Grid = dynamic(() => import('@material-ui/core/Grid'));
+const NFTCard = dynamic(() => import('../components/NFTCard'));
+const Layout = dynamic(() => import('../components/Layout'));
+import { useEnvironment, useAnalytics } from '../components/states';
 
-import { useEnvironment } from '../components/states';
-import NFTCard from "../components/NFTCard";
-import Layout from '../components/Layout';
-import artJSON from '../components/art.json';
-import config from '../components/config.json';
-import { useAnalytics } from '../components/states';
-
-function All() {
-
-
-  let [environment, setEnvironment] = useEnvironment();
-  let env = environment ? environment : 'production';
-
-  const art = artJSON && artJSON[env] ? artJSON[env] : [];
-  return art && art.length
-          ? art.map(asset => <NFTCard smSize={4} id={asset.name} key={asset.name + "_card"} />)
-          : <p>loading</p>
-}
-
-function Gallery() {
+function Gallery(props) {
   const { t } = useTranslation('gallery');
-
   let [analytics, setAnalytics] = useAnalytics();
 
-  useEffect(() => {
+  useEffect(async () => {
     if (analytics && config.google_analytics.length) {
+      const ReactGA = (await import('react-ga4')).default
       ReactGA.initialize(config.google_analytics);
       ReactGA.pageview('Gallery')
     }
   }, [analytics]);
+
+  let config = props.config;
+  let [environment, setEnvironment] = useEnvironment();
+  let env = environment ? environment : 'production';
+  let nfts = env === 'production' ? props.minProdNFTS : props.minStagingNFTS;
+
+  let galleryCards = nfts.map(nft => <NFTCard smSize={4} nft={nft} key={nft.symbol + "_card"} />);
 
   return (
     <Layout
@@ -43,16 +34,49 @@ function Gallery() {
       siteTitle={config ? config.title: ''}
     >
       <Grid container style={{'maxWidth': '100%'}} key="index">
-        <All />
+        {
+          galleryCards
+        }
       </Grid>
     </Layout>
   );
 }
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['gallery', 'nft', 'nav']),
-  },
-})
+export const getStaticProps = async ({ locale }) => {
+
+  let config = require('../components/config.json');
+  let artJSON = require('../components/art.json');
+
+  let prodNFTS = artJSON.production.map(item => require(`../components/assets/${item.name}.json`));
+  let minProdNFTS = prodNFTS.map(nft => {
+    return {
+      symbol: nft.symbol,
+      market: nft.description.market,
+      title: nft.description.nft_object.title,
+      artist: nft.description.nft_object.artist,
+      media_json: nft.description.nft_object.media_json ? true : false
+    }
+  });
+
+  let stagingNFTS = artJSON.staging.map(item => require(`../components/assets/${item.name}.json`));
+  let minStagingNFTS = stagingNFTS.map(nft => {
+    return {
+      symbol: nft.symbol,
+      market: nft.description.market,
+      title: nft.description.nft_object.title,
+      artist: nft.description.nft_object.artist,
+      media_json: nft.description.nft_object.media_json ? true : false
+    }
+  });
+
+  return {
+    props: {
+      minProdNFTS,
+      minStagingNFTS,
+      config,
+      ...await serverSideTranslations(locale, ['gallery', 'nft', 'nav']),
+    }
+  }
+}
 
 export default Gallery

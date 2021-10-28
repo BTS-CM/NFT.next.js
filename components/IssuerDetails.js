@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'next-i18next';
-import Tooltip from '@material-ui/core/Tooltip';
-import Zoom from '@material-ui/core/Zoom';
-import Chip from '@material-ui/core/Chip';
+import dynamic from 'next/dynamic';
+
+const Tooltip = dynamic(() => import('@material-ui/core/Tooltip'));
+const Zoom = dynamic(() => import('@material-ui/core/Zoom'));
+import Chip  from '@material-ui/core/Chip';
 
 import useSWR from 'swr';
 

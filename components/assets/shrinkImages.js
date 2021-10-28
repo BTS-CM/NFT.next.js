@@ -21,6 +21,10 @@ const fileList = fs.readdirSync(`../../public/images/`);
               .resize(128, 128)
               .toFile(`../../public/images/${file}/${currentNum}_thumb.webp`);
 
+        await sharp(`../../public/images/${file}/${currentImageName}`)
+              .resize(350, 350)
+              .toFile(`../../public/images/${file}/${currentNum}_gallery.webp`);
+
         try {
           fs.unlinkSync(`../../public/images/${file}/${currentImageName}`);
         } catch (err) {

@@ -4,8 +4,10 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import moment from 'moment';
+import dynamic from 'next/dynamic'
 
-import Layout from '../../components/Layout'
+const Layout = dynamic(() => import('../../components/Layout'));
+
 import { getPostBySlug, getAllPosts } from '../../lib/api'
 import markdownToHtml from '../../lib/markdownToHtml'
 import config from '../../components/config.json';
@@ -28,6 +30,7 @@ export default function Post({ post, morePosts, preview }) {
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
+
   return (
     <Layout
       title={`${post.title} | ${config.title}`}

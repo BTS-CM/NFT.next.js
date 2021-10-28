@@ -1,22 +1,23 @@
 // components/Layout.js
 import React, { useState } from 'react';
 import { useTranslation } from 'next-i18next';
+import dynamic from 'next/dynamic'
+import Link from 'next/link';
+import Head from 'next/head'
 
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-import Head from 'next/head'
 import { useTheme, useLanguage, useAnalytics } from './states';
-
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import Link from 'next/link';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import Button from '@material-ui/core/Button';
 
-import Nav from "./Nav";
+const Grid = dynamic(() => import('@material-ui/core/Grid'));
+const Container = dynamic(() => import('@material-ui/core/Container'));
+const CssBaseline = dynamic(() => import('@material-ui/core/CssBaseline'));
+const Typography = dynamic(() => import('@mui/material/Typography'));
+const Divider = dynamic(() => import('@mui/material/Divider'));
+const TwitterIcon = dynamic(() => import('@material-ui/icons/Twitter'));
+const Button = dynamic(() => import('@material-ui/core/Button'));
+const Nav = dynamic(() => import('./Nav'));
+
 import config from "./config.json";
 
 const useStyles = makeStyles((theme) => ({

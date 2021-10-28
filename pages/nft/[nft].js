@@ -2,9 +2,10 @@ import { useRouter } from 'next/router'
 import ReactGA from 'react-ga4';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next';
+import dynamic from 'next/dynamic';
 
-import Layout from '../../components/Layout';
-import ANFT from "../../components/ANFT";
+const Layout = dynamic(() => import('../../components/Layout'));
+const ANFT = dynamic(() => import('../../components/ANFT'));
 
 import art from '../../components/art.json';
 import config from '../../components/config.json';
@@ -25,6 +26,7 @@ function InvalidNFT (props) {
 
 function ValidNFT (props) {
   let nft = props.nft;
+  let initAsset = props.initAsset;
   if (props.analytics) {
     ReactGA.pageview(`NFT ${nft}`);
   }
@@ -34,12 +36,12 @@ function ValidNFT (props) {
     title={t('header_title', {nft: nft})}
     siteTitle={config.title}
   >
-    <ANFT id={nft} key={nft} individual={true} {...props} />
+    <ANFT id={nft} initAsset={initAsset} key={nft} individual={true} {...props} />
   </Layout>
 }
 
 
-const NFT = () => {
+const NFT = ({ initAsset }) => {
 
   let [analytics, setAnalytics] = useAnalytics();
   if (analytics && config.google_analytics.length) {
@@ -57,12 +59,12 @@ const NFT = () => {
   const artNames = art && art[env] ? art[env].map(item => item.name) : [];
 
   if (artNames.includes(nft)) {
-    return <ValidNFT nft={nft} environment={env} analytics={analytics} />
+    return <ValidNFT nft={nft} initAsset={initAsset} environment={env} analytics={analytics} />
   } else {
 
     const stagingArt = art && art['staging'] ? art['staging'].map(item => item.name) : [];
     if (stagingArt.includes(nft)) {
-      return <ValidNFT nft={nft} environment={'staging'} analytics={analytics} />
+      return <ValidNFT nft={nft} initAsset={initAsset} environment={'staging'} analytics={analytics} />
     } else {
       return <InvalidNFT analytics={analytics} />
     }
@@ -97,10 +99,16 @@ export const getStaticPaths = async ({ locales }) => {
   }
 }
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['nft', 'nav']),
-  },
-})
+export const getStaticProps = async ({ locale, params }) => {
+
+  let initAsset = require(`../../components/assets/${params.nft}.json`);
+
+  return {
+    props: {
+      initAsset,
+      ...await serverSideTranslations(locale, ['nft', 'nav']),
+    },
+  }
+}
 
 export default NFT

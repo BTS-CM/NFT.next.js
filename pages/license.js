@@ -1,16 +1,15 @@
 import { useEffect } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import dynamic from 'next/dynamic';
 
-import Typography from '@material-ui/core/Typography';
-import Layout from '../components/Layout';
+const Typography = dynamic(() => import('@mui/material/Typography'));
+const Layout = dynamic(() => import('../components/Layout'));
+
 import config from '../components/config.json';
 import { useAnalytics } from '../components/states';
-
-import ReactGA from 'react-ga4';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -28,8 +27,9 @@ function License(properties) {
   const { t } = useTranslation('license');
 
   let [analytics, setAnalytics] = useAnalytics();
-  useEffect(() => {
+  useEffect(async () => {
     if (analytics && config.google_analytics.length) {
+      const ReactGA = (await import('react-ga4')).default
       ReactGA.initialize(config.google_analytics);
       ReactGA.pageview('License')
     }

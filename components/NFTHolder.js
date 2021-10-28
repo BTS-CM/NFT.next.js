@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'next-i18next';
-
-import Chip from '@material-ui/core/Chip';
 import useSWR from 'swr';
+
+import Chip  from '@material-ui/core/Chip';
 
 const useStyles = makeStyles((theme) => ({
   chip: {

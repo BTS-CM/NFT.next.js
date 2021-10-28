@@ -1,19 +1,17 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
-import Layout from '../components/Layout';
-import config from '../components/config.json';
-import { useAnalytics } from '../components/states';
+const Grid = dynamic(() => import('@material-ui/core/Grid'));
+const Paper = dynamic(() => import('@mui/material/Paper'));
+const Typography = dynamic(() => import('@mui/material/Typography'));
+const Button = dynamic(() => import('@mui/material/Button'));
+const Layout = dynamic(() => import('../components/Layout'));
 
-import ReactGA from 'react-ga4';
+import { makeStyles } from '@material-ui/core/styles';
+import { useAnalytics } from '../components/states';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -30,10 +28,12 @@ const useStyles = makeStyles((theme) => ({
 function Viewers(properties) {
   const classes = useStyles();
   const { t } = useTranslation('viewers');
+  const config = properties.config;
 
   let [analytics, setAnalytics] = useAnalytics();
-  useEffect(() => {
+  useEffect(async () => {
     if (analytics && config.google_analytics.length) {
+      const ReactGA = (await import('react-ga4')).default
       ReactGA.initialize(config.google_analytics);
       ReactGA.pageview('Other galleries');
     }
@@ -96,10 +96,16 @@ function Viewers(properties) {
   );
 }
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['viewers', 'nav']),
-  },
-})
+export const getStaticProps = async ({ locale }) => {
+
+  let config = require('../components/config.json');
+
+  return {
+    props: {
+      config: config,
+      ...await serverSideTranslations(locale, ['viewers', 'nav']),
+    }
+  }
+}
 
 export default Viewers

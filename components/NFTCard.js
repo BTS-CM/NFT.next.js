@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic'
+import Image from 'next/image';
 
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+const Card = dynamic(() => import('@mui/material/Card'));
+const CardContent = dynamic(() => import('@mui/material/CardContent'));
+const CardMedia = dynamic(() => import('@mui/material/CardMedia'));
+const Typography = dynamic(() => import('@mui/material/Typography'));
+const Button = dynamic(() => import('@material-ui/core/Button'));
+const Menu = dynamic(() => import('@material-ui/core/Menu'));
+const Grid = dynamic(() => import('@material-ui/core/Grid'));
 
-import Menu from '@material-ui/core/Menu';
+import { CardActionArea, CardActions } from '@mui/material';
 import MenuItem from '@material-ui/core/MenuItem';
-import { Fade } from "react-awesome-reveal";
 
-import CustomLink from './CustomLink';
-
-import Grid from '@material-ui/core/Grid';
 import { useTranslation } from 'next-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import { motion } from "framer-motion"
+import { useInView } from 'react-intersection-observer';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -33,23 +34,23 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+import CustomLink from './CustomLink';
 import { useLanguage } from './states';
-
 
 export default function NFTCard(properties) {
 
-  let id = properties.id;
   let smSize = properties.smSize;
+  let visible = properties && properties.visible ? properties.visible : null;
+  let nearby = properties && properties.nearby ? properties.nearby : null;
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  });
+
   const { t } = useTranslation('gallery');
   const classes = useStyles();
   const [language, setLanguage] = useLanguage();
   const [anchor, setAnchor] = useState(null);
-
-  if (!id || !id.includes(".")) {
-    return (<Typography gutterBottom variant="h6" component="h4">
-            Loading NFT info...
-          </Typography>);
-  }
 
   const open = Boolean(anchor);
   const handleClick = (event) => {
@@ -60,24 +61,33 @@ export default function NFTCard(properties) {
     setAnchor(null);
   };
 
-  const handleGateway = (gateway) => {
-    handleClose();
-  }
-
-  const asset = require(`./assets/${id}.json`);
-
-  let issuer = asset ? asset.issuer : undefined;
-  let precision = asset ? asset.precision : undefined;
-  let symbol = asset ? asset.symbol : undefined;
-
-  let description = asset && asset.description ? asset.description : undefined;
-  let market = description ? description.market : undefined;
-
-  let nft_object = description ? description.nft_object : undefined;
-  let title = nft_object && nft_object.title ? nft_object.title : undefined;
-  let artist = nft_object && nft_object.artist ? nft_object.artist : undefined;
+  let nft = properties.nft;
+  let symbol = nft ? nft.symbol : undefined;
+  let market = nft ? nft.market : undefined;
+  let title = nft ? nft.title : undefined;
+  let artist = nft ? nft.artist : undefined;
+  let media_json = nft ? nft.media_json : undefined;
 
   let address = language && !language.includes("en") ? `/${language}` : ``;
+
+  let media = null;
+  if (visible || smSize === 4 && inView) {
+    media = <CardMedia
+        component="img"
+        width="100%"
+        height="100%"
+        image={!media_json ? `/images/${symbol}/0${smSize === 4 ? '_gallery' : ''}.webp` : "/images/placeholders/0.webp"}
+        alt={`${symbol} NFT image`}
+      />
+  } else if (nearby) {
+    media = <CardMedia
+        component="img"
+        width="100%"
+        height="100%"
+        image={!media_json ? `/images/${symbol}/0_thumb.webp` : "/images/placeholders/0.webp"}
+        alt={`${symbol} NFT image`}
+      />
+  }
 
   return (
     <Grid item xs={12} sm={smSize} key={"Right info"}>
@@ -85,16 +95,9 @@ export default function NFTCard(properties) {
         whileHover={{ scale: smSize > 4 ? 1 : 1.05 }}
         whileTap={{ scale: smSize > 4 ? 1 : 0.95 }}
       >
-        <Fade triggerOnce={true}>
           <Card className={smSize > 4 ? classes.bigcard : classes.card}>
-            <CardActionArea href={address + "/nft/" + symbol}>
-              <CardMedia
-                component="img"
-                width="100%"
-                height="100%"
-                image={!nft_object.media_json ? `/images/${id}/0.webp` : "/images/placeholders/0.webp"}
-                alt={`${symbol} NFT image`}
-              />
+            <CardActionArea ref={ref} href={address + "/nft/" + symbol}>
+              {media}
             </CardActionArea>
             <CardActionArea href={address + "/nft/" + symbol}>
               <CardContent>
@@ -170,7 +173,6 @@ export default function NFTCard(properties) {
               </Grid>
             </CardActions>
           </Card>
-        </Fade>
       </motion.div>
     </Grid>
   );

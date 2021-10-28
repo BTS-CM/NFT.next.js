@@ -1,28 +1,23 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import ReactGA from 'react-ga4';
 import { useInView } from 'react-intersection-observer';
+import dynamic from 'next/dynamic';
 
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
+const Paper = dynamic(() => import('@mui/material/Paper'));
+const Table = dynamic(() => import('@material-ui/core/Table'));
+const TableBody = dynamic(() => import('@material-ui/core/TableBody'));
+const TableContainer = dynamic(() => import('@material-ui/core/TableContainer'));
+const TableHead = dynamic(() => import('@material-ui/core/TableHead'));
+const TableRow = dynamic(() => import('@material-ui/core/TableRow'));
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import { Fade } from "react-awesome-reveal";
-import { motion } from "framer-motion"
 
-//import { useTranslation } from 'next-i18next';
+import { motion } from "framer-motion"
+import { makeStyles } from '@material-ui/core/styles';
+
 import { useEnvironment } from './states';
-import art from '../components/art.json';
-import config from './config.json';
 
 const { getImage } = require("../components/images");
-
-ReactGA.initialize(config.google_analytics);
 
 const useStyles = makeStyles((theme) => ({
   table: {
@@ -78,7 +73,6 @@ function ListRow (properties) {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Fade triggerOnce={true}>
               <Link href={`/nft/${symbol}`} key={`/nft/${symbol}/img`} passHref>
                 <a>
                   {inView && imageSRC ? (
@@ -93,30 +87,23 @@ function ListRow (properties) {
                   ) : null}
                 </a>
               </Link>
-            </Fade>
           </motion.div>
 
         </TableCell>
         <TableCell component="th" scope="row">
-          <Fade triggerOnce={true}>
             <Link href={`/nft/${symbol}`}>
               <a className={classes.a}>{titleArtist}</a>
             </Link>
-          </Fade>
         </TableCell>
         <TableCell component="th" scope="row">
-          <Fade triggerOnce={true}>
             <Link href={`/nft/${symbol}`}>
               <a className={classes.a}>{typeEncoding}</a>
             </Link>
-          </Fade>
         </TableCell>
         <TableCell>
-          <Fade triggerOnce={true}>
             <Link href={`/nft/${symbol}`}>
               <a className={classes.a}>{symbolID}</a>
             </Link>
-          </Fade>
         </TableCell>
       </TableRow>
     );
@@ -153,6 +140,7 @@ function ListContents(properties) {
 
   let [environment, setEnvironment] = useEnvironment();
   let env = environment ? environment : 'production';
+  const art = properties.art;
   let data = art && art[env] ? art[env] : [];
 
   if (!data || !data.length) {

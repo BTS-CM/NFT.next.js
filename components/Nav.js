@@ -1,32 +1,31 @@
 import React, {useState} from 'react';
-import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
-import { useTheme, useLanguage, useEnvironment } from './states';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic'
+import Link from 'next/link';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Drawer from '@material-ui/core/Drawer';
-import MenuIcon from '@material-ui/icons/Menu';
+const Toolbar = dynamic(() => import('@material-ui/core/Toolbar'));
+const IconButton = dynamic(() => import('@material-ui/core/IconButton'));
+const Drawer = dynamic(() => import('@material-ui/core/Drawer'));
+const MenuIcon = dynamic(() => import('@material-ui/icons/Menu'));
 
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Brightness5Icon from '@material-ui/icons/Brightness5';
-import NightsStayIcon from '@material-ui/icons/NightsStay';
-import TranslateIcon from '@material-ui/icons/Translate';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import SettingsIcon from '@material-ui/icons/Settings';
+const Typography = dynamic(() => import('@mui/material/Typography'));
+const Button = dynamic(() => import('@material-ui/core/Button'));
+const List = dynamic(() => import('@material-ui/core/List'));
+const ListItem = dynamic(() => import('@material-ui/core/ListItem'));
+const ListItemText = dynamic(() => import('@material-ui/core/ListItemText'));
+const AppBar = dynamic(() => import('@material-ui/core/AppBar'));
+const Menu = dynamic(() => import('@material-ui/core/Menu'));
 
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+const Brightness5Icon = dynamic(() => import('@material-ui/icons/Brightness5'));
+const NightsStayIcon = dynamic(() => import('@material-ui/icons/NightsStay'));
+const TranslateIcon = dynamic(() => import('@material-ui/icons/Translate'));
+const SettingsIcon = dynamic(() => import('@material-ui/icons/Settings'));
 
-import AppBar from '@material-ui/core/AppBar';
-import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-
 import CustomLink from './CustomLink';
+import { useTheme, useLanguage, useEnvironment } from './states';
 import config from './config.json';
 
 const locales = [
@@ -139,7 +138,7 @@ export default function Nav(properties) {
                 <ListItem button component={CustomLink} key={'Settings'} href={"/settings"} locale={language}>
                     <ListItemText className={classes.a} primary={t('link8')} />
                 </ListItem>
-                <ListItem button component={CustomLink} key={'Settings'} href={"/news"} locale={language}>
+                <ListItem button component={CustomLink} key={'News'} href={"/news"} locale={language}>
                     <ListItemText className={classes.a} primary={t('link9')} />
                 </ListItem>
               </List>
@@ -153,18 +152,6 @@ export default function Nav(properties) {
               </a>
             </Link>
           </Typography>
-
-          <Button
-            style={{'marginRight': '5px', 'float': 'right'}}
-            aria-label="more"
-            aria-controls="long-menu"
-            aria-haspopup="true"
-            size="small"
-            variant="contained"
-            href={`https://twitter.com/${config.twitter}`}
-          >
-            <TwitterIcon />
-          </Button>
 
           <Button
             aria-label="more"

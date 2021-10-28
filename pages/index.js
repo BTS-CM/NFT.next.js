@@ -1,22 +1,19 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import dynamic from 'next/dynamic';
 
-import ReactGA from 'react-ga4';
-
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
+const Grid = dynamic(() => import('@material-ui/core/Grid'));
+const Paper = dynamic(() => import('@mui/material/Paper'));
+const Typography = dynamic(() => import('@mui/material/Typography'));
+const Card = dynamic(() => import('@mui/material/Card'));
+const CardContent = dynamic(() => import('@mui/material/CardContent'));
+const Button = dynamic(() => import('@mui/material/Button'));
 
+const Layout = dynamic(() => import('../components/Layout'));
+const CarouselElement = dynamic(() => import('../components/Carousel'));
 
-import CarouselElement from "../components/Carousel";
-import Layout from '../components/Layout';
-import artJSON from '../components/art.json';
-import config from '../components/config.json';
 import { useEnvironment, useAnalytics } from '../components/states';
 
 const useStyles = makeStyles((theme) => ({
@@ -38,31 +35,8 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary
   },
-  rightPaper: {
-    padding: theme.spacing(2),
-    marginLeft: theme.spacing(1),
-    marginBottom: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary
-  },
-  stats: {
-    marginBottom: theme.spacing(2),
-  },
-  left: {
-    marginRight: theme.spacing(1),
-  },
-  center: {
-    marginRight: theme.spacing(1),
-    marginLeft: theme.spacing(1)
-  },
-  right: {
-    marginLeft: theme.spacing(1)
-  },
   title: {
     fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
   },
   a: {
     color: theme.palette.text.secondary,
@@ -73,35 +47,24 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(1)
-  },
-  stat: {
-    margin: theme.spacing(1)
   }
 }));
 
-function diff_years(dt2, dt1) {
-
-  var diff =(dt2.getTime() - dt1.getTime()) / 1000;
-   diff /= (60 * 60 * 24);
-  return Math.abs(Math.round(diff/365.25));
-
-}
-
-function Home() {
+function Home(props) {
 
   const classes = useStyles();
   const { t } = useTranslation('mainpage');
   let [environment, setEnvironment] = useEnvironment();
   let env = environment ? environment : 'production';
 
-  const art = artJSON && artJSON[env] ? artJSON[env] : [];
-
-  let genesis = new Date(2013,6,2);
-  let now = new Date();
+  let config = props.config;
+  let nfts = env === 'production' ? props.minProdNFTS : props.minStagingNFTS;
 
   let [analytics, setAnalytics] = useAnalytics();
-  useEffect(() => {
+
+  useEffect(async () => {
     if (analytics && config.google_analytics.length) {
+      const ReactGA = (await import('react-ga4')).default
       ReactGA.initialize(config.google_analytics);
       ReactGA.pageview('Index');
     }
@@ -118,7 +81,7 @@ function Home() {
             <Typography gutterBottom variant="h5" color="textSecondary">
               {t("mainpage:featured")}
             </Typography>
-            <CarouselElement art={art} featured={true} />
+            <CarouselElement nfts={nfts} />
         </Grid>
 
         <Grid item xs={12} sm={6} key={"Trading"}>
@@ -130,19 +93,19 @@ function Home() {
               {t("mainpage:traders.body1a")}<a className={classes.textLink} href="https://how.bitshares.works/en/master/user_guide/create_account.html">{t("mainpage:traders.a1")}</a>{t("mainpage:traders.body1b")}
             </Typography>
             <a href={`https://wallet.bitshares.org`}>
-              <Button size="small" className={classes.button} variant="contained">Bitshares.org</Button>
+              <Button size="small" className={classes.button} variant="outlined">Bitshares.org</Button>
             </a>
             <a href={`https://ex.xbts.io/`}>
-              <Button size="small" className={classes.button} variant="contained">XBTS.io</Button>
+              <Button size="small" className={classes.button} variant="outlined">XBTS.io</Button>
             </a>
             <a href={`https://dex.iobanker.com/`}>
-              <Button size="small" className={classes.button} variant="contained">ioBanker DEX</Button>
+              <Button size="small" className={classes.button} variant="outlined">ioBanker DEX</Button>
             </a>
             <a href={`https://www.gdex.io/`}>
-              <Button size="small" className={classes.button} variant="contained">GDEX.io</Button>
+              <Button size="small" className={classes.button} variant="outlined">GDEX.io</Button>
             </a>
             <a href={`https://github.com/bitshares/bitshares-ui/releases`}>
-              <Button size="small" className={classes.button} variant="contained">{t("mainpage:traders.a2")}</Button>
+              <Button size="small" className={classes.button} variant="outlined">{t("mainpage:traders.a2")}</Button>
             </a>
           </Paper>
         </Grid>
@@ -169,10 +132,41 @@ function Home() {
   )
 }
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['gallery', 'mainpage', 'nav']),
-  },
-})
+export const getStaticProps = async ({ locale }) => {
+
+  let config = require('../components/config.json');
+  let artJSON = require('../components/art.json');
+
+  let prodNFTS = artJSON.production.map(item => require(`../components/assets/${item.name}.json`));
+  let minProdNFTS = prodNFTS.map(nft => {
+    return {
+      symbol: nft.symbol,
+      market: nft.description.market,
+      title: nft.description.nft_object.title,
+      artist: nft.description.nft_object.artist,
+      media_json: nft.description.nft_object.media_json ? true : false
+    }
+  });
+
+  let stagingNFTS = artJSON.staging.map(item => require(`../components/assets/${item.name}.json`));
+  let minStagingNFTS = stagingNFTS.map(nft => {
+    return {
+      symbol: nft.symbol,
+      market: nft.description.market,
+      title: nft.description.nft_object.title,
+      artist: nft.description.nft_object.artist,
+      media_json: nft.description.nft_object.media_json ? true : false
+    }
+  });
+
+  return {
+    props: {
+      minProdNFTS,
+      minStagingNFTS,
+      config,
+      ...await serverSideTranslations(locale, ['gallery', 'mainpage', 'nav']),
+    }
+  }
+};
 
 export default Home

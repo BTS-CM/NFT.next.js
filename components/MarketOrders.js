@@ -1,31 +1,21 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Chip from '@material-ui/core/Chip';
+import Chip from '@mui/material/Chip';
 
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
 
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 import useSWR from 'swr';
 
 const axios = require('axios');
 
-const useStyles = makeStyles((theme) => ({
-  chip: {
-    margin: theme.spacing(0.25)
-  }
-}));
-
-//const fetcher = (url) => fetch(url, {mode: "cors"}).then((res) => res.json())
 const fetcher = async (url) => await axios.get(url);
 
 export default function MarketOrders(properties) {
-  const classes = useStyles();
 
   const id = properties.id ? properties.id : null;
   const market = properties.market ? properties.market : null;
@@ -102,7 +92,7 @@ export default function MarketOrders(properties) {
     let bidContents = !bids || !bids.length
       ? <Chip key="bid chip" label="No bids" disabled />
       : <TableContainer key="bid container" component={Paper}>
-          <Table className={classes.table} aria-label="simple table">
+          <Table aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell>
@@ -125,7 +115,7 @@ export default function MarketOrders(properties) {
     let askContents = !asks || !asks.length
       ? <Chip key="ask chip" label="No asks" disabled />
       : <TableContainer key="ask table" component={Paper}>
-          <Table className={classes.table} aria-label="simple table">
+          <Table aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell>

@@ -1,58 +1,43 @@
-import moment from 'moment';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
+import dayjs from 'dayjs';
+import Paper from '@mui/material/Paper';
 import Link from 'next/link';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 
-const Layout = dynamic(() => import('../components/Layout'));
+const SEO = dynamic(() => import('../components/SEO'));
 import { getAllPosts } from '../lib/api'
 import config from '../components/config.json';
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'left',
-    color: theme.palette.text.secondary,
-  },
-  a: {
-    color: theme.palette.text.secondary
-  }
-}));
-
 const Index = ({ allPosts }) => {
-  const classes = useStyles();
-
   const { t } = useTranslation('news');
 
   return allPosts && allPosts.length
     ? allPosts.map(heroPost => {
         return (
           <>
-            <Layout
+            <SEO
               description={t('header_description')}
               title={t('header_title', {title: config.title})}
               siteTitle={config.title}
-            >
-                {heroPost && (
-                  <Paper className={classes.paper}>
-                    <div>
-                      <h3>
-                        <Link as={`/posts/${heroPost.slug}`} href="/posts/[slug]">
-                          <a className={classes.a}>{heroPost.title}</a>
-                        </Link>
-                      </h3>
-                      <div>
-                        {moment(heroPost.date).format("Do MMMM YYYY")}
-                      </div>
-                    </div>
-                    <div>
-                      <p className="text-lg leading-relaxed mb-4">{heroPost.excerpt}</p>
-                    </div>
-                  </Paper>
-                )}
-            </Layout>
+            />
+            {heroPost && (
+              <Paper sx={{p: 2, textAlign: 'left', color: 'text.secondary'}}>
+                <div>
+                  <h3>
+                    <Link as={`/posts/${heroPost.slug}`} href="/posts/[slug]">
+                      <a sx={{color: 'text.secondary'}}>{heroPost.title}</a>
+                    </Link>
+                  </h3>
+                  <div>
+                    {dayjs(heroPost.date).format("D MMMM YYYY")}
+                  </div>
+                </div>
+                <div>
+                  <p className="text-lg leading-relaxed mb-4">{heroPost.excerpt}</p>
+                </div>
+              </Paper>
+            )}
           </>
         )
       })
@@ -73,7 +58,7 @@ export const getStaticProps = async ({locale}) => {
   return {
     props: {
       allPosts,
-      ...await serverSideTranslations(locale, ['news', 'nav']),
+      ...(await serverSideTranslations(locale, ['news', 'nav'])),
     },
-  }
+  };
 }

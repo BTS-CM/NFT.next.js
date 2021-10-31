@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -13,27 +13,11 @@ const Card = dynamic(() => import('@mui/material/Card'));
 const CardContent = dynamic(() => import('@mui/material/CardContent'));
 const CardMedia = dynamic(() => import('@mui/material/CardMedia'));
 const Typography = dynamic(() => import('@mui/material/Typography'));
-const Button = dynamic(() => import('@material-ui/core/Button'));
+const Button = dynamic(() => import('@mui/material/Button'));
 
 import { CardActionArea, CardActions } from '@mui/material';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 140,
-  },
-  bigcard: {
-    padding: theme.spacing(0),
-    textAlign: 'center',
-    margin: theme.spacing(0.75)
-  }
-}));
 
 function CarouselItem (properties) {
-  const classes = useStyles();
   const [gateway, setGateway] = useGateway();
 
   let asset = properties.asset;
@@ -75,7 +59,7 @@ function CarouselItem (properties) {
             />
   }
 
-  return (<Card key={symbol + "_featured_div_" + itr} className={classes.bigcard}>
+  return (<Card key={symbol + "_featured_div_" + itr} sx={{p: 0, textAlign: 'center', m: 0.75}}>
         <CardActionArea href={linkURL}>
           {media}
         </CardActionArea>

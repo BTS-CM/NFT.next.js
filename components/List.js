@@ -1,36 +1,22 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
 import dynamic from 'next/dynamic';
 
 const Paper = dynamic(() => import('@mui/material/Paper'));
-const Table = dynamic(() => import('@material-ui/core/Table'));
-const TableBody = dynamic(() => import('@material-ui/core/TableBody'));
-const TableContainer = dynamic(() => import('@material-ui/core/TableContainer'));
-const TableHead = dynamic(() => import('@material-ui/core/TableHead'));
-const TableRow = dynamic(() => import('@material-ui/core/TableRow'));
-import TableCell from '@material-ui/core/TableCell';
+const Table = dynamic(() => import('@mui/material/Table'));
+const TableBody = dynamic(() => import('@mui/material/TableBody'));
+const TableContainer = dynamic(() => import('@mui/material/TableContainer'));
+const TableHead = dynamic(() => import('@mui/material/TableHead'));
+const TableRow = dynamic(() => import('@mui/material/TableRow'));
+import TableCell from '@mui/material/TableCell';
 
 import { motion } from "framer-motion"
-import { makeStyles } from '@material-ui/core/styles';
-
 import { useEnvironment } from './states';
-
 const { getImage } = require("../components/images");
 
-const useStyles = makeStyles((theme) => ({
-  table: {
-    minWidth: 650,
-  },
-  a: {
-    textDecoration: 'none',
-    color: theme.palette.text.primary
-  },
-}));
-
 function ListRow (properties) {
-  const classes = useStyles();
   const { ref, inView } = useInView({
     triggerOnce: true,
   });
@@ -92,17 +78,17 @@ function ListRow (properties) {
         </TableCell>
         <TableCell component="th" scope="row">
             <Link href={`/nft/${symbol}`}>
-              <a className={classes.a}>{titleArtist}</a>
+              <a sx={{textDecoration: 'none', color: 'text.primary'}}>{titleArtist}</a>
             </Link>
         </TableCell>
         <TableCell component="th" scope="row">
             <Link href={`/nft/${symbol}`}>
-              <a className={classes.a}>{typeEncoding}</a>
+              <a sx={{textDecoration: 'none', color: 'text.primary'}}>{typeEncoding}</a>
             </Link>
         </TableCell>
         <TableCell>
             <Link href={`/nft/${symbol}`}>
-              <a className={classes.a}>{symbolID}</a>
+              <a sx={{textDecoration: 'none', color: 'text.primary'}}>{symbolID}</a>
             </Link>
         </TableCell>
       </TableRow>
@@ -112,22 +98,22 @@ function ListRow (properties) {
       <TableRow key={`tr ${symbol}`}>
           <TableCell component="th" scope="row">
             <Link href={`/nft/${symbol}`}>
-              <a className={classes.a}>loading</a>
+              <a sx={{textDecoration: 'none', color: 'text.primary'}}>loading</a>
             </Link>
           </TableCell>
           <TableCell component="th" scope="row">
             <Link href={`/nft/${symbol}`}>
-              <a className={classes.a}>loading</a>
+              <a sx={{textDecoration: 'none', color: 'text.primary'}}>loading</a>
             </Link>
           </TableCell>
           <TableCell component="th" scope="row">
             <Link href={`/nft/${symbol}`}>
-              <a className={classes.a}>loading</a>
+              <a sx={{textDecoration: 'none', color: 'text.primary'}}>loading</a>
             </Link>
           </TableCell>
           <TableCell>
             <Link href={`/nft/${symbol}`}>
-              <a className={classes.a}>loading</a>
+              <a sx={{textDecoration: 'none', color: 'text.primary'}}>loading</a>
             </Link>
           </TableCell>
       </TableRow>
@@ -158,11 +144,10 @@ function ListContents(properties) {
 }
 
 function List(properties) {
-  const classes = useStyles();
 
   return (
     <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
+      <Table sx={{minWidth: '650px'}} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>

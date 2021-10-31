@@ -1,34 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
-const Grid = dynamic(() => import('@material-ui/core/Grid'));
+const Grid = dynamic(() => import('@mui/material/Grid'));
 const Paper = dynamic(() => import('@mui/material/Paper'));
 const Typography = dynamic(() => import('@mui/material/Typography'));
-const TextField = dynamic(() => import('@material-ui/core/TextField'));
-const List = dynamic(() => import('@material-ui/core/List'));
-const ListItem = dynamic(() => import('@material-ui/core/ListItem'));
-const ListItemText = dynamic(() => import('@material-ui/core/ListItemText'));
-const Layout = dynamic(() => import('../components/Layout'));
+const TextField = dynamic(() => import('@mui/material/TextField'));
+const List = dynamic(() => import('@mui/material/List'));
+const ListItem = dynamic(() => import('@mui/material/ListItem'));
+const ListItemText = dynamic(() => import('@mui/material/ListItemText'));
+const SEO = dynamic(() => import('../components/SEO'));
 
-import { makeStyles } from '@material-ui/core/styles';
 import { useEnvironment, useAnalytics } from '../components/states';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-  },
-  searchResults: {
-    width: '100%',
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
 
 function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
@@ -37,7 +22,6 @@ function ListItemLink(props) {
 function SearchPanel (properties) {
   const { t } = useTranslation('search');
   const [overlay, setOverlay] = useState();
-  const classes = useStyles();
 
   const config = properties.config;
   const art = properties.art;
@@ -86,48 +70,47 @@ function SearchPanel (properties) {
   };
 
   return (
-    <Layout
+    <SEO
       description={t('header_description')}
       title={t('header_title')}
       siteTitle={config.title}
-    >
-      <Grid item xs={12} key={"Search Window"}>
-        <Paper className={classes.paper} style={{'padding': '20px'}}>
-            <Typography gutterBottom variant="h4" component="h1">
-              {t('header')}
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              {t('body')}
-            </Typography>
-            <TextField
-              key="searchInput"
-              id="outlined-basic"
-              label="NFT name"
-              onChange={updateSearchValue}
-              variant="outlined"
-              style={{'marginTop': '20px'}}
-            />
-            <div className={classes.root}>
-              <List component="nav" aria-label="search result list">
-                {
-                  overlay
-                }
-              </List>
-            </div>
-        </Paper>
-        <Paper className={classes.paper} style={{'padding': '20px', 'marginTop': '20px'}}>
-            <Typography gutterBottom variant="h5" component="h5">
-              {t('help_header')}
-            </Typography>
-            <Typography variant="body2" gutterBottom>
-              {t('not_all')}
-            </Typography>
-            <Typography variant="body2" gutterBottom>
-              {t('pre_a')}<Link href="/viewers">{t('a1')}</Link> & <Link href="/viewers">{t('a2')}</Link>!
-            </Typography>
-        </Paper>
-      </Grid>
-    </Layout>
+    />,
+    <Grid item xs={12} key={"Search Window"}>
+      <Paper style={{'padding': '20px'}}>
+          <Typography gutterBottom variant="h4" component="h1">
+            {t('header')}
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            {t('body')}
+          </Typography>
+          <TextField
+            key="searchInput"
+            id="outlined-basic"
+            label="NFT name"
+            onChange={updateSearchValue}
+            variant="outlined"
+            style={{'marginTop': '20px'}}
+          />
+          <div sx={{'& > *': { m: 1, width: '25ch' }}}>
+            <List component="nav" aria-label="search result list">
+              {
+                overlay
+              }
+            </List>
+          </div>
+      </Paper>
+      <Paper style={{'padding': '20px', 'marginTop': '20px'}}>
+          <Typography gutterBottom variant="h5" component="h5">
+            {t('help_header')}
+          </Typography>
+          <Typography variant="body2" gutterBottom>
+            {t('not_all')}
+          </Typography>
+          <Typography variant="body2" gutterBottom>
+            {t('pre_a')}<Link href="/viewers">{t('a1')}</Link> & <Link href="/viewers">{t('a2')}</Link>!
+          </Typography>
+      </Paper>
+    </Grid>
   );
 }
 
@@ -156,9 +139,9 @@ export const getStaticProps = async ({ locale }) => {
     props: {
       art: art,
       config: config,
-      ...await serverSideTranslations(locale, ['search', 'nav']),
+      ...(await serverSideTranslations(locale, ['search', 'nav'])),
     }
-  }
+  };
 }
 
 export default Search

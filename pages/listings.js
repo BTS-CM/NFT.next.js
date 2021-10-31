@@ -1,11 +1,10 @@
 import { useEffect } from "react";
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@mui/material/Paper';
 import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 
 const List = dynamic(() => import('../components/List'));
-const Layout = dynamic(() => import('../components/Layout'));
+const SEO = dynamic(() => import('../components/SEO'));
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -25,13 +24,12 @@ function Listings (properties) {
   }, [analytics]);
 
   return (
-    <Layout
+    <SEO
       description={t('header_description')}
       title={t('header_title')}
       siteTitle={config.title}
-    >
-      <List {...properties}/>
-    </Layout>
+    />,
+    <List {...properties}/>
   );
 }
 
@@ -45,9 +43,9 @@ export const getStaticProps = async ({ locale }) => {
     props: {
       config: config,
       art: art,
-      ...await serverSideTranslations(locale, ['listings', 'nav']),
+      ...(await serverSideTranslations(locale, ['listings', 'nav'])),
     }
-  }
+  };
 }
 
 

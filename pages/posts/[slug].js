@@ -1,64 +1,49 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@mui/material/Paper';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import moment from 'moment';
+
+import dayjs from 'dayjs';
 import dynamic from 'next/dynamic'
 
-const Layout = dynamic(() => import('../../components/Layout'));
+const SEO = dynamic(() => import('../../components/SEO'));
 
 import { getPostBySlug, getAllPosts } from '../../lib/api'
 import markdownToHtml from '../../lib/markdownToHtml'
 import config from '../../components/config.json';
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'left',
-    color: theme.palette.text.secondary,
-  },
-  a: {
-    color: theme.palette.text.secondary
-  }
-}));
-
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter()
-  const classes = useStyles();
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
 
   return (
-    <Layout
+    <SEO
       title={`${post.title} | ${config.title}`}
       description={`${config.title} article about "${post.title}"`}
       siteTitle={config.title}
-    >
-      <Paper className={classes.paper}>
-        {router.isFallback ? (
-          <p>Loading…</p>
-        ) : (
-          <>
-            <article>
-              <h2>{post.title}</h2>
-              <h3>
-                <time dateTime={post.date}>
-                  {
-                    moment(post.date).format("Do MMMM YYYY")
-                  }
-                </time>
-              </h3>
-              <div className={classes.markdown}
-                dangerouslySetInnerHTML={{ __html: post.content }}
-              />
-            </article>
-          </>
-        )}
-      </Paper>
-    </Layout>
+    />,
+    <Paper sx={{p:2, textAlign: 'left', color: 'text.secondary'}}>
+      {router.isFallback ? (
+        <p>Loading…</p>
+      ) : (
+        <>
+          <article>
+            <h2>{post.title}</h2>
+            <h3>
+              <time dateTime={post.date}>
+                {
+                  dayjs(post.date).format("D MMMM YYYY")
+                }
+              </time>
+            </h3>
+            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          </article>
+        </>
+      )}
+    </Paper>
   )
 }
 
@@ -80,9 +65,9 @@ export async function getStaticProps({ params, locale }) {
         ...post,
         content,
       },
-      ...await serverSideTranslations(locale, ['nav']),
+      ...(await serverSideTranslations(locale, ['nav'])),
     },
-  }
+  };
 }
 
 export const getStaticPaths = async ({ locales }) => {

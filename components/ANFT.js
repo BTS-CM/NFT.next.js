@@ -1,21 +1,20 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
-const Grid = dynamic(() => import('@material-ui/core/Grid'));
-const Paper = dynamic(() => import('@material-ui/core/Paper'));
-const Button = dynamic(() => import('@material-ui/core/Button'));
+const Grid = dynamic(() => import('@mui/material/Grid'));
+const Paper = dynamic(() => import('@mui/material/Paper'));
+const Button = dynamic(() => import('@mui/material/Button'));
 const Typography = dynamic(() => import('@mui/material/Typography'));
-const Avatar = dynamic(() => import('@material-ui/core/Avatar'));
-const AppBar = dynamic(() => import('@material-ui/core/AppBar'));
-const Tabs = dynamic(() => import('@material-ui/core/Tabs'));
-const Tab = dynamic(() => import('@material-ui/core/Tab'));
-const TextareaAutosize = dynamic(() => import('@material-ui/core/TextareaAutosize'));
-const Tooltip = dynamic(() => import('@material-ui/core/Tooltip'));
-const Zoom = dynamic(() => import('@material-ui/core/Zoom'));
-import { makeStyles } from '@material-ui/core/styles';
+const Avatar = dynamic(() => import('@mui/material/Avatar'));
+const AppBar = dynamic(() => import('@mui/material/AppBar'));
+const Tabs = dynamic(() => import('@mui/material/Tabs'));
+const Tab = dynamic(() => import('@mui/material/Tab'));
+const TextareaAutosize = dynamic(() => import('@mui/material/TextareaAutosize'));
+const Tooltip = dynamic(() => import('@mui/material/Tooltip'));
+const Zoom = dynamic(() => import('@mui/material/Zoom'));
 
 import config from "./config.json";
 
@@ -23,7 +22,7 @@ const OBJT = dynamic(() => import('./OBJT'));
 const IssuerDetails = dynamic(() => import('./IssuerDetails'));
 const NFTHolder = dynamic(() => import('./NFTHolder'));
 const IPFSCarouselElement = dynamic(() => import('./IPFSCarousel'));
-import Chip  from '@material-ui/core/Chip';
+import Chip from '@mui/material/Chip';
 
 import {
   LinkedinShareButton,
@@ -139,35 +138,6 @@ export default function ANFT (properties) {
                             ? `"${title}" (${symbol}) by ${artist} - Bitshares NFT`
                             : "Loading an NFT from the Bitshares blockchain";
 
-  const useStyles = makeStyles((theme) => ({
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-      marginBottom: individual ? theme.spacing(0) : theme.spacing(2)
-    },
-    chip: {
-      margin: theme.spacing(0.25)
-    },
-    media: {
-      maxWidth: '100%'
-    },
-    root: {
-      textAlign: 'center'
-    },
-    a: {
-      color: theme.palette.text.Primary,
-      textDecoration: 'none'
-    },
-    share: {
-      margin: theme.spacing(0.25)
-    },
-    button: {
-      margin: theme.spacing(1)
-    }
-  }));
-
-  const classes = useStyles();
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -178,7 +148,7 @@ export default function ANFT (properties) {
           const flagValue = asset_flags[flag];
           return flagValue === true
             ? <Chip
-                className={classes.chip}
+                sx={{m: 0.25}}
                 avatar={<Avatar>{flagValue === true || flagValue === 'true'  ? '✔' : '❌'}</Avatar>}
                 label={flag.replace(/_/g, ' ')}
                />
@@ -191,23 +161,25 @@ export default function ANFT (properties) {
     ? Object.keys(permissions).map(
         (permission) => {
           const permissionValue = permissions[permission];
-          return <Tooltip
-                  TransitionComponent={Zoom}
-                  disableFocusListener
-                  title={
-                    permissionValue === true || permissionValue === 'true'
-                      ? t('permissionTips.enabled.' + permission)
-                      : t('permissionTips.disabled.' + permission)
-                  }
-                  key={permission + '_tooltip'}
-                >
-                  <Chip
-                    className={classes.chip}
-                    avatar={<Avatar>{permissionValue === true || permissionValue === 'true'  ? '✔' : '❌'}</Avatar>}
-                    label={permission.replace(/_/g, ' ')}
-                    key={permission + '_chip'}
-                   />
-                </Tooltip>;
+          return (
+            <Tooltip
+                    TransitionComponent={Zoom}
+                    disableFocusListener
+                    title={
+                      permissionValue === true || permissionValue === 'true'
+                        ? t('permissionTips.enabled.' + permission)
+                        : t('permissionTips.disabled.' + permission)
+                    }
+                    key={permission + '_tooltip'}
+                  >
+                    <Chip
+                      sx={{m: 0.25}}
+                      avatar={<Avatar>{permissionValue === true || permissionValue === 'true'  ? '✔' : '❌'}</Avatar>}
+                      label={permission.replace(/_/g, ' ')}
+                      key={permission + '_chip'}
+                     />
+                  </Tooltip>
+          );
 
         }
       )
@@ -216,7 +188,7 @@ export default function ANFT (properties) {
   const tagChips = tags
     ? tags.map((tag) => {
       return <Chip
-        className={classes.chip}
+        sx={{m: 0.25}}
         label={tag}
         key={`tagchip: ${tag}`}
        />
@@ -226,7 +198,7 @@ export default function ANFT (properties) {
   const nftFlagChips = nft_flags
     ? nft_flags.map((flag) => {
       return <Chip
-        className={classes.chip}
+        sx={{m: 0.25}}
         label={flag}
         key={`flagchip: ${flag}`}
        />
@@ -254,11 +226,10 @@ export default function ANFT (properties) {
   }
 
   return (
-
-      <span style={{'paddingBottom': '25px'}} key={symbol + "NFT"}>
-        <Paper className={classes.paper} id={id}>
+      <span sx={{pb: '25px'}} key={symbol + "NFT"}>
+        <Paper sx={{p: 2, textAlign: 'center', color: 'text.secondary', mb: individual ? 0 : 2}} id={id}>
           <Typography gutterBottom variant="h4" component="h1">
-            &quot;<Link href={`/nft/${symbol}`} className={classes.a} passHref><a>{title}</a></Link>&quot;{t('by')}{artist}
+            &quot;<Link href={`/nft/${symbol}`} sx={{color: 'text.Primary', textDecoration: 'none'}} passHref><a>{title}</a></Link>&quot;{t('by')}{artist}
           </Typography>
           {
             imgURL && !media_png_multihashes
@@ -269,7 +240,7 @@ export default function ANFT (properties) {
                     height={height}
                     width={width}
                     alt={short_name + " image"}
-                    className={classes.media}
+                    sx={{maxWidth: '100%'}}
                   />
                 </a>
               : <OBJT data={image} />
@@ -319,10 +290,10 @@ export default function ANFT (properties) {
           </TabPanel>
 
           <TabPanel value={value} index={1} id="Asset">
-            <Chip className={classes.chip} label={`${t('asset.name')}: ${symbol ? symbol : '???'}`} />
+            <Chip sx={{m: 0.25}} label={`${t('asset.name')}: ${symbol ? symbol : '???'}`} />
             {holder}
-            <Chip className={classes.chip} label={`${t('asset.quantity')}: ${current_supply ? current_supply : '???'}`} />
-            <Chip className={classes.chip} label={`${t('asset.file_type')}: ${type ? type : '???'}`} />
+            <Chip sx={{m: 0.25}} label={`${t('asset.quantity')}: ${current_supply ? current_supply : '???'}`} />
+            <Chip sx={{m: 0.25}} label={`${t('asset.file_type')}: ${type ? type : '???'}`} />
 
             <Tooltip
               TransitionComponent={Zoom}
@@ -333,7 +304,7 @@ export default function ANFT (properties) {
                   : t('asset.offchain')
                 }
             >
-              <Chip className={classes.chip} label={`${t('asset.encoding')}: ${encoding ? encoding : '???'}`} />
+              <Chip sx={{m: 0.25}} label={`${t('asset.encoding')}: ${encoding ? encoding : '???'}`} />
             </Tooltip>
 
             <Tooltip
@@ -345,7 +316,7 @@ export default function ANFT (properties) {
                   : t('asset.precision_bad')
                 }
             >
-              <Chip className={classes.chip} label={`${t('asset.precision')}: ${precision}`} />
+              <Chip sx={{m: 0.25}} label={`${t('asset.precision')}: ${precision}`} />
             </Tooltip>
             {detailsOfIssuer}
           </TabPanel>
@@ -369,7 +340,7 @@ export default function ANFT (properties) {
               <FacebookShareButton
                 url={shareUrl}
                 quote={title}
-                className={classes.share}
+                sx={{m: 0.25}}
               >
                 <FacebookIcon size={32} round />
               </FacebookShareButton>
@@ -377,7 +348,7 @@ export default function ANFT (properties) {
               <TwitterShareButton
                 url={shareUrl}
                 title={helmet_description}
-                className={classes.share}
+                sx={{m: 0.25}}
               >
                 <TwitterIcon size={32} round />
               </TwitterShareButton>
@@ -385,7 +356,7 @@ export default function ANFT (properties) {
               <TelegramShareButton
                 url={shareUrl}
                 title={title}
-                className={classes.share}
+                sx={{m: 0.25}}
               >
                 <TelegramIcon size={32} round />
               </TelegramShareButton>
@@ -394,12 +365,12 @@ export default function ANFT (properties) {
                 url={shareUrl}
                 title={title}
                 separator=":: "
-                className={classes.share}
+                sx={{m: 0.25}}
               >
                 <WhatsappIcon size={32} round />
               </WhatsappShareButton>
 
-              <LinkedinShareButton url={shareUrl} className={classes.share} >
+              <LinkedinShareButton url={shareUrl} sx={{m: 0.25}} >
                 <LinkedinIcon size={32} round />
               </LinkedinShareButton>
 
@@ -408,7 +379,7 @@ export default function ANFT (properties) {
                 title={title}
                 windowWidth={660}
                 windowHeight={460}
-                className={classes.share}
+                sx={{m: 0.25}}
               >
                 <RedditIcon size={32} round />
               </RedditShareButton>
@@ -416,7 +387,7 @@ export default function ANFT (properties) {
               <TumblrShareButton
                 url={shareUrl}
                 title={title}
-                className={classes.share}
+                sx={{m: 0.25}}
               >
                 <TumblrIcon size={32} round />
               </TumblrShareButton>
@@ -425,7 +396,7 @@ export default function ANFT (properties) {
                 url={shareUrl}
                 title={title}
                 description={shareUrl}
-                className={classes.share}
+                sx={{m: 0.25}}
               >
                 <LivejournalIcon size={32} round />
               </LivejournalShareButton>
@@ -433,7 +404,7 @@ export default function ANFT (properties) {
               <MailruShareButton
                 url={shareUrl}
                 title={title}
-                className={classes.share}
+                sx={{m: 0.25}}
               >
                 <MailruIcon size={32} round />
               </MailruShareButton>
@@ -442,7 +413,7 @@ export default function ANFT (properties) {
                 url={shareUrl}
                 subject={title}
                 body="body"
-                className={classes.share}
+                sx={{m: 0.25}}
               >
                 <EmailIcon size={32} round />
               </EmailShareButton>
@@ -450,7 +421,7 @@ export default function ANFT (properties) {
               <ViberShareButton
                 url={shareUrl}
                 title={title}
-                className={classes.share}
+                sx={{m: 0.25}}
               >
                 <ViberIcon size={32} round />
               </ViberShareButton>
@@ -458,7 +429,7 @@ export default function ANFT (properties) {
               <WorkplaceShareButton
                 url={shareUrl}
                 quote={title}
-                className={classes.share}
+                sx={{m: 0.25}}
               >
                 <WorkplaceIcon size={32} round />
               </WorkplaceShareButton>
@@ -466,7 +437,7 @@ export default function ANFT (properties) {
               <LineShareButton
                 url={shareUrl}
                 title={title}
-                className={classes.share}
+                sx={{m: 0.25}}
               >
                 <LineIcon size={32} round />
               </LineShareButton>
@@ -474,7 +445,7 @@ export default function ANFT (properties) {
               <PocketShareButton
                 url={shareUrl}
                 title={title}
-                className={classes.share}
+                sx={{m: 0.25}}
               >
                 <PocketIcon size={32} round />
               </PocketShareButton>
@@ -482,7 +453,7 @@ export default function ANFT (properties) {
               <InstapaperShareButton
                 url={shareUrl}
                 title={title}
-                className={classes.share}
+                sx={{m: 0.25}}
               >
                 <InstapaperIcon size={32} round />
               </InstapaperShareButton>
@@ -492,7 +463,7 @@ export default function ANFT (properties) {
                 title={title}
                 windowWidth={660}
                 windowHeight={460}
-                className={classes.share}
+                sx={{m: 0.25}}
               >
                 <HatenaIcon size={32} round />
               </HatenaShareButton>
@@ -505,16 +476,16 @@ export default function ANFT (properties) {
             </Typography>
 
             <a href={`https://wallet.bitshares.org/#/market/${symbol}_${market ? market : 'BTS'}`}>
-              <Button className={classes.button} variant="contained">Bitshares.org</Button>
+              <Button sx={{m: 0.25}} variant="contained">Bitshares.org</Button>
             </a>
             <a href={`https://ex.xbts.io/market/${symbol}_${market ? market : 'BTS'}`}>
-              <Button className={classes.button} variant="contained">XBTS.io</Button>
+              <Button sx={{m: 0.25}} variant="contained">XBTS.io</Button>
             </a>
             <a href={`https://dex.iobanker.com/market/${symbol}_${market ? market : 'BTS'}`}>
-              <Button className={classes.button} variant="contained">ioBanker DEX</Button>
+              <Button sx={{m: 0.25}} variant="contained">ioBanker DEX</Button>
             </a>
             <a href={`https://www.gdex.io/market/${symbol}_${market ? market : 'BTS'}`}>
-              <Button className={classes.button} variant="contained">GDEX.io</Button>
+              <Button sx={{m: 0.25}} variant="contained">GDEX.io</Button>
             </a>
             <Tooltip
               TransitionComponent={Zoom}
@@ -522,7 +493,7 @@ export default function ANFT (properties) {
               title={t('buy.tooltip', {symbol: symbol})}
             >
               <a href={`https://github.com/bitshares/bitshares-ui/releases`}>
-                <Button className={classes.button} variant="contained">{t('buy.button')}</Button>
+                <Button sx={{m: 0.25}} variant="contained">{t('buy.button')}</Button>
               </a>
             </Tooltip>
 
@@ -530,13 +501,13 @@ export default function ANFT (properties) {
               Bitshares explorers
             </Typography>
             <a href={`https://cryptofresh.com/a/${symbol}`}>
-              <Button className={classes.button} variant="contained">cryptofresh</Button>
+              <Button sx={{m: 0.25}} variant="contained">cryptofresh</Button>
             </a>
             <a href={`https://bts.ai/asset/${symbol}`}>
-              <Button className={classes.button} variant="contained">bts.ai</Button>
+              <Button sx={{m: 0.25}} variant="contained">bts.ai</Button>
             </a>
             <a href={`https://blocksights.info/#/assets/${symbol}`}>
-              <Button className={classes.button} variant="contained">blocksights.info</Button>
+              <Button sx={{m: 0.25}} variant="contained">blocksights.info</Button>
             </a>
           </TabPanel>
 

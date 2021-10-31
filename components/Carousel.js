@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import dynamic from 'next/dynamic';
 import { useGateway } from './states';
 
@@ -26,7 +26,15 @@ export default function CarouselElement(properties) {
       {
         nfts && nfts.length > 0
           ? nfts.map((nft, i) => {
-              return <NFTCard nft={nft} smSize={12} key={nft.symbol + "_card"} index={index} visible={index === i} nearby={index === i - 1 || index === i + 1} />
+              return <NFTCard
+                        nft={nft}
+                        smSize={12}
+                        key={nft.symbol + "_card"}
+                        index={index}
+                        visible={index === i}
+                        nearby={index === i - 1 || index === i + 1}
+                        {...properties}
+                      />
             }).filter(x => x)
           : []
       }

@@ -1,29 +1,15 @@
-import React, {useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 
-const Tooltip = dynamic(() => import('@material-ui/core/Tooltip'));
-const Zoom = dynamic(() => import('@material-ui/core/Zoom'));
-import Chip  from '@material-ui/core/Chip';
+const Tooltip = dynamic(() => import('@mui/material/Tooltip'));
+const Zoom = dynamic(() => import('@mui/material/Zoom'));
+import Chip  from '@mui/material/Chip';
 
 import useSWR from 'swr';
 
 const fetcher = (url) => fetch(url, {mode: "cors"}).then((res) => res.json())
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-  a: {
-    color: theme.palette.text.secondary
-  }
-}));
-
 export default function IssuerDetails(properties) {
-  const classes = useStyles();
   const { t } = useTranslation('nft');
   const issuer = properties.issuer;
 
@@ -52,7 +38,7 @@ export default function IssuerDetails(properties) {
           : t('asset.asset_ownership_warning')
       }
     >
-      <Chip className={classes.chip} color={issuerName && issuerName === 'null-account' ? 'primary' : 'secondary'} label={`${t('asset.issuer')}: ${issuerName}`} />
+      <Chip color={issuerName && issuerName === 'null-account' ? 'primary' : 'secondary'} label={`${t('asset.issuer')}: ${issuerName}`} />
     </Tooltip>
   );
 }

@@ -1,20 +1,12 @@
-import React, {useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {useState} from 'react';
 import { useTranslation } from 'next-i18next';
 import useSWR from 'swr';
 
-import Chip  from '@material-ui/core/Chip';
-
-const useStyles = makeStyles((theme) => ({
-  chip: {
-    margin: theme.spacing(0.25)
-  }
-}));
+import Chip from '@mui/material/Chip';
 
 const fetcher = (url) => fetch(url, {method: "GET", mode: "cors"}).then((res) => res.json())
 
 export default function NFTHolder(properties) {
-  const classes = useStyles();
   const { t } = useTranslation('nft');
   const id = properties.id;
 
@@ -32,6 +24,6 @@ export default function NFTHolder(properties) {
   };
 
   return (
-    <Chip className={classes.chip} label={`${t('asset.owner')}: ${data && data.length ? data[0].name : '???'}`} />
+    <Chip sx={{m: 0.25}} label={`${t('asset.owner')}: ${data && data.length ? data[0].name : '???'}`} />
   );
 }

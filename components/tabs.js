@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic'
-const Box = dynamic(() => import('@material-ui/core/Box'));
-const Typography = dynamic(() => import('@material-ui/core/Typography'));
+const Box = dynamic(() => import('@mui/material/Box'));
+const Typography = dynamic(() => import('@mui/material/Typography'));
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

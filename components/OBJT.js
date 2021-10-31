@@ -1,17 +1,18 @@
-import React, { useRef, Suspense } from 'react'
+import { useRef, Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 import { useTexture, OrbitControls, Stars } from "@react-three/drei";
 import { EffectComposer, Bloom, Vignette, SMAA } from '@react-three/postprocessing'
 import atob from 'atob';
-import * as THREE from 'three';
+
+import NearestFilter from "three";
 
 function OBJ(props) {
   const pngString = props.png;
   const texture = useTexture(`data:image/png;base64,${pngString}`);
   texture.anisotropy = 16;
-  texture.magFilter = THREE.NearestFilter;
-  texture.minFilter = THREE.NearestFilter;
+  texture.magFilter = NearestFilter;
+  texture.minFilter = NearestFilter;
 
   const objString = atob(props.obj);
   let obj_loader = new OBJLoader();

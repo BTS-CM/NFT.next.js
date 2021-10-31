@@ -1,4 +1,4 @@
-import React, { useRef, Suspense } from 'react'
+import { useRef, Suspense } from 'react'
 import ReactDOM from 'react-dom'
 import { Canvas } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
@@ -23,7 +23,7 @@ export default function GLTFT(properties) {
 
   let media_gltf = properties.data;
 
-  return (<Canvas style={{"height": "500px", "backgroundColor": "black"}}>
+  return (<Canvas sx={{height: "500px", backgroundColor: "black"}}>
             <Suspense fallback={null}>
               <Stars
                 radius={100} // Radius of the inner sphere (default=100)

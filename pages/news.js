@@ -1,7 +1,6 @@
 import dayjs from 'dayjs';
 import Paper from '@mui/material/Paper';
 import Link from 'next/link';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 
@@ -54,6 +53,8 @@ export const getStaticProps = async ({locale}) => {
     'author',
     'excerpt',
   ])
+
+  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
 
   return {
     props: {

@@ -247,7 +247,7 @@ function MyApp(props) {
           <CssBaseline/>
           <Head>
             <meta name="theme-color" content={defaultTheme.palette.primary.main} />
-            <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover' />
+            <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
             <meta charSet="utf-8" />
             <meta property="og:type" content="website" />
             <meta property="twitter:card" content="summary" key="twcard" />

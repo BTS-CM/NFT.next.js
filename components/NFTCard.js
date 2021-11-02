@@ -14,7 +14,6 @@ import { CardActionArea, CardActions } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 
 import { useTranslation } from 'next-i18next';
-import { motion } from "framer-motion"
 import { useInView } from 'react-intersection-observer';
 
 import CustomLink from './CustomLink';
@@ -26,6 +25,7 @@ export default function NFTCard(properties) {
   let visible = properties && properties.visible ? properties.visible : null;
   let nearby = properties && properties.nearby ? properties.nearby : null;
   let isMobile = properties && properties.isMobile ? properties.isMobile : false;
+  let isApple = properties && properties.isApple ? properties.isApple : false;
 
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -55,27 +55,36 @@ export default function NFTCard(properties) {
 
   let media = null;
   if (visible || smSize === 4 && inView) {
-    media = <CardMedia
-              component="img"
-              sx={{width: '100%', height: '100%'}}
-              image={!media_json ? `/images/${symbol}/0${smSize === 4 || isMobile ? '_gallery' : ''}.webp` : "/images/placeholders/0.webp"}
-              alt={`${symbol} NFT image`}
-            />
+    media = isApple
+              ? <img
+                  sx={{width: '100%', height: '100%'}}
+                  alt={`${symbol} NFT apple image`}
+                  src={!media_json ? `/images/${symbol}/0${smSize === 4 || isMobile ? '_gallery' : ''}.webp` : "/images/placeholders/0.webp"}
+                />
+              : <CardMedia
+                  component="img"
+                  sx={{width: '100%', height: '100%'}}
+                  image={!media_json ? `/images/${symbol}/0${smSize === 4 || isMobile ? '_gallery' : ''}.webp` : "/images/placeholders/0.webp"}
+                  alt={`${symbol} NFT image`}
+                />;
   } else if (nearby) {
-    media = <CardMedia
-              component="img"
-              sx={{width: '100%', height: '100%'}}
-              image={!media_json ? `/images/${symbol}/0_thumb.webp` : "/images/placeholders/0.webp"}
-              alt={`${symbol} NFT image`}
-            />
+    media = isApple
+              ? <img
+                  sx={{width: '100%', height: '100%'}}
+                  alt={`${symbol} NFT apple image`}
+                  src={!media_json ? `/images/${symbol}/0_thumb.webp` : "/images/placeholders/0.webp"}
+                />
+              : <CardMedia
+                  component="img"
+                  sx={{width: '100%', height: '100%'}}
+                  image={!media_json ? `/images/${symbol}/0_thumb.webp` : "/images/placeholders/0.webp"}
+                  alt={`${symbol} NFT image`}
+                />
   }
+
 
   return (
     <Grid item xs={12} sm={12} key={"Right info"}>
-      <motion.div
-        whileHover={{ scale: smSize > 4 ? 1 : 1.05 }}
-        whileTap={{ scale: smSize > 4 ? 1 : 0.95 }}
-      >
         <Card
           sx={{
             p: smSize > 4 ? 3 : 2,
@@ -98,20 +107,15 @@ export default function NFTCard(properties) {
           </CardActionArea>
           <CardActions>
             <Grid item xs={6} key={"left button"}>
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button
-                  id="basic-button"
-                  aria-controls="basic-menu"
-                  aria-haspopup="true"
-                  aria-expanded={open ? 'true' : undefined}
-                  onClick={handleClick}
-                  variant="contained">
-                  {t('button_buy')}
-                </Button>
-              </motion.div>
+              <Button
+                id="basic-button"
+                aria-controls="basic-menu"
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}
+                variant="contained">
+                {t('button_buy')}
+              </Button>
 
               <Menu
                 id={"basic-menu-" + symbol}
@@ -143,18 +147,12 @@ export default function NFTCard(properties) {
               </Menu>
             </Grid>
             <Grid item xs={6} key={"right button"}>
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button href={address + "/nft/" + symbol} variant="contained">
-                  {t('button_info')}
-                </Button>
-              </motion.div>
+              <Button href={address + "/nft/" + symbol} variant="contained">
+                {t('button_info')}
+              </Button>
             </Grid>
           </CardActions>
         </Card>
-      </motion.div>
     </Grid>
   );
 }

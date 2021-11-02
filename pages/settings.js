@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic';
 
 const Typography = dynamic(() => import('@mui/material/Typography'));
@@ -204,6 +203,7 @@ export const getStaticProps = async ({ locale }) => {
 
   let config = require('../components/config.json');
   let ipfsJSON = require('../components/ipfsJSON.json');
+  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
 
   return {
     props: {

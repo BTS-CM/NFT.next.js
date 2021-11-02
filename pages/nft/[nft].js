@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import ReactGA from 'react-ga4';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
+import { isIOS, isSafari, isMobileSafari } from 'react-device-detect'
 
 const SEO = dynamic(() => import('../../components/SEO'));
 const ANFT = dynamic(() => import('../../components/ANFT'));
@@ -39,7 +39,7 @@ function ValidNFT (props) {
     title={t('header_title', {nft: nft})}
     siteTitle={config.title}
   />,
-  <ANFT id={nft} initAsset={initAsset} key={nft} individual={true} {...props} />
+  <ANFT id={nft} initAsset={initAsset} key={nft} individual={true} isApple={isIOS || isSafari || isMobileSafari} {...props} />
 }
 
 
@@ -117,9 +117,9 @@ export const getStaticPaths = async ({ locales }) => {
 }
 
 export const getStaticProps = async ({ locale, params }) => {
-
   let config = require('../../components/config.json');
   let initAsset = require(`../../components/assets/${params.nft}.json`);
+  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
 
   return {
     props: {

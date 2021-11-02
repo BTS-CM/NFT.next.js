@@ -1,8 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic';
-import {isMobile} from 'react-device-detect';
+import { isMobile, isIOS, isSafari, isMobileSafari } from 'react-device-detect';
 
 const Grid = dynamic(() => import('@mui/material/Grid'));
 const Paper = dynamic(() => import('@mui/material/Paper'));
@@ -35,7 +34,7 @@ function Home(props) {
     }
   }, [analytics]);
 
-  const carouselMemo = useMemo(() => <CarouselElement nfts={nfts} isMobile={isMobile} />, [nfts]);
+  const carouselMemo = useMemo(() => <CarouselElement nfts={nfts} isMobile={isMobile} isApple={isIOS || isSafari || isMobileSafari} />, [nfts]);
 
   const trading = useMemo(() => (
                     <Grid item xs={12} sm={6} key={"Trading"}>
@@ -141,6 +140,8 @@ export const getStaticProps = async ({ locale }) => {
       media_json: nft.description.nft_object.media_json ? true : false
     }
   });
+
+  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
 
   return {
     props: {

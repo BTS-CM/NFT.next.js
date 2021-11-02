@@ -66,6 +66,9 @@ export default function ANFT (properties) {
   let individual = properties.individual;
   let initAsset = properties.initAsset;
   let id = properties.id;
+
+  let isApple = properties.isApple;
+
   const { t } = useTranslation('nft');
 
   if (!id || !id.includes(".")) {
@@ -163,22 +166,22 @@ export default function ANFT (properties) {
           const permissionValue = permissions[permission];
           return (
             <Tooltip
-                    TransitionComponent={Zoom}
-                    disableFocusListener
-                    title={
-                      permissionValue === true || permissionValue === 'true'
-                        ? t('permissionTips.enabled.' + permission)
-                        : t('permissionTips.disabled.' + permission)
-                    }
-                    key={permission + '_tooltip'}
-                  >
-                    <Chip
-                      sx={{m: 0.25}}
-                      avatar={<Avatar>{permissionValue === true || permissionValue === 'true'  ? '✔' : '❌'}</Avatar>}
-                      label={permission.replace(/_/g, ' ')}
-                      key={permission + '_chip'}
-                     />
-                  </Tooltip>
+              TransitionComponent={Zoom}
+              disableFocusListener
+              title={
+                permissionValue === true || permissionValue === 'true'
+                  ? t('permissionTips.enabled.' + permission)
+                  : t('permissionTips.disabled.' + permission)
+              }
+              key={permission + '_tooltip'}
+            >
+              <Chip
+                sx={{m: 0.25}}
+                avatar={<Avatar>{permissionValue === true || permissionValue === 'true'  ? '✔' : '❌'}</Avatar>}
+                label={permission.replace(/_/g, ' ')}
+                key={permission + '_chip'}
+               />
+            </Tooltip>
           );
 
         }
@@ -217,12 +220,38 @@ export default function ANFT (properties) {
 
   let height = 500;
   let width = 500;
+  let imageComponent = undefined;
   if (imgURL && !media_png_multihashes && fileType === 'png') {
+
     const dimensions = getPngDimensions(image);
     if (dimensions) {
       height = dimensions.height;
       width = dimensions.width;
     }
+
+    imageComponent = isApple
+                      ? <a href={imgURL}>
+                          <img
+                            key={short_name + " apple Image"}
+                            src={imgURL}
+                            alt={short_name + " apple image"}
+                            sx={{maxWidth: '100%'}}
+                          />
+                        </a>
+                      : <a href={imgURL}>
+                          <Image
+                            key={short_name + " Image"}
+                            src={imgURL}
+                            height={height}
+                            width={width}
+                            alt={short_name + " image"}
+                            sx={{maxWidth: '100%'}}
+                          />
+                        </a>
+  } else if (asset && media_png_multihashes) {
+    imageComponent = <IPFSCarouselElement media_png_multihashes={media_png_multihashes} asset={asset} isApple={isApple} />;
+  } else if (nft_object.media_json) {
+    imageComponent = <OBJT data={image} />
   }
 
   return (
@@ -232,26 +261,8 @@ export default function ANFT (properties) {
             &quot;<Link href={`/nft/${symbol}`} sx={{color: 'text.Primary', textDecoration: 'none'}} passHref><a>{title}</a></Link>&quot;{t('by')}{artist}
           </Typography>
           {
-            imgURL && !media_png_multihashes
-              ? <a href={imgURL}>
-                  <Image
-                    key={short_name + " Image"}
-                    src={imgURL}
-                    height={height}
-                    width={width}
-                    alt={short_name + " image"}
-                    sx={{maxWidth: '100%'}}
-                  />
-                </a>
-              : <OBJT data={image} />
+            imageComponent
           }
-
-          {
-            asset && media_png_multihashes
-              ? <IPFSCarouselElement media_png_multihashes={media_png_multihashes} asset={asset} />
-              : undefined
-          }
-
           <Typography gutterBottom variant="h6" component="h4">
             {main.replace(" To view this token and others, visit https://nftea.gallery", "")}
           </Typography>

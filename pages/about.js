@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const Paper = dynamic(() => import('@mui/material/Paper'));
 const SEO = dynamic(() => import('../components/SEO'));
@@ -43,6 +42,7 @@ function About(properties) {
 export const getStaticProps = async ({ locale }) => {
 
   const config = require('../components/config.json');
+  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
 
   return {
     props: {

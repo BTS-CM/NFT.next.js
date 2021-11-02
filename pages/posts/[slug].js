@@ -1,14 +1,12 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Paper from '@mui/material/Paper';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import dayjs from 'dayjs';
 import dynamic from 'next/dynamic'
 
 const SEO = dynamic(() => import('../../components/SEO'));
 
-import { getPostBySlug, getAllPosts } from '../../lib/api'
 import markdownToHtml from '../../lib/markdownToHtml'
 import config from '../../components/config.json';
 
@@ -48,6 +46,8 @@ export default function Post({ post, morePosts, preview }) {
 }
 
 export async function getStaticProps({ params, locale }) {
+  const {getPostBySlug} = (await import('../../lib/api'));
+
   const post = getPostBySlug(params.slug, [
     'title',
     'date',
@@ -58,7 +58,7 @@ export async function getStaticProps({ params, locale }) {
     'coverImage',
   ])
   const content = await markdownToHtml(post.content || '')
-
+  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
   return {
     props: {
       post: {
@@ -71,7 +71,7 @@ export async function getStaticProps({ params, locale }) {
 }
 
 export const getStaticPaths = async ({ locales }) => {
-
+  const {getAllPosts} = (await import('../../lib/api'));
   const posts = getAllPosts(['slug'])
 
   let postParams = posts.map(post => ({params: {slug: post.slug}}));

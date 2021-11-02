@@ -15,7 +15,7 @@ const CardMedia = dynamic(() => import('@mui/material/CardMedia'));
 const Typography = dynamic(() => import('@mui/material/Typography'));
 const Button = dynamic(() => import('@mui/material/Button'));
 
-import { CardActionArea, CardActions } from '@mui/material';
+import { CardActionArea } from '@mui/material';
 
 function CarouselItem (properties) {
   const [gateway, setGateway] = useGateway();
@@ -28,28 +28,39 @@ function CarouselItem (properties) {
 
   let visible = properties.visible;
   let nearby = properties && properties.nearby ? properties.nearby : null;
+  let isApple = properties && properties.isApple ? properties.isApple : false;
 
   if (!gateway) {
     setGateway('gateway.ipfs.io');
   }
-
-  let linkURL= `https://${gateway}${media_png_multihash.url}`;
 
   let itrs = media_png_multihash.url.split(".")[0].split("/");
   let itr = itrs[itrs.length - 1];
 
   let media = null;
   if (visible) {
-    media = <CardMedia
-              component="img"
-              width="100%"
-              height="100%"
-              image={`/images/${symbol}/${value}.webp`}
-              key={`${symbol}_featured_div_${itr}`}
-              alt={`${symbol}_featured_div_${itr}`}
-            />
+    media = isApple
+            ? <img
+                src={`/images/${symbol}/${value}.webp`}
+                key={`${symbol}_featured_div_${itr}`}
+                alt={`${symbol}_featured_div_${itr}`}
+              />
+            : <CardMedia
+                component="img"
+                width="100%"
+                height="100%"
+                image={`/images/${symbol}/${value}.webp`}
+                key={`${symbol}_featured_div_${itr}`}
+                alt={`${symbol}_featured_div_${itr}`}
+              />
   } else if (nearby) {
-    media = <CardMedia
+    media = isApple
+            ? <img
+                src={`/images/${symbol}/${value}_thumb.webp`}
+                key={`${symbol}_featured_div_thumb_${itr}`}
+                alt={`${symbol}_featured_div_thumb_${itr}`}
+              />
+            : <CardMedia
               component="img"
               width="100%"
               height="100%"
@@ -60,7 +71,7 @@ function CarouselItem (properties) {
   }
 
   return (<Card key={symbol + "_featured_div_" + itr} sx={{p: 0, textAlign: 'center', m: 0.75}}>
-        <CardActionArea href={linkURL}>
+        <CardActionArea href={`https://${gateway}${media_png_multihash.url}`}>
           {media}
         </CardActionArea>
       </Card>);

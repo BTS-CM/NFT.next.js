@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic';
 
 const Typography = dynamic(() => import('@mui/material/Typography'));
@@ -51,10 +50,14 @@ function License(properties) {
   );
 }
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale, ['license', 'nav'])),
-  },
-})
+export const getStaticProps = async ({ locale }) => {
+  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['license', 'nav'])),
+    }
+  }
+}
 
 export default License;

@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
@@ -84,6 +83,7 @@ function Viewers(properties) {
 export const getStaticProps = async ({ locale }) => {
 
   let config = require('../components/config.json');
+  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
 
   return {
     props: {

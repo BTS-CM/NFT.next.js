@@ -99,7 +99,7 @@ export default function NFTCard(properties) {
               <Typography gutterBottom variant="h5" component="div">
                 {title}
               </Typography>
-              <Typography variant="body2" sx={{color: 'text.secondary'}}>
+              <Typography variant="body2" color="text.secondary">
                 {t('created_text', {artist: artist})}
               </Typography>
             </CardContent>

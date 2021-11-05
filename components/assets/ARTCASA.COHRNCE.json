@@ -10,7 +10,7 @@
         "confidential_supply": 0,
         "accumulated_fees": 0,
         "accumulated_collateral_fees": 0,
-        "fee_pool": 50076323
+        "fee_pool": 0
     },
     "permissions": {
         "charge_market_fee": false,

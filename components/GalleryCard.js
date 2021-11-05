@@ -19,7 +19,7 @@ import { motion } from "framer-motion";
 
 import CustomLink from './CustomLink';
 import CurrentValue from './CurrentValue';
-import { useLanguage } from './states';
+import { useLanguage, useTheme } from './states';
 
 export default function GalleryCard(properties) {
   let isMobile = properties && properties.isMobile ? properties.isMobile : false;
@@ -27,6 +27,7 @@ export default function GalleryCard(properties) {
 
   const { t } = useTranslation('gallery');
   const [language, setLanguage] = useLanguage();
+  const [theme, setTheme] = useLanguage();
   const [anchor, setAnchor] = useState(null);
   const [shadow, setShadow] = useState(2);
 
@@ -38,6 +39,8 @@ export default function GalleryCard(properties) {
   const handleClose = () => {
     setAnchor(null);
   };
+
+  let index = properties.index;
 
   let nft = properties.nft;
   let symbol = nft ? nft.symbol : undefined;
@@ -76,10 +79,11 @@ export default function GalleryCard(properties) {
         sx={{
           p: 1,
           textAlign: 'center',
-          m: 1.5,
+          ml: index > 0 ? 1.5 : 1,
+          mr: index < 3 ? 1.5 : 1,
           borderRadius: 4,
-          boxShadow: shadow
         }}
+        style={{boxShadow: `0 0 ${shadow * 2}px ${theme === 'dark' ? 'white' : 'grey'}`}}
       >
         <CardActionArea href={address + "/nft/" + symbol}>
           {media}

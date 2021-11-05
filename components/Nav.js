@@ -80,7 +80,7 @@ export default function Nav(properties) {
   }
 
   return (
-    <AppBar position="static" color="inherit">
+    <AppBar position="static" color="primary">
       <Toolbar>
 
         <IconButton
@@ -102,31 +102,31 @@ export default function Nav(properties) {
           >
             <List>
               <ListItem button component={CustomLink} key={'Home'} href={"/"} locale={language}>
-                  <ListItemText sx={{textDecoration: "none", color: 'text.secondary'}} primary={t('link1')} color="textPrimary" />
+                  <ListItemText primary={t('link1')} color="textPrimary" />
               </ListItem>
               <ListItem button component={CustomLink} key={'Gallery'} href={"/gallery"} locale={language}>
-                  <ListItemText sx={{textDecoration: "none", color: 'text.secondary'}} primary={t('link2')} />
+                  <ListItemText primary={t('link2')} />
               </ListItem>
               <ListItem button component={CustomLink} key={'Listings'} href={"/listings"} locale={language}>
-                  <ListItemText sx={{textDecoration: "none", color: 'text.secondary'}} primary={t('link3')} />
+                  <ListItemText primary={t('link3')} />
               </ListItem>
               <ListItem button component={CustomLink} key={'Search'} href={"/search"} locale={language}>
-                  <ListItemText sx={{textDecoration: "none", color: 'text.secondary'}} primary={t('link4')} />
+                  <ListItemText primary={t('link4')} />
               </ListItem>
               <ListItem button component={CustomLink} key={'About'} href={"/about"} locale={language}>
-                  <ListItemText sx={{textDecoration: "none", color: 'text.secondary'}} primary={t('link5')} />
+                  <ListItemText primary={t('link5')} />
               </ListItem>
               <ListItem button component={CustomLink} key={'License'} href={"/license"} locale={language}>
-                  <ListItemText sx={{textDecoration: "none", color: 'text.secondary'}} primary={t('link6')} />
+                  <ListItemText primary={t('link6')} />
               </ListItem>
               <ListItem button component={CustomLink} key={'Other Viewers'} href={"/viewers"} locale={language}>
-                  <ListItemText sx={{textDecoration: "none", color: 'text.secondary'}} primary={t('link7')} />
+                  <ListItemText primary={t('link7')} />
               </ListItem>
               <ListItem button component={CustomLink} key={'Settings'} href={"/settings"} locale={language}>
-                  <ListItemText sx={{textDecoration: "none", color: 'text.secondary'}} primary={t('link8')} />
+                  <ListItemText primary={t('link8')} />
               </ListItem>
               <ListItem button component={CustomLink} key={'News'} href={"/news"} locale={language}>
-                  <ListItemText sx={{textDecoration: "none", color: 'text.secondary'}} primary={t('link9')} />
+                  <ListItemText primary={t('link9')} />
               </ListItem>
             </List>
           </div>
@@ -134,7 +134,7 @@ export default function Nav(properties) {
 
         <Typography variant="h6" color="inherit" sx={{flexGrow: 1}}>
           <Link href="/" locale={language}>
-            <a sx={{textDecoration: "none", color: 'text.secondary'}}>
+            <a style={{color: 'white'}}>
               {t("header")} {environment && environment === 'staging' ? t("staging"): null}
             </a>
           </Link>
@@ -146,7 +146,7 @@ export default function Nav(properties) {
           aria-controls="long-menu"
           aria-haspopup="true"
           size="small"
-          variant="contained"
+          variant="outline"
           onClick={handleClick}
         >
           <TranslateIcon />
@@ -167,12 +167,12 @@ export default function Nav(properties) {
         >
           {locales.map((option) => (
             <MenuItem component={CustomLink} locale={option.language} href={`${router.asPath}`} key={option.language} selected={option.language === language} onClick={() => { handleClicked(option.language) }}>
-              <a sx={{textDecoration: "none", color: 'text.secondary'}}>{option.aka}</a>
+              <a>{option.aka}</a>
             </MenuItem>
           ))}
         </Menu>
 
-        <Button size="small" variant="contained" onClick={() => { theme === 'dark' ? setTheme('light') : setTheme('dark') }}>
+        <Button size="small" variant="outline" onClick={() => { theme === 'dark' ? setTheme('light') : setTheme('dark') }}>
           {theme === 'dark' ? <NightsStayIcon /> : <Brightness5Icon />}
         </Button>
       </Toolbar>

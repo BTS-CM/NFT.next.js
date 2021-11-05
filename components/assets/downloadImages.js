@@ -5,7 +5,7 @@ const sharp = require('sharp');
 
 const prodArt = art.production;
 const stagingArt = art.staging;
-let assets = stagingArt.map(asset => require(`./${asset.name}.json`));
+let assets = prodArt.map(asset => require(`./${asset.name}.json`));
 
 (async () => {
 

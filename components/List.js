@@ -81,21 +81,21 @@ function List(properties) {
         </Grid>
         <Grid item xs={3}>
             <Link href={`/nft/${symbol}`}>
-              <a sx={{textDecoration: 'none', color: 'text.primary'}}>
+              <a>
                 {`"${title}" by ${artist}`}
               </a>
             </Link>
         </Grid>
         <Grid item xs={3}>
             <Link href={`/nft/${symbol}`}>
-              <a sx={{textDecoration: 'none', color: 'text.primary'}}>
+              <a>
                 {`${fileType ? fileType : ''} (${encoding})`}
               </a>
             </Link>
         </Grid>
         <Grid item xs={3}>
             <Link href={`/nft/${symbol}`}>
-              <a sx={{textDecoration: 'none', color: 'text.primary'}}>
+              <a>
                 {`${symbol} (ID: ${id})`}
               </a>
             </Link>
@@ -106,11 +106,11 @@ function List(properties) {
 
   return (
     <ReactList
-      className="List"
       height={1024}
       itemCount={nfts.length}
       itemSize={175}
       width={isMobile ? 350 : 1150}
+      className="no-scrollbars"
     >
       {Row}
     </ReactList>

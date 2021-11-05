@@ -258,7 +258,7 @@ export default function ANFT (properties) {
       <span sx={{pb: '25px'}} key={symbol + "NFT"}>
         <Paper sx={{p: 2, textAlign: 'center', color: 'text.secondary', mb: individual ? 0 : 2}} id={id}>
           <Typography gutterBottom variant="h4" component="h1">
-            &quot;<Link href={`/nft/${symbol}`} sx={{color: 'text.Primary', textDecoration: 'none'}} passHref><a>{title}</a></Link>&quot;{t('by')}{artist}
+            &quot;<Link href={`/nft/${symbol}`} passHref><a>{title}</a></Link>&quot;{t('by')}{artist}
           </Typography>
           {
             imageComponent

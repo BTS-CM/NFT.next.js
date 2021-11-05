@@ -6,8 +6,6 @@ import { isMobile, isIOS, isSafari, isMobileSafari } from 'react-device-detect';
 const Grid = dynamic(() => import('@mui/material/Grid'));
 const Paper = dynamic(() => import('@mui/material/Paper'));
 const Typography = dynamic(() => import('@mui/material/Typography'));
-const Card = dynamic(() => import('@mui/material/Card'));
-const CardContent = dynamic(() => import('@mui/material/CardContent'));
 const Button = dynamic(() => import('@mui/material/Button'));
 
 const SEO = dynamic(() => import('../components/SEO'));

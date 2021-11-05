@@ -7,7 +7,7 @@ import { isMobile, isIOS, isSafari, isMobileSafari } from 'react-device-detect';
 
 const Paper = dynamic(() => import('@mui/material/Paper'));
 const Grid = dynamic(() => import('@mui/material/Grid'));
-const NFTCard = dynamic(() => import('../components/NFTCard'));
+const GalleryCard = dynamic(() => import('../components/GalleryCard'));
 const SEO = dynamic(() => import('../components/SEO'));
 import { useEnvironment, useAnalytics } from '../components/states';
 
@@ -44,28 +44,34 @@ function Gallery(props) {
             direction="row"
             justifyContent="center"
             alignItems="center"
-            component={Paper}
             style={style}
             key={`tr 3 ${index}`}
           >
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               {
                 currentRow[0]
-                  ? <NFTCard smSize={4} nft={currentRow[0]} key={currentRow[0].symbol + "_card"} isApple={isIOS || isSafari || isMobileSafari} />
+                  ? <GalleryCard nft={currentRow[0]} key={currentRow[0].symbol + "_card"} isApple={isIOS || isSafari || isMobileSafari} />
                   : null
               }
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               {
                 currentRow[1]
-                  ? <NFTCard smSize={4} nft={currentRow[1]} key={currentRow[1].symbol + "_card"} isApple={isIOS || isSafari || isMobileSafari} />
+                  ? <GalleryCard nft={currentRow[1]} key={currentRow[1].symbol + "_card"} isApple={isIOS || isSafari || isMobileSafari} />
                   : null
               }
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               {
                 currentRow[2]
-                  ? <NFTCard smSize={4} nft={currentRow[2]} key={currentRow[2].symbol + "_card"} isApple={isIOS || isSafari || isMobileSafari} />
+                  ? <GalleryCard nft={currentRow[2]} key={currentRow[2].symbol + "_card"} isApple={isIOS || isSafari || isMobileSafari} />
+                  : null
+              }
+            </Grid>
+            <Grid item xs={3}>
+              {
+                currentRow[3]
+                  ? <GalleryCard nft={currentRow[3]} key={currentRow[3].symbol + "_card"} isApple={isIOS || isSafari || isMobileSafari} />
                   : null
               }
             </Grid>
@@ -86,7 +92,7 @@ function Gallery(props) {
           <Grid item xs={12}>
             {
               currentRow
-                ? <NFTCard smSize={4} nft={currentRow} key={currentRow.symbol + "_card"} isApple={isIOS || isSafari || isMobileSafari} />
+                ? <GalleryCard smSize={4} nft={currentRow} key={currentRow.symbol + "_card"} isApple={isIOS || isSafari || isMobileSafari} />
                 : null
             }
           </Grid>
@@ -99,7 +105,7 @@ function Gallery(props) {
           className="List"
           height={1024}
           itemCount={nfts.length}
-          itemSize={isMobile ? 500 : 550}
+          itemSize={isMobile ? 500 : 420}
           width={isMobile ? 350 : 1200}
         >
           {Row}
@@ -122,7 +128,7 @@ function chunkify(cards) {
   let chunk = [];
   let itr = 0;
   for (let i = 0; i < cards.length; i++) {
-    if (itr < 3) {
+    if (itr < 4) {
       chunk.push(cards[i]);
       itr += 1;
     } else {
@@ -148,9 +154,11 @@ export const getStaticProps = async ({ locale }) => {
   let minProdNFTS = prodNFTS.map(nft => {
     return {
       symbol: nft.symbol,
+      id: nft.id,
       market: nft.description.market,
       title: nft.description.nft_object.title,
       artist: nft.description.nft_object.artist,
+      market: nft.description.market,
       media_json: nft.description.nft_object.media_json ? true : false
     }
   });
@@ -159,9 +167,11 @@ export const getStaticProps = async ({ locale }) => {
   let minStagingNFTS = stagingNFTS.map(nft => {
     return {
       symbol: nft.symbol,
+      id: nft.id,
       market: nft.description.market,
       title: nft.description.nft_object.title,
       artist: nft.description.nft_object.artist,
+      market: nft.description.market,
       media_json: nft.description.nft_object.media_json ? true : false
     }
   });

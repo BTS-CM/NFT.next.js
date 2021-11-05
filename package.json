@@ -26,6 +26,7 @@
     "atob": "^2.1.2",
     "axios": "^0.24.0",
     "dayjs": "^1.10.7",
+    "framer-motion": "^5.2.0",
     "fuse.js": "^6.4.6",
     "gray-matter": "^4.0.3",
     "i18next": "^21.3.3",

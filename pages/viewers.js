@@ -30,52 +30,54 @@ function Viewers(properties) {
       title={t('header_title')}
       siteTitle={config.title}
     />,
-    <Grid item xs={12} key={"Viewer grid"}>
-      <Paper sx={{p: 2, m: 0.5, textAlign: 'center', color: 'text.secondary'}}>
-        <Typography gutterBottom variant="h5">
-          {t('nft.header')}
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          {t('nft.body')}
-        </Typography>
-        <Link href={`https://artcasa.gallery/`} passHref>
-          <Button size="small" sx={{m: 1}} variant="contained">ArtCASA</Button>
-        </Link>
-        <Link href={`https://alguienalli.github.io/`} passHref>
-          <Button size="small" sx={{m: 1}} variant="contained">Alguien&apos;s Bitshares NFT Explorer</Button>
-        </Link>
-      </Paper>
-    </Grid>,
-    <Grid item xs={12} key={"Viewer grid"}>
-      <Paper sx={{p: 2, m: 0.5, textAlign: 'center', color: 'text.secondary'}}>
-        <Typography gutterBottom variant="h5">
-          {t('blockchain.header')}
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          {t('blockchain.body')}
-        </Typography>
-        <Link href={`https://wallet.bitshares.org/#/explorer/assets`} passHref>
-          <Button size="small" sx={{m: 1}} variant="contained">Bitshares.org</Button>
-        </Link>
-        <Link href={`https://ex.xbts.io/explorer/assets`} passHref>
-          <Button size="small" sx={{m: 1}} variant="contained">XBTS.io</Button>
-        </Link>
-        <Link href={`https://dex.iobanker.com/explorer/assets`} passHref>
-          <Button size="small" sx={{m: 1}} variant="contained">ioBanker DEX</Button>
-        </Link>
-        <Link href={`https://www.gdex.io/explorer/assets`} passHref>
-          <Button size="small" sx={{m: 1}} variant="contained">GDEX.io</Button>
-        </Link>
-        <Link href={`https://bts.ai/`} passHref>
-          <Button size="small" sx={{m: 1}} variant="contained">BTS.AI</Button>
-        </Link>
-        <Link href={`https://api.testnet.bitshares.ws/docs`} passHref>
-          <Button size="small" sx={{m: 1}} variant="contained">Insight</Button>
-        </Link>
-        <Link href={`https://cryptofresh.com`} passHref>
-          <Button size="small" sx={{m: 1}} variant="contained">cryptofresh</Button>
-        </Link>
-      </Paper>
+    <Grid container style={{'maxWidth': '100%'}} key="Viewers">
+      <Grid item xs={12} key={"Viewer grid 1"}>
+        <Paper sx={{p: 2, m: 0.5, textAlign: 'center', color: 'text.secondary'}}>
+          <Typography gutterBottom variant="h5">
+            {t('nft.header')}
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            {t('nft.body')}
+          </Typography>
+          <Link href={`https://artcasa.gallery/`} passHref>
+            <Button size="small" sx={{m: 1}} variant="contained">ArtCASA</Button>
+          </Link>
+          <Link href={`https://alguienalli.github.io/`} passHref>
+            <Button size="small" sx={{m: 1}} variant="contained">Alguien&apos;s Bitshares NFT Explorer</Button>
+          </Link>
+        </Paper>
+      </Grid>
+      <Grid item xs={12} key={"Viewer grid 2"}>
+        <Paper sx={{p: 2, m: 0.5, textAlign: 'center', color: 'text.secondary'}}>
+          <Typography gutterBottom variant="h5">
+            {t('blockchain.header')}
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            {t('blockchain.body')}
+          </Typography>
+          <Link href={`https://wallet.bitshares.org/#/explorer/assets`} passHref>
+            <Button size="small" sx={{m: 1}} variant="contained">Bitshares.org</Button>
+          </Link>
+          <Link href={`https://ex.xbts.io/explorer/assets`} passHref>
+            <Button size="small" sx={{m: 1}} variant="contained">XBTS.io</Button>
+          </Link>
+          <Link href={`https://dex.iobanker.com/explorer/assets`} passHref>
+            <Button size="small" sx={{m: 1}} variant="contained">ioBanker DEX</Button>
+          </Link>
+          <Link href={`https://www.gdex.io/explorer/assets`} passHref>
+            <Button size="small" sx={{m: 1}} variant="contained">GDEX.io</Button>
+          </Link>
+          <Link href={`https://bts.ai/`} passHref>
+            <Button size="small" sx={{m: 1}} variant="contained">BTS.AI</Button>
+          </Link>
+          <Link href={`https://api.testnet.bitshares.ws/docs`} passHref>
+            <Button size="small" sx={{m: 1}} variant="contained">Insight</Button>
+          </Link>
+          <Link href={`https://cryptofresh.com`} passHref>
+            <Button size="small" sx={{m: 1}} variant="contained">cryptofresh</Button>
+          </Link>
+        </Paper>
+      </Grid>
     </Grid>
   );
 }

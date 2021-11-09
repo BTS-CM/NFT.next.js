@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import Paper from '@mui/material/Paper';
+import { Paper } from '@mantine/core';
 
 import dayjs from 'dayjs';
 import dynamic from 'next/dynamic'
@@ -23,7 +23,7 @@ export default function Post({ post, morePosts, preview }) {
       description={`${config.title} article about "${post.title}"`}
       siteTitle={config.title}
     />,
-    <Paper sx={{p:2, textAlign: 'left', color: 'text.secondary'}}>
+    <Paper padding="lg" shadow="lg" withBorder>
       {router.isFallback ? (
         <p>Loading…</p>
       ) : (

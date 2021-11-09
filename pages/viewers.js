@@ -3,12 +3,9 @@ import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
-const Grid = dynamic(() => import('@mui/material/Grid'));
-const Paper = dynamic(() => import('@mui/material/Paper'));
-const Typography = dynamic(() => import('@mui/material/Typography'));
-const Button = dynamic(() => import('@mui/material/Button'));
-const SEO = dynamic(() => import('../components/SEO'));
+import { Text, Grid, Col, Paper, Group, Button } from '@mantine/core'
 
+const SEO = dynamic(() => import('../components/SEO'));
 import { useAnalytics } from '../components/states';
 
 function Viewers(properties) {
@@ -30,54 +27,40 @@ function Viewers(properties) {
       title={t('header_title')}
       siteTitle={config.title}
     />,
-    <Grid container style={{'maxWidth': '100%'}} key="Viewers">
-      <Grid item xs={12} key={"Viewer grid 1"}>
-        <Paper sx={{p: 2, m: 0.5, textAlign: 'center', color: 'text.secondary'}}>
-          <Typography gutterBottom variant="h5">
+    <Grid key={"Viewer grid 1"}>
+      <Col span={12}>
+        <Paper padding="lg" align="center">
+          <Text size="lg">
             {t('nft.header')}
-          </Typography>
-          <Typography variant="body1" gutterBottom>
+          </Text>
+          <Text>
             {t('nft.body')}
-          </Typography>
+          </Text>
           <Link href={`https://artcasa.gallery/`} passHref>
-            <Button size="small" sx={{m: 1}} variant="contained">ArtCASA</Button>
+            <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline">ArtCASA</Button>
           </Link>
           <Link href={`https://alguienalli.github.io/`} passHref>
-            <Button size="small" sx={{m: 1}} variant="contained">Alguien&apos;s Bitshares NFT Explorer</Button>
+            <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline">Alguien&apos;s Bitshares NFT Explorer</Button>
           </Link>
         </Paper>
-      </Grid>
-      <Grid item xs={12} key={"Viewer grid 2"}>
-        <Paper sx={{p: 2, m: 0.5, textAlign: 'center', color: 'text.secondary'}}>
-          <Typography gutterBottom variant="h5">
+      </Col>
+      <Col span={12}>
+        <Paper padding="lg" align="center">
+          <Text size="lg">
             {t('blockchain.header')}
-          </Typography>
-          <Typography variant="body1" gutterBottom>
+          </Text>
+          <Text>
             {t('blockchain.body')}
-          </Typography>
-          <Link href={`https://wallet.bitshares.org/#/explorer/assets`} passHref>
-            <Button size="small" sx={{m: 1}} variant="contained">Bitshares.org</Button>
-          </Link>
-          <Link href={`https://ex.xbts.io/explorer/assets`} passHref>
-            <Button size="small" sx={{m: 1}} variant="contained">XBTS.io</Button>
-          </Link>
-          <Link href={`https://dex.iobanker.com/explorer/assets`} passHref>
-            <Button size="small" sx={{m: 1}} variant="contained">ioBanker DEX</Button>
-          </Link>
-          <Link href={`https://www.gdex.io/explorer/assets`} passHref>
-            <Button size="small" sx={{m: 1}} variant="contained">GDEX.io</Button>
-          </Link>
-          <Link href={`https://bts.ai/`} passHref>
-            <Button size="small" sx={{m: 1}} variant="contained">BTS.AI</Button>
-          </Link>
-          <Link href={`https://api.testnet.bitshares.ws/docs`} passHref>
-            <Button size="small" sx={{m: 1}} variant="contained">Insight</Button>
-          </Link>
-          <Link href={`https://cryptofresh.com`} passHref>
-            <Button size="small" sx={{m: 1}} variant="contained">cryptofresh</Button>
-          </Link>
+          </Text>
+          <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://wallet.bitshares.org/#/explorer/assets`}>Bitshares.org</Button>
+          <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://ex.xbts.io/explorer/assets`}>XBTS.io</Button>
+          <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://dex.iobanker.com/explorer/assets`}>ioBanker DEX</Button>
+          <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://www.gdex.io/explorer/assets`}>GDEX.io</Button>
+          <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://bts.ai/`}>BTS.AI</Button>
+          <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://api.testnet.bitshares.ws/docs`}>Insight</Button>
+          <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://cryptofresh.com`}>cryptofresh</Button>
         </Paper>
-      </Grid>
+      </Col>
     </Grid>
   );
 }

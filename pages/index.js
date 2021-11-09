@@ -3,13 +3,10 @@ import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 import { isMobile, isIOS, isSafari, isMobileSafari } from 'react-device-detect';
 
-const Grid = dynamic(() => import('@mui/material/Grid'));
-const Paper = dynamic(() => import('@mui/material/Paper'));
-const Typography = dynamic(() => import('@mui/material/Typography'));
-const Button = dynamic(() => import('@mui/material/Button'));
+import { Text, Center, Grid, Col, Container, Paper, Button, Group } from '@mantine/core'
 
-const SEO = dynamic(() => import('../components/SEO'));
-const CarouselElement = dynamic(() => import('../components/Carousel'));
+import CarouselElement from "../components/Carousel"
+import SEO from "../components/SEO"
 
 import { useEnvironment, useAnalytics } from '../components/states';
 
@@ -35,81 +32,80 @@ function Home(props) {
   const carouselMemo = useMemo(() => <CarouselElement nfts={nfts} isMobile={isMobile} isApple={isIOS || isSafari || isMobileSafari} />, [nfts]);
 
   const trading = useMemo(() => (
-                    <Grid item xs={12} sm={6} key={"Trading"}>
-                      <Paper sx={{ p: 2, mr: 1, mb: 2, textAlign: 'center', color: 'text.secondary'}}>
-                        <Typography gutterBottom variant="h5" color="textSecondary">
-                          {t("mainpage:traders.header")}
-                        </Typography>
-                        <Typography variant="body1" gutterBottom color="textSecondary">
-                          {t("mainpage:traders.body1a")}<a sx={{color: 'text.primary'}} href="https://how.bitshares.works/en/master/user_guide/create_account.html">{t("mainpage:traders.a1")}</a>{t("mainpage:traders.body1b")}
-                        </Typography>
-                        <a href={`https://wallet.bitshares.org`}>
-                          <Button size="small" sx={{m: 1}} variant="outlined">Bitshares.org</Button>
-                        </a>
-                        <a href={`https://ex.xbts.io/`}>
-                          <Button size="small" sx={{m: 1}} variant="outlined">XBTS.io</Button>
-                        </a>
-                        <a href={`https://dex.iobanker.com/`}>
-                          <Button size="small" sx={{m: 1}} variant="outlined">ioBanker DEX</Button>
-                        </a>
-                        <a href={`https://www.gdex.io/`}>
-                          <Button size="small" sx={{m: 1}} variant="outlined">GDEX.io</Button>
-                        </a>
-                        <a href={`https://github.com/bitshares/bitshares-ui/releases`}>
-                          <Button size="small" sx={{m: 1}} variant="outlined">{t("mainpage:traders.a2")}</Button>
-                        </a>
-                      </Paper>
-                    </Grid>
+                    <Col span={6} xs={12} sm={6} md={6} lg={6} key={"Trading"}>
+                      <Center>
+                        <Paper padding="md" shadow="xs" sx={{textAlign: 'center'}}>
+                          <Text size="lg">
+                            {t("mainpage:traders.header")}
+                          </Text>
+                          <Text size="md">
+                            {t("mainpage:traders.body1a")}<a href="https://how.bitshares.works/en/master/user_guide/create_account.html">{t("mainpage:traders.a1")}</a>{t("mainpage:traders.body1b")}
+                          </Text>
+                          <a href={`https://wallet.bitshares.org`}>
+                            <Button sx={{margin: "5px"}} variant="outline">Bitshares.org</Button>
+                          </a>
+                          <a href={`https://ex.xbts.io/`}>
+                            <Button sx={{margin: "5px"}} variant="outline">XBTS.io</Button>
+                          </a>
+                          <a href={`https://dex.iobanker.com/`}>
+                            <Button sx={{margin: "5px"}} variant="outline">ioBanker DEX</Button>
+                          </a>
+                          <a href={`https://www.gdex.io/`}>
+                            <Button sx={{margin: "5px"}} variant="outline">GDEX.io</Button>
+                          </a>
+                          <a href={`https://github.com/bitshares/bitshares-ui/releases`}>
+                            <Button sx={{margin: "5px"}} variant="outline">{t("mainpage:traders.a2")}</Button>
+                          </a>
+                        </Paper>
+                      </Center>
+                    </Col>
                   ), [t]);
 
   const tips = useMemo(() => (
-    <Grid item xs={12} sm={6} key={"BTS_Info"}>
-      <Paper sx={{ p: 2, mr: 1, mb: 2, textAlign: 'center', color: 'text.secondary'}}>
-        <Typography gutterBottom variant="h5" color="textSecondary">
-          {t("mainpage:benefits.header")}
-        </Typography>
-        <Typography variant="body1" gutterBottom color="textSecondary">
-          {t("mainpage:benefits.body1")}<a sx={{color: 'text.primary'}} href="https://news.bitshares.org/ethereum-vs-bitshares-sustainability-fees-comparison/">{t("mainpage:benefits.a1")}</a>.
-        </Typography>
-        <Typography variant="body1" gutterBottom color="textSecondary">
-          {t("mainpage:benefits.body2")}<a sx={{color: 'text.primary'}} href="https://how.bitshares.works/en/master/technology/dpos.html">{t("mainpage:benefits.a2")}</a>.
-        </Typography>
-        <Typography variant="body1" gutterBottom color="textSecondary">
-          {t("mainpage:benefits.body3")}<a sx={{color: 'text.primary'}} href="https://how.bitshares.works/en/master/technology/bitshares_features.html#industrial-performance-and-scalability">{t("mainpage:benefits.a3")}</a>;{t("mainpage:benefits.body4")}
-        </Typography>
-      </Paper>
-    </Grid>
+    <Col span={12} xs={12} sm={6} md={6} lg={6} key={"BTS_Info"}>
+      <Center>
+        <Paper padding="md" shadow="xs" sx={{textAlign: 'center'}}>
+          <Text size="lg">
+            {t("mainpage:benefits.header")}
+          </Text>
+          <Text size="md">
+            {t("mainpage:benefits.body1")}<a href="https://news.bitshares.org/ethereum-vs-bitshares-sustainability-fees-comparison/">{t("mainpage:benefits.a1")}</a>.
+          </Text>
+          <Text size="md">
+            {t("mainpage:benefits.body2")}<a href="https://how.bitshares.works/en/master/technology/dpos.html">{t("mainpage:benefits.a2")}</a>.
+          </Text>
+          <Text size="md">
+            {t("mainpage:benefits.body3")}<a href="https://how.bitshares.works/en/master/technology/bitshares_features.html#industrial-performance-and-scalability">{t("mainpage:benefits.a3")}</a>;{t("mainpage:benefits.body4")}
+          </Text>
+        </Paper>
+      </Center>
+    </Col>
   ), [t])
 
-  return (
+  return ([
     <SEO
       description={t('header_description', {title: config.title})}
       title={t('header_title')}
       siteTitle={config ? config.title : ''}
+      key="seo"
     />,
-    <Grid container style={{'maxWidth': '100%'}} key="index">
-      <Grid
-        item
-        xs={12}
-        key={"Index featured NFT"}
-        sx={{
-          textAlign: 'center',
-          color: 'text.secondary',
-          marginBottom: 2
-        }}
-      >
-        <Typography gutterBottom variant="h5" color="textSecondary">
-          {t("mainpage:featured")}
-        </Typography>
-        {carouselMemo}
-      </Grid>
-
-      {trading}
-
-      {tips}
-
+    <Grid grow key="grid1">
+      <Col span={12} key={"Index featured NFT"}>
+        <Center>
+          <Text size="md">
+            {t("mainpage:featured")}
+          </Text>
+        </Center>
+        <Paper padding="md" shadow="xs" style={{ width: isMobile ? 250 : 1028, margin: 'auto' }}>
+          {carouselMemo}
+        </Paper>
+      </Col>
+    </Grid>,
+    <Grid grow key="grid2">
+      {trading ? trading : undefined}
+      {tips ? tips : undefined}
     </Grid>
-  )
+  ])
 }
 
 export const getStaticProps = async ({ locale }) => {

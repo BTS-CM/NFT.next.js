@@ -4,17 +4,21 @@ import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
-const Grid = dynamic(() => import('@mui/material/Grid'));
-const Paper = dynamic(() => import('@mui/material/Paper'));
-const Button = dynamic(() => import('@mui/material/Button'));
-const Typography = dynamic(() => import('@mui/material/Typography'));
-const Avatar = dynamic(() => import('@mui/material/Avatar'));
-const AppBar = dynamic(() => import('@mui/material/AppBar'));
-const Tabs = dynamic(() => import('@mui/material/Tabs'));
-const Tab = dynamic(() => import('@mui/material/Tab'));
-const TextareaAutosize = dynamic(() => import('@mui/material/TextareaAutosize'));
-const Tooltip = dynamic(() => import('@mui/material/Tooltip'));
-const Zoom = dynamic(() => import('@mui/material/Zoom'));
+import {
+  Card,
+  Col,
+  Paper,
+  Grid,
+  Tooltip,
+  Text,
+  Tabs,
+  Tab,
+  Divider,
+  Badge,
+  Button,
+  Code,
+  Group
+} from '@mantine/core';
 
 import config from "./config.json";
 
@@ -22,7 +26,9 @@ const OBJT = dynamic(() => import('./OBJT'));
 const IssuerDetails = dynamic(() => import('./IssuerDetails'));
 const NFTHolder = dynamic(() => import('./NFTHolder'));
 const IPFSCarouselElement = dynamic(() => import('./IPFSCarousel'));
-import Chip from '@mui/material/Chip';
+const MarketOrders = dynamic(() => import('./MarketOrders'));
+
+import { IoCheckmark, IoClose } from "react-icons/io5";
 
 import {
   LinkedinShareButton,
@@ -59,10 +65,9 @@ import {
   HatenaIcon,
 } from "react-share";
 
-const { TabPanel, a11yProps } = require("./tabs");
 const { getImage, getPngDimensions } = require("./images");
 
-export default function ANFT (properties) {
+export default function NFT (properties) {
   let individual = properties.individual;
   let initAsset = properties.initAsset;
   let id = properties.id;
@@ -72,13 +77,14 @@ export default function ANFT (properties) {
   const { t } = useTranslation('nft');
 
   if (!id || !id.includes(".")) {
-    return (<Typography gutterBottom variant="h6" component="h4">
-            Loading NFT info...
-          </Typography>);
+    return (<Text size="lg">
+              Loading NFT info...
+            </Text>);
   }
 
   const [asset, setAsset] = useState(initAsset ? initAsset : undefined);
   const [value, setValue] = useState(0);
+  const [activeTab, setActiveTab] = useState(0);
 
   let issuer = asset ? asset.issuer : undefined;
   let precision = asset ? asset.precision : undefined;
@@ -118,6 +124,7 @@ export default function ANFT (properties) {
   let { image, imgURL, fileType } = getImage(nft_object);
 
   // Optional and Proposed Keys:
+
   let tags = nft_object && nft_object.tags ? nft_object.tags.split(",") : undefined;
   let nft_flags = nft_object && nft_object.flags ? nft_object.flags.split(",") : undefined;
 
@@ -150,15 +157,11 @@ export default function ANFT (properties) {
         (flag) => {
           const flagValue = asset_flags[flag];
           return flagValue === true
-            ? <Chip
-                sx={{m: 0.25}}
-                avatar={<Avatar>{flagValue === true || flagValue === 'true'  ? '✔' : '❌'}</Avatar>}
-                label={flag.replace(/_/g, ' ')}
-               />
-            : undefined;
+            ? <Badge leftSection={flagValue ? <IoCheckmark/> : <IoClose/>}>{flag.replace(/_/g, ' ')}</Badge>
+            : null;
         }
       ).filter(x => x)
-    : undefined;
+    : null;
 
   const permissionChips = permissions
     ? Object.keys(permissions).map(
@@ -166,67 +169,66 @@ export default function ANFT (properties) {
           const permissionValue = permissions[permission];
           return (
             <Tooltip
-              TransitionComponent={Zoom}
-              disableFocusListener
-              title={
+              withArrow
+              label={
                 permissionValue === true || permissionValue === 'true'
                   ? t('permissionTips.enabled.' + permission)
                   : t('permissionTips.disabled.' + permission)
               }
               key={permission + '_tooltip'}
             >
-              <Chip
-                sx={{m: 0.25}}
-                avatar={<Avatar>{permissionValue === true || permissionValue === 'true'  ? '✔' : '❌'}</Avatar>}
-                label={permission.replace(/_/g, ' ')}
+              <Badge
+                leftSection={permissionValue ? <IoCheckmark/> : <IoClose/>}
                 key={permission + '_chip'}
-               />
+               >
+                 {permission.replace(/_/g, ' ')}
+               </Badge>
             </Tooltip>
           );
 
         }
       )
-    : undefined;
+    : null;
 
   const tagChips = tags
     ? tags.map((tag) => {
-      return <Chip
-        sx={{m: 0.25}}
-        label={tag}
-        key={`tagchip: ${tag}`}
-       />
+      return <Badge key={`tag: ${tag}`}>{tag}</Badge>
       })
-    : undefined;
+    : null;
+
 
   const nftFlagChips = nft_flags
     ? nft_flags.map((flag) => {
-      return <Chip
-        sx={{m: 0.25}}
-        label={flag}
-        key={`flagchip: ${flag}`}
-       />
+      return <Badge key={`flagchip: ${flag}`}>{flag}</Badge>
       })
-    : undefined;
+    : null;
 
   const shareUrl = `https://www.${config.domain}/nft/${symbol}`;
 
   const detailsOfIssuer = issuer
                 ? <IssuerDetails issuer={issuer} />
-                : undefined;
+                : null;
 
   const holder = id
                   ? <NFTHolder id={id} />
-                  : undefined;
+                  : null;
 
   let height = 500;
   let width = 500;
-  let imageComponent = undefined;
-  if (imgURL && !media_png_multihashes && fileType === 'png') {
+  let imageComponent = null;
+  if (imgURL && !media_png_multihashes) {
 
-    const dimensions = getPngDimensions(image);
-    if (dimensions) {
-      height = dimensions.height;
-      width = dimensions.width;
+    let height = null;
+    let width = null;
+    if (fileType === 'png') {
+      const dimensions = getPngDimensions(image);
+      if (dimensions) {
+        height = dimensions.height;
+        width = dimensions.width;
+      }
+    } else {
+      height = 500;
+      width = 500;
     }
 
     imageComponent = isApple
@@ -238,16 +240,15 @@ export default function ANFT (properties) {
                             sx={{maxWidth: '100%'}}
                           />
                         </a>
-                      : <a href={imgURL}>
-                          <Image
-                            key={short_name + " Image"}
-                            src={imgURL}
-                            height={height}
-                            width={width}
-                            alt={short_name + " image"}
-                            sx={{maxWidth: '100%'}}
-                          />
-                        </a>
+                      : <Image
+                          key={short_name + " Image"}
+                          src={imgURL}
+                          height={height}
+                          width={width}
+                          alt={short_name + " image"}
+                          sx={{maxWidth: '100%'}}
+                        />
+
   } else if (asset && media_png_multihashes) {
     imageComponent = <IPFSCarouselElement media_png_multihashes={media_png_multihashes} asset={asset} isApple={isApple} />;
   } else if (nft_object.media_json) {
@@ -255,99 +256,103 @@ export default function ANFT (properties) {
   }
 
   return (
-      <span sx={{pb: '25px'}} key={symbol + "NFT"}>
-        <Paper sx={{p: 2, textAlign: 'center', color: 'text.secondary', mb: individual ? 0 : 2}} id={id}>
-          <Typography gutterBottom variant="h4" component="h1">
+    <Grid grow>
+      <Col span={12} key={symbol + "NFT"}>
+        <Paper padding="lg" withBorder shadow="md" align="center" id={id}>
+          <Text size="lg">
             &quot;<Link href={`/nft/${symbol}`} passHref><a>{title}</a></Link>&quot;{t('by')}{artist}
-          </Typography>
+          </Text>
           {
             imageComponent
           }
-          <Typography gutterBottom variant="h6" component="h4">
+          <Text>
             {main.replace(" To view this token and others, visit https://nftea.gallery", "")}
-          </Typography>
-          <br/>
-          <AppBar position="static" color="inherit">
-            <Tabs
-              value={value}
-              variant="scrollable"
-              scrollButtons="auto"
-              onChange={handleChange}
-              aria-label="scrollable nft tabs"
-            >
-              <Tab key="tabs.nft" label={t('tabs.nft')} {...a11yProps(0)} />
-              <Tab key="tabs.asset" label={t('tabs.asset')} {...a11yProps(1)} />
-              <Tab key="tabs.tags" label={t('tabs.tags')} {...a11yProps(2)} />
-              <Tab key="tabs.share" label={t('tabs.share')} {...a11yProps(3)} />
-              <Tab key="tabs.buy" label={t('tabs.buy')} {...a11yProps(4)} />
-              <Tab key="tabs.flags" label={t('tabs.flags')} {...a11yProps(5)} />
-              <Tab key="tabs.permissions" label={t('tabs.permissions')} {...a11yProps(6)} />
-              <Tab key="tabs.signature" label={t('tabs.signature')} {...a11yProps(7)} />
-              <Tab key="tabs.license" label={t('tabs.license')} {...a11yProps(8)} />
-              <Tab key="tabs.json" label={t('tabs.json')} {...a11yProps(9)} />
-            </Tabs>
-          </AppBar>
+          </Text>
 
-          <TabPanel value={value} index={0} id="NFT">
-            <Typography variant="body1" gutterBottom>
-              <b>{t('nft.attestation')}</b>: &quot;{attestation}&quot;
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              <b>{t('nft.narrative')}</b>: &quot;{narrative}&quot;
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              <b>{t('nft.acknowledgments')}</b>: &quot;{acknowledgments ? acknowledgments : 'N/A'}&quot;
-            </Typography>
-          </TabPanel>
+          <Tabs
+            initialTab={0}
+            variant="pills"
+            position="center"
+            active={activeTab}
+            onTabChange={setActiveTab}
+            aria-label="nft tabs"
+          >
+            <Tab key="tabs.nft" label={t('tabs.nft')}>
+              <Text>
+                <b>{t('nft.attestation')}</b>: &quot;{attestation}&quot;
+              </Text>
+              <Text>
+                <b>{t('nft.narrative')}</b>: &quot;{narrative}&quot;
+              </Text>
+              <Text>
+                <b>{t('nft.acknowledgments')}</b>: &quot;{acknowledgments ? acknowledgments : 'N/A'}&quot;
+              </Text>
+            </Tab>
 
-          <TabPanel value={value} index={1} id="Asset">
-            <Chip sx={{m: 0.25}} label={`${t('asset.name')}: ${symbol ? symbol : '???'}`} />
-            {holder}
-            <Chip sx={{m: 0.25}} label={`${t('asset.quantity')}: ${current_supply ? current_supply : '???'}`} />
-            <Chip sx={{m: 0.25}} label={`${t('asset.file_type')}: ${type ? type : '???'}`} />
+            <Tab key="tabs.asset" label={t('tabs.asset')}>
+              <Group position="center" sx={{marginTop: '5px'}}>
+                <Badge>
+                  {`${t('asset.name')}: ${symbol ? symbol : '???'}`}
+                </Badge>
 
-            <Tooltip
-              TransitionComponent={Zoom}
-              disableFocusListener
-              title={
-                encoding === "base64"
-                  ? t('asset.onchain')
-                  : t('asset.offchain')
-                }
-            >
-              <Chip sx={{m: 0.25}} label={`${t('asset.encoding')}: ${encoding ? encoding : '???'}`} />
-            </Tooltip>
+                {holder}
 
-            <Tooltip
-              TransitionComponent={Zoom}
-              disableFocusListener
-              title={
-                precision === 0
-                  ? t('asset.precision_good', {short_name: short_name})
-                  : t('asset.precision_bad')
-                }
-            >
-              <Chip sx={{m: 0.25}} label={`${t('asset.precision')}: ${precision}`} />
-            </Tooltip>
-            {detailsOfIssuer}
-          </TabPanel>
+                <Badge>
+                  {`${t('asset.quantity')}: ${current_supply ? current_supply : '???'}`}
+                </Badge>
 
-          <TabPanel value={value} index={2} id="Tags">
-            {
-              tagChips && tagChips.length
-                ? tagChips
-                : <Typography variant="body1" gutterBottom>{t('tags.no_tags')}</Typography>
-            }
-            <br/>
-            {
-              nftFlagChips && nftFlagChips.length
-                ? nftFlagChips
-                : <Typography variant="body1" gutterBottom>{t('tags.no_nft_tags')}</Typography>
-            }
-          </TabPanel>
+                <Badge>
+                  {`${t('asset.file_type')}: ${type ? type : '???'}`}
+                </Badge>
 
-          <TabPanel value={value} index={3} id="Share">
+                <Tooltip
+                  withArrow
+                  label={
+                    encoding === "base64"
+                      ? t('asset.onchain')
+                      : t('asset.offchain')
+                    }
+                >
+                  <Badge>
+                    {`${t('asset.encoding')}: ${encoding ? encoding : '???'}`}
+                  </Badge>
+                </Tooltip>
 
+                <Tooltip
+                  withArrow
+                  label={
+                    precision === 0
+                      ? t('asset.precision_good', {short_name: short_name})
+                      : t('asset.precision_bad')
+                    }
+                >
+                  <Badge>
+                    {`${t('asset.precision')}: ${precision}`}
+                  </Badge>
+                </Tooltip>
+
+                {detailsOfIssuer}
+              </Group>
+            </Tab>
+
+            <Tab key="tabs.tags" label={t('tabs.tags')}>
+              {
+                tagChips && tagChips.length
+                  ? <Group sx={{marginTop: '5px'}} position="center">{tagChips}</Group>
+                  : <Text>{t('tags.no_tags')}</Text>
+              }
+              <br/>
+              {
+                nftFlagChips && nftFlagChips.length
+                  ? <Group sx={{marginTop: '5px'}} position="center">{nftFlagChips}</Group>
+                  : <Text>{t('tags.no_nft_tags')}</Text>
+              }
+            </Tab>
+
+            <Tab key="tabs.share" label={t('tabs.share')}>
+              <Text size="lg" sx={{paddingBottom: '10px'}}>
+                {`Share "${title}" by ${artist} on social media!`}
+              </Text>
               <FacebookShareButton
                 url={shareUrl}
                 quote={title}
@@ -478,105 +483,161 @@ export default function ANFT (properties) {
               >
                 <HatenaIcon size={32} round />
               </HatenaShareButton>
+            </Tab>
 
-          </TabPanel>
+            <Tab key="tabs.buy" label={t('tabs.buy')}>
+              <Text size="lg">
+                {t('buy.header', {title: title, symbol: symbol})}
+              </Text>
+              <Group position="center" sx={{marginTop: '5px', paddingTop: '5px'}}>
+                <Button
+                  component="a"
+                  href={`https://wallet.bitshares.org/#/market/${symbol}_${market ? market : 'BTS'}`}
+                  sx={{m: 0.25}}
+                  variant="outline"
+                >
+                  Bitshares.org
+                </Button>
+                <Button
+                  component="a"
+                  href={`https://ex.xbts.io/market/${symbol}_${market ? market : 'BTS'}`}
+                  sx={{m: 0.25}}
+                  variant="outline"
+                >
+                  XBTS.io
+                </Button>
+                <Button
+                  component="a"
+                  href={`https://dex.iobanker.com/market/${symbol}_${market ? market : 'BTS'}`}
+                  sx={{m: 0.25}}
+                  variant="outline"
+                >
+                  ioBanker DEX
+                </Button>
+                <Button
+                  component="a"
+                  href={`https://www.gdex.io/market/${symbol}_${market ? market : 'BTS'}`}
+                  sx={{m: 0.25}}
+                  variant="outline"
+                >
+                  GDEX.io
+                </Button>
+                <Tooltip
+                  label={t('buy.tooltip', {symbol: symbol})}
+                  widthArrow
+                >
+                  <Button
+                    component="a"
+                    href={`https://github.com/bitshares/bitshares-ui/releases`}
+                    sx={{m: 0.25}}
+                    variant="outline"
+                  >
+                    {t('buy.button')}
+                  </Button>
+                </Tooltip>
+              </Group>
 
-          <TabPanel value={value} index={4} id="Market">
-            <Typography variant="body1" gutterBottom>
-              {t('buy.header', {title: title, symbol: symbol})}
-            </Typography>
 
-            <a href={`https://wallet.bitshares.org/#/market/${symbol}_${market ? market : 'BTS'}`}>
-              <Button sx={{m: 0.25}} variant="contained">Bitshares.org</Button>
-            </a>
-            <a href={`https://ex.xbts.io/market/${symbol}_${market ? market : 'BTS'}`}>
-              <Button sx={{m: 0.25}} variant="contained">XBTS.io</Button>
-            </a>
-            <a href={`https://dex.iobanker.com/market/${symbol}_${market ? market : 'BTS'}`}>
-              <Button sx={{m: 0.25}} variant="contained">ioBanker DEX</Button>
-            </a>
-            <a href={`https://www.gdex.io/market/${symbol}_${market ? market : 'BTS'}`}>
-              <Button sx={{m: 0.25}} variant="contained">GDEX.io</Button>
-            </a>
-            <Tooltip
-              TransitionComponent={Zoom}
-              disableFocusListener
-              title={t('buy.tooltip', {symbol: symbol})}
-            >
-              <a href={`https://github.com/bitshares/bitshares-ui/releases`}>
-                <Button sx={{m: 0.25}} variant="contained">{t('buy.button')}</Button>
-              </a>
-            </Tooltip>
+              <Text size="lg" style={{'paddingTop': '5px'}}>
+                Bitshares explorers
+              </Text>
+              <Group position="center" sx={{marginTop: '5px', paddingTop: '5px'}}>
+                <Button
+                  component="a"
+                  href={`https://cryptofresh.com/a/${symbol}`}
+                  sx={{m: 0.25}}
+                  variant="outline"
+                >
+                  cryptofresh
+                </Button>
+                <Button
+                  sx={{m: 0.25}}
+                  variant="outline"
+                  href={`https://bts.ai/asset/${symbol}`}
+                  component="a"
+                >
+                  bts.ai
+                </Button>
+                <Button
+                  sx={{m: 0.25}}
+                  variant="outline"
+                  href={`https://blocksights.info/#/assets/${symbol}`}
+                  component="a"
+                >
+                  blocksights.info
+                </Button>
+              </Group>
 
-            <Typography variant="body1" gutterBottom style={{'paddingTop': '5px'}}>
-              Bitshares explorers
-            </Typography>
-            <a href={`https://cryptofresh.com/a/${symbol}`}>
-              <Button sx={{m: 0.25}} variant="contained">cryptofresh</Button>
-            </a>
-            <a href={`https://bts.ai/asset/${symbol}`}>
-              <Button sx={{m: 0.25}} variant="contained">bts.ai</Button>
-            </a>
-            <a href={`https://blocksights.info/#/assets/${symbol}`}>
-              <Button sx={{m: 0.25}} variant="contained">blocksights.info</Button>
-            </a>
-          </TabPanel>
+              <Text size="lg" style={{'paddingTop': '5px'}}>
+                Market orders
+              </Text>
+              <MarketOrders id={id} market={market} />
+            </Tab>
 
-          <TabPanel value={value} index={5} id="Flags">
-            {
-              flagChips && flagChips.length
-                ? flagChips
-                : t('flags.none')
-            }
-          </TabPanel>
-
-          <TabPanel value={value} index={6} id="Permissions">
-            {
-              permissionChips && permissionChips.length
-                ? permissionChips
-                : t('permissions.none')
-            }
-          </TabPanel>
-
-          <TabPanel value={value} index={7} id="Signature">
-            <Typography variant="body1" gutterBottom>
-              <b>{t('signature.header')}</b>
-            </Typography>
-            <TextareaAutosize aria-label={"signature"} minRows={5} style={{'minWidth': '100%'}} defaultValue={nft_signature ? nft_signature : 'N/A'} />
-            <Typography variant="body1" gutterBottom>
-              <b>{t('signature.signature')}</b>
-            </Typography>
-            <TextareaAutosize aria-label={"sig_pubkey_or_address"} minRows={5} style={{'minWidth': '100%'}} defaultValue={sig_pubkey_or_address} />
-            <Typography variant="body1" gutterBottom>
-              <b>{t('signature.password')}</b>
-            </Typography>
-            <TextareaAutosize aria-label={"password_multihash"} minRows={5} style={{'minWidth': '100%'}} defaultValue={password_multihash} />
-          </TabPanel>
-
-          <TabPanel value={value} index={8} id="License">
-            <Typography variant="body1" gutterBottom>
-              <b>{t('license.header1')}: </b>
+            <Tab key="tabs.flags" label={t('tabs.flags')}>
               {
-                license
-                  ? license
-                  : t('license.none1')
+                flagChips && flagChips.length
+                  ? <Group position="center">{flagChips}</Group>
+                  : <Text>{t('flags.none')}</Text>
               }
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              <b>{t('license.header2')}: </b>
+            </Tab>
+
+            <Tab key="tabs.permissions" label={t('tabs.permissions')}>
               {
-                holder_license
-                  ? holder_license
-                  : t('license.none2')
+                permissionChips && permissionChips.length
+                  ? <Group position="center">{permissionChips}</Group>
+                  : <Text>{t('permissions.none')}</Text>
               }
-            </Typography>
+            </Tab>
 
-          </TabPanel>
+            <Tab key="tabs.signature" label={t('tabs.signature')}>
+              <Text size="lg">
+                <b>{t('signature.header')}</b>
+              </Text>
+              <Text>
+                {nft_signature ? nft_signature : 'N/A'}
+              </Text>
+              <Text size="lg">
+                <b>{t('signature.signature')}</b>
+              </Text>
+              <Text>
+                {sig_pubkey_or_address}
+              </Text>
+              <Text size="lg">
+                <b>{t('signature.password')}</b>
+              </Text>
+              <Text>
+                {password_multihash}
+              </Text>
+            </Tab>
 
-          <TabPanel value={value} index={9} id="JSON">
-            <TextareaAutosize aria-label={"elasticSearchData"} minRows={5} maxRows={20} style={{'minWidth': '100%'}} defaultValue={asset ? JSON.stringify(asset) : 'N/A'} />
-          </TabPanel>
+            <Tab key="tabs.license" label={t('tabs.license')}>
+              <Text>
+                <b>{t('license.header1')}: </b>
+                {
+                  license
+                    ? license
+                    : t('license.none1')
+                }
+              </Text>
+              <Text>
+                <b>{t('license.header2')}: </b>
+                {
+                  holder_license
+                    ? holder_license
+                    : t('license.none2')
+                }
+              </Text>
+            </Tab>
+
+            <Tab key="tabs.json" label={t('tabs.json')}>
+              <Code block aria-label={"elasticSearchData"} style={{'maxWidth': '1000px'}}>
+                {asset ? JSON.stringify(asset) : 'N/A'}
+              </Code>
+            </Tab>
+          </Tabs>
         </Paper>
-      </span>
+      </Col>
+    </Grid>
   );
 }

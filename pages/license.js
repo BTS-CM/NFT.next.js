@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
-import Paper from '@mui/material/Paper';
 import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 
-const Typography = dynamic(() => import('@mui/material/Typography'));
+import { Text, Center, Grid, Col, Paper } from '@mantine/core'
 const SEO = dynamic(() => import('../components/SEO'));
 
 import config from '../components/config.json';
@@ -27,26 +26,30 @@ function License(properties) {
       title={t('header_title')}
       siteTitle={config.title}
     />,
-    <Paper sx={{p: 2, textAlign: 'center', color: 'text.secondary'}}>
-      <Typography variant="body1" gutterBottom color="textSecondary">
-        {t('type')}
-      </Typography>
-      <Typography variant="body1" gutterBottom color="textSecondary">
-        {t('copyright')}
-      </Typography>
-      <Typography variant="body1" gutterBottom color="textSecondary">
-        {t('permission')}
-      </Typography>
-      <Typography variant="body1" gutterBottom color="textSecondary">
-        {t('notice')}
-      </Typography>
-      <Typography variant="body1" gutterBottom color="textSecondary">
-        {t('disclaimer')}
-      </Typography>
-      <Typography variant="body1" gutterBottom color="textPrimary">
-        <a sx={{color: 'text.secondary'}} href="https://github.com/BTS-CM/NFT.next.js">{t('repo')}</a>
-      </Typography>
-    </Paper>
+    <Grid grow>
+      <Col span={12} key={"Index featured NFT"}>
+        <Paper padding="md" shadow="xs">
+          <Text>
+            {t('type')}
+          </Text>
+          <Text>
+            {t('copyright')}
+          </Text>
+          <Text>
+            {t('permission')}
+          </Text>
+          <Text>
+            {t('notice')}
+          </Text>
+          <Text>
+            {t('disclaimer')}
+          </Text>
+          <Text>
+            <a sx={{color: 'text.secondary'}} href="https://github.com/BTS-CM/NFT.next.js">{t('repo')}</a>
+          </Text>
+        </Paper>
+      </Col>
+    </Grid>
   );
 }
 

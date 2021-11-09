@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { isIOS, isSafari, isMobileSafari } from 'react-device-detect'
 
 const SEO = dynamic(() => import('../../components/SEO'));
-const ANFT = dynamic(() => import('../../components/ANFT'));
+const NFT = dynamic(() => import('../../components/NFT'));
 
 import art from '../../components/art.json';
 import { useEnvironment, useAnalytics } from '../../components/states';
@@ -33,17 +33,25 @@ function ValidNFT (props) {
   if (props.analytics) {
     ReactGA.pageview(`NFT ${nft}`);
   }
+
   const { t } = useTranslation('nft');
   return <SEO
     description={t('header_description', {nft: nft})}
     title={t('header_title', {nft: nft})}
     siteTitle={config.title}
   />,
-  <ANFT id={nft} initAsset={initAsset} key={nft} individual={true} isApple={isIOS || isSafari || isMobileSafari} {...props} />
+  <NFT
+    id={nft}
+    initAsset={initAsset}
+    key={nft}
+    individual={true}
+    isApple={isIOS || isSafari || isMobileSafari}
+    {...props}
+  />
 }
 
 
-function NFT (props) {
+function NFTPAGE (props) {
 
   let [analytics, setAnalytics] = useAnalytics();
   let initAsset = props.initAsset;
@@ -130,4 +138,4 @@ export const getStaticProps = async ({ locale, params }) => {
   };
 }
 
-export default NFT
+export default NFTPAGE

@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { useLanguage } from './states';
 import config from "./config.json";

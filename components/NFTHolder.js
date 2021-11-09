@@ -2,7 +2,7 @@ import {useState} from 'react';
 import { useTranslation } from 'next-i18next';
 import useSWR from 'swr';
 
-import Chip from '@mui/material/Chip';
+import { Badge } from '@mantine/core';
 
 const fetcher = (url) => fetch(url, {method: "GET", mode: "cors"}).then((res) => res.json())
 
@@ -15,15 +15,15 @@ export default function NFTHolder(properties) {
     fetcher
   );
 
-  if (error) {
-    return null
-  };
-
-  if (!data) {
-    return null;
+  if (error || !data) {
+    <Badge>
+      ???
+    </Badge>
   };
 
   return (
-    <Chip sx={{m: 0.25}} label={`${t('asset.owner')}: ${data && data.length ? data[0].name : '???'}`} />
+    <Badge>
+      {`${t('asset.owner')}: ${data && data.length ? data[0].name : '???'}`}
+    </Badge>
   );
 }

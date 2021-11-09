@@ -1,14 +1,5 @@
-import Chip from '@mui/material/Chip';
+import { Text, Group } from '@mantine/core';
 
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
 import useSWR from 'swr';
 
 const axios = require('axios');
@@ -35,12 +26,8 @@ export default function MarketOrders(properties) {
     fetcher
   );
 
-  if (error) {
-    return null
-  };
-
-  if (!data) {
-    return null;
+  if (error || !data) {
+    return (<Text>Market data temporarily unavailable</Text>);
   };
 
   let marketOrders = data.data;
@@ -49,101 +36,25 @@ export default function MarketOrders(properties) {
               ? marketOrders["bids"]
               : undefined;
 
-  let bidRows = bids && bids.length
-                    ? bids.map((bid) => {
-                        return (
-                          <TableRow key={`tr bid ${bid.price}`}>
-                              <TableCell component="th" scope="row">
-                                {1/bid.price} {approvedMarket}
-                              </TableCell>
-                              <TableCell component="th" scope="row">
-                                {bid.quote}
-                              </TableCell>
-                              <TableCell>
-                                {bid.base}
-                              </TableCell>
-                          </TableRow>
-                        );
-                      })
-                    : [];
+  let bidText = bids && bids.length
+                  ? <Text>{`Buy it now price: ${1/bids[0].price} ${approvedMarket}`}</Text>
+                  : <Text>No bids</Text>;
+
 
     let asks = marketOrders
                 ? marketOrders["asks"]
                 : undefined;
 
-    let askRows = asks && asks.length
-                      ? asks.map((ask) => {
-                          return (
-                            <TableRow key={`tr ask ${ask.price}`}>
-                                <TableCell component="th" scope="row">
-                                  {ask.price}
-                                </TableCell>
-                                <TableCell component="th" scope="row">
-                                  {ask.quote}
-                                </TableCell>
-                                <TableCell>
-                                  {ask.base}
-                                </TableCell>
-                            </TableRow>
-                          );
-                        })
-                      : [];
+    let askText = asks && asks.length
+                    ? <Text>{`Highest bid: ${1/asks[0].price} ${approvedMarket}`}</Text>
+                    : <Text>Not for sale.</Text>;
 
-    let bidContents = !bids || !bids.length
-      ? <Chip key="bid chip" label="No bids" disabled />
-      : <TableContainer key="bid container" component={Paper}>
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>
-                  Price
-                </TableCell>
-                <TableCell>
-                  Quote
-                </TableCell>
-                <TableCell>
-                  Base
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {bidRows}
-            </TableBody>
-          </Table>
-        </TableContainer>;
 
-    let askContents = !asks || !asks.length
-      ? <Chip key="ask chip" label="No asks" disabled />
-      : <TableContainer key="ask table" component={Paper}>
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>
-                  Price
-                </TableCell>
-                <TableCell>
-                  Quote
-                </TableCell>
-                <TableCell>
-                  Base
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {askRows}
-            </TableBody>
-          </Table>
-        </TableContainer>
-
-    return ([
-      <Typography key="bid header" variant="body1" gutterBottom style={{'paddingTop': '5px'}}>
-        Bids
-      </Typography>,
-      bidContents,
-      <Typography key="ask header"  variant="body1" gutterBottom style={{'paddingTop': '5px'}}>
-        Asks
-      </Typography>,
-      askContents
-    ])
+    return (
+      <Group position="center" sx={{marginTop: '5px', paddingTop: '5px'}}>
+        {bidText}
+        {askText}
+      </Group>
+    )
 
 }

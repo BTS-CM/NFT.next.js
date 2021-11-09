@@ -1,24 +1,14 @@
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic'
-import Image from 'next/image';
+import Link from 'next/link';
 
-const Card = dynamic(() => import('@mui/material/Card'));
-const CardContent = dynamic(() => import('@mui/material/CardContent'));
-const CardMedia = dynamic(() => import('@mui/material/CardMedia'));
-const Typography = dynamic(() => import('@mui/material/Typography'));
-const Button = dynamic(() => import('@mui/material/Button'));
-const Menu = dynamic(() => import('@mui/material/Menu'));
-const Grid = dynamic(() => import('@mui/material/Grid'));
-
-import { CardActionArea, CardActions } from '@mui/material';
-import MenuItem from '@mui/material/MenuItem';
-
+import { Card, Center, Image, Text, Grid, Col } from '@mantine/core';
+import { useHover } from '@mantine/hooks';
 import { useTranslation } from 'next-i18next';
 import { useInView } from 'react-intersection-observer';
-import { motion } from "framer-motion";
 
-import CustomLink from './CustomLink';
 import CurrentValue from './CurrentValue';
+import CardSection from './CardSection';
 import { useLanguage, useTheme } from './states';
 
 export default function GalleryCard(properties) {
@@ -27,20 +17,7 @@ export default function GalleryCard(properties) {
 
   const { t } = useTranslation('gallery');
   const [language, setLanguage] = useLanguage();
-  const [theme, setTheme] = useLanguage();
-  const [anchor, setAnchor] = useState(null);
-  const [shadow, setShadow] = useState(2);
-
-  const open = Boolean(anchor);
-  const handleClick = (event) => {
-    setAnchor(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchor(null);
-  };
-
-  let index = properties.index;
+  const [theme, setTheme] = useTheme();
 
   let nft = properties.nft;
   let symbol = nft ? nft.symbol : undefined;
@@ -48,60 +25,35 @@ export default function GalleryCard(properties) {
   let title = nft ? nft.title : undefined;
   let artist = nft ? nft.artist : undefined;
   let id = nft ? nft.id : undefined;
-
   let media_json = nft ? nft.media_json : undefined;
 
   let address = language && !language.includes("en") ? `/${language}` : ``;
 
-  let media = isApple
-                ? <img
-                    sx={{width: '100%', height: '100%'}}
-                    alt={`${symbol} NFT apple image`}
-                    src={!media_json ? `/images/${symbol}/0_gallery.webp` : "/images/placeholders/0.webp"}
-                  />
-                : <CardMedia
-                    component="img"
-                    sx={{width: '100%', height: '100%'}}
-                    image={!media_json ? `/images/${symbol}/0_gallery.webp` : "/images/placeholders/0.webp"}
-                    alt={`${symbol} NFT image`}
-                  />;
+  const { hovered, ref } = useHover();
 
   return (
-    <motion.div
-      onHoverStart={e => {
-        setShadow(5)
-      }}
-      onHoverEnd={e => {
-        setShadow(2)
-      }}
+    <Card
+      radius="lg"
+      component="a"
+      href={address + "/nft/" + symbol}
+      ref={ref}
+      style={{ width: isMobile ? 300 : 350, margin: 'auto' }}
+      shadow={`0 0 ${hovered ? 5 : 2}px ${theme === 'dark' ? 'white' : 'grey'}`}
     >
-      <Card
-        sx={{
-          p: 1,
-          textAlign: 'center',
-          ml: index > 0 ? 1.5 : 1,
-          mr: index < 3 ? 1.5 : 1,
-          borderRadius: 4,
-        }}
-        style={{boxShadow: `0 0 ${shadow * 2}px ${theme === 'dark' ? 'white' : 'grey'}`}}
-      >
-        <CardActionArea href={address + "/nft/" + symbol}>
-          {media}
-        </CardActionArea>
-        <CardActionArea href={address + "/nft/" + symbol}>
-          <CardContent>
-            <Typography gutterBottom variant="h6" component="div">
-              {title}
-            </Typography>
-            <Typography variant="body1" sx={{color: 'text.secondary'}}>
-              {t('created_text', {artist: artist})}
-            </Typography>
-            <Typography variant="body2" sx={{color: 'text.secondary'}}>
-              <CurrentValue id={id} market={market} />
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </motion.div>
+      <CardSection symbol={symbol} media_json={media_json} isApple={isApple} />
+      <Grid grow>
+        <Col span={12}>
+          <Text size="lg" align="center">
+            {title}
+          </Text>
+          <Text size="sm" align="center">
+            {t('created_text', {artist: artist})}
+          </Text>
+          <Text size="md" key={`${id} value`} align="center">
+            <CurrentValue id={id} market={market} />
+          </Text>
+        </Col>
+      </Grid>
+    </Card>
   );
 }

@@ -1,21 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import { useViewportSize } from '@mantine/hooks';
 
 import { useGateway } from './states';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 const Carousel = dynamic(() => import('react-responsive-carousel').then((module) => module.Carousel));
 
-const Card = dynamic(() => import('@mui/material/Card'));
-const CardContent = dynamic(() => import('@mui/material/CardContent'));
-const CardMedia = dynamic(() => import('@mui/material/CardMedia'));
-const Typography = dynamic(() => import('@mui/material/Typography'));
-const Button = dynamic(() => import('@mui/material/Button'));
+import { Card } from '@mantine/core';
 
-import { CardActionArea } from '@mui/material';
 
 function CarouselItem (properties) {
   const [gateway, setGateway] = useGateway();
@@ -29,6 +25,7 @@ function CarouselItem (properties) {
   let visible = properties.visible;
   let nearby = properties && properties.nearby ? properties.nearby : null;
   let isApple = properties && properties.isApple ? properties.isApple : false;
+  let imageSize = properties && properties.imageSize ? properties.imageSize : 500;
 
   if (!gateway) {
     setGateway('gateway.ipfs.io');
@@ -45,11 +42,10 @@ function CarouselItem (properties) {
                 key={`${symbol}_featured_div_${itr}`}
                 alt={`${symbol}_featured_div_${itr}`}
               />
-            : <CardMedia
-                component="img"
-                width="100%"
-                height="100%"
-                image={`/images/${symbol}/${value}.webp`}
+            : <Image
+                width={`${imageSize}px`}
+                height={`${imageSize}px`}
+                src={`/images/${symbol}/${value}.webp`}
                 key={`${symbol}_featured_div_${itr}`}
                 alt={`${symbol}_featured_div_${itr}`}
               />
@@ -60,24 +56,47 @@ function CarouselItem (properties) {
                 key={`${symbol}_featured_div_thumb_${itr}`}
                 alt={`${symbol}_featured_div_thumb_${itr}`}
               />
-            : <CardMedia
-              component="img"
-              width="100%"
-              height="100%"
-              image={`/images/${symbol}/${value}_thumb.webp`}
-              key={`${symbol}_featured_div_thumb_${itr}`}
-              alt={`${symbol}_featured_div_thumb_${itr}`}
-            />
+            : <Image
+                width={`${imageSize}px`}
+                height={`${imageSize}px`}
+                src={`/images/${symbol}/${value}_thumb.webp`}
+                key={`${symbol}_featured_div_thumb_${itr}`}
+                alt={`${symbol}_featured_div_thumb_${itr}`}
+              />
   }
 
-  return (<Card key={symbol + "_featured_div_" + itr} sx={{p: 0, textAlign: 'center', m: 0.75}}>
-        <CardActionArea href={`https://${gateway}${media_png_multihash.url}`}>
-          {media}
-        </CardActionArea>
-      </Card>);
+  return (<Card
+           align="center"
+           component="a"
+           href={`https://${gateway}${media_png_multihash.url}`}
+           key={symbol + "_featured_div_" + itr}
+           sx={{p: 0, m: 0.75}}
+          >
+            {media}
+          </Card>);
+  }
+
+function getWidth(width) {
+  if (width >= 1280) {
+    return 1280;
+  } else if (width >= 1080) {
+    return 1080;
+  } else if (width >= 720) {
+    return 720;
+  } else if (width >= 420) {
+    return 420;
+  } else if (width >= 300) {
+    return 300;
+  } else {
+    return 200;
+  }
 }
 
 export default function IPFSCarouselElement(properties) {
+
+  const { height, width } = useViewportSize();
+  let imageSize = getWidth(width);
+
   let media_png_multihashes = properties.media_png_multihashes;
 
   const [index, setIndex] = useState(0);
@@ -92,6 +111,7 @@ export default function IPFSCarouselElement(properties) {
         return <CarouselItem
                   media_png_multihash={key}
                   value={value}
+                  imageSize={imageSize}
                   visible={index === value}
                   nearby={index === value - 1 || index === value + 1}
                   { ...properties }
@@ -111,6 +131,7 @@ export default function IPFSCarouselElement(properties) {
         autoPlay={true}
         infiniteLoop={true}
         interval={7500}
+        width={imageSize}
         onChange={(index) => setIndex(index)}
         statusFormatter={(current, total) => `Image ${current} of ${total} (iteration ${media_png_multihashes[current-1].url.split(".")[0].split("/").slice(-1)[0]})`}
       >

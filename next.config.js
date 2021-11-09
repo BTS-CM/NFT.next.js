@@ -2,10 +2,10 @@ const { i18n } = require('./next-i18next.config');
 const ipfsJSON = require('./components/ipfsJSON.json');
 const DuplicatePackageCheckerPlugin = require("@cerner/duplicate-package-checker-webpack-plugin");
 const path = require('path');
-const withPWA = require('next-pwa');
 
-module.exports = withPWA({
+module.exports = {
   i18n,
+  reactStrictMode: true,
   images: {
     domains: ipfsJSON,
   },
@@ -28,4 +28,4 @@ module.exports = withPWA({
     )
     return config
   },
-});
+};

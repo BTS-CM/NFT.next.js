@@ -3,20 +3,11 @@ import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
-const Grid = dynamic(() => import('@mui/material/Grid'));
-const Paper = dynamic(() => import('@mui/material/Paper'));
-const Typography = dynamic(() => import('@mui/material/Typography'));
-const TextField = dynamic(() => import('@mui/material/TextField'));
-const List = dynamic(() => import('@mui/material/List'));
-const ListItem = dynamic(() => import('@mui/material/ListItem'));
-const ListItemText = dynamic(() => import('@mui/material/ListItemText'));
+import { Text, Center, Grid, Col, Paper, Button, Group, TextInput } from '@mantine/core'
+
 const SEO = dynamic(() => import('../components/SEO'));
 
-import { useEnvironment, useAnalytics } from '../components/states';
-
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
+import { useEnvironment, useAnalytics, useTheme } from '../components/states';
 
 function SearchPanel (properties) {
   const { t } = useTranslation('search');
@@ -25,6 +16,7 @@ function SearchPanel (properties) {
   const config = properties.config;
   const art = properties.art;
 
+  const [colorScheme, setColorScheme] = useTheme();
   let [environment, setEnvironment] = useEnvironment();
   let env = environment ? environment : 'production';
 
@@ -54,12 +46,14 @@ function SearchPanel (properties) {
         result.slice(0,5).map(crypto => {
           if (crypto.item && crypto.item.id) {
             return (
-              <ListItemLink href={`/nft/${crypto.item.name}`}>
-                <ListItemText primary={`${crypto.item.id}: ${crypto.item.name}`} />
-              </ListItemLink>
+              <Button align="left" variant={colorScheme === "dark" ? "filled" : "light"} color={'gray'}>
+                <Text component={Link} href={`/nft/${crypto.item.name}`} key={crypto.item.name}>
+                  {`${crypto.item.id}: ${crypto.item.name}`}
+                </Text>
+              </Button>
             )
           } else {
-            return undefined;
+            return null;
           }
         }).filter(x => x)
       );
@@ -74,41 +68,41 @@ function SearchPanel (properties) {
       title={t('header_title')}
       siteTitle={config.title}
     />,
-    <Grid item xs={12} key={"Search Window"}>
-      <Paper style={{'padding': '20px'}}>
-          <Typography gutterBottom variant="h4" component="h1">
+    <Grid grow key={"Search Window"}>
+      <Col span={12} key={"Search row"}>
+        <Paper padding="md" shadow="xs">
+          <Text size="lg">
             {t('header')}
-          </Typography>
-          <Typography variant="body1" gutterBottom>
+          </Text>
+          <Text>
             {t('body')}
-          </Typography>
-          <TextField
+          </Text>
+          <TextInput
             key="searchInput"
-            id="outlined-basic"
             label="NFT name"
             onChange={updateSearchValue}
-            variant="outlined"
-            style={{'marginTop': '20px'}}
+            sx={{marginBottom: '20px', marginTop: '10px'}}
           />
-          <div sx={{'& > *': { m: 1, width: '25ch' }}}>
-            <List component="nav" aria-label="search result list">
+            <Group direction="column" aria-label="search result list">
               {
                 overlay
               }
-            </List>
-          </div>
-      </Paper>
-      <Paper style={{'padding': '20px', 'marginTop': '20px'}}>
-          <Typography gutterBottom variant="h5" component="h5">
+            </Group>
+        </Paper>
+      </Col>
+      <Col span={12} key={"Info row"}>
+        <Paper padding="md" shadow="xs">
+          <Text size="lg">
             {t('help_header')}
-          </Typography>
-          <Typography variant="body2" gutterBottom>
+          </Text>
+          <Text>
             {t('not_all')}
-          </Typography>
-          <Typography variant="body2" gutterBottom>
+          </Text>
+          <Text>
             {t('pre_a')}<Link href="/viewers">{t('a1')}</Link> & <Link href="/viewers">{t('a2')}</Link>!
-          </Typography>
-      </Paper>
+          </Text>
+        </Paper>
+      </Col>
     </Grid>
   );
 }

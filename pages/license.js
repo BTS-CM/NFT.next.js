@@ -12,12 +12,15 @@ function License(properties) {
   const { t } = useTranslation('license');
 
   let [analytics, setAnalytics] = useAnalytics();
-  useEffect(async () => {
-    if (analytics && config.google_analytics.length) {
-      const ReactGA = (await import('react-ga4')).default
-      ReactGA.initialize(config.google_analytics);
-      ReactGA.pageview('License')
+  useEffect(() => {
+    async function sendAnalytics() {
+      if (analytics && config.google_analytics.length) {
+        const ReactGA = (await import('react-ga4')).default
+        ReactGA.initialize(config.google_analytics);
+        ReactGA.pageview('License')
+      }
     }
+    sendAnalytics();
   }, [analytics]);
 
   return (

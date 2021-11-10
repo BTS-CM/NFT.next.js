@@ -21,12 +21,15 @@ function Home(props) {
 
   let [analytics, setAnalytics] = useAnalytics();
 
-  useEffect(async () => {
-    if (analytics && config.google_analytics.length) {
-      const ReactGA = (await import('react-ga4')).default
-      ReactGA.initialize(config.google_analytics);
-      ReactGA.pageview('Index');
+  useEffect(() => {
+    async function sendAnalytics() {
+      if (analytics && config.google_analytics.length) {
+        const ReactGA = (await import('react-ga4')).default
+        ReactGA.initialize(config.google_analytics);
+        ReactGA.pageview('Index');
+      }
     }
+    sendAnalytics();
   }, [analytics]);
 
   const carouselMemo = useMemo(() => <CarouselElement nfts={nfts} isMobile={isMobile} isApple={isIOS || isSafari || isMobileSafari} />, [nfts]);

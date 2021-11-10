@@ -110,12 +110,16 @@ function SearchPanel (properties) {
 function Search(properties) {
   let [analytics, setAnalytics] = useAnalytics();
   let config = properties.config;
-  useEffect(async () => {
-    if (analytics && config.google_analytics.length) {
-      const ReactGA = (await import('react-ga4')).default
-      ReactGA.initialize(config.google_analytics);
-      ReactGA.pageview('Search')
+
+  useEffect(() => {
+    async function sendAnalytics() {
+      if (analytics && config.google_analytics.length) {
+        const ReactGA = (await import('react-ga4')).default
+        ReactGA.initialize(config.google_analytics);
+        ReactGA.pageview('Search')
+      }
     }
+    sendAnalytics();
   }, [analytics]);
 
   return (

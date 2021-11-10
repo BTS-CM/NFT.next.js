@@ -6,11 +6,13 @@ const useTheme = createLocalStorageStateHook('theme', 'light');
 const useGateway = createLocalStorageStateHook('gateway', 'cf-ipfs.com');
 const useAnalytics = createLocalStorageStateHook('analytics', config && config.google_analytics ? true : false);
 const useEnvironment = createLocalStorageStateHook('environment', 'production');
+const useMenuOpen = createLocalStorageStateHook('menuOpen', false);
 
 export {
   useLanguage,
   useTheme,
   useGateway,
   useAnalytics,
-  useEnvironment
+  useEnvironment,
+  useMenuOpen
 };

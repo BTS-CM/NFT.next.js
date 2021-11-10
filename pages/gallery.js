@@ -40,12 +40,15 @@ function Gallery(props) {
     cols = 2;
   }
 
-  useEffect(async () => {
-    if (analytics && config.google_analytics.length) {
-      const ReactGA = (await import('react-ga4')).default
-      ReactGA.initialize(config.google_analytics);
-      ReactGA.pageview('Gallery')
+  useEffect(() => {
+    async function sendAnalytics() {
+      if (analytics && config.google_analytics.length) {
+        const ReactGA = (await import('react-ga4')).default
+        ReactGA.initialize(config.google_analytics);
+        ReactGA.pageview('Gallery')
+      }
     }
+    sendAnalytics();
   }, [analytics]);
 
   let config = props.config;

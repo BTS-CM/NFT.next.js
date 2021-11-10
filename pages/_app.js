@@ -37,7 +37,7 @@ import '../components/noScrollbars.css';
 
 import NavButton from "../components/NavButton";
 
-import { useTheme, useLanguage, useEnvironment } from '../components/states';
+import { useTheme, useLanguage, useEnvironment, useMenuOpen } from '../components/states';
 import config from "../components/config.json";
 const locales = [
   {'language': 'en', 'aka': 'English'},
@@ -66,6 +66,7 @@ function MyApp(props) {
 
   const [language, setLanguage] = useLanguage('en');
   const [environment, setEnvironment] = useEnvironment();
+  const [menuOpen, setMenuOpen] = useMenuOpen(false);
   const [opened, setOpened] = useState(false);
 
   return (
@@ -88,7 +89,7 @@ function MyApp(props) {
                   <Navbar
                     padding="md"
                     hiddenBreakpoint="sm"
-                    hidden={!opened}
+                    hidden={!menuOpen}
                     width={{ base: 200, breakpoints: { sm: '100%', lg: 300 } }}
                     zIndex={1}
                   >
@@ -148,8 +149,8 @@ function MyApp(props) {
                     <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
                       <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
                         <Burger
-                          opened={opened}
-                          onClick={() => setOpened((o) => !o)}
+                          opened={menuOpen}
+                          onClick={() => setMenuOpen((o) => !o)}
                           size="sm"
                           color={"grey"}
                           mr="xl"

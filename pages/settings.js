@@ -21,12 +21,15 @@ function Settings(properties) {
   const config = properties.config;
   const ipfsJSON = properties.ipfsJSON;
 
-  useEffect(async () => {
-    if (analytics && config.google_analytics.length) {
-      const ReactGA = (await import('react-ga4')).default
-      ReactGA.initialize(config.google_analytics);
-      ReactGA.pageview('Settings')
+  useEffect(() => {
+    async function sendAnalytics() {
+      if (analytics && config.google_analytics.length) {
+        const ReactGA = (await import('react-ga4')).default
+        ReactGA.initialize(config.google_analytics);
+        ReactGA.pageview('Settings')
+      }
     }
+    sendAnalytics();
   }, [analytics]);
 
   return (

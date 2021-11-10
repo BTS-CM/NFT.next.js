@@ -3,10 +3,13 @@ import { Text, Group } from '@mantine/core';
 import useSWR from 'swr';
 
 const axios = require('axios');
+import { useEnvironment } from './states';
 
 const fetcher = async (url) => await axios.get(url);
 
 export default function MarketOrders(properties) {
+
+  const [environment, setEnvironment] = useEnvironment();
 
   const id = properties.id ? properties.id : null;
   const market = properties.market ? properties.market : null;
@@ -22,7 +25,7 @@ export default function MarketOrders(properties) {
   }
 
   const { data, error } = useSWR(
-    `https://api.bitshares.ws/openexplorer/order_book?base=${id}&quote=${approvedMarket}`,
+    `https://${environment === "staging" ? `api.testnet` : `api`}.bitshares.ws/openexplorer/order_book?base=${id}&quote=${approvedMarket}`,
     fetcher
   );
 
@@ -38,9 +41,9 @@ export default function MarketOrders(properties) {
 
   let bidText = bids && bids.length
                   ? <Text>{`Buy it now price: ${1/bids[0].price} ${approvedMarket}`}</Text>
-                  : <Text>No bids</Text>;
+                  : <Text>Not currently for sale.</Text>;
 
-
+    /*
     let asks = marketOrders
                 ? marketOrders["asks"]
                 : undefined;
@@ -48,12 +51,11 @@ export default function MarketOrders(properties) {
     let askText = asks && asks.length
                     ? <Text>{`Highest bid: ${1/asks[0].price} ${approvedMarket}`}</Text>
                     : <Text>Not for sale.</Text>;
-
+    */
 
     return (
       <Group position="center" sx={{marginTop: '5px', paddingTop: '5px'}}>
         {bidText}
-        {askText}
       </Group>
     )
 

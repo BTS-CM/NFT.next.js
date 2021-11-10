@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { Button, Text } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
-import { useTheme } from './states';
+import { useTheme, useMenuOpen } from './states';
 
 export default function NavButton(properties) {
 
@@ -12,6 +12,7 @@ export default function NavButton(properties) {
   const inputText = properties.inputText;
   const language = properties.language;
   const url = properties.url;
+  const [menuOpen, setMenuOpen] = useMenuOpen();
 
   const { hovered, ref } = useHover();
 
@@ -25,6 +26,7 @@ export default function NavButton(properties) {
           boxShadow: `0 0 ${hovered ? 5 : 2}px ${colorScheme === 'dark' ? 'white' : 'grey'}`,
           margin: '5px'
         }}
+        onClick={() => setMenuOpen(false)}
       >
         <Text locale={language}>{inputText}</Text>
       </Button>

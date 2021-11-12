@@ -7,6 +7,7 @@ const useGateway = createLocalStorageStateHook('gateway', 'cf-ipfs.com');
 const useAnalytics = createLocalStorageStateHook('analytics', config && config.google_analytics ? true : false);
 const useEnvironment = createLocalStorageStateHook('environment', 'production');
 const useMenuOpen = createLocalStorageStateHook('menuOpen', false);
+const useApproval = createLocalStorageStateHook('consent', "request");
 
 export {
   useLanguage,
@@ -14,5 +15,6 @@ export {
   useGateway,
   useAnalytics,
   useEnvironment,
-  useMenuOpen
+  useMenuOpen,
+  useApproval
 };

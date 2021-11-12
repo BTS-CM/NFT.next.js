@@ -3,18 +3,26 @@ import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
-import { Text, Grid, Col, Paper, Group, Button } from '@mantine/core'
+import { Text, Grid, Col, Paper, Group, Button } from '@mantine/core';
+import { useNotifications } from '@mantine/notifications';
+import { analyticsNotification } from '../lib/analyticsNotification';
 
 const SEO = dynamic(() => import('../components/SEO'));
-import { useAnalytics } from '../components/states';
+import { useAnalytics, useApproval } from '../components/states';
 
 function Viewers(properties) {
   const { t } = useTranslation('viewers');
   const config = properties.config;
 
   let [analytics, setAnalytics] = useAnalytics();
+  let [approval, setApproval] = useApproval();
+  const notifications = useNotifications();
+
   useEffect(() => {
     async function sendAnalytics() {
+      if (approval === "request") {
+        analyticsNotification(notifications, setApproval, setAnalytics)
+      }
       if (analytics && config.google_analytics.length) {
         const ReactGA = (await import('react-ga4')).default
         ReactGA.initialize(config.google_analytics);

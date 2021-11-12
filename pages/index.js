@@ -3,12 +3,14 @@ import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 import { isMobile, isIOS, isSafari, isMobileSafari } from 'react-device-detect';
 
-import { Text, Center, Grid, Col, Container, Paper, Button, Group } from '@mantine/core'
+import { Text, Center, Grid, Col, Container, Paper, Button, Group } from '@mantine/core';
+import { useNotifications } from '@mantine/notifications';
 
+import { analyticsNotification } from '../lib/analyticsNotification';
 import CarouselElement from "../components/Carousel"
 import SEO from "../components/SEO"
 
-import { useEnvironment, useAnalytics } from '../components/states';
+import { useEnvironment, useAnalytics, useApproval } from '../components/states';
 
 function Home(props) {
 
@@ -20,9 +22,14 @@ function Home(props) {
   let nfts = env === 'production' ? props.minProdNFTS : props.minStagingNFTS;
 
   let [analytics, setAnalytics] = useAnalytics();
+  let [approval, setApproval] = useApproval();
+  const notifications = useNotifications();
 
   useEffect(() => {
     async function sendAnalytics() {
+      if (approval === "request") {
+        analyticsNotification(notifications, setApproval, setAnalytics)
+      }
       if (analytics && config.google_analytics.length) {
         const ReactGA = (await import('react-ga4')).default
         ReactGA.initialize(config.google_analytics);

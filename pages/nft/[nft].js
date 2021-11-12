@@ -3,12 +3,13 @@ import ReactGA from 'react-ga4';
 import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 import { isIOS, isSafari, isMobileSafari } from 'react-device-detect'
+import { useNotifications } from '@mantine/notifications';
 
 const SEO = dynamic(() => import('../../components/SEO'));
 const NFT = dynamic(() => import('../../components/NFT'));
 
 import art from '../../components/art.json';
-import { useEnvironment, useAnalytics } from '../../components/states';
+import { useEnvironment, useAnalytics, useApproval } from '../../components/states';
 
 function InvalidNFT (props) {
   if (props.analytics) {
@@ -54,6 +55,9 @@ function ValidNFT (props) {
 function NFTPAGE (props) {
 
   let [analytics, setAnalytics] = useAnalytics();
+  let [approval, setApproval] = useApproval();
+  const notifications = useNotifications();
+
   let initAsset = props.initAsset;
   let config = props.config;
 
@@ -120,13 +124,21 @@ export const getStaticPaths = async ({ locales }) => {
 
   return {
       paths: paths, //indicates that no page needs be created at build time
-      fallback: 'blocking' //indicates the type of fallback
+      fallback: false //indicates the type of fallback
   }
 }
 
 export const getStaticProps = async ({ locale, params }) => {
   let config = require('../../components/config.json');
-  let initAsset = require(`../../components/assets/${params.nft}.json`);
+  let initAsset;
+  try {
+    initAsset = require(`../../components/assets/${params.nft}.json`);
+  } catch(e) {
+    return {
+      notFound: true,
+    }
+  }
+
   const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
 
   return {

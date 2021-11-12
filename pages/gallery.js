@@ -5,6 +5,8 @@ import dynamic from 'next/dynamic';
 import { FixedSizeGrid  as ReactGrid } from 'react-window';
 import { isMobile, isIOS, isSafari, isMobileSafari } from 'react-device-detect';
 import { useViewportSize } from '@mantine/hooks';
+import { useNotifications } from '@mantine/notifications';
+import { analyticsNotification } from '../lib/analyticsNotification';
 
 import {
   Paper,
@@ -16,11 +18,13 @@ import {
 
 const GalleryCard = dynamic(() => import('../components/GalleryCard'));
 const SEO = dynamic(() => import('../components/SEO'));
-import { useEnvironment, useAnalytics } from '../components/states';
+import { useEnvironment, useAnalytics, useApproval } from '../components/states';
 
 function Gallery(props) {
   const { t } = useTranslation('gallery');
   let [analytics, setAnalytics] = useAnalytics();
+  let [approval, setApproval] = useApproval();
+  const notifications = useNotifications();
   const { height, width } = useViewportSize();
 
   let cols = 1;
@@ -42,6 +46,9 @@ function Gallery(props) {
 
   useEffect(() => {
     async function sendAnalytics() {
+      if (approval === "request") {
+        analyticsNotification(notifications, setApproval, setAnalytics)
+      }
       if (analytics && config.google_analytics.length) {
         const ReactGA = (await import('react-ga4')).default
         ReactGA.initialize(config.google_analytics);

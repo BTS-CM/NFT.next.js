@@ -1,19 +1,30 @@
 import { useEffect } from "react";
 import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
+import { useNotifications } from '@mantine/notifications';
 
-import { Text, Center, Grid, Col, Paper } from '@mantine/core'
+import { Text, Center, Grid, Col, Paper, ActionIcon } from '@mantine/core'
+
+import { analyticsNotification } from '../lib/analyticsNotification';
 
 const SEO = dynamic(() => import('../components/SEO'));
-import { useAnalytics } from '../components/states';
+import { useAnalytics, useApproval } from '../components/states';
 
 function About(properties) {
   const { t } = useTranslation('about');
   const config = properties.config;
+  const notifications = useNotifications();
 
   let [analytics, setAnalytics] = useAnalytics();
+  let [approval, setApproval] = useApproval();
+
   useEffect(() => {
+
     async function sendAnalytics() {
+      if (approval === "request") {
+        analyticsNotification(notifications, setApproval, setAnalytics)
+      }
+
       if (analytics && config.google_analytics.length) {
         const ReactGA = (await import('react-ga4')).default
         ReactGA.initialize(config.google_analytics);
@@ -21,6 +32,7 @@ function About(properties) {
       }
     }
     sendAnalytics();
+
   }, [analytics]);
 
   return (

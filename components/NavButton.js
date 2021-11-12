@@ -17,7 +17,7 @@ export default function NavButton(properties) {
   const { hovered, ref } = useHover();
 
   return (
-    <Link href={url} key={url.replace("/","")}>
+    <Link href={url} key={url.replace("/","")} passHref>
       <Button
         ref={ref}
         variant={colorScheme === "dark" ? "outline" : "light"}

@@ -17,12 +17,18 @@ import {
   Badge,
   Button,
   Code,
-  Group
+  Group,
+  Title
 } from '@mantine/core';
 
 import config from "./config.json";
 
-const OBJT = dynamic(() => import('./OBJT'));
+const OBJT = dynamic(() => import('./three/OBJT'));
+const GLTFT = dynamic(() => import('./three/GLTFT'));
+const FBXT = dynamic(() => import('./three/FBXT'));
+const VOXT = dynamic(() => import('./three/VOXT'));
+const MP4T = dynamic(() => import('./three/MP4T'));
+
 const IssuerDetails = dynamic(() => import('./IssuerDetails'));
 const NFTHolder = dynamic(() => import('./NFTHolder'));
 const IPFSCarouselElement = dynamic(() => import('./IPFSCarousel'));
@@ -253,21 +259,26 @@ export default function NFT (properties) {
     imageComponent = <IPFSCarouselElement media_png_multihashes={media_png_multihashes} asset={asset} isApple={isApple} />;
   } else if (nft_object.media_json) {
     imageComponent = <OBJT data={image} />
+  } else if (nft_object.media_gltft) {
+    imageComponent = <GLTFT data={image} symbol={symbol} />
+  } else if (nft_object.media_fbx) {
+    imageComponent = <FBXT symbol={symbol} />
+  } else if (nft_object.media_vox) {
+    imageComponent = <VOXT symbol={symbol} />
+  } else if (nft_object.media_mp4) {
+    imageComponent = <MP4T symbol={symbol} />
   }
 
   return (
     <Grid grow>
       <Col span={12} key={symbol + "NFT"}>
         <Paper padding="lg" withBorder shadow="md" align="center" id={id}>
-          <Text size="lg">
+          <Title order={2}>
             &quot;<Link href={`/nft/${symbol}`} passHref><a>{title}</a></Link>&quot;{t('by')}{artist}
-          </Text>
+          </Title>
           {
             imageComponent
           }
-          <Text>
-            {main.replace(" To view this token and others, visit https://nftea.gallery", "")}
-          </Text>
 
           <Tabs
             initialTab={0}
@@ -276,6 +287,7 @@ export default function NFT (properties) {
             active={activeTab}
             onTabChange={setActiveTab}
             aria-label="nft tabs"
+            sx={{paddingTop: '10px'}}
           >
             <Tab key="tabs.nft" label={t('tabs.nft')}>
               <Text>

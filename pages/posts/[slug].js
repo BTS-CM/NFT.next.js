@@ -48,15 +48,29 @@ export default function Post({ post, morePosts, preview }) {
 export async function getStaticProps({ params, locale }) {
   const {getPostBySlug} = (await import('../../lib/api'));
 
-  const post = getPostBySlug(params.slug, [
-    'title',
-    'date',
-    'slug',
-    'author',
-    'content',
-    'ogImage',
-    'coverImage',
-  ])
+  let post;
+  try {
+    post = getPostBySlug(params.slug, [
+      'title',
+      'date',
+      'slug',
+      'author',
+      'content',
+      'ogImage',
+      'coverImage',
+    ]);
+  } catch(e) {
+    return {
+      notFound: true,
+    }
+  }
+
+  if (!post) {
+    return {
+      notFound: true,
+    }
+  }
+
   const content = await markdownToHtml(post.content || '')
   const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
   return {
@@ -87,6 +101,6 @@ export const getStaticPaths = async ({ locales }) => {
 
   return {
       paths: paths, //indicates that no page needs be created at build time
-      fallback: 'blocking' //indicates the type of fallback
+      fallback: false //indicates the type of fallback
   }
 }

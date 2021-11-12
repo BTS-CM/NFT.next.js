@@ -70,7 +70,11 @@ function CarouselItem (properties) {
            component="a"
            href={`https://${gateway}${media_png_multihash.url}`}
            key={symbol + "_featured_div_" + itr}
-           sx={{p: 0, m: 0.75}}
+           padding="none"
+           sx={{
+             backgroundImage: 'url('+`/images/${symbol}/0_bg.webp`+')',
+             backgroundSize: "cover"
+           }}
           >
             {media}
           </Card>);

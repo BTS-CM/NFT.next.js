@@ -5,9 +5,11 @@ import Link from 'next/link';
 
 import { IoSettingsOutline, IoCellularOutline, IoAnalyticsOutline, IoCheckmark } from "react-icons/io5";
 import { Text, Grid, Col, Paper, Group, Button, Menu, ActionIcon } from '@mantine/core'
+import { useNotifications } from '@mantine/notifications';
+import { analyticsNotification } from '../lib/analyticsNotification';
 
 const SEO = dynamic(() => import('../components/SEO'));
-import { useGateway, useTheme, useLanguage, useEnvironment, useAnalytics } from '../components/states';
+import { useGateway, useLanguage, useEnvironment, useAnalytics, useApproval } from '../components/states';
 
 function Settings(properties) {
   const { t } = useTranslation('settings');
@@ -15,14 +17,18 @@ function Settings(properties) {
   const [language, setLanguage] = useLanguage();
   const [environment, setEnvironment] = useEnvironment();
   const [analytics, setAnalytics] = useAnalytics();
-  const [theme, setTheme] = useAnalytics();
+  let [approval, setApproval] = useApproval();
   const [gateway, setGateway] = useGateway('cf-ipfs.com');
+  const notifications = useNotifications();
 
   const config = properties.config;
   const ipfsJSON = properties.ipfsJSON;
 
   useEffect(() => {
     async function sendAnalytics() {
+      if (approval === "request") {
+        analyticsNotification(notifications, setApproval, setAnalytics)
+      }
       if (analytics && config.google_analytics.length) {
         const ReactGA = (await import('react-ga4')).default
         ReactGA.initialize(config.google_analytics);

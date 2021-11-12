@@ -3,11 +3,13 @@ import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
-import { Text, Center, Grid, Col, Paper, Button, Group, TextInput } from '@mantine/core'
+import { Text, Center, Grid, Col, Paper, Button, Group, TextInput } from '@mantine/core';
+import { useNotifications } from '@mantine/notifications';
 
 const SEO = dynamic(() => import('../components/SEO'));
+import { analyticsNotification } from '../lib/analyticsNotification';
 
-import { useEnvironment, useAnalytics, useTheme } from '../components/states';
+import { useEnvironment, useAnalytics, useTheme, useApproval } from '../components/states';
 
 function SearchPanel (properties) {
   const { t } = useTranslation('search');
@@ -18,6 +20,7 @@ function SearchPanel (properties) {
 
   const [colorScheme, setColorScheme] = useTheme();
   let [environment, setEnvironment] = useEnvironment();
+  const notifications = useNotifications();
   let env = environment ? environment : 'production';
 
   const searchData = art && art[env] ? art[env] : [];
@@ -109,10 +112,15 @@ function SearchPanel (properties) {
 
 function Search(properties) {
   let [analytics, setAnalytics] = useAnalytics();
+  let [approval, setApproval] = useApproval();
+
   let config = properties.config;
 
   useEffect(() => {
     async function sendAnalytics() {
+      if (approval === "request") {
+        analyticsNotification(notifications, setApproval, setAnalytics)
+      }
       if (analytics && config.google_analytics.length) {
         const ReactGA = (await import('react-ga4')).default
         ReactGA.initialize(config.google_analytics);

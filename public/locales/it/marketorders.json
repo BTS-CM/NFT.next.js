@@ -1,0 +1,15 @@
+{
+   "connection_failure_msg": "Impossible de se connecter à Beet sur le port 60555. Veuillez lancer Beet.",
+   "connection_failure_title": "Impossible de se connecter à Beet",
+   "connection_valid_title": "Connecté à Betterave",
+   "connection_valid_msg": "Vous pouvez désormais acheter des NFT via Beet.",
+   "beet_buy_title": "Envoi du message 'acheter maintenant' à Beet !",
+   "beet_buy_msg": "Vérifiez votre client Beet pour procéder au paiement.",
+   "market_data_fail": "Données de marché temporairement indisponibles",
+   "buy_now": "Prix d'achat immédiat",
+   "beet_connect_button": "Connectez-vous à Beet",
+   "beet_buy_button": "Achetez-le maintenant!",
+   "not_for_sale": "Pas actuellement à vendre.",
+   "error_note_title": "Une erreur s'est produite lors de l'achat.",
+   "error_note_msg": "Désolé, une erreur s'est produite. Veuillez vérifier que vous disposez de suffisamment de fonds, que le client Beet est lancé et déverrouillé, actualisez la page puis réessayez."
+}

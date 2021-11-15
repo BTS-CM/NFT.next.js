@@ -1,0 +1,15 @@
+{{
+   "connection_failure_msg"： "ポート60555でBeetに接続できません。Beetを起動してください。",
+   "connection_failure_title"： "ビートに接続できませんでした",
+   "connection_valid_title"： "ビートに接続",
+   "connection_valid_msg"： "ビート経由でNFTを購入できるようになりました。",
+   "beet_buy_title"： "'今すぐ購入'メッセージをBeetに送信しています！",
+   "beet_buy_msg"： "支払いを続行するには、Beetクライアントを確認してください。",
+   "market_data_fail"： "市場データは一時的に利用できません",
+   "buy_now"： "今すぐ購入価格",
+   "beet_connect_button"： "ビートに接続",
+   "beet_buy_button"： "今すぐ購入！",
+   "not_for_sale"： "現在販売されていません。",
+   "error_note_title"： "購入中にエラーが発生しました。",
+   "error_note_msg"： "申し訳ありませんが、問題が発生しました。十分な資金があること、Beetクライアントが起動してロックが解除されていることを確認し、ページを更新してから再試行してください。"
+}

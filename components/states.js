@@ -8,6 +8,8 @@ const useAnalytics = createLocalStorageStateHook('analytics', config && config.g
 const useEnvironment = createLocalStorageStateHook('environment', 'production');
 const useMenuOpen = createLocalStorageStateHook('menuOpen', false);
 const useApproval = createLocalStorageStateHook('consent', "request");
+const useProdConnection = createLocalStorageStateHook('prodNetwork', "wss://eu.nodes.bitshares.ws");
+const useTestnetConnection = createLocalStorageStateHook('testNetwork', "wss://node.testnet.bitshares.eu");
 
 export {
   useLanguage,
@@ -16,5 +18,7 @@ export {
   useAnalytics,
   useEnvironment,
   useMenuOpen,
-  useApproval
+  useApproval,
+  useProdConnection,
+  useTestnetConnection
 };

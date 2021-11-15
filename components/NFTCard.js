@@ -17,7 +17,6 @@ export default function NFTCard(properties) {
 
   let visible = properties && properties.visible ? properties.visible : null;
   let nearby = properties && properties.nearby ? properties.nearby : null;
-  let isMobile = properties && properties.isMobile ? properties.isMobile : false;
   let isApple = properties && properties.isApple ? properties.isApple : false;
 
   const { ref, inView } = useInView({
@@ -33,35 +32,38 @@ export default function NFTCard(properties) {
   let title = nft ? nft.title : undefined;
   let artist = nft ? nft.artist : undefined;
   let media_json = nft ? nft.media_json : undefined;
+  let isMobile = properties ? properties.isMobile : undefined;
 
   let address = language && !language.includes("en") ? `/${language}` : ``;
+
+  let width = properties.width;
 
   let media = null;
   if (visible || inView) {
     media = isApple
               ? <img
-                  width={isMobile ? "300px" : "1028px"}
-                  height={isMobile ? "300px" : "1028px"}
+                  width={`${width}px`}
+                  height={`${width}px`}
                   alt={`${symbol} NFT apple image`}
                   src={!media_json ? `/images/${symbol}/0${isMobile ? '_gallery' : ''}.webp` : "/images/placeholders/0.webp"}
                 />
               : <Image
-                  width={isMobile ? "300px" : "1028px"}
-                  height={isMobile ? "300px" : "1028px"}
+                  width={`${width}px`}
+                  height={`${width}px`}
                   src={!media_json ? `/images/${symbol}/0${isMobile ? '_gallery' : ''}.webp` : "/images/placeholders/0.webp"}
                   alt={`${symbol} NFT image`}
                 />;
   } else if (nearby) {
     media = isApple
               ? <img
-                  width={isMobile ? "300px" : "1028px"}
-                  height={isMobile ? "300px" : "1028px"}
+                  width={`${width}px`}
+                  height={`${width}px`}
                   alt={`${symbol} NFT apple image`}
                   src={!media_json ? `/images/${symbol}/0_thumb.webp` : "/images/placeholders/0.webp"}
                 />
               : <Image
-                  width={isMobile ? "300px" : "1028px"}
-                  height={isMobile ? "300px" : "1028px"}
+                  width={`${width}px`}
+                  height={`${width}px`}
                   component="img"
                   src={!media_json ? `/images/${symbol}/0_thumb.webp` : "/images/placeholders/0.webp"}
                   alt={`${symbol} NFT image`}

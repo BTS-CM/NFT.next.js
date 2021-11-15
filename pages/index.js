@@ -5,6 +5,7 @@ import { isMobile, isIOS, isSafari, isMobileSafari } from 'react-device-detect';
 
 import { Text, Center, Grid, Col, Container, Paper, Button, Group } from '@mantine/core';
 import { useNotifications } from '@mantine/notifications';
+import { useViewportSize } from '@mantine/hooks';
 
 import { analyticsNotification } from '../lib/analyticsNotification';
 import CarouselElement from "../components/Carousel"
@@ -17,6 +18,23 @@ function Home(props) {
   const { t } = useTranslation('mainpage');
   let [environment, setEnvironment] = useEnvironment();
   let env = environment ? environment : 'production';
+  const { height, width } = useViewportSize();
+
+  let paperWidth;
+  let imageHeight;
+  if (width < 576) { //xs
+    paperWidth = 300;
+  } else if (width < 768) { //sm
+    paperWidth = width * 0.75;
+  } else if (width < 1000) { //md
+    paperWidth = width * 0.5;
+  } else if (width < 1280) { //lg
+    paperWidth = width * 0.6;
+  } else if (width < 1500) { //xl
+    paperWidth = width * 0.5;
+  } else {
+    paperWidth = width * 0.4;
+  }
 
   let config = props.config;
   let nfts = env === 'production' ? props.minProdNFTS : props.minStagingNFTS;
@@ -39,12 +57,17 @@ function Home(props) {
     sendAnalytics();
   }, [analytics]);
 
-  const carouselMemo = useMemo(() => <CarouselElement nfts={nfts} isMobile={isMobile} isApple={isIOS || isSafari || isMobileSafari} />, [nfts]);
+  const carouselMemo = useMemo(() => <CarouselElement
+                                       nfts={nfts}
+                                       isMobile={isMobile}
+                                       isApple={isIOS || isSafari || isMobileSafari}
+                                       width={paperWidth}
+                                     />, [nfts]);
 
   const trading = useMemo(() => (
                     <Col span={6} xs={12} sm={6} md={6} lg={6} key={"Trading"}>
                       <Center>
-                        <Paper padding="md" shadow="xs" sx={{textAlign: 'center'}}>
+                        <Paper padding="md" shadow="sm" withBorder sx={{textAlign: 'center'}}>
                           <Text size="lg">
                             {t("mainpage:traders.header")}
                           </Text>
@@ -72,9 +95,9 @@ function Home(props) {
                   ), [t]);
 
   const tips = useMemo(() => (
-    <Col span={12} xs={12} sm={6} md={6} lg={6} key={"BTS_Info"}>
+    <Col span={12} xs={12} sm={12} md={6} lg={6} key={"BTS_Info"}>
       <Center>
-        <Paper padding="md" shadow="xs" sx={{textAlign: 'center'}}>
+        <Paper padding="md" shadow="sm" withBorder sx={{textAlign: 'center'}}>
           <Text size="lg">
             {t("mainpage:benefits.header")}
           </Text>
@@ -106,9 +129,14 @@ function Home(props) {
             {t("mainpage:featured")}
           </Text>
         </Center>
-        <Paper padding="md" shadow="xs" style={{ width: isMobile ? 250 : 1028, margin: 'auto' }}>
-          {carouselMemo}
-        </Paper>
+        <Center>
+          <Paper padding="sm" shadow="sm" withBorder>
+            <div style={{width: paperWidth, margin: 'auto' }}>
+              {carouselMemo}
+            </div>
+          </Paper>
+        </Center>
+
       </Col>
     </Grid>,
     <Grid grow key="grid2">

@@ -1,0 +1,15 @@
+{
+   "connection_failure_msg": "Verbindung zu Beet auf Port 60555 nicht möglich. Bitte starten Sie Beet.",
+   "connection_failure_title": "Verbindung zu Beet konnte nicht hergestellt werden",
+   "connection_valid_title": "Mit Beet verbunden",
+   "connection_valid_msg": "Du kannst jetzt NFTs über Beet kaufen.",
+   "beet_buy_title": "Jetzt kaufen-Nachricht an Beet senden!",
+   "beet_buy_msg": "Überprüfe deinen Beet-Client, um mit der Zahlung fortzufahren.",
+   "market_data_fail": "Marktdaten vorübergehend nicht verfügbar",
+   "buy_now": "Jetzt kaufen Preis",
+   "beet_connect_button": "Mit Beet verbinden",
+   "beet_buy_button": "Jetzt kaufen!",
+   "not_for_sale": "Derzeit nicht zum Verkauf.",
+   "error_note_title": "Beim Kauf ist ein Fehler aufgetreten.",
+   "error_note_msg": "Leider ist etwas schief gelaufen. Bitte vergewissern Sie sich, dass Sie über ausreichende Mittel verfügen, dass der Beet-Client gestartet und freigeschaltet ist, aktualisieren Sie die Seite und versuchen Sie es erneut."
+}

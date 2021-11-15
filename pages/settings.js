@@ -3,13 +3,27 @@ import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
-import { IoSettingsOutline, IoCellularOutline, IoAnalyticsOutline, IoCheckmark } from "react-icons/io5";
+import {
+  IoSettingsOutline,
+  IoCellularOutline,
+  IoAnalyticsOutline,
+  IoCheckmark,
+  IoWifiOutline
+} from "react-icons/io5";
 import { Text, Grid, Col, Paper, Group, Button, Menu, ActionIcon } from '@mantine/core'
 import { useNotifications } from '@mantine/notifications';
 import { analyticsNotification } from '../lib/analyticsNotification';
 
 const SEO = dynamic(() => import('../components/SEO'));
-import { useGateway, useLanguage, useEnvironment, useAnalytics, useApproval } from '../components/states';
+import {
+  useGateway,
+  useLanguage,
+  useEnvironment,
+  useAnalytics,
+  useApproval,
+  useProdConnection,
+  useTestnetConnection
+ } from '../components/states';
 
 function Settings(properties) {
   const { t } = useTranslation('settings');
@@ -19,10 +33,18 @@ function Settings(properties) {
   const [analytics, setAnalytics] = useAnalytics();
   let [approval, setApproval] = useApproval();
   const [gateway, setGateway] = useGateway('cf-ipfs.com');
+  const [prodConnection, setProdConnection] = useProdConnection();
+  const [testnetConnection, setTestnetConnection] = useTestnetConnection();
   const notifications = useNotifications();
 
   const config = properties.config;
   const ipfsJSON = properties.ipfsJSON;
+  const btsJSON = properties.btsJSON;
+  const btsTestnetJSON = properties.btsTestnetJSON;
+
+  let network = environment === 'production'
+                  ? btsJSON
+                  : btsTestnetJSON;
 
   useEffect(() => {
     async function sendAnalytics() {
@@ -115,6 +137,31 @@ function Settings(properties) {
                 Disable
               </Menu.Item>
             </Menu>
+
+            <Menu
+              id="long-menu"
+              trigger="click"
+              closeOnScroll={false}
+              control={<Button leftIcon={<IoWifiOutline />} variant='outline' color={'gray'}> BTS DEX connection</Button>}
+              size="lg"
+              shadow="xl"
+            >
+            {network.map((key, value) => (
+              <Menu.Item
+                locale={language}
+                key={`BTS network ${value}`}
+                icon={key === (environment === 'production' ? prodConnection : testnetConnection) ? <IoCheckmark /> : null}
+                onClick={() => {
+                  environment === 'production'
+                    ? setProdConnection(key)
+                    : setTestnetConnection(key)
+                }}
+              >
+                {key}
+              </Menu.Item>
+            ))}
+            </Menu>
+
           </Group>
         </Paper>
       </Col>
@@ -126,12 +173,16 @@ export const getStaticProps = async ({ locale }) => {
 
   let config = require('../components/config.json');
   let ipfsJSON = require('../components/ipfsJSON.json');
+  let btsJSON = require('../components/btsJSON.json');
+  let btsTestnetJSON = require('../components/btsTestnetJSON.json');
   const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
 
   return {
     props: {
       config: config,
       ipfsJSON: ipfsJSON,
+      btsJSON: btsJSON,
+      btsTestnetJSON: btsTestnetJSON,
       ...(await serverSideTranslations(locale, ['settings', 'nav'])),
     }
   };

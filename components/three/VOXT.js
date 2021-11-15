@@ -4,13 +4,12 @@ import { Canvas } from '@react-three/fiber'
 import { VOXLoader, VOXMesh } from 'three/examples/jsm/loaders/VOXLoader'
 import { OrbitControls, Stars } from "@react-three/drei";
 
-function FBX(props) {
+function VOX(props) {
   let loader = new VOXLoader();
   let loadedVOX;
   try {
     loadedVOX = loader.load(`../../public/images/${props.symbol}/0.vox`);
   } catch (e) {}
-
 
   return loadedVOX
           ? (

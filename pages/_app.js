@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic'
 import Link from 'next/link';
 import Head from 'next/head'
+import Script from "next/script";
 
 import { useTranslation } from 'next-i18next';
 import {
@@ -95,7 +96,7 @@ function MyApp(props) {
                       padding="md"
                       hiddenBreakpoint="sm"
                       hidden={!menuOpen}
-                      width={{ base: 200, breakpoints: { sm: '100%', lg: 300 } }}
+                      width={{ base: 250, breakpoints: { sm: '100%', lg: 250 } }}
                       zIndex={1}
                     >
                       <NavButton
@@ -149,7 +150,7 @@ function MyApp(props) {
                     </Navbar>
                   }
                   header={
-                    <Header height={70} padding="md">
+                    <Header height={70} padding="sm">
                       {/* You can handle other responsive styles with MediaQuery component or createStyles function */}
                       <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
                         <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
@@ -169,7 +170,7 @@ function MyApp(props) {
                             </a>
                           </Link>
                         </Title>
-                        <Title order={2} inherit sx={{flexGrow: 1, paddingLeft: '5px'}}>
+                        <Title order={2} sx={{flexGrow: 1, paddingLeft: '5px'}}>
                           <Link href="/" locale={language}>
                             <a style={{color: colorScheme === 'light' ? 'black' : 'white'}}>
                               {environment && environment === 'staging' ? t("staging"): null}
@@ -190,11 +191,15 @@ function MyApp(props) {
                           {locales.map((option) => (
                             <Menu.Item
                               component="a"
-                              locale={option.language}
-                              href={`${router.asPath}`}
+                              href={
+                                language === 'en'
+                                  ? `${router.asPath}`
+                                  : `/${option.language}/${router.asPath}`
+                              }
                               key={option.language}
                               selected={option.language === language}
                               onClick={() => { setLanguage(option.language) }}
+                              passHref
                             >
                               {option.aka}
                             </Menu.Item>
@@ -234,7 +239,7 @@ function MyApp(props) {
                       <Col span={12} xs={12} key={"footer 0"} sx={{textAlign: 'center'}}>
                         <Divider style={{marginTop: '15px'}}/>
                       </Col>
-                      <Col span={12} xs={12} sm={6} key={"footer 1"}>
+                      <Col span={12} xs={12} sm={12} md={6} key={"footer 1"}>
                         <Title order={4}>
                           {config.title}
                         </Title>
@@ -248,7 +253,7 @@ function MyApp(props) {
                           {t('footer_3')}<Link style={{color: 'primary'}} href={"https://nextjs.org/"} passHref><a>Next.js</a></Link>{t('footer_4')}<Link href={"https://vercel.com"} passHref><a sx={{color: 'text.primary'}}>Vercel</a></Link>
                         </Text>
                       </Col>
-                      <Col span={12} xs={12} sm={2} key={"footer 2"}>
+                      <Col span={12} xs={12} sm={12} md={2} key={"footer 2"}>
                         <Text size="xl">
                           {t('footer_links')}
                         </Text>
@@ -270,7 +275,7 @@ function MyApp(props) {
                           </a>
                         </Link>
                       </Col>
-                      <Col span={12} xs={12} sm={2} key={"footer 3"}>
+                      <Col span={12} xs={12} sm={12} md={2} key={"footer 3"}>
                         <Text size="xl">
                           {t('footer_wallets')}
                         </Text>
@@ -298,7 +303,7 @@ function MyApp(props) {
                           </a>
                         </Link>
                       </Col>
-                      <Col span={12} xs={12} sm={2} key={"footer 4"}>
+                      <Col span={12} xs={12} sm={12} md={2} key={"footer 4"}>
                         <Text size="xl">
                           {t('footer_markets')}
                         </Text>

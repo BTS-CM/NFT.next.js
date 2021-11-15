@@ -1,0 +1,10 @@
+[
+  "wss://public.xbts.io/ws",
+  "wss://eu.nodes.bitshares.ws",
+  "wss://dex.iobanker.com/ws",
+  "wss://ws.gdex.top",
+  "wss://btsws.roelandp.nl/ws",
+  "wss://api.bitshares.org/ws",
+  "wss://cloud.xbts.io/ws",
+  "wss://node.xbts.io/ws"
+]

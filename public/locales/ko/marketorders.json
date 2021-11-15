@@ -1,0 +1,15 @@
+{
+   "connection_failure_msg": "포트 60555에서 Beet에 연결할 수 없습니다. Beet를 시작하십시오.",
+   "connection_failure_title": "Beet에 연결할 수 없습니다",
+   "connection_valid_title": "비트에 연결됨",
+   "connection_valid_msg": "이제 비트를 통해 NFT를 구입할 수 있습니다.",
+   "beet_buy_title": "Beet에게 '지금 구매' 메시지 보내기!",
+   "beet_buy_msg": "결제를 진행하려면 Beet 클라이언트를 확인하십시오.",
+   "market_data_fail": "시장 데이터를 일시적으로 사용할 수 없음",
+   "buy_now": "지금 구입 가격",
+   "beet_connect_button": "비트에 연결",
+   "beet_buy_button": "지금 구매하세요!",
+   "not_for_sale": "현재 판매되지 않습니다.",
+   "error_note_title": "구매하는 동안 오류가 발생했습니다.",
+   "error_note_msg": "죄송합니다. 문제가 발생했습니다. 자금이 충분한지, Beet 클라이언트가 실행 및 잠금 해제되었는지 확인하고, 페이지를 새로고침한 다음 다시 시도하십시오."
+}

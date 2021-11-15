@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import Script from 'next/script';
 
 import {
   Card,
@@ -91,6 +92,9 @@ export default function NFT (properties) {
   const [asset, setAsset] = useState(initAsset ? initAsset : undefined);
   const [value, setValue] = useState(0);
   const [activeTab, setActiveTab] = useState(0);
+  const [beet, setBeet] = useState(false);
+  const [buyViaBeet, setViaBeet] = useState(false);
+  const [account, setAccount] = useState(null);
 
   let issuer = asset ? asset.issuer : undefined;
   let precision = asset ? asset.precision : undefined;
@@ -279,6 +283,15 @@ export default function NFT (properties) {
           {
             imageComponent
           }
+
+          <Script
+            id="beet"
+            src="../js/beet-js.js"
+          />
+          <Script
+            id="btsJS"
+            src="../js/bitsharesjs.min.js"
+          />
 
           <Tabs
             initialTab={0}
@@ -579,11 +592,21 @@ export default function NFT (properties) {
                   blocksights.info
                 </Button>
               </Group>
+            </Tab>
 
-              <Text size="lg" style={{'paddingTop': '5px'}}>
-                Market orders
-              </Text>
-              <MarketOrders id={id} market={market} />
+            <Tab key="tabs.beet" label={t('tabs.beet')}>
+              <MarketOrders
+                id={id}
+                market={market}
+                beet={beet}
+                setBeet={setBeet}
+                buyViaBeet={buyViaBeet}
+                setViaBeet={setViaBeet}
+                account={account}
+                setAccount={setAccount}
+                symbol={symbol}
+                {...properties}
+              />
             </Tab>
 
             <Tab key="tabs.flags" label={t('tabs.flags')}>

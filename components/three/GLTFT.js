@@ -7,20 +7,8 @@ import { OrbitControls, Stars } from "@react-three/drei";
 //https://docs.pmnd.rs/react-three-fiber/getting-started/examples
 
 function GLTF(props) {
-  if (props.symbol && !props.gltf) {
     const { scene, nodes, materials } = useGLTF(`../../public/${props.symbol}/0.glb`)
-    // For more control over the asset refer to https://github.com/pmndrs/gltfjsx
     return (<mesh><primitive object={scene} {...props} /></mesh>);
-  }
-
-  const gltfString = atob(props.gltf);
-  let gltf_loader = new GLTFLoader();
-  let gltf = gltf_loader.parse(gltfString);
-  return (
-    <mesh>
-     <primitive object={gltf.scene} />
-    </mesh>
-  );
 }
 
 export default function GLTFT(properties) {

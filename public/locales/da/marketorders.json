@@ -1,0 +1,15 @@
+{
+   "connection_failure_msg": "Kan ikke oprette forbindelse til Beet på port 60555. Start venligst Beet.",
+   "connection_failure_title": "Kunne ikke oprette forbindelse til Beet",
+   "connection_valid_title": "Forbundet til Beet",
+   "connection_valid_msg": "Du kan nu købe NFT'er via Beet.",
+   "beet_buy_title": "Sender 'køb nu' besked til Beet!",
+   "beet_buy_msg": "Tjek din Beet-klient for at fortsætte med betalingen.",
+   "market_data_fail": "Markedsdata er midlertidigt utilgængelige",
+   "buy_now": "Køb det nu pris",
+   "beet_connect_button": "Opret forbindelse til Beet",
+   "beet_buy_button": "Køb det nu!",
+   "not_for_sale": "Ikke i øjeblikket til salg.",
+   "error_note_title": "Der opstod en fejl under købet.",
+   "error_note_msg": "Beklager, noget gik galt. Bekræft venligst, at du har tilstrækkelige midler, at Beet-klienten er startet og låst op, opdater siden og prøv igen."
+}

@@ -81,6 +81,7 @@ function NFTPAGE (props) {
               initAsset={initAsset}
               environment={env}
               analytics={analytics}
+              notifications={notifications}
               {...props}
             />
   } else {
@@ -92,6 +93,7 @@ function NFTPAGE (props) {
                 initAsset={initAsset}
                 environment={'staging'}
                 analytics={analytics}
+                notifications={notifications}
                 {...props}
               />
     } else {
@@ -145,7 +147,7 @@ export const getStaticProps = async ({ locale, params }) => {
     props: {
       config,
       initAsset,
-      ...(await serverSideTranslations(locale, ['nft', 'nav'])),
+      ...(await serverSideTranslations(locale, ['marketorders', 'nft', 'nav'])),
     },
   };
 }

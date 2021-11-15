@@ -1,7 +1,88 @@
 {
-    "acknowledgments": "Anerkendelser",
-    "attestation": "Attestation",
-    "narrative": "Fortælling",
-    "header_description": "'{{nft}}' er en Bitshares blockchain -drevet NFT; køb, byt, saml den på BTS DEX!",
+    "permissionTips": {
+      "enabled": {
+        "charge_market_fee" : "Aktivudstederen kan aktivere markedsgebyrer.",
+        "white_list" : "Atudstederen kan oprette en liste over godkendte markeder",
+        "override_authority" : "Atudstederen kan overføre denne NFT tilbage til sig selv.",
+        "transfer_restricted" : "Dette aktiv må kun overføres til/fra udstederen eller markedsordrer",
+        "disable_force_settle": "Brugere kan anmode om tvangsafregning af dette markedsudstedte aktiv.",
+        "global_settle": "Udstederen af ​​dette markedsudstedte aktiv har mulighed for at afvikle aktivet globalt",
+        "disable_confidential": "Udstederen af ​​dette aktiv kan deaktivere stealth-transaktioner.",
+        "witness_fed_asset": "Dette markedsudstedte aktiv kan få sine prisfeeds leveret af Bitshares vidner.",
+        "committee_fed_asset": "Dette markedsudstedte aktiv kan få sine prisfeeds leveret af Bitshares udvalgsmedlemmer."
+      },
+      "disabled": {
+        "charge_market_fee" : "Der kan ikke opkræves nogen markedsgebyrer for dette aktiv; kun BTS-gebyrer vil blive påkrævet.",
+        "white_list" : "Der er ingen godkendt liste over markeder for dette aktiv. Du er velkommen til at bytte det for noget på Bitshares decentraliserede børs.",
+        "override_authority" : "Atudstederen er ikke i stand til at overføre denne NFT tilbage til sig selv.",
+        "transfer_restricted" : "Dette aktivs overførsler er ubegrænsede.",
+        "disable_force_settle": "Dette aktiv kan ikke tvangsafregnes.",
+        "global_settle": "Dette aktiv kan ikke afregnes globalt.",
+        "disable_confidential": "Fortrolige transaktioner af dette aktiv er permanent mulige.",
+        "witness_fed_asset": "Vidnerne kan ikke give en pris for dette aktiv.",
+        "committee_fed_asset": "Komitéen kan ikke give en pris for dette aktiv."
+      }
+    },
+    "by": "af",
+    "tabs": {
+      "nft": "NFT",
+      "asset": "Aktiv",
+      "tags": "Tags",
+      "share": "Del",
+      "buy": "Hvor kan man købe",
+      "beet": "Køb med Beet",
+      "flags": "Flag",
+      "permissions": "Tilladelser",
+      "signature": "Signatur",
+      "license": "Licens",
+      "json": "JSON-data"
+    },
+    "nft": {
+      "attestation": "Attestation",
+      "narrative": "Fortælling",
+      "acknowledgments": "Anerkendelser"
+    },
+    "asset": {
+      "name": "Aktivnavn",
+      "owner": "Nuværende ejer",
+      "quantity": "Udstedt mængde",
+      "file_type": "Filtype",
+      "onchain": "Denne NFT er fuldt ud gemt på Bitshares blockchain!",
+      "offchain": "Denne NFT opbevares muligvis ikke fuldt ud på kæden.",
+      "encoding": "Filkodning",
+      "precision_good": "Med en præcision på 0 er '{{short_name}}' et ikke-fungibelt token!",
+      "precision_bad": "På grund af ikke at have en præcision på 0, er dette et fungibelt token.",
+      "precision": "Nøjagtighed",
+      "asset_ownership_burned": "Ejerskab af aktiv er blevet 'brændt' ved at blive sendt til 'null-account'; denne NFT's indstillinger er nu endelige.",
+      "asset_ownership_warning": "Advarsel: Aktivejerskab er ikke blevet overført til 'null-konto' endnu; indstillingerne og det udstedte antal kan ændre sig efter købet.",
+      "issuer": "Aktivudsteder"
+    },
+    "tags": {
+      "no_tags": "Ingen emne-/interesse-tags",
+      "no_nft_tags": "Ingen NFT-tags"
+    },
+    "buy": {
+      "header": "NFT med titlen '{{title}}' ({{symbol}}) kan handles/overføres på Bitshares decentraliserede børs",
+      "tooltip": "Søg efter UIA '{{symbol}}' i desktop-appen",
+      "button": "Desktop-app"
+    },
+    "flag": {
+      "none": "Ingen flag er aktiveret i øjeblikket."
+    },
+    "permissions": {
+      "none": "Alle tilladelser er blevet deaktiveret."
+    },
+    "signature": {
+      "header": "Signatur",
+      "signature": "Signatur pubnøgle/adresse",
+      "password": "Adgangskode multihash"
+    },
+    "license": {
+      "header1": "Licens",
+      "none1": "Licensen, under hvilken denne NFT er blevet frigivet, er ikke blevet fremlagt.",
+      "header2": "Indehaverlicens",
+      "none2": "Indehaverlicensoplysninger er ikke blevet givet."
+    },
+    "header_description": "'{{nft}}' er en Bitshares blockchain-drevet NFT; køb, byt, saml det på BTS DEX!",
     "header_title": "'{{nft}}' Bitshares NFT"
 }

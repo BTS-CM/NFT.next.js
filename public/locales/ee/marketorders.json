@@ -1,0 +1,15 @@
+{
+   "connection_failure_msg": "Ei saa ühendust luua Beetiga pordis 60555. Palun käivitage Beet.",
+   "connection_failure_title": "Ei saanud ühendust Beetiga",
+   "connection_valid_title": "Ühendatud Beetiga",
+   "connection_valid_msg": "Nüüd saate osta NFT-sid peedi kaudu.",
+   "beet_buy_title": "Osta kohe sõnumi saatmine Beetile!",
+   "beet_buy_msg": "Makse jätkamiseks kontrollige oma Beeti klienti.",
+   "market_data_fail": "Turuandmed pole ajutiselt saadaval",
+   "buy_now": "Osta kohe hind",
+   "beet_connect_button": "Ühenda Beetiga",
+   "beet_buy_button": "Ostke kohe!",
+   "not_for_sale": "Pole hetkel müügis.",
+   "error_note_title": "Ostu ajal ilmnes viga.",
+   "error_note_msg": "Vabandust, midagi läks valesti. Veenduge, et teil on piisavalt raha, et Beet klient on käivitatud ja lukust lahti, värskendage lehte ja proovige uuesti."
+}

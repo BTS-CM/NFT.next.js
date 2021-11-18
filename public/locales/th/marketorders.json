@@ -1,6 +1,7 @@
 {
    "connection_failure_msg": "ไม่สามารถเชื่อมต่อกับ Beet บนพอร์ต 60555 โปรดเปิด Beet",
    "connection_failure_title": "เชื่อมต่อกับบีทไม่ได้",
+   "connection_failure_button": "ดาวน์โหลดบีท",
    "connection_valid_title": "เชื่อมต่อกับบีทแล้ว",
    "connection_valid_msg": "ตอนนี้คุณสามารถซื้อ NFT ผ่าน Beet ได้แล้ว",
    "beet_buy_title": "กำลังส่งข้อความ 'ซื้อเลย' ถึงบีท!",

@@ -1,0 +1,46 @@
+{
+    "featured": "精選 NFT",
+    "new": "新 Nfts",
+    "artists": {
+      "header": "打電話給所有的藝術家！",
+      "body1": "你有興趣將你的藝術貨幣化嗎？",
+      "body2": "在位共用分散交換上發佈您的 Nft！"
+    },
+    "galleries": {
+      "header": "潛在畫廊擁有者",
+      "body1": "有興趣創建自己的畫廊？",
+      "body2a": "這個畫廊是 ",
+      "a1": "完全開源",
+      "body2b": " 和 ",
+      "a2": "麻省理工學院許可"
+    },
+    "traders": {
+      "header": "有興趣在 Bts Dex 上交易 Nft？",
+      "body1a": "找出 ",
+      "a1": "如何創建位共享帳戶",
+      "body1b": "• 今天開始交易！",
+      "a2": "桌面應用"
+    },
+    "benefits": {
+      "header": "不確定位共用？",
+      "body1": "Bts Dex 的費用是",
+      "a1": "競爭低",
+      "body2": "其環境足跡",
+      "a2": "低",
+      "body3": "它的 ",
+      "a3": "性能是無與倫比的",
+      "body4": " 不要滿足於更少！"
+    },
+    "stat1": {
+      "header": "上市的 NFT"
+    },
+    "stat2": {
+      "header": "精選藝術家"
+    },
+    "stat3": {
+      "header": "Bitshares 推出多年以來",
+      "years": " 年"
+    },
+    "header_description": "這 {{title}} 是一個位共用 （BTS） 區塊鏈供電的 NFT 庫。購買，交易和收集BTS NFTs在BTS DEX！",
+    "header_title": "位共用區塊鏈供電 NFT"
+}

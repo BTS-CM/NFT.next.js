@@ -1,0 +1,16 @@
+{
+  "connection_failure_msg"："無法連接到60555港口的甜菜。請推出甜菜。",
+  "connection_failure_title"："無法連接到甜菜"，
+  "connection_failure_button"："下載 Beet"，
+  "connection_valid_title"："連接到甜菜"，
+  "connection_valid_msg"： "你現在可以通過甜菜購買 Nfts。",
+  "beet_buy_title"：" 向甜菜發送 '立即購買' 消息！",
+  "beet_buy_msg"："檢查您的甜菜客戶進行付款。",
+  "market_data_fail"："市場數據暫時不可用"，
+  "buy_now"："現在買價格"，
+  "beet_connect_button"："連接到甜菜"，
+  "beet_buy_button"："現在買吧！",
+  "not_for_sale"："目前不出售。",
+  "error_note_title"："在購買過程中發生了錯誤。",
+  "error_note_msg"："對不起，出了問題。請驗證您是否有足夠的資金，Beet 用戶端已啟動並解鎖，刷新頁面，然後再次嘗試。"
+}

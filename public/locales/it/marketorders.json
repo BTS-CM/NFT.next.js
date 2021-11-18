@@ -1,6 +1,7 @@
 {
    "connection_failure_msg": "Impossible de se connecter à Beet sur le port 60555. Veuillez lancer Beet.",
    "connection_failure_title": "Impossible de se connecter à Beet",
+   "connection_failure_button": "Scarica Beet",
    "connection_valid_title": "Connecté à Betterave",
    "connection_valid_msg": "Vous pouvez désormais acheter des NFT via Beet.",
    "beet_buy_title": "Envoi du message 'acheter maintenant' à Beet !",

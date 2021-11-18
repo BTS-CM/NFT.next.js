@@ -1,0 +1,11 @@
+{
+    "header": "搜索 NFT",
+    "body": "輸入您希望找到的 NFT 的名稱或 ID",
+    "help_header": "找不到你認識的 Nft？",
+    "not_all": "並非所有在位共享區塊鏈上發佈的 NFT 都將顯示在此位共用 NFT 查看器上。",
+    "pre_a": "嘗試搜索您心中的 NFT ",
+    "a1": "其他觀眾",
+    "a2": "區塊鏈瀏覽器",
+    "header_description": "在此處按ID和名稱搜索基於Bitshares區塊鏈的NFT！",
+    "header_title": "搜索基於位共用的 NFT"
+}

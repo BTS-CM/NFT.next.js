@@ -1,0 +1,88 @@
+{
+    "permissionTips": {
+      "enabled": {
+        "charge_market_fee" : "資產發行人可以收取市場費用。",
+        "white_list" : "資產發行人可以創建已批准的市場清單",
+        "override_authority" : "資產發行人可以將此 NFT 轉讓回自己。",
+        "transfer_restricted" : "此資產只能轉讓給/從發行人或市場訂單",
+        "disable_force_settle": "使用者可以要求強制結算該市場發行的資產。",
+        "global_settle": "該市場發行的資產的發行人有能力在全球範圍內結算該資產",
+        "disable_confidential": "該資產的發行人可以禁用隱易。",
+        "witness_fed_asset": "這種市場發行的資產可以由 Bitshares 見證人提供其價格饋送。",
+        "committee_fed_asset": "這種市場發行的資產可以由 Bitshares 委員會成員提供其價格饋送。"
+      },
+      "disabled": {
+        "charge_market_fee" : "不得為該資產收取任何市場費用：只需要 Bts 費用。",
+        "white_list" : "此資產沒有經過批准的市場清單。隨意用它來換取位共用分散交換上的任何東西。",
+        "override_authority" : "資產發行人無法將此 NFT 轉讓回自己。",
+        "transfer_restricted" : "該資產的轉讓不受限制。",
+        "disable_force_settle": "此資產無法強制結算。",
+        "global_settle": "此資產無法在全球結算。",
+        "disable_confidential": "永久可以進行該資產的保密交易。",
+        "witness_fed_asset": "證人無法為這一資產提供價格。",
+        "committee_fed_asset": "委員會不能為這一資產定價。"
+      }
+    },
+    "by": " 由 ",
+    "tabs": {
+      "nft": "NFT",
+      "asset": "資產",
+      "tags": "標籤",
+      "share": "共用",
+      "buy": "在哪裡購買",
+      "beet": "用甜菜購買",
+      "flags": "標誌",
+      "permissions": "許可權",
+      "signature": "簽名",
+      "license": "許可證",
+      "json": "JSON 數據"
+    },
+    "nft": {
+      "attestation": "證明",
+      "narrative": "敘事",
+      "acknowledgments": "確認"
+    },
+    "asset": {
+      "name": "資產名稱",
+      "owner": "當前擁有者",
+      "quantity": "發行數量",
+      "file_type": "檔案類型",
+      "onchain": "此 NFT 完全存儲在位共享區塊鏈上！",
+      "offchain": "此 NFT 可能無法完全儲存在鏈條上。",
+      "encoding": "檔編碼",
+      "precision_good": "精度為 0，'{{short_name}}' 是一種不可互換的令牌!",
+      "precision_bad": "由於精度為 0，這是一個可互換的令牌。",
+      "precision": "精度",
+      "asset_ownership_burned": "資產擁有權被發送到 'null-account'; 此 NFT 的設置現已完成.",
+      "asset_ownership_warning": "警告：資產擁有權尚未轉讓給 'null-account'; 購買后，所發行的設置和數量可能會發生變化。",
+      "issuer": "Asset issuer"
+    },
+    "tags": {
+      "no_tags": "無主題/興趣標籤",
+      "no_nft_tags": "無 NFT 標籤"
+    },
+    "buy": {
+      "header": "Nft標題 '{{title}}' ({{symbol}}) 可以在 Bitshares 分散交換",
+      "tooltip": "在桌面應用中搜索用戶發行的資產 '{{symbol}}'",
+      "button": "桌面應用"
+    },
+    "flags": {
+      "none": "目前啟用了任何標誌。"
+    },
+    "permissions": {
+      "none": "所有許可權都已禁用。"
+    },
+    "signature": {
+      "header": "簽名",
+      "signature": "簽名公共金鑰/位址",
+      "password": "密碼多哈什"
+    },
+    "license": {
+      "header1": "許可證",
+      "none1": "本 NFT 發佈的許可證尚未獲得。",
+      "header2": "持有人許可證",
+      "none2": "尚未提供持有人許可證資訊。"
+    },
+    "header_description": "'{{nft}}' 是一個位共用區塊鏈供電的 NFT;購買， 交易， 收集它在 Bts Dex！",
+    "header_title": "'{{nft}}' Bitshares NFT"
+}

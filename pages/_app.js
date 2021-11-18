@@ -45,17 +45,18 @@ import { useTheme, useLanguage, useEnvironment, useMenuOpen } from '../component
 import config from "../components/config.json";
 const locales = [
   {'language': 'en', 'aka': 'English'},
+  {'language': 'zhTW', 'aka': '臺灣的'},
+  {'language': 'ru', 'aka': 'русский'},
+  {'language': 'ee', 'aka': 'Eestlane'},
   {'language': 'da', 'aka': 'Dansk'},
   {'language': 'de', 'aka': 'Deutsche'},
-  {'language': 'ee', 'aka': 'Eestlane'},
   {'language': 'es', 'aka': 'Español'},
   {'language': 'th', 'aka': 'ไทย'},
   {'language': 'it', 'aka': 'Italiano'},
   {'language': 'fr', 'aka': 'Français'},
   {'language': 'ko', 'aka': '한국어'},
   {'language': 'pt', 'aka': 'Português'},
-  {'language': 'ja', 'aka': '日本語'},
-  {'language': 'ru', 'aka': 'русский'}
+  {'language': 'ja', 'aka': '日本語'}
 ];
 
 function MyApp(props) {
@@ -313,6 +314,12 @@ function MyApp(props) {
                           </a>
                         </Link>
                         <br/>
+                        <Link href={"https://blocktivity.info/coin/bts_0"} passHref>
+                          <a>
+                            Blocktivity
+                          </a>
+                        </Link>
+                        <br/>                      
                         <Link href={"https://www.coingecko.com/en/coins/bitshares"} passHref>
                           <a>
                             CoinGecko

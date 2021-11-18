@@ -34,12 +34,20 @@ export default function MarketOrders(properties) {
       const id = notifications.showNotification({
         title: t('connection_failure_title'),
         id: 'beetError',
+        autoClose: 10000,
         message: (
           <>
             <div style={{ display: 'flex', paddingTop: 5 }}>
-              <Text size="sm" sx={{ flex: 1, marginRight: 15 }}>
-                {t('connection_failure_msg')}
-              </Text>
+              <Group direction="column">
+                <Text sx={{ flex: 1, marginRight: 15 }}>
+                  {t('connection_failure_msg')}
+                </Text>
+                <a href="https://github.com/bitshares/beet/releases/latest" passHref>
+                  <Button>
+                    {t('connection_failure_button')}
+                  </Button>
+                </a>
+              </Group>
             </div>
           </>
         )

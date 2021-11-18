@@ -1,6 +1,7 @@
-{{
+{
    "connection_failure_msg"： "ポート60555でBeetに接続できません。Beetを起動してください。",
    "connection_failure_title"： "ビートに接続できませんでした",
+   "connection_failure_button"： "ビートをダウンロード",
    "connection_valid_title"： "ビートに接続",
    "connection_valid_msg"： "ビート経由でNFTを購入できるようになりました。",
    "beet_buy_title"： "'今すぐ購入'メッセージをBeetに送信しています！",

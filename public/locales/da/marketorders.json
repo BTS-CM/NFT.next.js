@@ -1,6 +1,7 @@
 {
    "connection_failure_msg": "Kan ikke oprette forbindelse til Beet på port 60555. Start venligst Beet.",
    "connection_failure_title": "Kunne ikke oprette forbindelse til Beet",
+   "connection_failure_button": "Download Beet",
    "connection_valid_title": "Forbundet til Beet",
    "connection_valid_msg": "Du kan nu købe NFT'er via Beet.",
    "beet_buy_title": "Sender 'køb nu' besked til Beet!",

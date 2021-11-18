@@ -81,14 +81,16 @@ function CarouselItem (properties) {
   }
 
 function getWidth(width) {
-  if (width >= 1280) {
-    return 1280;
+  if (width >= 1500) {
+    return 1100;
+  } else if (width >= 1280) {
+    return 900;
   } else if (width >= 1080) {
-    return 1080;
-  } else if (width >= 720) {
-    return 720;
+    return 700;
+  } else if (width >= 800) {
+    return 450;
   } else if (width >= 420) {
-    return 420;
+    return 400;
   } else if (width >= 300) {
     return 300;
   } else {

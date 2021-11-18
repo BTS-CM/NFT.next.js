@@ -260,7 +260,11 @@ export default function NFT (properties) {
                         />
 
   } else if (asset && media_png_multihashes) {
-    imageComponent = <IPFSCarouselElement media_png_multihashes={media_png_multihashes} asset={asset} isApple={isApple} />;
+    imageComponent = <IPFSCarouselElement
+                        media_png_multihashes={media_png_multihashes}
+                        asset={asset}
+                        isApple={isApple}
+                      />;
   } else if (nft_object.media_json) {
     imageComponent = <OBJT data={image} />
   } else if (nft_object.media_gltft) {

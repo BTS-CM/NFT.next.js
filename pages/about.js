@@ -35,14 +35,15 @@ function About(properties) {
 
   }, [analytics]);
 
-  return (
+  return ([
     <SEO
       description={t('header_description', {title: config.title})}
       title={t('header_title')}
       siteTitle={config.title}
+      key={'SEO'}
     />,
-    <Grid grow>
-      <Col span={12} key={"Index featured NFT"}>
+    <Grid key={"about"} grow>
+      <Col span={12}>
         <Paper padding="md" shadow="xs">
           <Text size="lg">
             About Bitshares NFTs
@@ -59,8 +60,7 @@ function About(properties) {
         </Paper>
       </Col>
     </Grid>
-
-  );
+  ]);
 }
 
 export const getStaticProps = async ({ locale }) => {

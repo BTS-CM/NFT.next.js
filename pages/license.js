@@ -30,14 +30,15 @@ function License(properties) {
     sendAnalytics();
   }, [analytics]);
 
-  return (
+  return ([
     <SEO
       description={t('header_description', {title: config.title})}
       title={t('header_title')}
       siteTitle={config.title}
+      key={'SEO'}
     />,
-    <Grid grow>
-      <Col span={12} key={"Index featured NFT"}>
+    <Grid grow key={"License"}>
+      <Col span={12}>
         <Paper padding="md" shadow="xs">
           <Text>
             {t('type')}
@@ -60,7 +61,7 @@ function License(properties) {
         </Paper>
       </Col>
     </Grid>
-  );
+  ]);
 }
 
 export const getStaticProps = async ({ locale }) => {

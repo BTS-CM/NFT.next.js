@@ -19,10 +19,11 @@ const News = ({ allPosts }) => {
               description={t('header_description')}
               title={t('header_title', {title: config.title})}
               siteTitle={config.title}
+              key={'SEO'}
             />
             {heroPost && (
-              <Grid grow>
-                <Col span={12} key={"Index featured NFT"}>
+              <Grid grow key={"News overview"}>
+                <Col span={12}>
                   <Paper padding="md" shadow="xs">
                     <div>
                       <h3>

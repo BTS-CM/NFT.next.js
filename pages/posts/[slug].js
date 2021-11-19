@@ -17,13 +17,14 @@ export default function Post({ post, morePosts, preview }) {
     return <ErrorPage statusCode={404} />
   }
 
-  return (
+  return ([
     <SEO
       title={`${post.title} | ${config.title}`}
       description={`${config.title} article about "${post.title}"`}
       siteTitle={config.title}
+      key={'SEO'}
     />,
-    <Paper padding="lg" shadow="lg" withBorder>
+    <Paper padding="lg" shadow="lg" withBorder key={'post'}>
       {router.isFallback ? (
         <p>Loading…</p>
       ) : (
@@ -42,7 +43,7 @@ export default function Post({ post, morePosts, preview }) {
         </>
       )}
     </Paper>
-  )
+  ]);
 }
 
 export async function getStaticProps({ params, locale }) {

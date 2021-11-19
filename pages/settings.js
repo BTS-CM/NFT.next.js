@@ -60,14 +60,15 @@ function Settings(properties) {
     sendAnalytics();
   }, [analytics]);
 
-  return (
+  return ([
     <SEO
       description={t('header_description', {title: config.title})}
       title={t('header_title')}
       siteTitle={config.title}
+      key={'SEO'}
     />,
-    <Grid grow key={"Search Window"}>
-      <Col span={12} key={"Search row"}>
+    <Grid grow key={"Settings"}>
+      <Col span={12}>
         <Paper padding="md" shadow="xs" align="center">
           <Group position="center">
             <Menu
@@ -166,7 +167,7 @@ function Settings(properties) {
         </Paper>
       </Col>
     </Grid>
-  );
+  ]);
 }
 
 export const getStaticProps = async ({ locale }) => {

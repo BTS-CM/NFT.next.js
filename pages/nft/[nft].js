@@ -18,12 +18,13 @@ function InvalidNFT (props) {
 
   let config = props.config;
 
-  return <SEO
+  return ([<SEO
             description={"Unable to load this NFT"}
             title={`Unknown NFT`}
             siteTitle={config.title}
+            key={'SEO'}
           />,
-          <p>Unable to load NFT</p>
+          <p key={'Invalid'}>Unable to load NFT</p>]);
 }
 
 function ValidNFT (props) {
@@ -36,10 +37,12 @@ function ValidNFT (props) {
   }
 
   const { t } = useTranslation('nft');
-  return <SEO
+
+  return ([<SEO
     description={t('header_description', {nft: nft})}
     title={t('header_title', {nft: nft})}
     siteTitle={config.title}
+    key={"seo"}
   />,
   <NFT
     id={nft}
@@ -48,7 +51,7 @@ function ValidNFT (props) {
     individual={true}
     isApple={isIOS || isSafari || isMobileSafari}
     {...props}
-  />
+  />])
 }
 
 

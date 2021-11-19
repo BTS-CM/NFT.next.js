@@ -65,11 +65,12 @@ function SearchPanel (properties) {
     }
   };
 
-  return (
+  return ([
     <SEO
       description={t('header_description')}
       title={t('header_title')}
       siteTitle={config.title}
+      key={'SEO'}
     />,
     <Grid grow key={"Search Window"}>
       <Col span={12} key={"Search row"}>
@@ -107,7 +108,7 @@ function SearchPanel (properties) {
         </Paper>
       </Col>
     </Grid>
-  );
+  ]);
 }
 
 function Search(properties) {

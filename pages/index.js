@@ -21,7 +21,6 @@ function Home(props) {
   const { height, width } = useViewportSize();
 
   let paperWidth;
-  let imageHeight;
   if (width < 576) { //xs
     paperWidth = 300;
   } else if (width < 768) { //sm
@@ -122,8 +121,8 @@ function Home(props) {
       siteTitle={config ? config.title : ''}
       key="seo"
     />,
-    <Grid grow key="grid1">
-      <Col span={12} key={"Index featured NFT"}>
+    <Grid grow key={"Index featured NFT"}>
+      <Col span={12}>
         <Center>
           <Text size="md">
             {t("mainpage:featured")}
@@ -136,10 +135,9 @@ function Home(props) {
             </div>
           </Paper>
         </Center>
-
       </Col>
     </Grid>,
-    <Grid grow key="grid2">
+    <Grid grow key={"tips"}>
       {trading ? trading : undefined}
       {tips ? tips : undefined}
     </Grid>

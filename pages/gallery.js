@@ -66,7 +66,7 @@ function Gallery(props) {
               : props.minStagingNFTS;
 
   let galleryCards = useMemo(() => {
-    return  <SimpleGrid cols={cols}>
+    return  <SimpleGrid cols={cols} key={'Gallery Grid'}>
               {
                 nfts.map(nft => {
                   return <GalleryCard nft={nft} key={nft.symbol + "_card"} isApple={isIOS || isSafari || isMobileSafari} />
@@ -75,14 +75,15 @@ function Gallery(props) {
             </SimpleGrid>
   }, [nfts, cols]);
 
-  return (
+  return ([
     <SEO
       description={t('header_description', {title: config.title})}
       title={t('header_title')}
       siteTitle={config ? config.title: ''}
+      key={'SEO'}
     />,
     galleryCards
-  );
+  ]);
 }
 
 export const getStaticProps = async ({ locale }) => {

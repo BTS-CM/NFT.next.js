@@ -32,11 +32,12 @@ function Viewers(properties) {
     sendAnalytics();
   }, [analytics]);
 
-  return (
+  return ([
     <SEO
       description={t('header_description')}
       title={t('header_title')}
       siteTitle={config.title}
+      key={'SEO'}
     />,
     <Grid key={"Viewer grid 1"}>
       <Col span={12}>
@@ -73,7 +74,7 @@ function Viewers(properties) {
         </Paper>
       </Col>
     </Grid>
-  );
+  ]);
 }
 
 export const getStaticProps = async ({ locale }) => {

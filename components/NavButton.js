@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic'
 import Link from 'next/link';
+import { useLanguageQuery } from 'next-export-i18n';
 
 import { Button, Text } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
@@ -12,12 +13,20 @@ export default function NavButton(properties) {
   const inputText = properties.inputText;
   const language = properties.language;
   const url = properties.url;
-  const [menuOpen, setMenuOpen] = useMenuOpen();
 
+  const [query] = useLanguageQuery();
+  const [menuOpen, setMenuOpen] = useMenuOpen();
   const { hovered, ref } = useHover();
 
   return (
-    <Link href={url} key={url.replace("/","")} passHref>
+    <Link
+      href={{
+        pathname: url,
+        query: query && query.lang ? `lang=${query['lang']}` : `lang=en`
+      }}
+      key={url.replace("/","")}
+      passHref
+    >
       <Button
         ref={ref}
         variant={colorScheme === "dark" ? "outline" : "light"}

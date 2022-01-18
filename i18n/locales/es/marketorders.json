@@ -12,5 +12,5 @@
    "beet_buy_button": "¡Cómpralo ahora!",
    "not_for_sale": "Actualmente no a la venta.",
    "error_note_title": "Se produjo un error durante la compra.",
-   "error_note_msg": "Lo sentimos, algo salió mal. Verifique que tiene fondos suficientes, que el cliente Beet está iniciado y desbloqueado, actualice la página y vuelva a intentarlo".
+   "error_note_msg": "Lo sentimos, algo salió mal. Verifique que tiene fondos suficientes, que el cliente Beet está iniciado y desbloqueado, actualice la página y vuelva a intentarlo"
 }

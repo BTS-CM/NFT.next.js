@@ -1,7 +1,6 @@
 import { createLocalStorageStateHook } from 'use-local-storage-state';
 import config from './config.json';
 
-const useLanguage = createLocalStorageStateHook('language', 'en');
 const useTheme = createLocalStorageStateHook('theme', 'light');
 const useGateway = createLocalStorageStateHook('gateway', 'cf-ipfs.com');
 const useAnalytics = createLocalStorageStateHook('analytics', config && config.google_analytics ? true : false);
@@ -12,7 +11,6 @@ const useProdConnection = createLocalStorageStateHook('prodNetwork', "wss://eu.n
 const useTestnetConnection = createLocalStorageStateHook('testNetwork', "wss://node.testnet.bitshares.eu");
 
 export {
-  useLanguage,
   useTheme,
   useGateway,
   useAnalytics,

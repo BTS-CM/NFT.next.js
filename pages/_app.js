@@ -1,18 +1,19 @@
 import React from 'react';
 import { useMemo, useState, useEffect } from 'react';
-import { appWithTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic'
 import Link from 'next/link';
 import Head from 'next/head'
 import Script from "next/script";
 
-import { useTranslation } from 'next-i18next';
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 import {
   AppShell,
   Navbar,
-  List,
-  Group,
   Header,
   MediaQuery,
   Burger,
@@ -29,7 +30,6 @@ import {
   ActionIcon,
   TypographyStylesProvider,
   ColorSchemeProvider,
-  ColorScheme,
   Title
 } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
@@ -41,7 +41,7 @@ import '../components/noScrollbars.css';
 
 import NavButton from "../components/NavButton";
 
-import { useTheme, useLanguage, useEnvironment, useMenuOpen } from '../components/states';
+import { useTheme, useEnvironment, useMenuOpen } from '../components/states';
 import config from "../components/config.json";
 const locales = [
   {'language': 'en', 'aka': 'English'},
@@ -64,16 +64,16 @@ function MyApp(props) {
   const { hovered, ref } = useHover();
 
   const router = useRouter();
-  const { t } = useTranslation('nav');
+  const { t } = useTranslation();
+  const [query] = useLanguageQuery();
 
   const [colorScheme, setColorScheme] = useTheme();
   const toggleColorScheme = (value) => setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
 
-  const [language, setLanguage] = useLanguage('en');
   const [environment, setEnvironment] = useEnvironment();
-  const [menuOpen, setMenuOpen] = useMenuOpen(false);
-  const [opened, setOpened] = useState(false);
+  const [menuOpen, setMenuOpen] = useMenuOpen();
 
+  // width={{ base: 250, breakpoints: { sm: '100%', lg: 250 } }}
 
   return (
       <Head>
@@ -97,56 +97,56 @@ function MyApp(props) {
                       padding="md"
                       hiddenBreakpoint="sm"
                       hidden={!menuOpen}
-                      width={{ base: 250, breakpoints: { sm: '100%', lg: 250 } }}
+                      width={{ sm: 300, lg: 400 }}
                       zIndex={1}
                     >
                       <NavButton
                         url={"/"}
                         colorScheme={colorScheme}
-                        language={language}
-                        inputText={t('link1')}
+                        language={query && query.lang ? query.lang : 'en'}
+                        inputText={t('nav.link1')}
                       />
                       <NavButton
                         url={"/gallery"}
                         colorScheme={colorScheme}
-                        language={language}
-                        inputText={t('link2')}
+                        language={query && query.lang ? query.lang : 'en'}
+                        inputText={t('nav.link2')}
                       />
                       <NavButton
                         url={"/search"}
                         colorScheme={colorScheme}
-                        language={language}
-                        inputText={t('link4')}
+                        language={query && query.lang ? query.lang : 'en'}
+                        inputText={t('nav.link4')}
                       />
                       <NavButton
                         url={"/news"}
                         colorScheme={colorScheme}
-                        language={language}
-                        inputText={t('link9')}
+                        language={query && query.lang ? query.lang : 'en'}
+                        inputText={t('nav.link9')}
                       />
                       <NavButton
                         url={"/about"}
                         colorScheme={colorScheme}
-                        language={language}
-                        inputText={t('link5')}
+                        language={query && query.lang ? query.lang : 'en'}
+                        inputText={t('nav.link5')}
                       />
                       <NavButton
                         url={"/viewers"}
                         colorScheme={colorScheme}
-                        language={language}
-                        inputText={t('link7')}
+                        language={query && query.lang ? query.lang : 'en'}
+                        inputText={t('nav.link7')}
                       />
                       <NavButton
                         url={"/settings"}
                         colorScheme={colorScheme}
-                        language={language}
-                        inputText={t('link8')}
+                        language={query && query.lang ? query.lang : 'en'}
+                        inputText={t('nav.link8')}
                       />
                       <NavButton
                         url={"/license"}
                         colorScheme={colorScheme}
-                        language={language}
-                        inputText={t('link6')}
+                        language={query && query.lang ? query.lang : 'en'}
+                        inputText={t('nav.link6')}
                       />
                     </Navbar>
                   }
@@ -154,7 +154,7 @@ function MyApp(props) {
                     <Header height={70} padding="sm">
                       {/* You can handle other responsive styles with MediaQuery component or createStyles function */}
                       <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
-                        <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+                        <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
                           <Burger
                             opened={menuOpen}
                             onClick={() => setMenuOpen((o) => !o)}
@@ -165,16 +165,26 @@ function MyApp(props) {
                         </MediaQuery>
 
                         <Title order={2}>
-                          <Link href="/" locale={language}>
+                          <Link
+                            href={{
+                              pathname: "/",
+                              query: query && query.lang ? `lang=${query['lang']}` : `lang=en`
+                            }}
+                          >
                             <a style={{color: colorScheme === 'light' ? 'black' : 'white'}}>
-                              {t("header")}
+                              {t('nav.header')}
                             </a>
                           </Link>
                         </Title>
                         <Title order={2} sx={{flexGrow: 1, paddingLeft: '5px'}}>
-                          <Link href="/" locale={language}>
+                          <Link
+                            href={{
+                              pathname: "/",
+                              query: query && query.lang ? `lang=${query['lang']}` : `lang=en`
+                            }}
+                          >
                             <a style={{color: colorScheme === 'light' ? 'black' : 'white'}}>
-                              {environment && environment === 'staging' ? t("staging"): null}
+                              {environment && environment === 'staging' ? t('nav.staging'): null}
                             </a>
                           </Link>
                         </Title>
@@ -192,17 +202,15 @@ function MyApp(props) {
                           {locales.map((option) => (
                             <Menu.Item
                               component="a"
-                              href={
-                                language === 'en'
-                                  ? `${router.asPath}`
-                                  : `/${option.language}/${router.asPath}`
-                              }
+                              href={`?lang=${option.language}`}
+                              locale={query && query.lang ? `lang=${query['lang']}` : `lang=en`}
                               key={option.language}
-                              selected={option.language === language}
-                              onClick={() => { setLanguage(option.language) }}
+                              selected={option.language === query}
                               passHref
                             >
-                              {option.aka}
+                              <LanguageSwitcher lang={option.language}>
+                                {option.aka}
+                              </LanguageSwitcher>
                             </Menu.Item>
                           ))}
                         </Menu>
@@ -245,18 +253,18 @@ function MyApp(props) {
                           {config.title}
                         </Title>
                         <Text size="md">
-                          {t('footer_1')}
+                          {t('nav.footer_1')}
                         </Text>
                         <Text size="sm">
-                          {t('footer_2')}
+                          {t('nav.footer_2')}
                         </Text>
                         <Text size="sm">
-                          {t('footer_3')}<Link style={{color: 'primary'}} href={"https://nextjs.org/"} passHref><a>Next.js</a></Link>{t('footer_4')}<Link href={"https://vercel.com"} passHref><a sx={{color: 'text.primary'}}>Vercel</a></Link>
+                          {t('nav.footer_3')}<Link style={{color: 'primary'}} href={"https://nextjs.org/"} passHref><a>Next.js</a></Link>{t('nav.footer_4')}<Link href={"https://vercel.com"} passHref><a sx={{color: 'text.primary'}}>Vercel</a></Link>
                         </Text>
                       </Col>
                       <Col span={12} xs={12} sm={12} md={2} key={"footer 2"}>
                         <Text size="xl">
-                          {t('footer_links')}
+                          {t('nav.footer_links')}
                         </Text>
                         <Link href={"https://bitshares.org/"} passHref>
                           <a>
@@ -278,7 +286,7 @@ function MyApp(props) {
                       </Col>
                       <Col span={12} xs={12} sm={12} md={2} key={"footer 3"}>
                         <Text size="xl">
-                          {t('footer_wallets')}
+                          {t('nav.footer_wallets')}
                         </Text>
                         <Link href={"https://wallet.bitshares.org"} passHref>
                           <a>
@@ -306,7 +314,7 @@ function MyApp(props) {
                       </Col>
                       <Col span={12} xs={12} sm={12} md={2} key={"footer 4"}>
                         <Text size="xl">
-                          {t('footer_markets')}
+                          {t('nav.footer_markets')}
                         </Text>
                         <Link href={"https://cryptoindex.org/coin/bitshares"} passHref>
                           <a>
@@ -319,7 +327,7 @@ function MyApp(props) {
                             Blocktivity
                           </a>
                         </Link>
-                        <br/>                      
+                        <br/>
                         <Link href={"https://www.coingecko.com/en/coins/bitshares"} passHref>
                           <a>
                             CoinGecko
@@ -372,4 +380,4 @@ function MyApp(props) {
   );
 }
 
-export default appWithTranslation(MyApp)
+export default MyApp

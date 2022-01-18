@@ -1,7 +1,12 @@
 import { useEffect } from "react";
-import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 import { useNotifications } from '@mantine/notifications';
+
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 
 import { Text, Center, Grid, Col, Paper, ActionIcon } from '@mantine/core'
 
@@ -11,7 +16,9 @@ const SEO = dynamic(() => import('../components/SEO'));
 import { useAnalytics, useApproval } from '../components/states';
 
 function About(properties) {
-  const { t } = useTranslation('about');
+  const { t } = useTranslation();
+  const [query] = useLanguageQuery();
+
   const config = properties.config;
   const notifications = useNotifications();
 
@@ -37,8 +44,8 @@ function About(properties) {
 
   return ([
     <SEO
-      description={t('header_description', {title: config.title})}
-      title={t('header_title')}
+      description={t('about.header_description', {title: config.title})}
+      title={t('about.header_title')}
       siteTitle={config.title}
       key={'SEO'}
     />,
@@ -49,13 +56,13 @@ function About(properties) {
             About Bitshares NFTs
           </Text>
           <Text>
-            {t('p1')}<a href="https://bitshares.org">{t('a1')}</a>
+            {t('about.p1')}<a href="https://bitshares.org">{t('about.a1')}</a>
           </Text>
           <Text>
-            {t('p2')}<a href="https://github.com/Bit20-Creative-Group/BitShares-NFT-Specification">{t('a2')}</a>.{t('p3')}
+            {t('about.p2')}<a href="https://github.com/Bit20-Creative-Group/BitShares-NFT-Specification">{t('about.a2')}</a>.{t('about.p3')}
           </Text>
           <Text>
-            {t('p4')}<a href="https://news.bitshares.org/ethereum-vs-bitshares-sustainability-fees-comparison/">{t('a3')}</a>. {t('p5')}.
+            {t('about.p4')}<a href="https://news.bitshares.org/ethereum-vs-bitshares-sustainability-fees-comparison/">{t('about.a3')}</a>. {t('about.p5')}.
           </Text>
         </Paper>
       </Col>
@@ -66,12 +73,10 @@ function About(properties) {
 export const getStaticProps = async ({ locale }) => {
 
   const config = require('../components/config.json');
-  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
 
   return {
     props: {
       config: config,
-      ...(await serverSideTranslations(locale, ['about', 'nav'])),
     }
   };
 }

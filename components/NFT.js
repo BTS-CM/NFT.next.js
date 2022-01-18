@@ -1,5 +1,9 @@
 import {useState} from 'react';
-import { useTranslation } from 'next-i18next';
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
@@ -81,7 +85,8 @@ export default function NFT (properties) {
 
   let isApple = properties.isApple;
 
-  const { t } = useTranslation('nft');
+  const { t } = useTranslation();
+  const [query] = useLanguageQuery();
 
   if (!id || !id.includes(".")) {
     return (<Text size="lg">
@@ -182,8 +187,8 @@ export default function NFT (properties) {
               withArrow
               label={
                 permissionValue === true || permissionValue === 'true'
-                  ? t('permissionTips.enabled.' + permission)
-                  : t('permissionTips.disabled.' + permission)
+                  ? t('nft.permissionTips.enabled.' + permission)
+                  : t('nft.permissionTips.disabled.' + permission)
               }
               key={permission + '_tooltip'}
             >
@@ -282,7 +287,7 @@ export default function NFT (properties) {
       <Col span={12} key={symbol + "NFT"}>
         <Paper padding="lg" withBorder shadow="md" align="center" id={id}>
           <Title order={2}>
-            &quot;<Link href={`/nft/${symbol}`} passHref><a>{title}</a></Link>&quot;{t('by')}{artist}
+            &quot;{title}&quot;{t('nft.by')}{artist}
           </Title>
           {
             imageComponent
@@ -306,44 +311,44 @@ export default function NFT (properties) {
             aria-label="nft tabs"
             sx={{paddingTop: '10px'}}
           >
-            <Tab key="tabs.nft" label={t('tabs.nft')}>
+            <Tab key="tabs.nft" label={t('nft.tabs.nft')}>
               <Text>
-                <b>{t('nft.attestation')}</b>: &quot;{attestation}&quot;
+                <b>{t('nft.nft.attestation')}</b>: &quot;{attestation}&quot;
               </Text>
               <Text>
-                <b>{t('nft.narrative')}</b>: &quot;{narrative}&quot;
+                <b>{t('nft.nft.narrative')}</b>: &quot;{narrative}&quot;
               </Text>
               <Text>
-                <b>{t('nft.acknowledgments')}</b>: &quot;{acknowledgments ? acknowledgments : 'N/A'}&quot;
+                <b>{t('nft.nft.acknowledgments')}</b>: &quot;{acknowledgments ? acknowledgments : 'N/A'}&quot;
               </Text>
             </Tab>
 
-            <Tab key="tabs.asset" label={t('tabs.asset')}>
+            <Tab key="tabs.asset" label={t('nft.tabs.asset')}>
               <Group position="center" sx={{marginTop: '5px'}}>
                 <Badge>
-                  {`${t('asset.name')}: ${symbol ? symbol : '???'}`}
+                  {`${t('nft.asset.name')}: ${symbol ? symbol : '???'}`}
                 </Badge>
 
                 {holder}
 
                 <Badge>
-                  {`${t('asset.quantity')}: ${current_supply ? current_supply : '???'}`}
+                  {`${t('nft.asset.quantity')}: ${current_supply ? current_supply : '???'}`}
                 </Badge>
 
                 <Badge>
-                  {`${t('asset.file_type')}: ${type ? type : '???'}`}
+                  {`${t('nft.asset.file_type')}: ${type ? type : '???'}`}
                 </Badge>
 
                 <Tooltip
                   withArrow
                   label={
                     encoding === "base64"
-                      ? t('asset.onchain')
-                      : t('asset.offchain')
+                      ? t('nft.asset.onchain')
+                      : t('nft.asset.offchain')
                     }
                 >
                   <Badge>
-                    {`${t('asset.encoding')}: ${encoding ? encoding : '???'}`}
+                    {`${t('nft.asset.encoding')}: ${encoding ? encoding : '???'}`}
                   </Badge>
                 </Tooltip>
 
@@ -351,12 +356,12 @@ export default function NFT (properties) {
                   withArrow
                   label={
                     precision === 0
-                      ? t('asset.precision_good', {short_name: short_name})
-                      : t('asset.precision_bad')
+                      ? t('nft.asset.precision_good', {short_name: short_name})
+                      : t('nft.asset.precision_bad')
                     }
                 >
                   <Badge>
-                    {`${t('asset.precision')}: ${precision}`}
+                    {`${t('nft.asset.precision')}: ${precision}`}
                   </Badge>
                 </Tooltip>
 
@@ -364,21 +369,21 @@ export default function NFT (properties) {
               </Group>
             </Tab>
 
-            <Tab key="tabs.tags" label={t('tabs.tags')}>
+            <Tab key="tabs.tags" label={t('nft.tabs.tags')}>
               {
                 tagChips && tagChips.length
                   ? <Group sx={{marginTop: '5px'}} position="center">{tagChips}</Group>
-                  : <Text>{t('tags.no_tags')}</Text>
+                  : <Text>{t('nft.tags.no_tags')}</Text>
               }
               <br/>
               {
                 nftFlagChips && nftFlagChips.length
                   ? <Group sx={{marginTop: '5px'}} position="center">{nftFlagChips}</Group>
-                  : <Text>{t('tags.no_nft_tags')}</Text>
+                  : <Text>{t('nft.tags.no_nft_tags')}</Text>
               }
             </Tab>
 
-            <Tab key="tabs.share" label={t('tabs.share')}>
+            <Tab key="tabs.share" label={t('nft.tabs.share')}>
               <Text size="lg" sx={{paddingBottom: '10px'}}>
                 {`Share "${title}" by ${artist} on social media!`}
               </Text>
@@ -514,9 +519,9 @@ export default function NFT (properties) {
               </HatenaShareButton>
             </Tab>
 
-            <Tab key="tabs.buy" label={t('tabs.buy')}>
+            <Tab key="tabs.buy" label={t('nft.tabs.buy')}>
               <Text size="lg">
-                {t('buy.header', {title: title, symbol: symbol})}
+                {t('nft.buy.header', {title: title, symbol: symbol})}
               </Text>
               <Group position="center" sx={{marginTop: '5px', paddingTop: '5px'}}>
                 <Button
@@ -552,7 +557,7 @@ export default function NFT (properties) {
                   GDEX.io
                 </Button>
                 <Tooltip
-                  label={t('buy.tooltip', {symbol: symbol})}
+                  label={t('nft.buy.tooltip', {symbol: symbol})}
                   widthArrow
                 >
                   <Button
@@ -561,7 +566,7 @@ export default function NFT (properties) {
                     sx={{m: 0.25}}
                     variant="outline"
                   >
-                    {t('buy.button')}
+                    {t('nft.buy.button')}
                   </Button>
                 </Tooltip>
               </Group>
@@ -598,7 +603,7 @@ export default function NFT (properties) {
               </Group>
             </Tab>
 
-            <Tab key="tabs.beet" label={t('tabs.beet')}>
+            <Tab key="tabs.beet" label={t('nft.tabs.beet')}>
               <MarketOrders
                 id={id}
                 market={market}
@@ -613,63 +618,63 @@ export default function NFT (properties) {
               />
             </Tab>
 
-            <Tab key="tabs.flags" label={t('tabs.flags')}>
+            <Tab key="tabs.flags" label={t('nft.tabs.flags')}>
               {
                 flagChips && flagChips.length
                   ? <Group position="center">{flagChips}</Group>
-                  : <Text>{t('flags.none')}</Text>
+                  : <Text>{t('nft.flags.none')}</Text>
               }
             </Tab>
 
-            <Tab key="tabs.permissions" label={t('tabs.permissions')}>
+            <Tab key="tabs.permissions" label={t('nft.tabs.permissions')}>
               {
                 permissionChips && permissionChips.length
                   ? <Group position="center">{permissionChips}</Group>
-                  : <Text>{t('permissions.none')}</Text>
+                  : <Text>{t('nft.permissions.none')}</Text>
               }
             </Tab>
 
-            <Tab key="tabs.signature" label={t('tabs.signature')}>
+            <Tab key="tabs.signature" label={t('nft.tabs.signature')}>
               <Text size="lg">
-                <b>{t('signature.header')}</b>
+                <b>{t('nft.signature.header')}</b>
               </Text>
               <Text>
                 {nft_signature ? nft_signature : 'N/A'}
               </Text>
               <Text size="lg">
-                <b>{t('signature.signature')}</b>
+                <b>{t('nft.signature.signature')}</b>
               </Text>
               <Text>
                 {sig_pubkey_or_address}
               </Text>
               <Text size="lg">
-                <b>{t('signature.password')}</b>
+                <b>{t('nft.signature.password')}</b>
               </Text>
               <Text>
                 {password_multihash}
               </Text>
             </Tab>
 
-            <Tab key="tabs.license" label={t('tabs.license')}>
+            <Tab key="tabs.license" label={t('nft.tabs.license')}>
               <Text>
-                <b>{t('license.header1')}: </b>
+                <b>{t('nft.license.header1')}: </b>
                 {
                   license
                     ? license
-                    : t('license.none1')
+                    : t('nft.license.none1')
                 }
               </Text>
               <Text>
-                <b>{t('license.header2')}: </b>
+                <b>{t('nft.license.header2')}: </b>
                 {
                   holder_license
                     ? holder_license
-                    : t('license.none2')
+                    : t('nft.license.none2')
                 }
               </Text>
             </Tab>
 
-            <Tab key="tabs.json" label={t('tabs.json')}>
+            <Tab key="tabs.json" label={t('nft.tabs.json')}>
               <Code block aria-label={"elasticSearchData"} style={{'maxWidth': '1000px'}}>
                 {asset ? JSON.stringify(asset) : 'N/A'}
               </Code>

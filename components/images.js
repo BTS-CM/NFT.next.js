@@ -37,6 +37,12 @@ function getImage(nft_object) {
   } else if (nft_object.media_gltf) {
     image = nft_object.media_gltf;
     fileType = "gltf";
+  } else if (nft_object.media_jpeg_multihash) {
+    image = `/images/${nft_object.symbol}/0.jpeg`;
+    fileType = "jpeg";
+  } else if (nft_object.media_gif_multihash) {
+    image = `/images/${nft_object.symbol}/0.jpeg`;
+    fileType = "gif";
   }
 
   return {

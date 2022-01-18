@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'next-i18next';
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
@@ -17,7 +21,6 @@ import { analyticsNotification } from '../lib/analyticsNotification';
 const SEO = dynamic(() => import('../components/SEO'));
 import {
   useGateway,
-  useLanguage,
   useEnvironment,
   useAnalytics,
   useApproval,
@@ -26,9 +29,9 @@ import {
  } from '../components/states';
 
 function Settings(properties) {
-  const { t } = useTranslation('settings');
+  const { t } = useTranslation();
+  const [query] = useLanguageQuery();
 
-  const [language, setLanguage] = useLanguage();
   const [environment, setEnvironment] = useEnvironment();
   const [analytics, setAnalytics] = useAnalytics();
   let [approval, setApproval] = useApproval();
@@ -62,8 +65,8 @@ function Settings(properties) {
 
   return ([
     <SEO
-      description={t('header_description', {title: config.title})}
-      title={t('header_title')}
+      description={t('settings.header_description', {title: config.title})}
+      title={t('settings.header_title')}
       siteTitle={config.title}
       key={'SEO'}
     />,
@@ -81,7 +84,7 @@ function Settings(properties) {
             >
               {ipfsJSON.map((key, value) => (
                 <Menu.Item
-                  locale={language}
+                  locale={query && query.lang ? query.lang : 'en'}
                   key={`ipfs gateway ${value}`}
                   icon={key === gateway ? <IoCheckmark /> : null}
                   onClick={() => { setGateway(key) }}
@@ -149,7 +152,7 @@ function Settings(properties) {
             >
             {network.map((key, value) => (
               <Menu.Item
-                locale={language}
+                locale={query && query.lang ? query.lang : 'en'}
                 key={`BTS network ${value}`}
                 icon={key === (environment === 'production' ? prodConnection : testnetConnection) ? <IoCheckmark /> : null}
                 onClick={() => {
@@ -176,7 +179,6 @@ export const getStaticProps = async ({ locale }) => {
   let ipfsJSON = require('../components/ipfsJSON.json');
   let btsJSON = require('../components/btsJSON.json');
   let btsTestnetJSON = require('../components/btsTestnetJSON.json');
-  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
 
   return {
     props: {
@@ -184,7 +186,6 @@ export const getStaticProps = async ({ locale }) => {
       ipfsJSON: ipfsJSON,
       btsJSON: btsJSON,
       btsTestnetJSON: btsTestnetJSON,
-      ...(await serverSideTranslations(locale, ['settings', 'nav'])),
     }
   };
 }

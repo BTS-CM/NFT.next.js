@@ -2,13 +2,17 @@ import { Text, Group, Button } from '@mantine/core';
 import Script from 'next/script';
 import useSWR from 'swr';
 const axios = require('axios');
-import { useTranslation } from 'next-i18next';
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 
 import { useEnvironment, useProdConnection, useTestnetConnection } from './states';
 const fetcher = async (url) => await axios.get(url);
 
 export default function MarketOrders(properties) {
-  const { t } = useTranslation('marketorders');
+  const { t } = useTranslation();
 
   const [environment, setEnvironment] = useEnvironment();
   const [prodConnection, setProdConnection] = useProdConnection();
@@ -32,7 +36,7 @@ export default function MarketOrders(properties) {
       console.log("Beet not detected");
 
       const id = notifications.showNotification({
-        title: t('connection_failure_title'),
+        title: t('marketorders.connection_failure_title'),
         id: 'beetError',
         autoClose: 10000,
         message: (
@@ -40,11 +44,11 @@ export default function MarketOrders(properties) {
             <div style={{ display: 'flex', paddingTop: 5 }}>
               <Group direction="column">
                 <Text sx={{ flex: 1, marginRight: 15 }}>
-                  {t('connection_failure_msg')}
+                  {t('marketorders.connection_failure_msg')}
                 </Text>
                 <a href="https://github.com/bitshares/beet/releases/latest" passHref>
                   <Button>
-                    {t('connection_failure_button')}
+                    {t('marketorders.connection_failure_button')}
                   </Button>
                 </a>
               </Group>
@@ -64,13 +68,13 @@ export default function MarketOrders(properties) {
     socket.on('connect', function () {
       // socket is connected!
       const id = notifications.showNotification({
-        title: t('connection_valid_title'),
+        title: t('marketorders.connection_valid_title'),
         id: 'beetValid',
         message: (
           <>
             <div style={{ display: 'flex', paddingTop: 5 }}>
               <Text size="sm" sx={{ flex: 1, marginRight: 15 }}>
-                {t('connection_valid_msg')}
+                {t('marketorders.connection_valid_msg')}
               </Text>
             </div>
           </>
@@ -88,7 +92,7 @@ export default function MarketOrders(properties) {
     setBeet(false);
 
     const id = notifications.showNotification({
-      title: t('beet_buy_title'),
+      title: t('marketorders.beet_buy_title'),
       id: 'beetPurchase',
       autoClose: 10000,
       onClose: () => { setViaBeet(false) },
@@ -96,7 +100,7 @@ export default function MarketOrders(properties) {
         <>
           <div style={{ display: 'flex', paddingTop: 5 }}>
             <Text size="sm" sx={{ flex: 1, marginRight: 15 }}>
-              {t('beet_buy_msg')}
+              {t('marketorders.beet_buy_msg')}
             </Text>
           </div>
         </>
@@ -141,7 +145,7 @@ export default function MarketOrders(properties) {
   );
 
   if (error || !data) {
-    return (<Text>{t('market_data_fail')}</Text>);
+    return (<Text>{t('marketorders.market_data_fail')}</Text>);
   };
 
   let marketOrders = data.data;
@@ -153,7 +157,7 @@ export default function MarketOrders(properties) {
   let bidText = null;
   let beetResponse = null;
   if (bids && bids.length) {
-    bidText = <Text>{`${t('buy_now')}: ${bids[0].quote} ${approvedMarket}`}</Text>
+    bidText = <Text>{`${t('marketorders.buy_now')}: ${bids[0].quote} ${approvedMarket}`}</Text>
     beetResponse = !beet && !properties.account
                     ? <Button
                         sx={{marginTop: '15px'}}
@@ -161,7 +165,7 @@ export default function MarketOrders(properties) {
                           attemptConnection()
                         }}
                        >
-                        {t('beet_connect_button')}
+                        {t('marketorders.beet_connect_button')}
                       </Button>
                     : <Button
                         sx={{marginTop: '15px'}}
@@ -169,10 +173,10 @@ export default function MarketOrders(properties) {
                           beetBuy()
                         }}
                        >
-                       {t('beet_buy_button')}
+                       {t('marketorders.beet_buy_button')}
                       </Button>
   } else {
-    bidText = <Text>{t('not_for_sale')}</Text>;
+    bidText = <Text>{t('marketorders.not_for_sale')}</Text>;
   }
 
   window.setAccount = properties.setAccount;
@@ -180,14 +184,14 @@ export default function MarketOrders(properties) {
 
   function errorNotification () {
     notifications.showNotification({
-      title: t('error_note_title'),
+      title: t('marketorders.error_note_title'),
       id: 'beetTXError',
       autoClose: 10000,
       message: (
         <>
           <div style={{ display: 'flex', paddingTop: 5 }}>
             <Text size="sm" sx={{ flex: 1, marginRight: 15 }}>
-              {t('error_note_msg')}
+              {t('marketorders.error_note_msg')}
             </Text>
           </div>
         </>

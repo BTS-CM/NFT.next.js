@@ -1,4 +1,8 @@
-import { useTranslation } from 'next-i18next';
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 import dynamic from 'next/dynamic';
 
 import {
@@ -10,7 +14,7 @@ import useSWR from 'swr';
 const fetcher = (url) => fetch(url, {mode: "cors"}).then((res) => res.json())
 
 export default function IssuerDetails(properties) {
-  const { t } = useTranslation('nft');
+  const { t } = useTranslation();
   const issuer = properties.issuer;
 
   const { data, error } = useSWR(
@@ -20,7 +24,7 @@ export default function IssuerDetails(properties) {
 
   if (error || !data) {
     return (<Badge>
-              {`${t('asset.issuer')}: ???`}
+              {`${t('nft.asset.issuer')}: ???`}
             </Badge>)
   };
 
@@ -31,12 +35,12 @@ export default function IssuerDetails(properties) {
       withArrow
       label={
         issuerName && issuerName === 'null-account'
-          ? t('asset.asset_ownership_burned')
-          : t('asset.asset_ownership_warning')
+          ? t('nft.asset.asset_ownership_burned')
+          : t('nft.asset.asset_ownership_warning')
       }
     >
       <Badge color={issuerName && issuerName === 'null-account' ? 'primary' : 'secondary'}>
-        {`${t('asset.issuer')}: ${issuerName}`}
+        {`${t('nft.asset.issuer')}: ${issuerName}`}
       </Badge>
     </Tooltip>
   );

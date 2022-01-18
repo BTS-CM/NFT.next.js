@@ -1,8 +1,12 @@
 import { useEffect, useMemo } from 'react';
 
-import { useTranslation } from 'next-i18next';
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
+
 import dynamic from 'next/dynamic';
-import { FixedSizeGrid  as ReactGrid } from 'react-window';
 import { isMobile, isIOS, isSafari, isMobileSafari } from 'react-device-detect';
 import { useViewportSize } from '@mantine/hooks';
 import { useNotifications } from '@mantine/notifications';
@@ -21,7 +25,8 @@ const SEO = dynamic(() => import('../components/SEO'));
 import { useEnvironment, useAnalytics, useApproval } from '../components/states';
 
 function Gallery(props) {
-  const { t } = useTranslation('gallery');
+  const { t } = useTranslation();
+
   let [analytics, setAnalytics] = useAnalytics();
   let [approval, setApproval] = useApproval();
   const notifications = useNotifications();
@@ -77,8 +82,8 @@ function Gallery(props) {
 
   return ([
     <SEO
-      description={t('header_description', {title: config.title})}
-      title={t('header_title')}
+      description={t('gallery.header_description', {title: config.title})}
+      title={t('gallery.header_title')}
       siteTitle={config ? config.title: ''}
       key={'SEO'}
     />,
@@ -114,14 +119,11 @@ export const getStaticProps = async ({ locale }) => {
     }
   });
 
-  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
-
   return {
     props: {
       minProdNFTS,
       minStagingNFTS,
       config,
-      ...(await serverSideTranslations(locale, ['gallery', 'nft', 'nav'])),
     }
   };
 }

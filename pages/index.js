@@ -1,5 +1,11 @@
 import { useEffect, useMemo } from 'react';
-import { useTranslation } from 'next-i18next';
+
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
+
 import dynamic from 'next/dynamic';
 import { isMobile, isIOS, isSafari, isMobileSafari } from 'react-device-detect';
 
@@ -10,12 +16,11 @@ import { useViewportSize } from '@mantine/hooks';
 import { analyticsNotification } from '../lib/analyticsNotification';
 import CarouselElement from "../components/Carousel"
 import SEO from "../components/SEO"
-
 import { useEnvironment, useAnalytics, useApproval } from '../components/states';
 
 function Home(props) {
 
-  const { t } = useTranslation('mainpage');
+  const { t } = useTranslation();
   let [environment, setEnvironment] = useEnvironment();
   let env = environment ? environment : 'production';
   const { height, width } = useViewportSize();
@@ -68,10 +73,10 @@ function Home(props) {
                       <Center>
                         <Paper padding="md" shadow="sm" withBorder sx={{textAlign: 'center'}}>
                           <Text size="lg">
-                            {t("mainpage:traders.header")}
+                            {t("mainpage.traders.header")}
                           </Text>
                           <Text size="md">
-                            {t("mainpage:traders.body1a")}<a href="https://how.bitshares.works/en/master/user_guide/create_account.html">{t("mainpage:traders.a1")}</a>{t("mainpage:traders.body1b")}
+                            {t("mainpage.traders.body1a")}<a href="https://how.bitshares.works/en/master/user_guide/create_account.html">{t("mainpage.traders.a1")}</a>{t("mainpage.traders.body1b")}
                           </Text>
                           <a href={`https://wallet.bitshares.org`}>
                             <Button sx={{margin: "5px"}} variant="outline">Bitshares.org</Button>
@@ -86,7 +91,7 @@ function Home(props) {
                             <Button sx={{margin: "5px"}} variant="outline">GDEX.io</Button>
                           </a>
                           <a href={`https://github.com/bitshares/bitshares-ui/releases`}>
-                            <Button sx={{margin: "5px"}} variant="outline">{t("mainpage:traders.a2")}</Button>
+                            <Button sx={{margin: "5px"}} variant="outline">{t("mainpage.traders.a2")}</Button>
                           </a>
                         </Paper>
                       </Center>
@@ -98,16 +103,16 @@ function Home(props) {
       <Center>
         <Paper padding="md" shadow="sm" withBorder sx={{textAlign: 'center'}}>
           <Text size="lg">
-            {t("mainpage:benefits.header")}
+            {t("mainpage.benefits.header")}
           </Text>
           <Text size="md">
-            {t("mainpage:benefits.body1")}<a href="https://news.bitshares.org/ethereum-vs-bitshares-sustainability-fees-comparison/">{t("mainpage:benefits.a1")}</a>.
+            {t("mainpage.benefits.body1")}<a href="https://news.bitshares.org/ethereum-vs-bitshares-sustainability-fees-comparison/">{t("mainpage.benefits.a1")}</a>.
           </Text>
           <Text size="md">
-            {t("mainpage:benefits.body2")}<a href="https://how.bitshares.works/en/master/technology/dpos.html">{t("mainpage:benefits.a2")}</a>.
+            {t("mainpage.benefits.body2")}<a href="https://how.bitshares.works/en/master/technology/dpos.html">{t("mainpage.benefits.a2")}</a>.
           </Text>
           <Text size="md">
-            {t("mainpage:benefits.body3")}<a href="https://how.bitshares.works/en/master/technology/bitshares_features.html#industrial-performance-and-scalability">{t("mainpage:benefits.a3")}</a>;{t("mainpage:benefits.body4")}
+            {t("mainpage.benefits.body3")}<a href="https://how.bitshares.works/en/master/technology/bitshares_features.html#industrial-performance-and-scalability">{t("mainpage.benefits.a3")}</a>;{t("mainpage.benefits.body4")}
           </Text>
         </Paper>
       </Center>
@@ -116,8 +121,8 @@ function Home(props) {
 
   return ([
     <SEO
-      description={t('header_description', {title: config.title})}
-      title={t('header_title')}
+      description={t('mainpage.header_description', {title: config.title})}
+      title={t('mainpage.header_title')}
       siteTitle={config ? config.title : ''}
       key="seo"
     />,
@@ -125,7 +130,7 @@ function Home(props) {
       <Col span={12}>
         <Center>
           <Text size="md">
-            {t("mainpage:featured")}
+            {t("mainpage.featured")}
           </Text>
         </Center>
         <Center>
@@ -171,14 +176,11 @@ export const getStaticProps = async ({ locale }) => {
     }
   });
 
-  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
-
   return {
     props: {
       minProdNFTS,
       minStagingNFTS,
       config,
-      ...(await serverSideTranslations(locale, ['gallery', 'mainpage', 'nav'])),
     }
   };
 };

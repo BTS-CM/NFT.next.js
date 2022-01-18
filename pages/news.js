@@ -1,7 +1,11 @@
 import dayjs from 'dayjs';
 import { Text, Center, Grid, Col, Paper } from '@mantine/core'
 import Link from 'next/link';
-import { useTranslation } from 'next-i18next';
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 import dynamic from 'next/dynamic';
 
 const SEO = dynamic(() => import('../components/SEO'));
@@ -9,15 +13,21 @@ import { getAllPosts } from '../lib/api'
 import config from '../components/config.json';
 
 const News = ({ allPosts }) => {
-  const { t } = useTranslation('news');
+  const { t } = useTranslation();
+  const [query] = useLanguageQuery();
+
+  /*
+    as={`/posts/${heroPost.slug}`}
+    href="/posts/[slug]"
+  */
 
   return allPosts && allPosts.length
     ? allPosts.map(heroPost => {
         return (
           <>
             <SEO
-              description={t('header_description')}
-              title={t('header_title', {title: config.title})}
+              description={t('news.header_description')}
+              title={t('news.header_title', {title: config.title})}
               siteTitle={config.title}
               key={'SEO'}
             />
@@ -27,7 +37,9 @@ const News = ({ allPosts }) => {
                   <Paper padding="md" shadow="xs">
                     <div>
                       <h3>
-                        <Link as={`/posts/${heroPost.slug}`} href="/posts/[slug]">
+                        <Link
+                          href={{pathname: `/posts/${heroPost.slug}`, query: query && query.lang ? `lang=${query['lang']}` : `lang=en`}}
+                        >
                           <a sx={{color: 'text.secondary'}}>{heroPost.title}</a>
                         </Link>
                       </h3>
@@ -59,12 +71,9 @@ export const getStaticProps = async ({locale}) => {
     'excerpt',
   ])
 
-  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
-
   return {
     props: {
       allPosts,
-      ...(await serverSideTranslations(locale, ['news', 'nav'])),
     },
   };
 }

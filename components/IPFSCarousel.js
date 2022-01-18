@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useTranslation } from 'next-i18next';
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';

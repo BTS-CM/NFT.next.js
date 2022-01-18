@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useTranslation } from 'next-i18next';
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
@@ -8,11 +12,10 @@ import { useNotifications } from '@mantine/notifications';
 
 const SEO = dynamic(() => import('../components/SEO'));
 import { analyticsNotification } from '../lib/analyticsNotification';
-
 import { useEnvironment, useAnalytics, useTheme, useApproval } from '../components/states';
 
 function SearchPanel (properties) {
-  const { t } = useTranslation('search');
+  const { t } = useTranslation();
   const [overlay, setOverlay] = useState();
 
   const config = properties.config;
@@ -67,8 +70,8 @@ function SearchPanel (properties) {
 
   return ([
     <SEO
-      description={t('header_description')}
-      title={t('header_title')}
+      description={t('search.header_description')}
+      title={t('search.header_title')}
       siteTitle={config.title}
       key={'SEO'}
     />,
@@ -76,10 +79,10 @@ function SearchPanel (properties) {
       <Col span={12} key={"Search row"}>
         <Paper padding="md" shadow="xs">
           <Text size="lg">
-            {t('header')}
+            {t('search.header')}
           </Text>
           <Text>
-            {t('body')}
+            {t('search.body')}
           </Text>
           <TextInput
             key="searchInput"
@@ -97,13 +100,13 @@ function SearchPanel (properties) {
       <Col span={12} key={"Info row"}>
         <Paper padding="md" shadow="xs">
           <Text size="lg">
-            {t('help_header')}
+            {t('search.help_header')}
           </Text>
           <Text>
-            {t('not_all')}
+            {t('search.not_all')}
           </Text>
           <Text>
-            {t('pre_a')}<Link href="/viewers">{t('a1')}</Link> & <Link href="/viewers">{t('a2')}</Link>!
+            {t('search.pre_a')}<Link href="/viewers">{t('search.a1')}</Link> & <Link href="/viewers">{t('search.a2')}</Link>!
           </Text>
         </Paper>
       </Col>
@@ -140,13 +143,11 @@ export const getStaticProps = async ({ locale }) => {
 
   const art = require('../components/art.json');
   const config = require('../components/config.json');
-  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
 
   return {
     props: {
       art: art,
       config: config,
-      ...(await serverSideTranslations(locale, ['search', 'nav'])),
     }
   };
 }

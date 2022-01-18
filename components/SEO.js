@@ -1,15 +1,12 @@
 import Head from 'next/head'
-import { useLanguage } from './states';
 import config from "./config.json";
 
 function SEO({ description, title, siteTitle, imageURL }) {
-  const [language, setLanguage] = useLanguage();
 
   return <>
       <Head>
         <title>{`${title} | ${siteTitle}`}</title>
         <meta name="description" content={description} />
-        <meta httpEquiv="content-language" content={language ? language : 'en'} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:site_name" content={siteTitle} />

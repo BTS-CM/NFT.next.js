@@ -1,17 +1,22 @@
 import { useEffect } from 'react';
-import { useTranslation } from 'next-i18next';
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 import dynamic from 'next/dynamic';
 
 import { Text, Center, Grid, Col, Paper } from '@mantine/core'
 import { useNotifications } from '@mantine/notifications';
-const SEO = dynamic(() => import('../components/SEO'));
 
+const SEO = dynamic(() => import('../components/SEO'));
 import config from '../components/config.json';
 import { useAnalytics, useApproval } from '../components/states';
+
 import { analyticsNotification } from '../lib/analyticsNotification';
 
 function License(properties) {
-  const { t } = useTranslation('license');
+  const { t } = useTranslation();
 
   let [analytics, setAnalytics] = useAnalytics();
   let [approval, setApproval] = useApproval();
@@ -32,8 +37,8 @@ function License(properties) {
 
   return ([
     <SEO
-      description={t('header_description', {title: config.title})}
-      title={t('header_title')}
+      description={t('license.header_description', {title: config.title})}
+      title={t('license.header_title')}
       siteTitle={config.title}
       key={'SEO'}
     />,
@@ -41,37 +46,27 @@ function License(properties) {
       <Col span={12}>
         <Paper padding="md" shadow="xs">
           <Text>
-            {t('type')}
+            {t('license.type')}
           </Text>
           <Text>
-            {t('copyright')}
+            {t('license.copyright')}
           </Text>
           <Text>
-            {t('permission')}
+            {t('license.permission')}
           </Text>
           <Text>
-            {t('notice')}
+            {t('license.notice')}
           </Text>
           <Text>
-            {t('disclaimer')}
+            {t('license.disclaimer')}
           </Text>
           <Text>
-            <a sx={{color: 'text.secondary'}} href="https://github.com/BTS-CM/NFT.next.js">{t('repo')}</a>
+            <a sx={{color: 'text.secondary'}} href="https://github.com/BTS-CM/NFT.next.js">{t('license.repo')}</a>
           </Text>
         </Paper>
       </Col>
     </Grid>
   ]);
-}
-
-export const getStaticProps = async ({ locale }) => {
-  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
-
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ['license', 'nav'])),
-    }
-  }
 }
 
 export default License;

@@ -1,5 +1,9 @@
 import { useEffect } from 'react';
-import { useTranslation } from 'next-i18next';
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
@@ -11,7 +15,7 @@ const SEO = dynamic(() => import('../components/SEO'));
 import { useAnalytics, useApproval } from '../components/states';
 
 function Viewers(properties) {
-  const { t } = useTranslation('viewers');
+  const { t } = useTranslation();
   const config = properties.config;
 
   let [analytics, setAnalytics] = useAnalytics();
@@ -34,8 +38,8 @@ function Viewers(properties) {
 
   return ([
     <SEO
-      description={t('header_description')}
-      title={t('header_title')}
+      description={t('viewers.header_description')}
+      title={t('viewers.header_title')}
       siteTitle={config.title}
       key={'SEO'}
     />,
@@ -43,10 +47,10 @@ function Viewers(properties) {
       <Col span={12}>
         <Paper padding="lg" align="center">
           <Text size="lg">
-            {t('nft.header')}
+            {t('viewers.nft.header')}
           </Text>
           <Text>
-            {t('nft.body')}
+            {t('viewers.nft.body')}
           </Text>
           <Link href={`https://artcasa.gallery/`} passHref>
             <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline">ArtCASA</Button>
@@ -59,10 +63,10 @@ function Viewers(properties) {
       <Col span={12}>
         <Paper padding="lg" align="center">
           <Text size="lg">
-            {t('blockchain.header')}
+            {t('viewers.blockchain.header')}
           </Text>
           <Text>
-            {t('blockchain.body')}
+            {t('viewers.blockchain.body')}
           </Text>
           <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://wallet.bitshares.org/#/explorer/assets`}>Bitshares.org</Button>
           <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://ex.xbts.io/explorer/assets`}>XBTS.io</Button>
@@ -80,12 +84,10 @@ function Viewers(properties) {
 export const getStaticProps = async ({ locale }) => {
 
   let config = require('../components/config.json');
-  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
 
   return {
     props: {
       config: config,
-      ...(await serverSideTranslations(locale, ['viewers', 'nav'])),
     }
   };
 }

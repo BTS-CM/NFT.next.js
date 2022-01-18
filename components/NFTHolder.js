@@ -1,5 +1,9 @@
 import {useState} from 'react';
-import { useTranslation } from 'next-i18next';
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 import useSWR from 'swr';
 
 import { Badge } from '@mantine/core';
@@ -9,7 +13,7 @@ const fetcher = (url) => fetch(url, {method: "GET", mode: "cors"}).then((res) =>
 
 export default function NFTHolder(properties) {
   const [environment, setEnvironment] = useEnvironment();
-  const { t } = useTranslation('nft');
+  const { t } = useTranslation();
   const id = properties.id;
 
   const { data, error } = useSWR(
@@ -25,7 +29,7 @@ export default function NFTHolder(properties) {
 
   return (
     <Badge>
-      {`${t('asset.owner')}: ${data && data.length ? data[0].name : '???'}`}
+      {`${t('nft.asset.owner')}: ${data && data.length ? data[0].name : '???'}`}
     </Badge>
   );
 }

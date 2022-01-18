@@ -34,6 +34,5 @@ yarn-error.log*
 .vercel
 
 # data
-*.webp
+#*.webp
 *.png
-components/config.json

@@ -1,6 +1,10 @@
 import { useRouter } from 'next/router'
 import ReactGA from 'react-ga4';
-import { useTranslation } from 'next-i18next';
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 import dynamic from 'next/dynamic';
 import { isIOS, isSafari, isMobileSafari } from 'react-device-detect'
 import { useNotifications } from '@mantine/notifications';
@@ -36,22 +40,24 @@ function ValidNFT (props) {
     ReactGA.pageview(`NFT ${nft}`);
   }
 
-  const { t } = useTranslation('nft');
+  const { t } = useTranslation();
 
-  return ([<SEO
-    description={t('header_description', {nft: nft})}
-    title={t('header_title', {nft: nft})}
-    siteTitle={config.title}
-    key={"seo"}
-  />,
-  <NFT
-    id={nft}
-    initAsset={initAsset}
-    key={nft}
-    individual={true}
-    isApple={isIOS || isSafari || isMobileSafari}
-    {...props}
-  />])
+  return ([
+          <SEO
+            description={t('nft.header_description', {nft: nft})}
+            title={t('nft.header_title', {nft: nft})}
+            siteTitle={config.title}
+            key={"seo"}
+          />,
+          <NFT
+            id={nft}
+            initAsset={initAsset}
+            key={nft}
+            individual={true}
+            isApple={isIOS || isSafari || isMobileSafari}
+            {...props}
+          />
+        ]);
 }
 
 
@@ -106,29 +112,13 @@ function NFTPAGE (props) {
   }
 }
 
-export const getStaticPaths = async ({ locales }) => {
+export const getStaticPaths = async () => {
 
   let prodNFTS = art.production.map(item => ({params: {nft: item.name}}));
   let stagingNFTS = art.staging.map(item => ({params: {nft: item.name}}));
 
-  let paths = [];
-
-  for (let i = 0; i < prodNFTS.length; i++) {
-    const currentNFT = prodNFTS[i];
-    paths.push(
-      ...locales.map(locale => ({...currentNFT, locale: locale}))
-    )
-  }
-
-  for (let i = 0; i < stagingNFTS.length; i++) {
-    const currentNFT = stagingNFTS[i];
-    paths.push(
-      ...locales.map(locale => ({...currentNFT, locale: locale}))
-    )
-  }
-
   return {
-      paths: paths, //indicates that no page needs be created at build time
+      paths: [...prodNFTS, ...stagingNFTS], //indicates that no page needs be created at build time
       fallback: false //indicates the type of fallback
   }
 }
@@ -144,13 +134,10 @@ export const getStaticProps = async ({ locale, params }) => {
     }
   }
 
-  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
-
   return {
     props: {
       config,
       initAsset,
-      ...(await serverSideTranslations(locale, ['marketorders', 'nft', 'nav'])),
     },
   };
 }

@@ -4,9 +4,12 @@ import Image from 'next/image'
 
 import { Card, Col, Grid, Text, Badge, Button, Group, useMantineTheme } from '@mantine/core';
 
-import { useTranslation } from 'next-i18next';
+import {
+  useTranslation,
+  useLanguageQuery,
+  LanguageSwitcher,
+} from "next-export-i18n";
 import { useInView } from 'react-intersection-observer';
-import { useLanguage } from './states';
 
 export default function NFTCard(properties) {
   const theme = useMantineTheme();
@@ -19,12 +22,12 @@ export default function NFTCard(properties) {
   let nearby = properties && properties.nearby ? properties.nearby : null;
   let isApple = properties && properties.isApple ? properties.isApple : false;
 
-  const { ref, inView } = useInView({
+  const { ref, inview } = useInView({
     triggerOnce: true,
   });
 
-  const { t } = useTranslation('gallery');
-  const [language, setLanguage] = useLanguage();
+  const { t } = useTranslation();
+  const [query] = useLanguageQuery();
 
   let nft = properties.nft;
   let symbol = nft ? nft.symbol : undefined;
@@ -34,12 +37,10 @@ export default function NFTCard(properties) {
   let media_json = nft ? nft.media_json : undefined;
   let isMobile = properties ? properties.isMobile : undefined;
 
-  let address = language && !language.includes("en") ? `/${language}` : ``;
-
   let width = properties.width;
 
   let media = null;
-  if (visible || inView) {
+  if (visible || inview) {
     media = isApple
               ? <img
                   width={`${width}px`}
@@ -76,10 +77,10 @@ export default function NFTCard(properties) {
       padding="lg"
       component="a"
       key={`${symbol} card`}
-      href={address + "/nft/" + symbol}
+      href={"/nft/" + symbol}
     >
       <div
-        inView={inView}
+        inview={inview}
         style={{
           backgroundImage: 'url('+`/images/${symbol}/0_bg.webp`+')',
           backgroundSize: "cover"
@@ -93,7 +94,7 @@ export default function NFTCard(properties) {
         {title}
       </Text>
       <Text size="sm" style={{ color: secondaryColor, lineHeight: 1 }}>
-        {t('created_text', {artist: artist})}
+        {t('gallery.created_text', {artist: artist})}
       </Text>
     </Card>
   );

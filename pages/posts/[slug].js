@@ -73,14 +73,12 @@ export async function getStaticProps({ params, locale }) {
   }
 
   const content = await markdownToHtml(post.content || '')
-  const {serverSideTranslations} = (await import('next-i18next/serverSideTranslations'));
   return {
     props: {
       post: {
         ...post,
         content,
       },
-      ...(await serverSideTranslations(locale, ['nav'])),
     },
   };
 }
@@ -90,18 +88,9 @@ export const getStaticPaths = async ({ locales }) => {
   const posts = getAllPosts(['slug'])
 
   let postParams = posts.map(post => ({params: {slug: post.slug}}));
-  let paths = [];
-
-  for (let i = 0; i < postParams.length; i++) {
-    const currentPost = postParams[i];
-
-    paths.push(
-      ...locales.map(locale => ({...currentPost, locale: locale}))
-    )
-  }
 
   return {
-      paths: paths, //indicates that no page needs be created at build time
+      paths: postParams, //indicates that no page needs be created at build time
       fallback: false //indicates the type of fallback
   }
 }

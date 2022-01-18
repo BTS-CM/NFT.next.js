@@ -59,11 +59,29 @@ let assets = prodArt.map(asset => require(`./${asset.name}.json`));
       if (nft_object.media_png || nft_object.image_png) {
         image = nft_object.media_png || nft_object.image_png || undefined;
         fileName = `../../public/images/${name}/0.png`;
-      } else if (nft_object.media_gif || nft_object.media_GIF || nft_object.image_GIF || nft_object.image_gif) {
-        image = nft_object.media_gif || nft_object.media_GIF || nft_object.image_GIF || nft_object.image_gif || undefined;
+      } else if (
+          nft_object.media_gif ||
+          nft_object.media_GIF ||
+          nft_object.image_GIF ||
+          nft_object.image_gif ||
+          nft_object.media_gif_multihash
+        ) {
+        image = nft_object.media_gif ||
+                nft_object.media_GIF ||
+                nft_object.image_GIF ||
+                nft_object.image_gif ||
+                "https://cloudflare-ipfs.com" + nft_object.media_gif_multihash ||
+                undefined;
         fileName = `../../public/images/${name}/0.gif`;
-      } else if (nft_object.media_jpeg || nft_object.image_jpeg) {
-        image = nft_object.media_jpeg || nft_object.image_jpeg || undefined;
+      } else if (
+        nft_object.media_jpeg ||
+        nft_object.image_jpeg ||
+        nft_object.media_jpeg_multihash
+      ) {
+        image = nft_object.media_jpeg ||
+                nft_object.image_jpeg ||
+                "https://cloudflare-ipfs.com" + nft_object.media_jpeg_multihash ||
+                undefined;
         fileName = `../../public/images/${name}/0.jpeg`;
       }
 

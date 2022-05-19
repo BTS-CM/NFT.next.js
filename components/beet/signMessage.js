@@ -17,7 +17,7 @@ export default function SignMessage(properties) {
   async function signMessage() {
     let signedMessaged;
     try {
-      signedMessaged = await connection.signMessage();
+      signedMessaged = await connection.signMessage(messageToSign);
     } catch (error) {
       return;
     }

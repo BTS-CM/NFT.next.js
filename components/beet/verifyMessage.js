@@ -15,13 +15,13 @@ export default function VerifyMessage(properties) {
   };
 
   async function verify() {
-    let signedMessaged;
+    let verification;
     try {
-      signedMessaged = await connection.signMessage();
+      verification = await connection.verifyMessage(messageToVerify);
     } catch (error) {
       return;
     }
-    console.log(signedMessaged)
+    console.log(verification)
   }
 
   return ([

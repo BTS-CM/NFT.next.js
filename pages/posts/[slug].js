@@ -19,8 +19,8 @@ export default function Post({ post, morePosts, preview }) {
 
   return ([
     <SEO
-      title={`${post.title} | ${config.title}`}
-      description={`${config.title} article about "${post.title}"`}
+      title={post.title}
+      description={`${config.title} article about "${post.excerpt}"`}
       siteTitle={config.title}
       key={'SEO'}
     />,
@@ -53,6 +53,7 @@ export async function getStaticProps({ params, locale }) {
   try {
     post = getPostBySlug(params.slug, [
       'title',
+      'excerpt',
       'date',
       'slug',
       'author',

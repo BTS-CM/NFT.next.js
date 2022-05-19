@@ -75,10 +75,6 @@ function CarouselItem (properties) {
            href={`https://${gateway}${media_png_multihash.url}`}
            key={symbol + "_featured_div_" + itr}
            padding="none"
-           sx={{
-             backgroundImage: 'url('+`/images/${symbol}/0_bg.webp`+')',
-             backgroundSize: "cover"
-           }}
           >
             {media}
           </Card>);

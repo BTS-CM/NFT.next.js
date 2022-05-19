@@ -88,18 +88,18 @@ export default function NFT (properties) {
   const { t } = useTranslation();
   const [query] = useLanguageQuery();
 
-  if (!id || !id.includes(".")) {
-    return (<Text size="lg">
-              Loading NFT info...
-            </Text>);
-  }
-
   const [asset, setAsset] = useState(initAsset ? initAsset : undefined);
   const [value, setValue] = useState(0);
   const [activeTab, setActiveTab] = useState(0);
   const [beet, setBeet] = useState(false);
   const [buyViaBeet, setViaBeet] = useState(false);
   const [account, setAccount] = useState(null);
+
+  if (!id || !id.includes(".")) {
+    return (<Text size="lg">
+              Loading NFT info...
+            </Text>);
+  }
 
   let issuer = asset ? asset.issuer : undefined;
   let precision = asset ? asset.precision : undefined;

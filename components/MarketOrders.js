@@ -31,7 +31,7 @@ export default function MarketOrders(properties) {
 
   function attemptConnection() {
     var Socket = require('simple-websocket');
-    let socket = new Socket('ws://localhost:60555');
+    let socket = new Socket('wss://localhost:60556');
     socket.on('error', function (error) {
       console.log("Beet not detected");
 
@@ -83,7 +83,7 @@ export default function MarketOrders(properties) {
 
       setBeet(true);
       setViaBeet(false);
-      socket.destroy()
+      socket.close()
     })
   }
 
@@ -226,7 +226,7 @@ export default function MarketOrders(properties) {
                                     let account = !window.account ? app.BTS.getAccount() : window.account;
                                     window.setAccount(account);
 
-                                    TransactionBuilder = app.BTS.inject(bitshares_js.TransactionBuilder);
+                                    //TransactionBuilder = app.BTS.inject(bitshares_js.TransactionBuilder);
 
                                     try {
                                       await bitshares_js.bitshares_ws.Apis.instance(

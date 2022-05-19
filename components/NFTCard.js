@@ -22,7 +22,7 @@ export default function NFTCard(properties) {
   let nearby = properties && properties.nearby ? properties.nearby : null;
   let isApple = properties && properties.isApple ? properties.isApple : false;
 
-  const { ref, inview } = useInView({
+  const { ref, inView } = useInView({
     triggerOnce: true,
   });
 
@@ -40,7 +40,7 @@ export default function NFTCard(properties) {
   let width = properties.width;
 
   let media = null;
-  if (visible || inview) {
+  if (visible || inView) {
     media = isApple
               ? <img
                   width={`${width}px`}
@@ -77,14 +77,21 @@ export default function NFTCard(properties) {
       padding="lg"
       component="a"
       key={`${symbol} card`}
-      href={"/nft/" + symbol}
+      href={"/nft/" + symbol + `?lang=${query && query.lang ? query.lang : `en`}`}
     >
       <div
-        inview={inview}
-        style={{
-          backgroundImage: 'url('+`/images/${symbol}/0_bg.webp`+')',
-          backgroundSize: "cover"
-        }}
+        inview={inView}
+        style={
+          !inView
+          ? {
+            backgroundImage: 'url('+`/images/${symbol}/0_bg.webp`+')',
+            backgroundSize: "cover"
+          }
+          : {
+            backgroundImage: '',
+            backgroundSize: "cover"
+          }
+        }
       >
         <Card.Section ref={ref}>
           {media}

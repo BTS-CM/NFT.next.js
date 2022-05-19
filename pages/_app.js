@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link';
 import Head from 'next/head'
 import Script from "next/script";
+import Image from 'next/image';
 
 import {
   useTranslation,
@@ -72,8 +73,6 @@ function MyApp(props) {
 
   const [environment, setEnvironment] = useEnvironment();
   const [menuOpen, setMenuOpen] = useMenuOpen();
-
-  // width={{ base: 250, breakpoints: { sm: '100%', lg: 250 } }}
 
   return (
       <Head>
@@ -148,6 +147,20 @@ function MyApp(props) {
                         language={query && query.lang ? query.lang : 'en'}
                         inputText={t('nav.link6')}
                       />
+                      <center>
+                        <a href="https://assistant.google.com/services/invoke/uid/000000a4cdd55f35/alm/CgT3HfYlEgIQAQ==?hl=en">
+                          <Image
+                            width={`169px`}
+                            height={`169px`}
+                            src={
+                              colorScheme === 'dark'
+                                ? "/images/Google/night.webp"
+                                : "/images/Google/action.webp"
+                            }
+                            alt="Approved Google Assistant Action"
+                          />
+                        </a>
+                      </center>
                     </Navbar>
                   }
                   header={
@@ -266,12 +279,6 @@ function MyApp(props) {
                         <Text size="xl">
                           {t('nav.footer_links')}
                         </Text>
-                        <Link href={"https://bitshares.org/"} passHref>
-                          <a>
-                            Bitshares.org
-                          </a>
-                        </Link>
-                        <br/>
                         <Link href={"https://github.com/bitshares"} passHref>
                           <a>
                             GitHub
@@ -281,6 +288,24 @@ function MyApp(props) {
                         <Link href={"https://bitsharestalk.org/"} passHref>
                           <a>
                             Forum
+                          </a>
+                        </Link>
+                        <br/>
+                        <Link href={"https://github.com/bitshares/awesome-bitshares"} passHref>
+                          <a>
+                            Awesome-Bitshares
+                          </a>
+                        </Link>
+                        <br/>
+                        <Link href={"https://bitshares.build/"} passHref>
+                          <a>
+                            Bitshares.Build
+                          </a>
+                        </Link>
+                        <br/>
+                        <Link href={"https://bitsharesgroup.org/"} passHref>
+                          <a>
+                            Bitshares Group
                           </a>
                         </Link>
                       </Col>

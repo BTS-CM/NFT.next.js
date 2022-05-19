@@ -7,26 +7,26 @@ import { Card } from '@mantine/core';
 import { useInView } from 'react-intersection-observer';
 import { useTheme } from './states';
 
-function image (symbol, media_json, isApple, inview) {
+function image (symbol, media_json, isApple, inView) {
   if (isApple) {
     return <img
               width={"350px"}
               height={"350px"}
-              src={!media_json ? `/images/${symbol}/${inview ? `0_gallery` : `0_thumb`}.webp` : "/images/placeholders/0.webp"}
+              src={!media_json ? `/images/${symbol}/${inView ? `0_gallery` : `0_thumb`}.webp` : "/images/placeholders/0.webp"}
               alt={`${symbol} NFT apple image`}
             />
   } else {
     return <Image
               width={"350px"}
               height={"350px"}
-              src={!media_json ? `/images/${symbol}/${inview ? `0_gallery` : `0_thumb`}.webp` : "/images/placeholders/0.webp"}
+              src={!media_json ? `/images/${symbol}/${inView ? `0_gallery` : `0_thumb`}.webp` : "/images/placeholders/0.webp"}
               alt={`${symbol} NFT image`}
             />
   }
 }
 
 export default function CardSection(properties) {
-  const { ref, inview, entry } = useInView({
+  const { ref, inView, entry } = useInView({
     /* Optional options */
     threshold: 0,
   });
@@ -36,17 +36,22 @@ export default function CardSection(properties) {
   const isApple = properties.isApple;
   const bg = `/images/${symbol}/0_bg.webp`;
 
+  let backgroundImage = 'url('+bg+')';
+  if (inView) {
+    backgroundImage = '';
+  }
+
   return (
-    <Card.Section inview={inview}>
+    <Card.Section>
       <div
         ref={ref}
         style={{
-          backgroundImage: 'url('+bg+')',
+          backgroundImage: backgroundImage,
           backgroundSize: "cover"
         }}
       >
         {
-          image(symbol, media_json, isApple, inview)
+          image(symbol, media_json, isApple, inView)
         }
       </div>
     </Card.Section>

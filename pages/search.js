@@ -16,6 +16,7 @@ import { useEnvironment, useAnalytics, useTheme, useApproval } from '../componen
 
 function SearchPanel (properties) {
   const { t } = useTranslation();
+  const [query] = useLanguageQuery();
   const [overlay, setOverlay] = useState();
 
   const config = properties.config;
@@ -53,7 +54,7 @@ function SearchPanel (properties) {
           if (crypto.item && crypto.item.id) {
             return (
               <Button align="left" variant={colorScheme === "dark" ? "filled" : "light"} color={'gray'}>
-                <Text component={Link} href={`/nft/${crypto.item.name}`} key={crypto.item.name}>
+                <Text component={Link} href={`/nft/${crypto.item.name}?lang=${query && query.lang ? query.lang : 'en'}`} key={crypto.item.name}>
                   {`${crypto.item.id}: ${crypto.item.name}`}
                 </Text>
               </Button>

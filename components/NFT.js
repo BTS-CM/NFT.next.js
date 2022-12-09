@@ -550,11 +550,11 @@ export default function NFT (properties) {
                 </Button>
                 <Button
                   component="a"
-                  href={`https://www.gdex.io/market/${symbol}_${market ? market : 'BTS'}`}
+                  href={`https://wallet.btwty.com/market/${symbol}_${market ? market : 'BTS'}`}
                   sx={{m: 0.25}}
                   variant="outline"
                 >
-                  GDEX.io
+                  BTWTY
                 </Button>
                 <Tooltip
                   label={t('nft.buy.tooltip', {symbol: symbol})}
@@ -601,21 +601,6 @@ export default function NFT (properties) {
                   blocksights.info
                 </Button>
               </Group>
-            </Tab>
-
-            <Tab key="tabs.beet" label={t('nft.tabs.beet')}>
-              <MarketOrders
-                id={id}
-                market={market}
-                beet={beet}
-                setBeet={setBeet}
-                buyViaBeet={buyViaBeet}
-                setViaBeet={setViaBeet}
-                account={account}
-                setAccount={setAccount}
-                symbol={symbol}
-                {...properties}
-              />
             </Tab>
 
             <Tab key="tabs.flags" label={t('nft.tabs.flags')}>

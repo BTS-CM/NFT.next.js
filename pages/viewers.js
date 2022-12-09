@@ -58,6 +58,31 @@ function Viewers(properties) {
           <Link href={`https://alguienalli.github.io/`} passHref>
             <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline">Alguien&apos;s Bitshares NFT Explorer</Button>
           </Link>
+          <Link href={`https://github.com/BTS-CM/NFT_Viewer`} passHref>
+            <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline">Bitshares NFT Viewer</Button>
+          </Link>
+        </Paper>
+      </Col>
+      <Col span={12}>
+        <Paper padding="lg" align="center">
+          <Text size="lg">
+            {t('viewers.nft.tools')}
+          </Text>
+          <Link href={`https://github.com/BTS-CM/Bitshares_NFT_Issuance_Tool`} passHref>
+            <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline">
+              Bitshares NFT Issuance Tool
+            </Button>
+          </Link>
+          <Link href={`https://github.com/Bit20-Creative-Group/BitShares-NFT-Creator`} passHref>
+            <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline">
+              Bitshares NFT Creator
+            </Button>
+          </Link>
+          <Link href={`https://github.com/Bit20-Creative-Group/BitShares-NFT-Specification`} passHref>
+            <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline">
+              Bitshares NFT spec
+            </Button>
+          </Link>
         </Paper>
       </Col>
       <Col span={12}>
@@ -71,10 +96,11 @@ function Viewers(properties) {
           <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://wallet.bitshares.org/#/explorer/assets`}>Bitshares.org</Button>
           <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://ex.xbts.io/explorer/assets`}>XBTS.io</Button>
           <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://dex.iobanker.com/explorer/assets`}>ioBanker DEX</Button>
-          <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://www.gdex.io/explorer/assets`}>GDEX.io</Button>
+          <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://wallet.btwty.com/explorer/assets`}>BTWTY</Button>
           <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://bts.ai/`}>BTS.AI</Button>
           <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://api.testnet.bitshares.ws/docs`}>Insight</Button>
           <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://cryptofresh.com`}>cryptofresh</Button>
+          <Button sx={{margin: '5px'}} component="a" size="sm" variant="outline" href={`https://blocksights.info/`}>BlockSights.info</Button>
         </Paper>
       </Col>
     </Grid>

@@ -47,7 +47,6 @@ import config from "../components/config.json";
 const locales = [
   {'language': 'en', 'aka': 'English'},
   {'language': 'zhTW', 'aka': '臺灣的'},
-  {'language': 'ru', 'aka': 'русский'},
   {'language': 'ee', 'aka': 'Eestlane'},
   {'language': 'da', 'aka': 'Dansk'},
   {'language': 'de', 'aka': 'Deutsche'},
@@ -124,12 +123,6 @@ function MyApp(props) {
                         inputText={t('nav.link9')}
                       />
                       <NavButton
-                        url={"/about"}
-                        colorScheme={colorScheme}
-                        language={query && query.lang ? query.lang : 'en'}
-                        inputText={t('nav.link5')}
-                      />
-                      <NavButton
                         url={"/viewers"}
                         colorScheme={colorScheme}
                         language={query && query.lang ? query.lang : 'en'}
@@ -147,20 +140,6 @@ function MyApp(props) {
                         language={query && query.lang ? query.lang : 'en'}
                         inputText={t('nav.link6')}
                       />
-                      <center>
-                        <a href="https://assistant.google.com/services/invoke/uid/000000a4cdd55f35/alm/CgT3HfYlEgIQAQ==?hl=en">
-                          <Image
-                            width={`169px`}
-                            height={`169px`}
-                            src={
-                              colorScheme === 'dark'
-                                ? "/images/Google/night.webp"
-                                : "/images/Google/action.webp"
-                            }
-                            alt="Approved Google Assistant Action"
-                          />
-                        </a>
-                      </center>
                     </Navbar>
                   }
                   header={
@@ -331,9 +310,9 @@ function MyApp(props) {
                           </a>
                         </Link>
                         <br/>
-                        <Link href={"https://www.gdex.io/"} passHref>
+                        <Link href={"https://wallet.btwty.com"} passHref>
                           <a>
-                            GDEX.io
+                            BTWTY.com
                           </a>
                         </Link>
                       </Col>

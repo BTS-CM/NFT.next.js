@@ -1,7 +1,8 @@
 {
     "nft": {
       "header": "NFT viewers",
-      "body": "Check out these trusted Bitshares NFT viewers!"
+      "body": "Check out these trusted Bitshares NFT viewers!",
+      "tools": "NFT Tools"
     },
     "blockchain": {
       "header": "Blockchain explorers",

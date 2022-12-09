@@ -9,7 +9,6 @@ const useMenuOpen = createLocalStorageStateHook('menuOpen', false);
 const useApproval = createLocalStorageStateHook('consent', "request");
 const useProdConnection = createLocalStorageStateHook('prodNetwork', "wss://eu.nodes.bitshares.ws");
 const useTestnetConnection = createLocalStorageStateHook('testNetwork', "wss://node.testnet.bitshares.eu");
-const useBeetIdentity = createLocalStorageStateHook('beetIdentity', null);
 
 export {
   useTheme,
@@ -19,6 +18,5 @@ export {
   useMenuOpen,
   useApproval,
   useProdConnection,
-  useTestnetConnection,
-  useBeetIdentity
+  useTestnetConnection
 };

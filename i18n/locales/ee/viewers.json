@@ -1,7 +1,8 @@
 {
   "nft": {
    "header": "NFT vaatajad",
-   "body": "Vaadake neid usaldusväärseid Bitshares NFT vaatajaid!"
+   "body": "Vaadake neid usaldusväärseid Bitshares NFT vaatajaid!",
+   "tools": "NFT tööriistad"
   },
   "blockchain": {
    "header": "Plokiahela uurijad",

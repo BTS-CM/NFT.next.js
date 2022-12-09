@@ -53,7 +53,12 @@ function SearchPanel (properties) {
         result.slice(0,5).map(crypto => {
           if (crypto.item && crypto.item.id) {
             return (
-              <Button align="left" variant={colorScheme === "dark" ? "filled" : "light"} color={'gray'}>
+              <Button 
+                align="left"
+                variant={colorScheme === "dark" ? "filled" : "light"}
+                color={'gray'}
+                key={`${crypto.item.id}_search`}
+              >
                 <Text component={Link} href={`/nft/${crypto.item.name}?lang=${query && query.lang ? query.lang : 'en'}`} key={crypto.item.name}>
                   {`${crypto.item.id}: ${crypto.item.name}`}
                 </Text>

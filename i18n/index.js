@@ -1,4 +1,4 @@
-const languages = ['en', 'fr', 'da', 'de', 'ee', 'es', 'it', 'ja', 'ko', 'pt', 'ru', 'th', 'zhTW'];
+const languages = ['en', 'fr', 'da', 'de', 'ee', 'es', 'it', 'ja', 'ko', 'pt', 'th', 'zhTW'];
 const pages = [
   'about',
   'carousel',

@@ -56,7 +56,8 @@ const locales = [
   {'language': 'fr', 'aka': 'Français'},
   {'language': 'ko', 'aka': '한국어'},
   {'language': 'pt', 'aka': 'Português'},
-  {'language': 'ja', 'aka': '日本語'}
+  {'language': 'ja', 'aka': '日本語'},
+  {'language': 'ukr', 'aka': 'Українська'},
 ];
 
 function MyApp(props) {

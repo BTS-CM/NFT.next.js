@@ -1,0 +1,16 @@
+{
+  "connection_failure_msg": "Неможливо підключитися до Beet на порту 60555. Запустіть Beet.",
+  "connection_failure_title": "Не вдалося підключитися до Beet",
+  "connection_failure_button": "Завантажити Beet",
+  "connection_valid_title": "Підключено до Beet",
+  "connection_valid_msg": "Тепер ви можете купувати NFT через Beet.",
+  "beet_buy_title": "Надсилання повідомлення 'купити зараз' Beet!",
+  "beet_buy_msg": "Перевірте свій клієнт Beet, щоб продовжити платіж.",
+  "market_data_fail": "Ринкові дані тимчасово недоступні",
+  "buy_now": "Купити зараз ціна",
+  "beet_connect_button": "Підключитися до Beet",
+  "beet_buy_button": "Купити зараз!",
+  "not_for_sale": "Наразі не продається.",
+  "error_note_title": "Під час покупки сталася помилка.",
+  "error_note_msg": "На жаль, щось пішло не так. Будь ласка, переконайтеся, що у вас достатньо коштів, що клієнт Beet запущено та розблоковано, оновіть сторінку та повторіть спробу."
+}

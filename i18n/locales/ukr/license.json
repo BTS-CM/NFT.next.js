@@ -1,0 +1,9 @@
+{
+    "type": "Ліцензія MIT",
+    "copyright": "Авторське право (c) 2021 BTS Dev",
+    "permission": "Цим надається безкоштовний дозвіл будь-якій особі, яка отримує копію цього програмного забезпечення та пов’язаних файлів документації (Програмне забезпечення), працювати з Програмним забезпеченням без обмежень, включаючи без обмежень права на використання, копіювання, змінювати, об’єднувати, публікувати, поширювати, субліцензувати та/або продавати копії Програмного забезпечення, а також дозволяти особам, яким надано Програмне забезпечення, робити це відповідно до таких умов:",
+    "notice": "Наведене вище повідомлення про авторські права та це повідомлення про дозвіл мають бути включені до всіх копій або значних частин Програмного забезпечення.",    "disclaimer": "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
+    "repo": "Сховище GitHub",
+    "header_description": "Дізнайтеся про ліцензію веб-сайту {{title}}.",
+    "header_title": "Ліцензія"
+}

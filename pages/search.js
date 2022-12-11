@@ -1,31 +1,31 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   useTranslation,
   useLanguageQuery,
-  LanguageSwitcher,
-} from "next-export-i18n";
+} from 'next-export-i18n';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
-import { Text, Center, Grid, Col, Paper, Button, Group, TextInput } from '@mantine/core';
-import { useNotifications } from '@mantine/notifications';
+import { Text, Grid, Col, Paper, Button, Stack, TextInput } from '@mantine/core';
+
+import configJSON from '../components/config.json' assert {type: 'json'};
+import artJSON from '../components/art.json' assert {type: 'json'};
+
+import { useAppStore } from '../components/states';
 
 const SEO = dynamic(() => import('../components/SEO'));
-import { analyticsNotification } from '../lib/analyticsNotification';
-import { useEnvironment, useAnalytics, useTheme, useApproval } from '../components/states';
 
-function SearchPanel (properties) {
+function SearchPanel(properties) {
   const { t } = useTranslation();
   const [query] = useLanguageQuery();
   const [overlay, setOverlay] = useState();
 
-  const config = properties.config;
-  const art = properties.art;
+  const { config } = properties;
+  const { art } = properties;
 
-  const [colorScheme, setColorScheme] = useTheme();
-  let [environment, setEnvironment] = useEnvironment();
-  const notifications = useNotifications();
-  let env = environment ? environment : 'production';
+  const colorScheme = useAppStore((state) => state.theme);
+  const environment = useAppStore((state) => state.environment);
+  const env = environment || 'production';
 
   const searchData = art && art[env] ? art[env] : [];
   if (!searchData || !searchData.length) {
@@ -38,35 +38,34 @@ function SearchPanel (properties) {
 
   const updateSearchValue = async (event) => {
     setOverlay();
-    const Fuse = (await import('fuse.js')).default
+    const Fuse = (await import('fuse.js')).default;
     const fuse = new Fuse(
       searchData,
       {
         includeScore: true,
-        keys: ['name', 'id']
+        keys: ['name', 'id'],
       }
     );
 
     const result = fuse.search(event.target.value);
     if (result && result.length > 0) {
       setOverlay(
-        result.slice(0,5).map(crypto => {
+        result.slice(0, 5).map(crypto => {
           if (crypto.item && crypto.item.id) {
             return (
-              <Button 
+              <Button
                 align="left"
-                variant={colorScheme === "dark" ? "filled" : "light"}
-                color={'gray'}
+                variant={colorScheme === 'dark' ? 'filled' : 'light'}
+                color="gray"
                 key={`${crypto.item.id}_search`}
               >
                 <Text component={Link} href={`/nft/${crypto.item.name}?lang=${query && query.lang ? query.lang : 'en'}`} key={crypto.item.name}>
                   {`${crypto.item.id}: ${crypto.item.name}`}
                 </Text>
               </Button>
-            )
-          } else {
-            return null;
+            );
           }
+          return null;
         }).filter(x => x)
       );
     } else {
@@ -79,11 +78,11 @@ function SearchPanel (properties) {
       description={t('search.header_description')}
       title={t('search.header_title')}
       siteTitle={config.title}
-      key={'SEO'}
+      key="SEO"
     />,
-    <Grid grow key={"Search Window"}>
-      <Col span={12} key={"Search row"}>
-        <Paper padding="md" shadow="xs">
+    <Grid grow key="Search Window">
+      <Col span={12} key="Search row">
+        <Paper p="md" shadow="xs">
           <Text size="lg">
             {t('search.header')}
           </Text>
@@ -94,17 +93,17 @@ function SearchPanel (properties) {
             key="searchInput"
             label="NFT name"
             onChange={updateSearchValue}
-            sx={{marginBottom: '20px', marginTop: '10px'}}
+            sx={{ marginBottom: '20px', marginTop: '10px' }}
           />
-            <Group direction="column" aria-label="search result list">
+            <Stack aria-label="search result list">
               {
                 overlay
               }
-            </Group>
+            </Stack>
         </Paper>
       </Col>
-      <Col span={12} key={"Info row"}>
-        <Paper padding="md" shadow="xs">
+      <Col span={12} key="Info row">
+        <Paper p="md" shadow="xs">
           <Text size="lg">
             {t('search.help_header')}
           </Text>
@@ -116,46 +115,23 @@ function SearchPanel (properties) {
           </Text>
         </Paper>
       </Col>
-    </Grid>
+    </Grid>,
   ]);
 }
 
 function Search(properties) {
-  let [analytics, setAnalytics] = useAnalytics();
-  let [approval, setApproval] = useApproval();
-
-  let config = properties.config;
-
-  useEffect(() => {
-    async function sendAnalytics() {
-      if (approval === "request") {
-        analyticsNotification(notifications, setApproval, setAnalytics)
-      }
-      if (analytics && config.google_analytics.length) {
-        const ReactGA = (await import('react-ga4')).default
-        ReactGA.initialize(config.google_analytics);
-        ReactGA.pageview('Search')
-      }
-    }
-    sendAnalytics();
-  }, [analytics]);
+  const { config } = properties;
 
   return (
     <SearchPanel {...properties} />
   );
 }
 
-export const getStaticProps = async ({ locale }) => {
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    art: artJSON,
+    config: configJSON,
+  },
+});
 
-  const art = require('../components/art.json');
-  const config = require('../components/config.json');
-
-  return {
-    props: {
-      art: art,
-      config: config,
-    }
-  };
-}
-
-export default Search
+export default Search;

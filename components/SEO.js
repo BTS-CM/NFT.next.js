@@ -1,8 +1,7 @@
-import Head from 'next/head'
-import config from "./config.json";
+import Head from 'next/head';
+import config from './config.json';
 
 function SEO({ description, title, siteTitle, imageURL }) {
-
   return <>
       <Head>
         <title>{`${title} | ${siteTitle}`}</title>
@@ -17,7 +16,7 @@ function SEO({ description, title, siteTitle, imageURL }) {
         <meta name="twitter:image" content={imageURL} />
         <meta property="og:image" content={imageURL} />
       </Head>
-  </>;
+         </>;
 }
 
 export default SEO;

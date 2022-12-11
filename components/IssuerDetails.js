@@ -2,20 +2,21 @@ import {
   useTranslation,
   useLanguageQuery,
   LanguageSwitcher,
-} from "next-export-i18n";
+} from 'next-export-i18n';
 import dynamic from 'next/dynamic';
 
 import {
   Tooltip,
-  Badge
+  Badge,
 } from '@mantine/core';
 
 import useSWR from 'swr';
-const fetcher = (url) => fetch(url, {mode: "cors"}).then((res) => res.json())
+
+const fetcher = (url) => fetch(url, { mode: 'cors' }).then((res) => res.json());
 
 export default function IssuerDetails(properties) {
   const { t } = useTranslation();
-  const issuer = properties.issuer;
+  const { issuer } = properties;
 
   const { data, error } = useSWR(
     `https://api.bitshares.ws/openexplorer/object?object=${issuer}`,
@@ -25,10 +26,10 @@ export default function IssuerDetails(properties) {
   if (error || !data) {
     return (<Badge>
               {`${t('nft.asset.issuer')}: ???`}
-            </Badge>)
-  };
+            </Badge>);
+  }
 
-  let issuerName = data && data.name ? data.name : undefined;
+  const issuerName = data && data.name ? data.name : undefined;
 
   return (
     <Tooltip

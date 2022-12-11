@@ -1,11 +1,11 @@
-import { useRef, Suspense } from 'react'
-import { Canvas } from '@react-three/fiber'
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
-import { useTexture, OrbitControls, Stars } from "@react-three/drei";
-import { EffectComposer, Bloom, Vignette, SMAA } from '@react-three/postprocessing'
+import { useRef, Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
+import { useTexture, OrbitControls, Stars } from '@react-three/drei';
+import { EffectComposer, Bloom, Vignette, SMAA } from '@react-three/postprocessing';
 import atob from 'atob';
 
-import NearestFilter from "three";
+import NearestFilter from 'three';
 
 function OBJ(props) {
   const pngString = props.png;
@@ -15,11 +15,12 @@ function OBJ(props) {
   texture.minFilter = NearestFilter;
 
   const objString = atob(props.obj);
-  let obj_loader = new OBJLoader();
-  let obj = obj_loader.parse(objString)
+  const obj_loader = new OBJLoader();
+  const obj = obj_loader.parse(objString);
 
   obj.traverse((o) => {
     if (o.isMesh) {
+      // eslint-disable-next-line no-param-reassign
       o.material.map = texture;
     }
   });
@@ -34,7 +35,7 @@ function OBJ(props) {
         position={[0, -2, 0]}
       />
     </group>
-  )
+  );
 }
 
 export default function OBJT(properties) {
@@ -42,21 +43,21 @@ export default function OBJT(properties) {
     return null;
   }
 
-  let media_json = JSON.parse(atob(properties.data));
+  const media_json = JSON.parse(atob(properties.data));
 
-  let media_obj = media_json ? media_json.media_obj : undefined;
-  let media_png = media_json ? media_json.media_png : undefined;
+  const media_obj = media_json ? media_json.media_obj : undefined;
+  const media_png = media_json ? media_json.media_png : undefined;
 
   if (!media_obj || !media_png) {
     return null;
   }
 
   return (<Canvas
-            style={{
-              "height": "500px",
-              "backgroundColor": "black"
-            }}
-          >
+    style={{
+      height: '500px',
+      backgroundColor: 'black',
+    }}
+  >
             <Suspense fallback={null}>
               <Stars
                 radius={100} // Radius of the inner sphere (default=100)

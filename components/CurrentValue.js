@@ -1,36 +1,36 @@
-import { Text } from '@mantine/core';
 import useSWR from 'swr';
+import { useAppStore } from './states';
 
 const axios = require('axios');
-import { useEnvironment } from './states';
 
+// eslint-disable-next-line no-return-await
 const fetcher = async (url) => await axios.get(url);
 
 export default function CurrentValue(properties) {
-  const [environment, setEnvironment] = useEnvironment();
+  const environment = useAppStore((state) => state.environment);
 
-  const env = process.env.NODE_ENV
+  const env = process.env.NODE_ENV;
   const id = properties.id ? properties.id : null;
   const market = properties.market ? properties.market : null;
 
-  let approvedMarket = market ? market : "BTS";
+  const approvedMarket = market || 'BTS';
 
   const { data, error } = useSWR(
-    env === "development"
-    ? ""
-    : `https://${environment === "staging" ? `api.testnet` : `api`}.bitshares.ws/openexplorer/order_book?base=${id}&quote=${approvedMarket}`,
+    env === 'development'
+      ? ''
+      : `https://${environment === 'staging' ? 'api.testnet' : 'api'}.bitshares.ws/openexplorer/order_book?base=${id}&quote=${approvedMarket}`,
     fetcher
   );
 
-  if (error || !data || env === "development") {
-    return null
-  };
+  if (error || !data || env === 'development') {
+    return null;
+  }
 
-  let bids = data.data
-              ? data.data["bids"]
-              : undefined;
+  const bids = data.data
+    ? data.data.bids
+    : undefined;
 
   return bids && bids.length
-          ? `${bids[0].quote} ${market}`
-          : null;
+    ? `${bids[0].quote} ${market}`
+    : null;
 }

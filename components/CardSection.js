@@ -1,28 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
 
 import { Card } from '@mantine/core';
 import { useInView } from 'react-intersection-observer';
-import { useTheme } from './states';
 
-function image (symbol, media_json, isApple, inView) {
+function image(symbol, media_json, isApple, inView) {
   if (isApple) {
     return <img
-              width={"350px"}
-              height={"350px"}
-              src={!media_json ? `/images/${symbol}/${inView ? `0_gallery` : `0_thumb`}.webp` : "/images/placeholders/0.webp"}
-              alt={`${symbol} NFT apple image`}
-            />
-  } else {
-    return <Image
-              width={"350px"}
-              height={"350px"}
-              src={!media_json ? `/images/${symbol}/${inView ? `0_gallery` : `0_thumb`}.webp` : "/images/placeholders/0.webp"}
-              alt={`${symbol} NFT image`}
-            />
+      width="350"
+      height="350"
+      src={!media_json ? `/images/${symbol}/${inView ? '0_gallery' : '0_thumb'}.webp` : '/images/placeholders/0.webp'}
+      alt={`${symbol} NFT contents`}
+    />;
   }
+  return <Image
+    width={350}
+    height={350}
+    src={!media_json ? `/images/${symbol}/${inView ? '0_gallery' : '0_thumb'}.webp` : '/images/placeholders/0.webp'}
+    alt={`${symbol} NFT contents`}
+  />;
 }
 
 export default function CardSection(properties) {
@@ -31,12 +29,12 @@ export default function CardSection(properties) {
     threshold: 0,
   });
 
-  const symbol = properties.symbol;
-  const media_json = properties.media_json;
-  const isApple = properties.isApple;
+  const { symbol } = properties;
+  const { media_json } = properties;
+  const { isApple } = properties;
   const bg = `/images/${symbol}/0_bg.webp`;
 
-  let backgroundImage = 'url('+bg+')';
+  let backgroundImage = `url(${bg})`;
   if (inView) {
     backgroundImage = '';
   }
@@ -46,8 +44,8 @@ export default function CardSection(properties) {
       <div
         ref={ref}
         style={{
-          backgroundImage: backgroundImage,
-          backgroundSize: "cover"
+          backgroundImage,
+          backgroundSize: 'cover',
         }}
       >
         {

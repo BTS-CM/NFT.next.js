@@ -2,14 +2,14 @@ const axios = require('axios');
 const fs = require('fs');
 const art = require('../art.json');
 
-let production_art = art.production;
-let staging_art = art.staging;
+const production_art = art.production;
+const staging_art = art.staging;
 
 (async () => {
   for (let i = 0; i < production_art.length; i++) {
-    let currentArt = production_art[i];
-    let name = currentArt.name;
-    let id = currentArt.id;
+    const currentArt = production_art[i];
+    const { name } = currentArt;
+    const { id } = currentArt;
 
     let response;
     try {
@@ -18,17 +18,17 @@ let staging_art = art.staging;
       console.error(err);
     }
 
-    delete response.data["options"];
+    delete response.data.options;
 
     fs.writeFile(`./${name}.json`, JSON.stringify(response.data, null, 4), (err) => {
-       if (err) console.log(err);
+      if (err) console.log(err);
     });
   }
 
   for (let i = 0; i < staging_art.length; i++) {
-    let currentArt = staging_art[i];
-    let name = currentArt.name;
-    let id = currentArt.id;
+    const currentArt = staging_art[i];
+    const { name } = currentArt;
+    const { id } = currentArt;
 
     let response;
     try {
@@ -37,11 +37,10 @@ let staging_art = art.staging;
       console.error(err);
     }
 
-    delete response.data["options"];
+    delete response.data.options;
 
     fs.writeFile(`./${name}.json`, JSON.stringify(response.data, null, 4), (err) => {
-       if (err) console.log(err);
+      if (err) console.log(err);
     });
   }
-
 })();

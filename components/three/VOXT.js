@@ -1,23 +1,25 @@
-import { useRef, Suspense } from 'react'
-import ReactDOM from 'react-dom'
-import { Canvas } from '@react-three/fiber'
-import { VOXLoader, VOXMesh } from 'three/examples/jsm/loaders/VOXLoader'
-import { OrbitControls, Stars } from "@react-three/drei";
+import { useRef, Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { VOXLoader, VOXMesh } from 'three/examples/jsm/loaders/VOXLoader';
+import { OrbitControls, Stars } from '@react-three/drei';
 
 function VOX(props) {
-  let loader = new VOXLoader();
+  const loader = new VOXLoader();
   let loadedVOX;
   try {
     loadedVOX = loader.load(`../../public/images/${props.symbol}/0.vox`);
-  } catch (e) {}
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
 
   return loadedVOX
-          ? (
-              <mesh>
-               <primitive object={loadedVOX} />
-              </mesh>
-            )
-          : null;
+    ? (
+      <mesh>
+        <primitive object={loadedVOX} />
+      </mesh>
+    )
+    : null;
 }
 
 export default function VOXT(properties) {
@@ -25,10 +27,10 @@ export default function VOXT(properties) {
     return null;
   }
 
-  let vox = <VOX {...properties} />
+  const vox = <VOX {...properties} />;
 
-  return fbx
-          ? (<Canvas sx={{height: "500px", backgroundColor: "black"}}>
+  return vox
+    ? (<Canvas sx={{ height: '500px', backgroundColor: 'black' }}>
               <Suspense fallback={null}>
                 <Stars
                   radius={100} // Radius of the inner sphere (default=100)
@@ -42,6 +44,6 @@ export default function VOXT(properties) {
                 {vox}
                 <OrbitControls autoRotate />
               </Suspense>
-            </Canvas>)
-          : null;
+       </Canvas>)
+    : null;
 }

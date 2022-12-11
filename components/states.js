@@ -1,22 +1,21 @@
-import { createLocalStorageStateHook } from 'use-local-storage-state';
-import config from './config.json';
+import create from 'zustand';
+//import config from './config.json';
 
-const useTheme = createLocalStorageStateHook('theme', 'light');
-const useGateway = createLocalStorageStateHook('gateway', 'cf-ipfs.com');
-const useAnalytics = createLocalStorageStateHook('analytics', config && config.google_analytics ? true : false);
-const useEnvironment = createLocalStorageStateHook('environment', 'production');
-const useMenuOpen = createLocalStorageStateHook('menuOpen', false);
-const useApproval = createLocalStorageStateHook('consent', "request");
-const useProdConnection = createLocalStorageStateHook('prodNetwork', "wss://eu.nodes.bitshares.ws");
-const useTestnetConnection = createLocalStorageStateHook('testNetwork', "wss://node.testnet.bitshares.eu");
+const useAppStore = create((set) => ({
+  theme: 'light',
+  gateway: 'cf-ipfs.com',
+  environment: 'production',
+  menuOpen: false,
+  prodNetwork: 'wss://eu.nodes.bitshares.ws',
+  testNetwork: 'wss://node.testnet.bitshares.eu',
+  setTheme: (theme) => set({ theme }),
+  setGateway: (gateway) => set({ gateway }),
+  setEnvironment: (environment) => set({ environment }),
+  setMenuOpen: (menuOpen) => set({ menuOpen }),
+  setProdNetwork: (prodNetwork) => set({ prodNetwork }),
+  setTestNetwork: (testNetwork) => set({ testNetwork }),
+}));
 
 export {
-  useTheme,
-  useGateway,
-  useAnalytics,
-  useEnvironment,
-  useMenuOpen,
-  useApproval,
-  useProdConnection,
-  useTestnetConnection
+  useAppStore,
 };

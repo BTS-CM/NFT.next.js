@@ -1,17 +1,15 @@
 const fs = require('fs');
 const sharp = require('sharp');
 
-const fileList = fs.readdirSync(`../../public/images/`);
+const fileList = fs.readdirSync('../../public/images/');
 
 (async () => {
-
   for (let i = 0; i < fileList.length; i++) {
-    let file = fileList[i];
-    if (file.includes(".") && fs.existsSync(`../../public/images/${file}/0.webp`)) {
+    const file = fileList[i];
+    if (file.includes('.') && fs.existsSync(`../../public/images/${file}/0.webp`)) {
       await sharp(`../../public/images/${file}/0.webp`)
-            .resize(350, 350)
-            .toFile(`../../public/images/${file}/0_gallery.webp`);
+        .resize(350, 350)
+        .toFile(`../../public/images/${file}/0_gallery.webp`);
     }
   }
-
 })();

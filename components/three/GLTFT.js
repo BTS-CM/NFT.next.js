@@ -1,14 +1,13 @@
-import { useRef, Suspense } from 'react'
-import ReactDOM from 'react-dom'
-import { Canvas } from '@react-three/fiber'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { OrbitControls, Stars } from "@react-three/drei";
+import { useRef, Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { OrbitControls, Stars } from '@react-three/drei';
 
 //https://docs.pmnd.rs/react-three-fiber/getting-started/examples
 
 function GLTF(props) {
-    const { scene, nodes, materials } = useGLTF(`../../public/${props.symbol}/0.glb`)
-    return (<mesh><primitive object={scene} {...props} /></mesh>);
+  const { scene, nodes, materials } = GLTFLoader(`../../public/${props.symbol}/0.glb`);
+  return (<mesh><primitive object={scene} {...props} /></mesh>);
 }
 
 export default function GLTFT(properties) {
@@ -16,9 +15,9 @@ export default function GLTFT(properties) {
     return null;
   }
 
-  let media_gltf = properties.data;
+  const media_gltf = properties.data;
 
-  return (<Canvas sx={{height: "500px", backgroundColor: "black"}}>
+  return (<Canvas sx={{ height: '500px', backgroundColor: 'black' }}>
             <Suspense fallback={null}>
               <Stars
                 radius={100} // Radius of the inner sphere (default=100)
@@ -29,7 +28,7 @@ export default function GLTFT(properties) {
                 fade
               />
               <ambientLight intensity={1} />
-              <GLTF gltf={media_gltf} symbol={props.symbol} />
+              <GLTF gltf={media_gltf} symbol={properties.symbol} />
               <OrbitControls autoRotate />
             </Suspense>
           </Canvas>);

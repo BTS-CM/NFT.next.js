@@ -1,6 +1,5 @@
 const languages = ['en', 'fr', 'da', 'de', 'ee', 'es', 'it', 'ja', 'ko', 'pt', 'th', 'ukr', 'zhTW'];
 const pages = [
-  'about',
   'carousel',
   'common',
   'gallery',
@@ -13,22 +12,23 @@ const pages = [
   'nft',
   'search',
   'settings',
-  'viewers'
+  'viewers',
 ];
 
-let translations = {};
+const translations = {};
 languages.forEach((language) => {
-  let localPages = {}
+  const localPages = {};
   pages.forEach((page) => {
-    let pageContents = require(`./locales/${language}/${page}.json`);
+    // eslint-disable-next-line import/no-dynamic-require, global-require
+    const pageContents = require(`./locales/${language}/${page}.json`);
     localPages[page] = pageContents;
-  })
+  });
   translations[language] = localPages;
 });
 
 const i18n = {
-	translations: translations,
-	defaultLang: 'en'
-}
+  translations,
+  defaultLang: 'en',
+};
 
 module.exports = i18n;

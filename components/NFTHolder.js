@@ -1,31 +1,31 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import {
   useTranslation,
   useLanguageQuery,
   LanguageSwitcher,
-} from "next-export-i18n";
+} from 'next-export-i18n';
 import useSWR from 'swr';
 
 import { Badge } from '@mantine/core';
-import { useEnvironment } from './states';
+import { useAppStore } from './states';
 
-const fetcher = (url) => fetch(url, {method: "GET", mode: "cors"}).then((res) => res.json())
+const fetcher = (url) => fetch(url, { method: 'GET', mode: 'cors' }).then((res) => res.json());
 
 export default function NFTHolder(properties) {
-  const [environment, setEnvironment] = useEnvironment();
+  const environment = useAppStore((state) => state.environment);
   const { t } = useTranslation();
-  const id = properties.id;
+  const { id } = properties;
 
   const { data, error } = useSWR(
-    `https://${environment === "staging" ? `api.testnet` : `api`}.bitshares.ws/openexplorer/asset_holders?asset_id=${id}&start=0&limit=1`,
+    `https://${environment === 'staging' ? 'api.testnet' : 'api'}.bitshares.ws/openexplorer/asset_holders?asset_id=${id}&start=0&limit=1`,
     fetcher
   );
 
   if (error || !data) {
     <Badge>
       ???
-    </Badge>
-  };
+    </Badge>;
+  }
 
   return (
     <Badge>

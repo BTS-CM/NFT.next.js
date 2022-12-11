@@ -1,145 +1,117 @@
-import { useRouter } from 'next/router'
-import ReactGA from 'react-ga4';
+import { useRouter } from 'next/router';
 import {
   useTranslation,
-  useLanguageQuery,
-  LanguageSwitcher,
-} from "next-export-i18n";
+} from 'next-export-i18n';
 import dynamic from 'next/dynamic';
-import { isIOS, isSafari, isMobileSafari } from 'react-device-detect'
-import { useNotifications } from '@mantine/notifications';
+import { isIOS, isSafari, isMobileSafari } from 'react-device-detect';
+
+import configJSON from '../../components/config.json';
+import art from '../../components/art.json';
+import { useAppStore } from '../../components/states';
 
 const SEO = dynamic(() => import('../../components/SEO'));
 const NFT = dynamic(() => import('../../components/NFT'));
 
-import art from '../../components/art.json';
-import { useEnvironment, useAnalytics, useApproval } from '../../components/states';
-
-function InvalidNFT (props) {
-  if (props.analytics) {
-    ReactGA.pageview(`Invalid NFT`);
-  }
-
-  let config = props.config;
+function InvalidNFT(props) {
+  const { config } = props;
 
   return ([<SEO
-            description={"Unable to load this NFT"}
-            title={`Unknown NFT`}
-            siteTitle={config.title}
-            key={'SEO'}
-          />,
-          <p key={'Invalid'}>Unable to load NFT</p>]);
+    description="Unable to load this NFT"
+    title="Unknown NFT"
+    siteTitle={config.title}
+    key="SEO"
+  />,
+          <p key="Invalid">Unable to load NFT</p>]);
 }
 
-function ValidNFT (props) {
-  let nft = props.nft;
-  let initAsset = props.initAsset;
-  let config = props.config;
-
-  if (props.analytics) {
-    ReactGA.pageview(`NFT ${nft}`);
-  }
+function ValidNFT(props) {
+  const { nft } = props;
+  const { initAsset } = props;
+  const { config } = props;
 
   const { t } = useTranslation();
 
   return ([
           <SEO
-            description={t('nft.header_description', {nft: nft})}
-            title={t('nft.header_title', {nft: nft})}
+            description={t('nft.header_description', { nft })}
+            title={t('nft.header_title', { nft })}
             siteTitle={config.title}
-            key={"seo"}
+            key="seo"
           />,
           <NFT
             id={nft}
             initAsset={initAsset}
             key={nft}
-            individual={true}
+            individual
             isApple={isIOS || isSafari || isMobileSafari}
             {...props}
-          />
-        ]);
+          />,
+  ]);
 }
 
+function NFTPAGE(props) {
+  const { initAsset } = props;
+  const { config } = props;
 
-function NFTPAGE (props) {
-
-  let [analytics, setAnalytics] = useAnalytics();
-  let [approval, setApproval] = useApproval();
-  const notifications = useNotifications();
-
-  let initAsset = props.initAsset;
-  let config = props.config;
-
-  if (analytics && config.google_analytics.length) {
-    ReactGA.initialize(config.google_analytics);
-  }
-  const router = useRouter()
-  const { nft } = router.query
-  let [environment, setEnvironment] = useEnvironment();
+  const router = useRouter();
+  const { nft } = router.query;
+  const environment = useAppStore((state) => state.environment);
 
   if (!nft) {
-    return <InvalidNFT analytics={analytics} {...props} />
+    return <InvalidNFT {...props} />;
   }
 
-  let env = environment ? environment : 'production';
+  const env = environment || 'production';
   const artNames = art && art[env] ? art[env].map(item => item.name) : [];
 
   if (artNames.includes(nft)) {
     return <ValidNFT
-              nft={nft}
-              initAsset={initAsset}
-              environment={env}
-              analytics={analytics}
-              notifications={notifications}
-              {...props}
-            />
-  } else {
-
-    const stagingArt = art && art['staging'] ? art['staging'].map(item => item.name) : [];
-    if (stagingArt.includes(nft)) {
-      return <ValidNFT
-                nft={nft}
-                initAsset={initAsset}
-                environment={'staging'}
-                analytics={analytics}
-                notifications={notifications}
-                {...props}
-              />
-    } else {
-      return <InvalidNFT analytics={analytics} {...props} />
-    }
-
+      nft={nft}
+      initAsset={initAsset}
+      environment={env}
+      {...props}
+    />;
   }
+
+  const stagingArt = art && art.staging ? art.staging.map(item => item.name) : [];
+  if (stagingArt.includes(nft)) {
+    return <ValidNFT
+      nft={nft}
+      initAsset={initAsset}
+      environment="staging"
+      {...props}
+    />;
+  }
+  return <InvalidNFT {...props} />;
 }
 
 export const getStaticPaths = async () => {
-
-  let prodNFTS = art.production.map(item => ({params: {nft: item.name}}));
-  let stagingNFTS = art.staging.map(item => ({params: {nft: item.name}}));
+  const prodNFTS = art.production.map(item => ({ params: { nft: item.name } }));
+  const stagingNFTS = art.staging.map(item => ({ params: { nft: item.name } }));
 
   return {
-      paths: [...prodNFTS, ...stagingNFTS], //indicates that no page needs be created at build time
-      fallback: false //indicates the type of fallback
-  }
-}
+    paths: [...prodNFTS, ...stagingNFTS], //indicates that no page needs be created at build time
+    fallback: false, //indicates the type of fallback
+  };
+};
 
 export const getStaticProps = async ({ locale, params }) => {
-  let config = require('../../components/config.json');
   let initAsset;
   try {
+    // eslint-disable-next-line import/no-dynamic-require, global-require
     initAsset = require(`../../components/assets/${params.nft}.json`);
-  } catch(e) {
+  } catch (e) {
     return {
       notFound: true,
-    }
+    };
   }
 
   return {
     props: {
-      config,
+      config: configJSON,
       initAsset,
     },
   };
-}
+};
 
-export default NFTPAGE
+export default NFTPAGE;

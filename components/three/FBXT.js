@@ -1,24 +1,25 @@
-import { useRef, Suspense } from 'react'
-import ReactDOM from 'react-dom'
-import { Canvas } from '@react-three/fiber'
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
-import { OrbitControls, Stars } from "@react-three/drei";
+import { useRef, Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
+import { OrbitControls, Stars } from '@react-three/drei';
 
 function FBX(props) {
-  let loader = new FBXLoader();
+  const loader = new FBXLoader();
   let loadedFBX;
   try {
     loadedFBX = loader.load(`../../public/images/${props.symbol}/0.fbx`);
-  } catch (e) {}
-
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 
   return loadedFBX
-          ? (
+    ? (
               <mesh>
                <primitive object={loadedFBX} />
               </mesh>
-            )
-          : null;
+    )
+    : null;
 }
 
 export default function FBXT(properties) {
@@ -26,10 +27,10 @@ export default function FBXT(properties) {
     return null;
   }
 
-  let fbx = <FBX {...properties} />
+  const fbx = <FBX {...properties} />;
 
   return fbx
-          ? (<Canvas sx={{height: "500px", backgroundColor: "black"}}>
+    ? (<Canvas sx={{ height: '500px', backgroundColor: 'black' }}>
               <Suspense fallback={null}>
                 <Stars
                   radius={100} // Radius of the inner sphere (default=100)
@@ -43,6 +44,6 @@ export default function FBXT(properties) {
                 {fbx}
                 <OrbitControls autoRotate />
               </Suspense>
-            </Canvas>)
-          : null;
+       </Canvas>)
+    : null;
 }

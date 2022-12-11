@@ -1,16 +1,16 @@
 import dayjs from 'dayjs';
-import { Text, Center, Grid, Col, Paper } from '@mantine/core'
+import { Text, Center, Grid, Col, Paper } from '@mantine/core';
 import Link from 'next/link';
 import {
   useTranslation,
   useLanguageQuery,
   LanguageSwitcher,
-} from "next-export-i18n";
+} from 'next-export-i18n';
 import dynamic from 'next/dynamic';
+import { getAllPosts } from '../lib/api';
+import config from '../components/config.json';
 
 const SEO = dynamic(() => import('../components/SEO'));
-import { getAllPosts } from '../lib/api'
-import config from '../components/config.json';
 
 const News = ({ allPosts }) => {
   const { t } = useTranslation();
@@ -22,29 +22,29 @@ const News = ({ allPosts }) => {
   */
 
   return allPosts && allPosts.length
-    ? allPosts.map(heroPost => {
-        return (
+    ? allPosts.map(heroPost => (
           <>
             <SEO
               description={t('news.header_description')}
-              title={t('news.header_title', {title: config.title})}
+              title={t('news.header_title', { title: config.title })}
               siteTitle={config.title}
-              key={'SEO'}
+              key="SEO"
             />
             {heroPost && (
-              <Grid grow key={"News overview"}>
+              <Grid grow key="News overview">
                 <Col span={12}>
-                  <Paper padding="md" shadow="xs">
+                  <Paper p="md" shadow="xs">
                     <div>
                       <h3>
                         <Link
-                          href={{pathname: `/posts/${heroPost.slug}`, query: query && query.lang ? `lang=${query['lang']}` : `lang=en`}}
+                          href={{ pathname: `/posts/${heroPost.slug}`, query: query && query.lang ? `lang=${query.lang}` : 'lang=en' }}
+                          sx={{ color: 'text.secondary' }}
                         >
-                          <a sx={{color: 'text.secondary'}}>{heroPost.title}</a>
+                          {heroPost.title}
                         </Link>
                       </h3>
                       <div>
-                        {dayjs(heroPost.date).format("D MMMM YYYY")}
+                        {dayjs(heroPost.date).format('D MMMM YYYY')}
                       </div>
                     </div>
                     <div>
@@ -55,25 +55,24 @@ const News = ({ allPosts }) => {
               </Grid>
             )}
           </>
-        )
-      })
+    ))
     : null;
-}
+};
 
-export default News
+export default News;
 
-export const getStaticProps = async ({locale}) => {
+export const getStaticProps = async ({ locale }) => {
   const allPosts = getAllPosts([
     'title',
     'date',
     'slug',
     'author',
     'excerpt',
-  ])
+  ]);
 
   return {
     props: {
       allPosts,
     },
   };
-}
+};

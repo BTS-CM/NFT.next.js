@@ -1,20 +1,20 @@
-import { useRouter } from 'next/router'
-import ErrorPage from 'next/error'
+import { useRouter } from 'next/router';
+import ErrorPage from 'next/error';
 import { Paper } from '@mantine/core';
 
 import dayjs from 'dayjs';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
+
+import markdownToHtml from '../../lib/markdownToHtml';
+import config from '../../components/config.json';
 
 const SEO = dynamic(() => import('../../components/SEO'));
 
-import markdownToHtml from '../../lib/markdownToHtml'
-import config from '../../components/config.json';
-
 export default function Post({ post, morePosts, preview }) {
-  const router = useRouter()
+  const router = useRouter();
 
   if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />
+    return <ErrorPage statusCode={404} />;
   }
 
   return ([
@@ -22,9 +22,9 @@ export default function Post({ post, morePosts, preview }) {
       title={post.title}
       description={`${config.title} article about "${post.excerpt}"`}
       siteTitle={config.title}
-      key={'SEO'}
+      key="SEO"
     />,
-    <Paper padding="lg" shadow="lg" withBorder key={'post'}>
+    <Paper p="lg" shadow="lg" withBorder key="post">
       {router.isFallback ? (
         <p>Loading…</p>
       ) : (
@@ -34,7 +34,7 @@ export default function Post({ post, morePosts, preview }) {
             <h3>
               <time dateTime={post.date}>
                 {
-                  dayjs(post.date).format("D MMMM YYYY")
+                  dayjs(post.date).format('D MMMM YYYY')
                 }
               </time>
             </h3>
@@ -42,12 +42,12 @@ export default function Post({ post, morePosts, preview }) {
           </article>
         </>
       )}
-    </Paper>
+    </Paper>,
   ]);
 }
 
 export async function getStaticProps({ params, locale }) {
-  const {getPostBySlug} = (await import('../../lib/api'));
+  const { getPostBySlug } = (await import('../../lib/api'));
 
   let post;
   try {
@@ -61,19 +61,19 @@ export async function getStaticProps({ params, locale }) {
       'ogImage',
       'coverImage',
     ]);
-  } catch(e) {
+  } catch (e) {
     return {
       notFound: true,
-    }
+    };
   }
 
   if (!post) {
     return {
       notFound: true,
-    }
+    };
   }
 
-  const content = await markdownToHtml(post.content || '')
+  const content = await markdownToHtml(post.content || '');
   return {
     props: {
       post: {
@@ -85,13 +85,13 @@ export async function getStaticProps({ params, locale }) {
 }
 
 export const getStaticPaths = async ({ locales }) => {
-  const {getAllPosts} = (await import('../../lib/api'));
-  const posts = getAllPosts(['slug'])
+  const { getAllPosts } = (await import('../../lib/api'));
+  const posts = getAllPosts(['slug']);
 
-  let postParams = posts.map(post => ({params: {slug: post.slug}}));
+  const postParams = posts.map(post => ({ params: { slug: post.slug } }));
 
   return {
-      paths: postParams, //indicates that no page needs be created at build time
-      fallback: false //indicates the type of fallback
-  }
-}
+    paths: postParams, //indicates that no page needs be created at build time
+    fallback: false, //indicates the type of fallback
+  };
+};

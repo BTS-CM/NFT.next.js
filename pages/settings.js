@@ -1,193 +1,152 @@
-import { useEffect, useState } from 'react';
 import {
   useTranslation,
   useLanguageQuery,
-  LanguageSwitcher,
-} from "next-export-i18n";
+} from 'next-export-i18n';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
 
 import {
   IoSettingsOutline,
   IoCellularOutline,
-  IoAnalyticsOutline,
   IoCheckmark,
-  IoWifiOutline
-} from "react-icons/io5";
-import { Text, Grid, Col, Paper, Group, Button, Menu, ActionIcon } from '@mantine/core'
-import { useNotifications } from '@mantine/notifications';
-import { analyticsNotification } from '../lib/analyticsNotification';
+  IoWifiOutline,
+} from 'react-icons/io5';
+import { Grid, Col, Paper, Group, Button, Menu } from '@mantine/core';
+
+import configJSONImport from '../components/config.json' assert {type: 'json'};
+import ipfsJSONImport from '../components/ipfsJSON.json' assert {type: 'json'};
+import btsJSONImport from '../components/btsJSON.json' assert {type: 'json'};
+import btsTestnetJSONImport from '../components/btsTestnetJSON.json' assert {type: 'json'};
+
+import { useAppStore } from '../components/states';
 
 const SEO = dynamic(() => import('../components/SEO'));
-import {
-  useGateway,
-  useEnvironment,
-  useAnalytics,
-  useApproval,
-  useProdConnection,
-  useTestnetConnection
- } from '../components/states';
 
 function Settings(properties) {
   const { t } = useTranslation();
   const [query] = useLanguageQuery();
 
-  const [environment, setEnvironment] = useEnvironment();
-  const [analytics, setAnalytics] = useAnalytics();
-  let [approval, setApproval] = useApproval();
-  const [gateway, setGateway] = useGateway('cf-ipfs.com');
-  const [prodConnection, setProdConnection] = useProdConnection();
-  const [testnetConnection, setTestnetConnection] = useTestnetConnection();
-  const notifications = useNotifications();
+  const environment = useAppStore((state) => state.environment);
+  const setEnvironment = useAppStore((state) => state.setEnvironment);
+  const gateway = useAppStore((state) => state.gateway);
+  const setGateway = useAppStore((state) => state.setGateway);
 
-  const config = properties.config;
-  const ipfsJSON = properties.ipfsJSON;
-  const btsJSON = properties.btsJSON;
-  const btsTestnetJSON = properties.btsTestnetJSON;
+  const prodConnection = useAppStore((state) => state.prodConnection);
+  const setProdConnection = useAppStore((state) => state.setProdConnection);
+  const testnetConnection = useAppStore((state) => state.testnetConnection);
+  const setTestnetConnection = useAppStore((state) => state.setTestnetConnection);
 
-  let network = environment === 'production'
-                  ? btsJSON
-                  : btsTestnetJSON;
+  const { config } = properties;
+  const { ipfsJSON } = properties;
+  const { btsJSON } = properties;
+  const { btsTestnetJSON } = properties;
 
-  useEffect(() => {
-    async function sendAnalytics() {
-      if (approval === "request") {
-        analyticsNotification(notifications, setApproval, setAnalytics)
-      }
-      if (analytics && config.google_analytics.length) {
-        const ReactGA = (await import('react-ga4')).default
-        ReactGA.initialize(config.google_analytics);
-        ReactGA.pageview('Settings')
-      }
-    }
-    sendAnalytics();
-  }, [analytics]);
+  const network = environment === 'production'
+    ? btsJSON
+    : btsTestnetJSON;
 
   return ([
     <SEO
-      description={t('settings.header_description', {title: config.title})}
+      description={t('settings.header_description', { title: config.title })}
       title={t('settings.header_title')}
       siteTitle={config.title}
-      key={'SEO'}
+      key="SEO"
     />,
-    <Grid grow key={"Settings"}>
+    <Grid grow key="Settings">
       <Col span={12}>
-        <Paper padding="md" shadow="xs" align="center">
+        <Paper p="md" shadow="xs" align="center">
           <Group position="center">
             <Menu
               id="long-menu"
-              trigger="click"
-              closeOnScroll={false}
-              control={<Button leftIcon={<IoCellularOutline />} variant='outline' color={'gray'}> Change IPFS</Button>}
+              closeonscroll="false"
               size="sm"
               shadow="xl"
             >
-              {ipfsJSON.map((key, value) => (
+              <Menu.Target>
+                <Button leftIcon={<IoCellularOutline />} variant="outline" color="gray"> Change IPFS</Button>
+              </Menu.Target>
+              <Menu.Dropdown>
+                {ipfsJSON.map((key, value) => (
+                  <Menu.Item
+                    locale={query && query.lang ? query.lang : 'en'}
+                    key={`ipfs gateway ${value}`}
+                    icon={key === gateway ? <IoCheckmark /> : null}
+                    onClick={() => { setGateway(key); }}
+                  >
+                    {key}
+                  </Menu.Item>
+                ))}
+              </Menu.Dropdown>
+            </Menu>
+
+            <Menu
+              id="long-menu"
+              closeonscroll="false"
+              size="sm"
+              shadow="xl"
+            >
+              <Menu.Target>
+                <Button leftIcon={<IoSettingsOutline />} variant="outline" color="gray"> Change Environment</Button>
+              </Menu.Target>
+
+              <Menu.Dropdown>
                 <Menu.Item
-                  locale={query && query.lang ? query.lang : 'en'}
-                  key={`ipfs gateway ${value}`}
-                  icon={key === gateway ? <IoCheckmark /> : null}
-                  onClick={() => { setGateway(key) }}
+                  key="production button"
+                  icon={environment === 'production' ? <IoCheckmark /> : null}
+                  onClick={() => { setEnvironment('production'); }}
                 >
-                  {key}
+                  Production
                 </Menu.Item>
-              ))}
+                <Menu.Item
+                  key="staging button"
+                  icon={environment === 'staging' ? <IoCheckmark /> : null}
+                  onClick={() => { setEnvironment('staging'); }}
+                >
+                  Staging
+                </Menu.Item>
+              </Menu.Dropdown>
             </Menu>
 
             <Menu
               id="long-menu"
-              trigger="click"
-              closeOnScroll={false}
-              control={<Button leftIcon={<IoSettingsOutline />} variant='outline' color={'gray'}> Change Environment</Button>}
-              size="sm"
-              shadow="xl"
-            >
-              <Menu.Item
-                key={`production button`}
-                icon={environment === 'production' ? <IoCheckmark /> : null}
-                onClick={() => { setEnvironment('production') }}
-              >
-                Production
-              </Menu.Item>
-              <Menu.Item
-                key={`staging button`}
-                icon={environment === 'staging' ? <IoCheckmark /> : null}
-                onClick={() => { setEnvironment('staging') }}
-              >
-                Staging
-              </Menu.Item>
-            </Menu>
-
-            <Menu
-              id="long-menu"
-              trigger="click"
-              closeOnScroll={false}
-              control={<Button leftIcon={<IoAnalyticsOutline />} variant='outline' color={'gray'}> Analytics preferences</Button>}
-              size="sm"
-              shadow="xl"
-            >
-              <Menu.Item
-                key={`analytics option`}
-                icon={analytics == true ? <IoCheckmark /> : null}
-                onClick={() => { setAnalytics(true) }}
-              >
-                Enable
-              </Menu.Item>
-              <Menu.Item
-                key={`no analytics option`}
-                icon={analytics == false ? <IoCheckmark /> : null}
-                onClick={() => { setAnalytics(false) }}
-              >
-                Disable
-              </Menu.Item>
-            </Menu>
-
-            <Menu
-              id="long-menu"
-              trigger="click"
-              closeOnScroll={false}
-              control={<Button leftIcon={<IoWifiOutline />} variant='outline' color={'gray'}> BTS DEX connection</Button>}
+              closeonscroll="false"
               size="lg"
               shadow="xl"
             >
-            {network.map((key, value) => (
-              <Menu.Item
-                locale={query && query.lang ? query.lang : 'en'}
-                key={`BTS network ${value}`}
-                icon={key === (environment === 'production' ? prodConnection : testnetConnection) ? <IoCheckmark /> : null}
-                onClick={() => {
-                  environment === 'production'
-                    ? setProdConnection(key)
-                    : setTestnetConnection(key)
-                }}
-              >
-                {key}
-              </Menu.Item>
-            ))}
+              <Menu.Target>
+                <Button leftIcon={<IoWifiOutline />} variant="outline" color="gray"> BTS DEX connection</Button>
+              </Menu.Target>
+              <Menu.Dropdown>
+                {network.map((key, value) => (
+                  <Menu.Item
+                    locale={query && query.lang ? query.lang : 'en'}
+                    key={`BTS network ${value}`}
+                    icon={key === (environment === 'production' ? prodConnection : testnetConnection) ? <IoCheckmark /> : null}
+                    onClick={() => {
+                      environment === 'production'
+                        ? setProdConnection(key)
+                        : setTestnetConnection(key);
+                    }}
+                  >
+                    {key}
+                  </Menu.Item>
+                ))}
+              </Menu.Dropdown>
             </Menu>
 
           </Group>
         </Paper>
       </Col>
-    </Grid>
+    </Grid>,
   ]);
 }
 
-export const getStaticProps = async ({ locale }) => {
-
-  let config = require('../components/config.json');
-  let ipfsJSON = require('../components/ipfsJSON.json');
-  let btsJSON = require('../components/btsJSON.json');
-  let btsTestnetJSON = require('../components/btsTestnetJSON.json');
-
-  return {
-    props: {
-      config: config,
-      ipfsJSON: ipfsJSON,
-      btsJSON: btsJSON,
-      btsTestnetJSON: btsTestnetJSON,
-    }
-  };
-}
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    config: configJSONImport,
+    ipfsJSON: ipfsJSONImport,
+    btsJSON: btsJSONImport,
+    btsTestnetJSON: btsTestnetJSONImport,
+  },
+});
 
 export default Settings;

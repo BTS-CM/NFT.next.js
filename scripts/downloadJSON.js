@@ -20,7 +20,7 @@ const staging_art = art.staging;
 
     delete response.data.options;
 
-    fs.writeFile(`./${name}.json`, JSON.stringify(response.data, null, 4), (err) => {
+    fs.writeFile(`../components/assets/${name}.json`, JSON.stringify(response.data, null, 4), (err) => {
       if (err) console.log(err);
     });
   }
@@ -39,7 +39,7 @@ const staging_art = art.staging;
 
     delete response.data.options;
 
-    fs.writeFile(`./${name}.json`, JSON.stringify(response.data, null, 4), (err) => {
+    fs.writeFile(`../components/assets/${name}.json`, JSON.stringify(response.data, null, 4), (err) => {
       if (err) console.log(err);
     });
   }

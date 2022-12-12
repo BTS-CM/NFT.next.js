@@ -30,10 +30,10 @@ function Settings(properties) {
   const gateway = useAppStore((state) => state.gateway);
   const setGateway = useAppStore((state) => state.setGateway);
 
-  const prodConnection = useAppStore((state) => state.prodConnection);
-  const setProdConnection = useAppStore((state) => state.setProdConnection);
-  const testnetConnection = useAppStore((state) => state.testnetConnection);
-  const setTestnetConnection = useAppStore((state) => state.setTestnetConnection);
+  const prodNetwork = useAppStore((state) => state.prodNetwork);
+  const setProdNetwork = useAppStore((state) => state.setProdNetwork);
+  const testNetwork = useAppStore((state) => state.testNetwork);
+  const setTestNetwork = useAppStore((state) => state.setTestNetwork);
 
   const { config } = properties;
   const { ipfsJSON } = properties;
@@ -62,7 +62,7 @@ function Settings(properties) {
               shadow="xl"
             >
               <Menu.Target>
-                <Button leftIcon={<IoCellularOutline />} variant="outline" color="gray"> Change IPFS</Button>
+                <Button leftIcon={<IoCellularOutline />} variant="outline" color="gray"> {t('settings.ipfs')}</Button>
               </Menu.Target>
               <Menu.Dropdown>
                 {ipfsJSON.map((key, value) => (
@@ -70,7 +70,9 @@ function Settings(properties) {
                     locale={query && query.lang ? query.lang : 'en'}
                     key={`ipfs gateway ${value}`}
                     icon={key === gateway ? <IoCheckmark /> : null}
-                    onClick={() => { setGateway(key); }}
+                    onClick={() => {
+                      setGateway(key);
+                    }}
                   >
                     {key}
                   </Menu.Item>
@@ -85,7 +87,7 @@ function Settings(properties) {
               shadow="xl"
             >
               <Menu.Target>
-                <Button leftIcon={<IoSettingsOutline />} variant="outline" color="gray"> Change Environment</Button>
+                <Button leftIcon={<IoSettingsOutline />} variant="outline" color="gray"> {t('settings.environment')}</Button>
               </Menu.Target>
 
               <Menu.Dropdown>
@@ -109,22 +111,22 @@ function Settings(properties) {
             <Menu
               id="long-menu"
               closeonscroll="false"
-              size="lg"
+              size="sm"
               shadow="xl"
             >
               <Menu.Target>
-                <Button leftIcon={<IoWifiOutline />} variant="outline" color="gray"> BTS DEX connection</Button>
+                <Button leftIcon={<IoWifiOutline />} variant="outline" color="gray"> {t('settings.connection')}</Button>
               </Menu.Target>
               <Menu.Dropdown>
                 {network.map((key, value) => (
                   <Menu.Item
                     locale={query && query.lang ? query.lang : 'en'}
                     key={`BTS network ${value}`}
-                    icon={key === (environment === 'production' ? prodConnection : testnetConnection) ? <IoCheckmark /> : null}
+                    icon={key === (environment === 'production' ? prodNetwork : testNetwork) ? <IoCheckmark /> : null}
                     onClick={() => {
                       environment === 'production'
-                        ? setProdConnection(key)
-                        : setTestnetConnection(key);
+                        ? setProdNetwork(key)
+                        : setTestNetwork(key);
                     }}
                   >
                     {key}

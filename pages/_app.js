@@ -38,6 +38,7 @@ import { useHover } from '@mantine/hooks';
 import { Analytics } from '@vercel/analytics/react';
 
 import { IoLanguageOutline, IoSunnyOutline, IoMoonOutline, IoLogoTwitter } from 'react-icons/io5';
+import { SiHiveBlockchain } from 'react-icons/si';
 
 import '../components/noScrollbars.css';
 
@@ -226,8 +227,17 @@ function MyApp(props) {
                           <IoLogoTwitter />
                         </ActionIcon>
                       </Link>
-                    </Group>
 
+                      <Link href={`https://hive.blog/@${config.hive}`} passHref>
+                        <ActionIcon
+                          variant="hover"
+                          color="red"
+                          title="Hive"
+                        >
+                          <SiHiveBlockchain />
+                        </ActionIcon>
+                      </Link>
+                    </Group>
 
                   </div>
                 </Header>

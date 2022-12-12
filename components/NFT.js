@@ -34,14 +34,8 @@ import {
   RedditShareButton,
   EmailShareButton,
   TumblrShareButton,
-  LivejournalShareButton,
-  MailruShareButton,
-  ViberShareButton,
-  WorkplaceShareButton,
-  LineShareButton,
   PocketShareButton,
   InstapaperShareButton,
-  HatenaShareButton,
   FacebookIcon,
   TwitterIcon,
   LinkedinIcon,
@@ -49,15 +43,9 @@ import {
   WhatsappIcon,
   RedditIcon,
   TumblrIcon,
-  MailruIcon,
   EmailIcon,
-  LivejournalIcon,
-  ViberIcon,
-  WorkplaceIcon,
-  LineIcon,
   PocketIcon,
   InstapaperIcon,
-  HatenaIcon,
 } from 'react-share';
 import config from './config.json';
 
@@ -592,8 +580,8 @@ export default function NFT(properties) {
             </Tabs.Panel>
 
             <Tabs.Panel value="json" pt="xs">
-              <ScrollArea style={{ height: 250, maxWidth: "100%" }}>
-                <Code block>
+              <ScrollArea p="md">
+                <Code block style={{ textAlign: 'left', maxWidth: '750px', wordBreak: 'break-all' }}>
                   {
                     asset
                       ? JSON.stringify(asset, undefined, 4)

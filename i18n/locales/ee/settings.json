@@ -1,4 +1,7 @@
 {
    "header_description": "Muutke seadeid {{title}}.",
-   "header_title": "Seaded"
+   "header_title": "Seaded",
+   "ipfs": "Muuda IPFS-i",
+   "environment": "Muuda keskkonda",
+   "connection": "Muuda BTS-ühendust"
 }

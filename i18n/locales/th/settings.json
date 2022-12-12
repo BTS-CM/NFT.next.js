@@ -1,4 +1,7 @@
 {
    "header_description": "แก้ไขการตั้งค่า {{title}}",
-   "header_title": "การตั้งค่า"
+   "header_title": "การตั้งค่า",
+   "ipfs": "เปลี่ยน IPFS",
+   "environment": "เปลี่ยนสิ่งแวดล้อม",
+   "connection": "เปลี่ยนการเชื่อมต่อ BTS"
 }

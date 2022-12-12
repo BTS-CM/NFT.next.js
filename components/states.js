@@ -3,7 +3,7 @@ import create from 'zustand';
 
 const useAppStore = create((set) => ({
   theme: 'light',
-  gateway: 'cf-ipfs.com',
+  gateway: 'ipfs.io',
   environment: 'production',
   menuOpen: false,
   prodNetwork: 'wss://eu.nodes.bitshares.ws',

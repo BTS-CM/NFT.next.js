@@ -1,4 +1,7 @@
 {
    "header_description": "{{title}}設定を変更します。",
-   "header_title": "設定"
+   "header_title": "設定",
+   "ipfs": "IPFS を変更",
+   "environment": "環境を変更する",
+   "connection": "BTS 接続を変更"
 }

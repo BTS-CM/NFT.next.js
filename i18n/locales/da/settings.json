@@ -1,4 +1,7 @@
 {
    "header_description": "Rediger indstillingerne for {{title}}.",
-   "header_title": "Indstillinger"
+   "header_title": "Indstillinger",
+   "ipfs": "Skift IPFS",
+   "environment": "Skift miljø",
+   "connection": "Skift BTS-forbindelse"
 }

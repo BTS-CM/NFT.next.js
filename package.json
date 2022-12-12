@@ -13,6 +13,7 @@
     "prodProxy": "lcp --port 8082 --proxyUrl  https://api.bitshares.ws"
   },
   "dependencies": {
+    "@mantine/carousel": "^5.9.4",
     "@mantine/core": "^5.9.2",
     "@mantine/hooks": "^5.9.2",
     "@mantine/next": "^5.9.2",

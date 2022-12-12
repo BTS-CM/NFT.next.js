@@ -1,4 +1,7 @@
 {
    "header_description": "{{title}} 설정을 수정합니다.",
-   "header_title": "설정"
+   "header_title": "설정",
+   "ipfs": "IPFS 변경",
+   "environment": "환경 변경",
+   "connection": "BTS 연결 변경"
 }

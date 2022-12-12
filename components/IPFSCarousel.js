@@ -1,10 +1,6 @@
 import { useState, useEffect } from 'react';
-import {
-  useTranslation,
-  useLanguageQuery,
-  LanguageSwitcher,
-} from 'next-export-i18n';
-import Link from 'next/link';
+import { Carousel } from '@mantine/carousel';
+
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { useViewportSize } from '@mantine/hooks';
@@ -12,15 +8,12 @@ import { Card } from '@mantine/core';
 
 import { useAppStore } from './states';
 
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
+//import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 // requires a loader
-const Carousel = dynamic(() => import('react-responsive-carousel').then((module) => module.Carousel));
+//const Carousel = dynamic(() => import('react-responsive-carousel').then((module) => module.Carousel));
 
 function CarouselItem(properties) {
-  const gateway = useAppStore((state) => state.gateway);
-  const setGateway = useAppStore((state) => state.setGateway);
-
   const { asset } = properties;
   const symbol = asset && asset.symbol ? asset.symbol : undefined;
 
@@ -28,57 +21,6 @@ function CarouselItem(properties) {
   const { media_png_multihash } = properties;
 
   const { visible } = properties;
-  const nearby = properties && properties.nearby ? properties.nearby : null;
-  const isApple = properties && properties.isApple ? properties.isApple : false;
-  const imageSize = properties && properties.imageSize ? properties.imageSize : 500;
-
-  if (!gateway) {
-    setGateway('gateway.ipfs.io');
-  }
-
-  const itrs = media_png_multihash.url.split('.')[0].split('/');
-  const itr = itrs[itrs.length - 1];
-
-  let media = null;
-  if (visible) {
-    media = isApple
-      ? <img
-          src={`/images/${symbol}/${value}.webp`}
-          key={`${symbol}_featured_div_${itr}`}
-          alt={`${symbol}_featured_div_${itr}`}
-      />
-      : <Image
-          width={imageSize}
-          height={imageSize}
-          src={`/images/${symbol}/${value}.webp`}
-          key={`${symbol}_featured_div_${itr}`}
-          alt={`${symbol}_featured_div_${itr}`}
-      />;
-  } else if (nearby) {
-    media = isApple
-      ? <img
-          src={`/images/${symbol}/${value}_thumb.webp`}
-          key={`${symbol}_featured_div_thumb_${itr}`}
-          alt={`${symbol}_featured_div_thumb_${itr}`}
-      />
-      : <Image
-          width={imageSize}
-          height={imageSize}
-          src={`/images/${symbol}/${value}_thumb.webp`}
-          key={`${symbol}_featured_div_thumb_${itr}`}
-          alt={`${symbol}_featured_div_thumb_${itr}`}
-      />;
-  }
-
-  return (<Card
-    align="center"
-    component="a"
-    href={`https://${gateway}${media_png_multihash.url}`}
-    key={`${symbol}_featured_div_${itr}`}
-    p="none"
-  >
-            {media}
-          </Card>);
 }
 
 function getWidth(width) {
@@ -101,46 +43,60 @@ function getWidth(width) {
 export default function IPFSCarouselElement(properties) {
   const { height, width } = useViewportSize();
   const imageSize = getWidth(width);
+  const gateway = useAppStore((state) => state.gateway);
 
-  const { media_png_multihashes } = properties;
+  const { media_png_multihashes, asset, isApple } = properties;
 
-  const [index, setIndex] = useState(0);
+  // rerender carouselItems when gateway changes
+  const [carouselItems, setCarouselItems] = useState([]);
 
-  const carouselItems = media_png_multihashes && media_png_multihashes.length > 0
-    ? media_png_multihashes.map((key, value) => {
-      const { asset } = properties;
-      const symbol = asset && asset.symbol ? asset.symbol : undefined;
-      const itrs = key.url.split('.')[0].split('/');
-      const itr = itrs[itrs.length - 1];
+  useEffect(() => {
+    let tempCarouselItems = [];
+    if (media_png_multihashes && media_png_multihashes.length > 0) {
+      tempCarouselItems = media_png_multihashes.map((key, value) => {
+        const symbol = asset && asset.symbol ? asset.symbol : undefined;
+        const itrs = key.url.split('.')[0].split('/');
+        const itr = itrs[itrs.length - 1];
 
-      return <CarouselItem
-        media_png_multihash={key}
-        value={value}
-        imageSize={imageSize}
-        visible={index === value}
-        nearby={index === value - 1 || index === value + 1}
-        {...properties}
-        key={`${symbol}_carousel_item_${itr}`}
-        first={value === 0}
-      />;
-    }).filter(x => x)
-    : [];
+        return <Carousel.Slide key={`${symbol}_carousel_item_${itr}`}>
+                <Card
+                  align="center"
+                  component="a"
+                  href={`https://${gateway}${key.url}`}
+                  p="none"
+                >
+                  {
+                    isApple
+                      ? <img
+                          src={`/images/${symbol}/${value}.webp`}
+                          alt={`${symbol}_featured_div_${itr}`}
+                      />
+                      : <Image
+                          width={imageSize}
+                          height={imageSize}
+                          src={`/images/${symbol}/${value}.webp`}
+                          alt={`${symbol}_featured_div_${itr}`}
+                      />
+                  }
+                </Card>
+               </Carousel.Slide>;
+      }).filter(x => x);
+
+      if (tempCarouselItems.length > 0) {
+        setCarouselItems(tempCarouselItems);
+      }
+    }
+  }, [asset, gateway, imageSize, isApple, media_png_multihashes]);
+
+  if (carouselItems.length === 0) {
+    return null;
+  }
 
   return (
-      <Carousel
-        showIndicators={false}
-        showThumbs={false}
-        stopOnHover
-        useKeyboardArrows
-        autoFocus
-        autoPlay
-        infiniteLoop
-        interval={7500}
-        width={imageSize}
-        onChange={(newIndex) => setIndex(newIndex)}
-        statusFormatter={(current, total) => `Image ${current} of ${total} (iteration ${media_png_multihashes[current - 1].url.split('.')[0].split('/').slice(-1)[0]})`}
-      >
-        {carouselItems}
+      <Carousel slideSize="70%" width={imageSize} slideGap="sm" loop withIndicators>
+        {
+          carouselItems
+        }
       </Carousel>
   );
 }

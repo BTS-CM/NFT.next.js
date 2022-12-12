@@ -1,4 +1,7 @@
 {
   "header_description": "修改 {{title}} 設置.",
-  "header_title": "設置"
+  "header_title": "設置",
+  "IPFS": "更改IPFS",
+  "environment": "改變環境",
+  "connection": "更改 BTS 連接"
 }

@@ -1,4 +1,7 @@
 {
    "header_description": "Ändern Sie die {{title}}-Einstellungen.",
-   "header_title": "Einstellungen"
+   "header_title": "Einstellungen",
+   "ipfs": "IPFS ändern",
+   "environment": "Umgebung ändern",
+   "connection": "BTS-Verbindung ändern"
 }

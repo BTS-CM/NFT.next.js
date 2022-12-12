@@ -30,8 +30,9 @@ export default function NavButton(properties) {
     >
       <Button
         ref={ref}
+        fullWidth
         variant={theme === 'dark' ? 'outline' : 'light'}
-        color={theme === 'dark' ? 'dark' : 'gray'}
+        color={theme === 'dark' ? 'light' : 'gray'}
         sx={{
           boxShadow: `0 0 ${hovered ? 5 : 2}px ${theme === 'dark' ? 'white' : 'grey'}`,
           margin: '5px',

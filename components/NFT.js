@@ -20,6 +20,7 @@ import {
   Code,
   Group,
   Title,
+  ScrollArea,
 } from '@mantine/core';
 
 import { IoCheckmark, IoClose } from 'react-icons/io5';
@@ -591,9 +592,15 @@ export default function NFT(properties) {
             </Tabs.Panel>
 
             <Tabs.Panel value="json" pt="xs">
-              <Code block aria-label="elasticSearchData" style={{ maxWidth: '1000px' }}>
-                {asset ? JSON.stringify(asset) : 'N/A'}
-              </Code>
+              <ScrollArea style={{ height: 250, maxWidth: "100%" }}>
+                <Code block>
+                  {
+                    asset
+                      ? JSON.stringify(asset, undefined, 4)
+                      : 'N/A'
+                  }
+                </Code>
+              </ScrollArea>
             </Tabs.Panel>
           </Tabs>
         </Paper>

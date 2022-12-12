@@ -32,6 +32,7 @@ import {
   ActionIcon,
   TypographyStylesProvider,
   Title,
+  Group,
 } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 import { Analytics } from '@vercel/analytics/react';
@@ -86,9 +87,7 @@ function MyApp(props) {
         <meta property="og:type" content="website" />
         <meta property="twitter:card" content="summary" key="twcard" />
       </Head>,
-      <MantineProvider
-        withNormalizeCSS
-      >
+      <MantineProvider theme={{ colorScheme: theme }} withGlobalStyles withNormalizeCSS>
           <TypographyStylesProvider sx={{ textDecoration: 'none' }}>
             <AppShell
               navbarOffsetBreakpoint="sm"
@@ -98,7 +97,7 @@ function MyApp(props) {
                   p="md"
                   hiddenBreakpoint="sm"
                   hidden={!menuOpen}
-                  width={{ sm: 300, lg: 400 }}
+                  width={{ sm: 125, lg: 200 }}
                   zIndex={1}
                 >
                   <NavButton
@@ -145,7 +144,8 @@ function MyApp(props) {
                     <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
                       <Burger
                         opened={menuOpen}
-                        onClick={() => setMenuOpen((o) => !o)}
+                        // onclick flip the value of menuOpen
+                        onClick={() => setMenuOpen(!menuOpen)}
                         size="sm"
                         color="grey"
                         mr="xl"
@@ -175,56 +175,59 @@ function MyApp(props) {
                       </Link>
                     </Title>
 
-                    <Menu
-                      id="long-menu"
-                      closeonscroll="false"
-                      gutter={20}
-                      size="sm"
-                      shadow="xl"
-                      title="Translate"
-                    >
-                      <Menu.Target>
-                        <ActionIcon variant="hover"><IoLanguageOutline /></ActionIcon>
-                      </Menu.Target>
-                      <Menu.Dropdown>
-                        {locales.map((option) => (
-                          <Menu.Item
-                            component="a"
-                            href={`?lang=${option.language}`}
-                            locale={query && query.lang ? `lang=${query.lang}` : 'lang=en'}
-                            key={option.language}
-                            selected={option.language === query}
-                            passHref
-                          >
-                            <LanguageSwitcher lang={option.language}>
-                              {option.aka}
-                            </LanguageSwitcher>
-                          </Menu.Item>
-                        ))}
-                      </Menu.Dropdown>
-                    </Menu>
-
-                    <ActionIcon
-                      onClick={() => toggleColorScheme()}
-                      color={theme && theme === 'dark' ? 'yellow' : 'blue'}
-                      variant="hover"
-                      title="Toggle color scheme"
-                    >
-                      {
-                        theme && theme === 'dark'
-                          ? <IoSunnyOutline />
-                          : <IoMoonOutline />
-                      }
-                    </ActionIcon>
-
-                    <Link href={`https://twitter.com/${config.twitter}`} passHref>
-                      <ActionIcon
-                        variant="hover"
-                        title="Twitter"
+                    <Group position="center" spacing="xs">
+                      <Menu
+                        id="long-menu"
+                        closeonscroll="false"
+                        gutter={20}
+                        size="md"
+                        shadow="xl"
+                        title="Translate"
                       >
-                        <IoLogoTwitter />
+                        <Menu.Target>
+                          <ActionIcon variant="hover"><IoLanguageOutline /></ActionIcon>
+                        </Menu.Target>
+                        <Menu.Dropdown>
+                          {locales.map((option) => (
+                            <Menu.Item
+                              component="a"
+                              href={`?lang=${option.language}`}
+                              locale={query && query.lang ? `lang=${query.lang}` : 'lang=en'}
+                              key={option.language}
+                              selected={option.language === query}
+                              passHref
+                            >
+                              <LanguageSwitcher lang={option.language}>
+                                {option.aka}
+                              </LanguageSwitcher>
+                            </Menu.Item>
+                          ))}
+                        </Menu.Dropdown>
+                      </Menu>
+
+                      <ActionIcon
+                        onClick={() => toggleColorScheme()}
+                        color={theme && theme === 'dark' ? 'yellow' : 'blue'}
+                        variant="hover"
+                        title="Toggle color scheme"
+                      >
+                        {
+                          theme && theme === 'dark'
+                            ? <IoSunnyOutline />
+                            : <IoMoonOutline />
+                        }
                       </ActionIcon>
-                    </Link>
+
+                      <Link href={`https://twitter.com/${config.twitter}`} passHref>
+                        <ActionIcon
+                          variant="hover"
+                          title="Twitter"
+                        >
+                          <IoLogoTwitter />
+                        </ActionIcon>
+                      </Link>
+                    </Group>
+
 
                   </div>
                 </Header>

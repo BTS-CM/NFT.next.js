@@ -1,15 +1,10 @@
-import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
-import Link from 'next/link';
-
-import { Card, Center, Image, Text, Grid, Col } from '@mantine/core';
+import { Card, Center, Image, Text, Grid, Col, Group, Badge, Stack } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 import {
   useTranslation,
   useLanguageQuery,
-  LanguageSwitcher,
 } from 'next-export-i18n';
-import { useInView } from 'react-intersection-observer';
+//import { useInView } from 'react-intersection-observer';
 
 import CurrentValue from './CurrentValue';
 import CardSection from './CardSection';
@@ -36,10 +31,11 @@ export default function GalleryCard(properties) {
   return (
     <Card
       radius="lg"
+      withBorder
       component="a"
       href={`/nft/${symbol}?lang=${query ? query.lang : 'en'}`}
       ref={ref}
-      style={{ width: isMobile ? 300 : 350, margin: 'auto' }}
+      style={{ width: isMobile ? 300 : 350, margin: 'auto', paddingTop: 0 }}
       shadow={`0 0 ${hovered ? 5 : 2}px ${theme === 'dark' ? 'white' : 'grey'}`}
     >
       <CardSection symbol={symbol} media_json={media_json} isApple={isApple} />

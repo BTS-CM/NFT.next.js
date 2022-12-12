@@ -79,7 +79,7 @@ export default function NFTCard(properties) {
       href={`/nft/${symbol}?lang=${query && query.lang ? query.lang : 'en'}`}
     >
       <div
-        inview={inView}
+        ref={ref}
         style={
           !inView
             ? {

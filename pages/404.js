@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 
 import { Text, Center, Grid, Col, Paper } from '@mantine/core';
 
-import config from '../components/config.json';
+import config from '../config/config.json';
 
 const SEO = dynamic(() => import('../components/SEO'));
 

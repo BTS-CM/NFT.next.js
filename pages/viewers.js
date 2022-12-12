@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Text, Grid, Col, Paper, Group, Button } from '@mantine/core';
 
-import configJSON from '../components/config.json' assert {type: 'json'};
+import configJSON from '../config/config.json' assert {type: 'json'};
 
 const SEO = dynamic(() => import('../components/SEO'));
 

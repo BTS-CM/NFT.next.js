@@ -1,5 +1,5 @@
 import create from 'zustand';
-//import config from './config.json';
+//import config from '../config/config.json';
 
 const useAppStore = create((set) => ({
   theme: 'light',

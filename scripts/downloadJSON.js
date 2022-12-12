@@ -1,6 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
-const art = require('../art.json');
+const art = require('../config/art.json');
 
 const production_art = art.production;
 const staging_art = art.staging;

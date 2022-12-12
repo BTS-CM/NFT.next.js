@@ -8,7 +8,7 @@ import {
 } from 'next-export-i18n';
 import dynamic from 'next/dynamic';
 import { getAllPosts } from '../lib/api';
-import config from '../components/config.json';
+import config from '../config/config.json';
 
 const SEO = dynamic(() => import('../components/SEO'));
 

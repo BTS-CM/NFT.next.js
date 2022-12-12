@@ -10,7 +10,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First configure the `/components/art.json` file, specifying the NFTs you want to display in staging/production. 
+First configure the `/config/art.json` file, specifying the NFTs you want to display in staging/production. 
 
 Run the development server:
 

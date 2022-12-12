@@ -47,7 +47,7 @@ import {
   PocketIcon,
   InstapaperIcon,
 } from 'react-share';
-import config from './config.json';
+import config from '../config/config.json';
 
 const OBJT = dynamic(() => import('./three/OBJT'));
 const GLTFT = dynamic(() => import('./three/GLTFT'));

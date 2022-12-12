@@ -1,12 +1,12 @@
 const fs = require('fs');
 const axios = require('axios');
 const sharp = require('sharp');
-const art = require('../art.json');
+const art = require('../config/art.json');
 
 const prodArt = art.production;
 const stagingArt = art.staging;
 // eslint-disable-next-line import/no-dynamic-require, global-require
-const assets = prodArt.map(asset => require(`./${asset.name}.json`));
+const assets = prodArt.map(asset => require(`../components/assets/${asset.name}.json`));
 
 (async () => {
   for (let i = 0; i < assets.length; i++) {
@@ -17,9 +17,9 @@ const assets = prodArt.map(asset => require(`./${asset.name}.json`));
     const description = asset && asset.description ? asset.description : undefined;
     const nft_object = description ? description.nft_object : undefined;
 
-    if (!fs.existsSync(`../../public/images/${name}`)) {
+    if (!fs.existsSync(`../public/images/${name}`)) {
       // eslint-disable-next-line consistent-return
-      fs.mkdir(`../../public/images/${name}`, (err) => {
+      fs.mkdir(`../public/images/${name}`, (err) => {
         if (err) {
           return console.error(err);
         }
@@ -30,7 +30,7 @@ const assets = prodArt.map(asset => require(`./${asset.name}.json`));
     let url;
     if (nft_object && nft_object.media_png_multihashes) {
       for (let k = 0; k < nft_object.media_png_multihashes.length; k++) {
-        if (!fs.existsSync(`../../public/images/${name}/${k}.webp`)) {
+        if (!fs.existsSync(`../public/images/${name}/${k}.webp`)) {
           const currentURL = nft_object.media_png_multihashes[k].url;
 
           await axios({
@@ -38,15 +38,15 @@ const assets = prodArt.map(asset => require(`./${asset.name}.json`));
             url: `https://gateway.ipfs.io${currentURL}`,
             responseType: 'stream',
           }).then((response) => {
-            response.data.pipe(fs.createWriteStream(`../../public/images/${name}/${k}.png`));
+            response.data.pipe(fs.createWriteStream(`../public/images/${name}/${k}.png`));
           });
         }
       }
     } else if (nft_object && nft_object.media_json) {
       const data = { media_json: nft_object.media_json };
-      const fileName = `../../public/images/${name}/media_json.json`;
+      const fileName = `../public/images/${name}/media_json.json`;
 
-      if (data && fileName && !fs.existsSync(`../../public/images/${name}/media_json.json`)) {
+      if (data && fileName && !fs.existsSync(`../public/images/${name}/media_json.json`)) {
         fs.writeFile(fileName, JSON.stringify(data), (err) => {
           console.log(err || '');
         });
@@ -56,7 +56,7 @@ const assets = prodArt.map(asset => require(`./${asset.name}.json`));
       let fileName;
       if (nft_object.media_png || nft_object.image_png) {
         image = nft_object.media_png || nft_object.image_png || undefined;
-        fileName = `../../public/images/${name}/0.png`;
+        fileName = `../public/images/${name}/0.png`;
       } else if (
         nft_object.media_gif ||
           nft_object.media_GIF ||
@@ -70,7 +70,7 @@ const assets = prodArt.map(asset => require(`./${asset.name}.json`));
                 nft_object.image_gif ||
                 `https://cloudflare-ipfs.com${nft_object.media_gif_multihash}` ||
                 undefined;
-        fileName = `../../public/images/${name}/0.gif`;
+        fileName = `../public/images/${name}/0.gif`;
       } else if (
         nft_object.media_jpeg ||
         nft_object.image_jpeg ||
@@ -80,10 +80,10 @@ const assets = prodArt.map(asset => require(`./${asset.name}.json`));
                 nft_object.image_jpeg ||
                 `https://cloudflare-ipfs.com${nft_object.media_jpeg_multihash}` ||
                 undefined;
-        fileName = `../../public/images/${name}/0.jpeg`;
+        fileName = `../public/images/${name}/0.jpeg`;
       }
 
-      if (image && fileName && !fs.existsSync(`../../public/images/${name}/0.webp`)) {
+      if (image && fileName && !fs.existsSync(`../public/images/${name}/0.webp`)) {
         fs.writeFile(fileName, image, { encoding: 'base64' }, (err) => {
           console.log(err || '');
         });

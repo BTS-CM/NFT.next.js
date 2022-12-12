@@ -46,7 +46,7 @@ import NavButton from '../components/NavButton';
 
 import { useAppStore } from '../components/states';
 
-import config from '../components/config.json';
+import config from '../config/config.json';
 
 const locales = [
   { language: 'en', aka: 'English' },

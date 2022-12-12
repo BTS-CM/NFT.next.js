@@ -8,8 +8,8 @@ import dynamic from 'next/dynamic';
 
 import { Text, Grid, Col, Paper, Button, Stack, TextInput } from '@mantine/core';
 
-import configJSON from '../components/config.json' assert {type: 'json'};
-import artJSON from '../components/art.json' assert {type: 'json'};
+import configJSON from '../config/config.json' assert {type: 'json'};
+import artJSON from '../config/art.json' assert {type: 'json'};
 
 import { useAppStore } from '../components/states';
 

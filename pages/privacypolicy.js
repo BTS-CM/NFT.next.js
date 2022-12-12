@@ -7,7 +7,7 @@ import {
 import dynamic from 'next/dynamic';
 
 import { Text, Center, Grid, Col, Paper } from '@mantine/core';
-import config from '../components/config.json';
+import config from '../config/config.json';
 import { useAppStore } from '../components/states';
 
 const SEO = dynamic(() => import('../components/SEO'));

@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 import dynamic from 'next/dynamic';
 
 import markdownToHtml from '../../lib/markdownToHtml';
-import config from '../../components/config.json';
+import config from '../../config/config.json';
 
 const SEO = dynamic(() => import('../../components/SEO'));
 

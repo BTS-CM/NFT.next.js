@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import config from './config.json';
+import config from '../config/config.json';
 
 function SEO({ description, title, siteTitle, imageURL }) {
   return <>

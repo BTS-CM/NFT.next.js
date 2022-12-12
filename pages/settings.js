@@ -12,10 +12,10 @@ import {
 } from 'react-icons/io5';
 import { Grid, Col, Paper, Group, Button, Menu } from '@mantine/core';
 
-import configJSONImport from '../components/config.json' assert {type: 'json'};
-import ipfsJSONImport from '../components/ipfsJSON.json' assert {type: 'json'};
-import btsJSONImport from '../components/btsJSON.json' assert {type: 'json'};
-import btsTestnetJSONImport from '../components/btsTestnetJSON.json' assert {type: 'json'};
+import configJSONImport from '../config/config.json' assert {type: 'json'};
+import ipfsJSONImport from '../config/ipfsJSON.json' assert {type: 'json'};
+import btsJSONImport from '../config/btsJSON.json' assert {type: 'json'};
+import btsTestnetJSONImport from '../config/btsTestnetJSON.json' assert {type: 'json'};
 
 import { useAppStore } from '../components/states';
 

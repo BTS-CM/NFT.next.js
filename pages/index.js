@@ -9,8 +9,8 @@ import { isMobile, isIOS, isSafari, isMobileSafari } from 'react-device-detect';
 import { Text, Center, Grid, Col, Container, Paper, Button, Group } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 
-import configJSON from '../components/config.json' assert {type: 'json'};
-import artJSON from '../components/art.json' assert {type: 'json'};
+import configJSON from '../config/config.json' assert {type: 'json'};
+import artJSON from '../config/art.json' assert {type: 'json'};
 
 import CarouselElement from '../components/Carousel';
 import SEO from '../components/SEO';

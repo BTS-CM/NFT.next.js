@@ -5,8 +5,8 @@ import {
 import dynamic from 'next/dynamic';
 import { isIOS, isSafari, isMobileSafari } from 'react-device-detect';
 
-import configJSON from '../../components/config.json';
-import art from '../../components/art.json';
+import configJSON from '../../config/config.json';
+import art from '../../config/art.json';
 import { useAppStore } from '../../components/states';
 
 const SEO = dynamic(() => import('../../components/SEO'));

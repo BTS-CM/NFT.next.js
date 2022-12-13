@@ -40,7 +40,9 @@
     "nft": {
       "attestation": "tõend",
       "narrative": "Narratiiv",
-      "acknowledgments": "Tänud"
+      "acknowledgments": "Tänud",
+      "creation_block": "Loomisplokk",
+      "creation_time": "Loomise aeg"
     },
     "asset": {
       "name": "Vara nimi",

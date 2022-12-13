@@ -4,6 +4,8 @@
     "precision": 0,
     "issuer": "1.2.24937",
     "dynamic_asset_data_id": "2.3.1666",
+    "creation_block_num": 45866668,
+    "creation_time": "2021-04-17T23:12:27",
     "dynamic_asset_data": {
         "id": "2.3.1666",
         "current_supply": 0,

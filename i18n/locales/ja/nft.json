@@ -32,7 +32,9 @@
     "nft": {
       "acknowledgments": "謝辞",
       "attestation": "アテステーション",
-      "narrative": "物語性"
+      "narrative": "物語性",
+      "creation_block": "作成ブロック",
+      "creation_time": "作成時間"
     },
     "permissionTips": {
       "disabled": {

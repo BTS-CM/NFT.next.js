@@ -39,7 +39,9 @@
     "nft": {
       "attestation": "Атестація",
       "narrative": "Розповідь",
-      "acknowledgments": "Подяки"
+      "acknowledgments": "Подяки",
+      "creation_block": "Блок створення",
+      "creation_time": "Час створення"
     },
     "asset": {
       "name": "Назва активу",

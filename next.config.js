@@ -1,5 +1,5 @@
-const ipfsJSON = require('./components/ipfsJSON.json');
 const path = require('path');
+const ipfsJSON = require('./config/ipfsJSON.json');
 
 module.exports = {
   reactStrictMode: true,
@@ -11,17 +11,17 @@ module.exports = {
       __dirname,
       'node_modules',
       'react-is'
-    )
+    );
     config.resolve.alias['regenerator-runtime'] = path.resolve(
       __dirname,
       'node_modules',
       'regenerator-runtime'
-    )
+    );
     config.resolve.alias['strip-ansi'] = path.resolve(
       __dirname,
       'node_modules',
       'strip-ansi'
-    )
-    return config
+    );
+    return config;
   },
 };

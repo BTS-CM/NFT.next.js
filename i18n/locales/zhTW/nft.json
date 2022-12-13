@@ -40,7 +40,9 @@
     "nft": {
       "attestation": "證明",
       "narrative": "敘事",
-      "acknowledgments": "確認"
+      "acknowledgments": "確認",
+      "creation_block": "創建塊",
+      "creation_time": "創建時間"
     },
     "asset": {
       "name": "資產名稱",

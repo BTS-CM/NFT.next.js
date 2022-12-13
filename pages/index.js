@@ -76,23 +76,43 @@ function Home(props) {
 export const getStaticProps = async ({ locale }) => {
   // eslint-disable-next-line import/no-dynamic-require, global-require
   const prodNFTS = artJSON.production.map(item => require(`../components/assets/${item.name}.json`));
-  const minProdNFTS = prodNFTS.map(nft => ({
-    symbol: nft.symbol,
-    market: nft.description.market,
-    title: nft.description.nft_object.title,
-    artist: nft.description.nft_object.artist,
-    media_json: !!nft.description.nft_object.media_json,
-  }));
+  const minProdNFTS = prodNFTS.map(nft => {
+    let desc;
+    if (nft && Array.isArray(nft)) {
+      const thisNFT = nft[0];
+      desc = thisNFT.options.description;
+    } else {
+      desc = nft.description;
+    }
+
+    return {
+      symbol: nft.symbol,
+      market: desc.market,
+      title: desc.nft_object.title,
+      artist: desc.nft_object.artist,
+      media_json: !!desc.nft_object.media_json,
+    };
+  });
 
   // eslint-disable-next-line import/no-dynamic-require, global-require
   const stagingNFTS = artJSON.staging.map(item => require(`../components/assets/${item.name}.json`));
-  const minStagingNFTS = stagingNFTS.map(nft => ({
-    symbol: nft.symbol,
-    market: nft.description.market,
-    title: nft.description.nft_object.title,
-    artist: nft.description.nft_object.artist,
-    media_json: !!nft.description.nft_object.media_json,
-  }));
+  const minStagingNFTS = stagingNFTS.map(nft => {
+    let desc;
+    if (nft && Array.isArray(nft)) {
+      const thisNFT = nft[0];
+      desc = thisNFT.options.description;
+    } else {
+      desc = nft.description;
+    }
+
+    return {
+      symbol: nft.symbol,
+      market: desc.market,
+      title: desc.nft_object.title,
+      artist: desc.nft_object.artist,
+      media_json: !!desc.nft_object.media_json,
+    };
+  });
 
   return {
     props: {

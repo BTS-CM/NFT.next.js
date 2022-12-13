@@ -32,7 +32,9 @@
     "nft": {
       "acknowledgments": "인정서",
       "attestation": "증명",
-      "narrative": "분류: 내러티브"
+      "narrative": "분류: 내러티브",
+      "creation_block": "블록 생성",
+      "creation_time": "생성 시간"
     },
     "permissionTips": {
       "disabled": {

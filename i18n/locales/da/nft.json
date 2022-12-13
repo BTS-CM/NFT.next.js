@@ -40,7 +40,9 @@
     "nft": {
       "attestation": "Attestation",
       "narrative": "Fortælling",
-      "acknowledgments": "Anerkendelser"
+      "acknowledgments": "Anerkendelser",
+      "creation_block": "Oprettelsesblok",
+      "creation_time": "Oprettelsestid"
     },
     "asset": {
       "name": "Aktivnavn",

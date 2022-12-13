@@ -86,6 +86,9 @@ export default function NFT(properties) {
   const precision = asset ? asset.precision : undefined;
   const symbol = asset ? asset.symbol : undefined;
 
+  const creation_block_num = asset ? asset.creation_block_num : undefined;
+  const creation_time = asset ? asset.creation_time : undefined;
+
   const permissions = asset ? asset.permissions : undefined;
   const asset_flags = asset ? asset.flags : undefined;
   const dynamic_asset_data = asset ? asset.dynamic_asset_data : undefined;
@@ -302,17 +305,17 @@ export default function NFT(properties) {
             <Tabs.Panel value="asset" pt="xs">
               <Group position="center" sx={{ marginTop: '5px' }}>
                 <Badge>
-                  {`${t('nft.asset.name')}: ${symbol || '???'}`}
+                  <b>{`${t('nft.asset.name')}`}</b>{`: ${symbol || '???'}`}
                 </Badge>
 
                 {holder}
 
                 <Badge>
-                  {`${t('nft.asset.quantity')}: ${current_supply || '???'}`}
+                  <b>{`${t('nft.asset.quantity')}`}</b>{`: ${current_supply || '???'}`}
                 </Badge>
 
                 <Badge>
-                  {`${t('nft.asset.file_type')}: ${type || '???'}`}
+                  <b>{`${t('nft.asset.file_type')}`}</b>{`: ${type || '???'}`}
                 </Badge>
 
                 <Tooltip
@@ -324,7 +327,7 @@ export default function NFT(properties) {
                     }
                 >
                   <Badge>
-                    {`${t('nft.asset.encoding')}: ${encoding || '???'}`}
+                    <b>{`${t('nft.asset.encoding')}`}</b>{`: ${encoding || '???'}`}
                   </Badge>
                 </Tooltip>
 
@@ -337,11 +340,18 @@ export default function NFT(properties) {
                     }
                 >
                   <Badge>
-                    {`${t('nft.asset.precision')}: ${precision}`}
+                  <b>{`${t('nft.asset.precision')}`}</b>{`: ${precision}`}
                   </Badge>
                 </Tooltip>
 
                 {detailsOfIssuer}
+
+                <Badge>
+                  <b>{t('nft.nft.creation_block')}</b>:  {creation_block_num}
+                </Badge>
+                <Badge>
+                  <b>{t('nft.nft.creation_time')}</b>: {creation_time}
+                </Badge>
               </Group>
             </Tabs.Panel>
 
@@ -363,85 +373,71 @@ export default function NFT(properties) {
               <Text size="lg" sx={{ paddingBottom: '10px' }}>
                 {`Share "${title}" by ${artist} on social media!`}
               </Text>
-              <FacebookShareButton
-                url={shareUrl}
-                quote={title}
-                sx={{ m: 0.25 }}
-              >
-                <FacebookIcon size={32} round />
-              </FacebookShareButton>
+              <Group position="center" m="sm">
+                <FacebookShareButton
+                  url={shareUrl}
+                  quote={title}
+                  sx={{ m: 0.25 }}
+                >
+                  <FacebookIcon size={32} round />
+                </FacebookShareButton>
 
-              <TwitterShareButton
-                url={shareUrl}
-                title={helmet_description}
-                sx={{ m: 0.25 }}
-              >
-                <TwitterIcon size={32} round />
-              </TwitterShareButton>
+                <TwitterShareButton
+                  url={shareUrl}
+                  title={helmet_description}
+                  sx={{ m: 0.25 }}
+                >
+                  <TwitterIcon size={32} round />
+                </TwitterShareButton>
 
-              <TelegramShareButton
-                url={shareUrl}
-                title={title}
-                sx={{ m: 0.25 }}
-              >
-                <TelegramIcon size={32} round />
-              </TelegramShareButton>
+                <TelegramShareButton
+                  url={shareUrl}
+                  title={title}
+                  sx={{ m: 0.25 }}
+                >
+                  <TelegramIcon size={32} round />
+                </TelegramShareButton>
 
-              <WhatsappShareButton
-                url={shareUrl}
-                title={title}
-                separator=":: "
-                sx={{ m: 0.25 }}
-              >
-                <WhatsappIcon size={32} round />
-              </WhatsappShareButton>
+                <WhatsappShareButton
+                  url={shareUrl}
+                  title={title}
+                  separator=":: "
+                  sx={{ m: 0.25 }}
+                >
+                  <WhatsappIcon size={32} round />
+                </WhatsappShareButton>
 
-              <LinkedinShareButton url={shareUrl} sx={{ m: 0.25 }}>
-                <LinkedinIcon size={32} round />
-              </LinkedinShareButton>
+                <LinkedinShareButton url={shareUrl} sx={{ m: 0.25 }}>
+                  <LinkedinIcon size={32} round />
+                </LinkedinShareButton>
 
-              <RedditShareButton
-                url={shareUrl}
-                title={title}
-                windowWidth={660}
-                windowHeight={460}
-                sx={{ m: 0.25 }}
-              >
-                <RedditIcon size={32} round />
-              </RedditShareButton>
+                <RedditShareButton
+                  url={shareUrl}
+                  title={title}
+                  windowWidth={660}
+                  windowHeight={460}
+                  sx={{ m: 0.25 }}
+                >
+                  <RedditIcon size={32} round />
+                </RedditShareButton>
 
-              <TumblrShareButton
-                url={shareUrl}
-                title={title}
-                sx={{ m: 0.25 }}
-              >
-                <TumblrIcon size={32} round />
-              </TumblrShareButton>
+                <TumblrShareButton
+                  url={shareUrl}
+                  title={title}
+                  sx={{ m: 0.25 }}
+                >
+                  <TumblrIcon size={32} round />
+                </TumblrShareButton>
 
-              <EmailShareButton
-                url={shareUrl}
-                subject={title}
-                body="body"
-                sx={{ m: 0.25 }}
-              >
-                <EmailIcon size={32} round />
-              </EmailShareButton>
-
-              <PocketShareButton
-                url={shareUrl}
-                title={title}
-                sx={{ m: 0.25 }}
-              >
-                <PocketIcon size={32} round />
-              </PocketShareButton>
-
-              <InstapaperShareButton
-                url={shareUrl}
-                title={title}
-                sx={{ m: 0.25 }}
-              >
-                <InstapaperIcon size={32} round />
-              </InstapaperShareButton>
+                <EmailShareButton
+                  url={shareUrl}
+                  subject={title}
+                  body="body"
+                  sx={{ m: 0.25 }}
+                >
+                  <EmailIcon size={32} round />
+                </EmailShareButton>
+              </Group>
             </Tabs.Panel>
 
             <Tabs.Panel value="buy" pt="xs">

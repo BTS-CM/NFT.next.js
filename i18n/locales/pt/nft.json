@@ -32,7 +32,9 @@
     "nft": {
       "acknowledgments": "Agradecimentos",
       "attestation": "Atestado",
-      "narrative": "Narrativa"
+      "narrative": "Narrativa",
+      "creation_block": "Bloco de criação",
+      "creation_time": "Hora da criação"
     },
     "permissionTips": {
       "disabled": {

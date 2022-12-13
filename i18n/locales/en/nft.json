@@ -40,7 +40,9 @@
     "nft": {
       "attestation": "Attestation",
       "narrative": "Narrative",
-      "acknowledgments": "Acknowledgments"
+      "acknowledgments": "Acknowledgments",
+      "creation_block": "Creation block",
+      "creation_time": "Creation time"
     },
     "asset": {
       "name": "Asset name",

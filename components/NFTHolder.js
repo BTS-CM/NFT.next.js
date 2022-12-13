@@ -29,7 +29,7 @@ export default function NFTHolder(properties) {
 
   return (
     <Badge>
-      {`${t('nft.asset.owner')}: ${data && data.length ? data[0].name : '???'}`}
+      <b>{`${t('nft.asset.owner')}`}</b>{`: ${data && data.length ? data[0].name : '???'}`}
     </Badge>
   );
 }

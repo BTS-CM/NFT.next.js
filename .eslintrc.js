@@ -14,7 +14,7 @@ module.exports = {
         ignoreTemplateLiterals: true,
       },
     ],
-
+    'no-param-reassign': 'off',
     'react/prop-types': 'off',
     'react/jsx-no-bind': 'off',
     'no-unused-vars': 'off',

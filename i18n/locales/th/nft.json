@@ -32,7 +32,9 @@
     "nft": {
       "acknowledgments": "การรับทราบ",
       "attestation": "การรับรองการรับรองจาก",
-      "narrative": "การเล่าเรื่อง"
+      "narrative": "การเล่าเรื่อง",
+      "creation_block": "บล็อกการสร้าง",
+      "creation_time": "เวลาสร้าง"
     },
     "permissionTips": {
       "disabled": {

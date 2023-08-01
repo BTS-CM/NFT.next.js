@@ -32,11 +32,14 @@ function Viewers(properties) {
           <Link href="https://artcasa.gallery/" passHref>
             <Button sx={{ margin: '5px' }} component="a" size="sm" variant="outline">ArtCASA</Button>
           </Link>
-          <Link href="https://alguienalli.github.io/" passHref>
+          <Link href="https://shamelesslyai.github.io/alguienAlli.github.io/" passHref>
             <Button sx={{ margin: '5px' }} component="a" size="sm" variant="outline">Alguien&apos;s Bitshares NFT Explorer</Button>
           </Link>
           <Link href="https://github.com/BTS-CM/NFT_Viewer" passHref>
             <Button sx={{ margin: '5px' }} component="a" size="sm" variant="outline">Bitshares NFT Viewer</Button>
+          </Link>
+          <Link href="https://github.com/BTS-CM/NFT.next.js" passHref>
+            <Button sx={{ margin: '5px' }} component="a" size="sm" variant="outline">Next.JS NFT Gallery template</Button>
           </Link>
         </Paper>
       </Col>
@@ -55,9 +58,19 @@ function Viewers(properties) {
               Bitshares NFT Creator
             </Button>
           </Link>
+          <Link href="https://github.com/BTS-CM/airdrop_tool" passHref>
+            <Button sx={{ margin: '5px' }} component="a" size="sm" variant="outline">
+              Bitshares Airdropping tool
+            </Button>
+          </Link>
           <Link href="https://github.com/Bit20-Creative-Group/BitShares-NFT-Specification" passHref>
             <Button sx={{ margin: '5px' }} component="a" size="sm" variant="outline">
               Bitshares NFT spec
+            </Button>
+          </Link>
+          <Link href="https://github.com/bitshares/beet" passHref>
+            <Button sx={{ margin: '5px' }} component="a" size="sm" variant="outline">
+              Bitshares BEET multiwallet
             </Button>
           </Link>
         </Paper>
@@ -70,14 +83,51 @@ function Viewers(properties) {
           <Text>
             {t('viewers.blockchain.body')}
           </Text>
-          <Button sx={{ margin: '5px' }} component="a" size="sm" variant="outline" href="https://wallet.bitshares.org/#/explorer/assets">Bitshares.org</Button>
-          <Button sx={{ margin: '5px' }} component="a" size="sm" variant="outline" href="https://ex.xbts.io/explorer/assets">XBTS.io</Button>
-          <Button sx={{ margin: '5px' }} component="a" size="sm" variant="outline" href="https://dex.iobanker.com/explorer/assets">ioBanker DEX</Button>
-          <Button sx={{ margin: '5px' }} component="a" size="sm" variant="outline" href="https://wallet.btwty.com/explorer/assets">BTWTY</Button>
-          <Button sx={{ margin: '5px' }} component="a" size="sm" variant="outline" href="https://bts.ai/">BTS.AI</Button>
-          <Button sx={{ margin: '5px' }} component="a" size="sm" variant="outline" href="https://api.testnet.bitshares.ws/docs">Insight</Button>
-          <Button sx={{ margin: '5px' }} component="a" size="sm" variant="outline" href="https://cryptofresh.com">cryptofresh</Button>
-          <Button sx={{ margin: '5px' }} component="a" size="sm" variant="outline" href="https://blocksights.info/">BlockSights.info</Button>
+          <Button
+            sx={{ margin: '5px' }}
+            component="a"
+            size="sm"
+            variant="outline"
+            href={`https://bts.exchange/#/explorer/assets${config.referrer?.length ? `?r=${config.referrer}` : ''}`}
+          >
+            BTS.Exchange
+          </Button>
+          <Button
+            sx={{ margin: '5px' }}
+            component="a"
+            size="sm"
+            variant="outline"
+            href={`https://ex.xbts.io/explorer/assets${config.referrer?.length ? `?r=${config.referrer}` : ''}`}
+          >
+            XBTS.io
+          </Button>
+          <Button
+            sx={{ margin: '5px' }}
+            component="a"
+            size="sm"
+            variant="outline"
+            href={`https://wallet.btwty.com/explorer/assets${config.referrer?.length ? `?r=${config.referrer}` : ''}`}
+          >
+            BTWTY
+          </Button>
+          <Button
+            sx={{ margin: '5px' }}
+            component="a"
+            size="sm"
+            variant="outline"
+            href="https://api.bitshares.ws/docs"
+          >
+            BitShares Insight API
+          </Button>
+          <Button
+            sx={{ margin: '5px' }}
+            component="a"
+            size="sm"
+            variant="outline"
+            href="https://blocksights.info/"
+          >
+            BlockSights.info
+          </Button>
         </Paper>
       </Col>
     </Grid>,

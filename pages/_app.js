@@ -219,15 +219,6 @@ function MyApp(props) {
                         }
                       </ActionIcon>
 
-                      <Link href={`https://twitter.com/${config.twitter}`} passHref>
-                        <ActionIcon
-                          variant="hover"
-                          title="Twitter"
-                        >
-                          <IoLogoTwitter />
-                        </ActionIcon>
-                      </Link>
-
                       <Link href={`https://hive.blog/@${config.hive}`} passHref>
                         <ActionIcon
                           variant="hover"
@@ -280,32 +271,20 @@ function MyApp(props) {
                     <Link href="https://github.com/bitshares/awesome-bitshares" passHref>
                         Awesome-Bitshares
                     </Link>
-                    <br />
-                    <Link href="https://bitshares.build/" passHref>
-                        Bitshares.Build
-                    </Link>
-                    <br />
-                    <Link href="https://bitsharesgroup.org/" passHref>
-                        Bitshares Group
-                    </Link>
                   </Col>
                   <Col span={12} xs={12} sm={12} md={2} key="footer 3">
                     <Text size="xl">
                       {t('nav.footer_wallets')}
                     </Text>
-                    <Link href="https://wallet.bitshares.org" passHref>
-                        Bitshares.org
+                    <Link href={`https://bts.exchange/#/${config.referrer?.length ? `?r=${config.referrer}` : ''}`} passHref>
+                        BTS.Exchange
                     </Link>
                     <br />
-                    <Link href="https://ex.xbts.io/" passHref>
+                    <Link href={`https://ex.xbts.io/#/${config.referrer?.length ? `?r=${config.referrer}` : ''}`} passHref>
                         XBTS.io
                     </Link>
                     <br />
-                    <Link href="https://dex.iobanker.com/" passHref>
-                        ioBanker DEX
-                    </Link>
-                    <br />
-                    <Link href="https://wallet.btwty.com" passHref>
+                    <Link href={`https://wallet.btwty.com/#/${config.referrer?.length ? `?r=${config.referrer}` : ''}`} passHref>
                         BTWTY.com
                     </Link>
                   </Col>

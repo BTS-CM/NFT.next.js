@@ -31,6 +31,6 @@ export default function CurrentValue(properties) {
     : undefined;
 
   return bids && bids.length
-    ? `${bids[0].quote} ${market}`
+    ? `${1 / bids[0].price} ${market}`
     : null;
 }

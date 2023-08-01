@@ -34,7 +34,7 @@ yarn-error.log*
 .vercel
 
 # data
-*.webp
-*.png
-*.gif
-*.jpg
+#*.webp
+#*.png
+#*.gif
+#*.jpg

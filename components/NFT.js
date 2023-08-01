@@ -48,6 +48,7 @@ import {
   InstapaperIcon,
 } from 'react-share';
 import config from '../config/config.json';
+import { useAppStore } from './states';
 
 const OBJT = dynamic(() => import('./three/OBJT'));
 const GLTFT = dynamic(() => import('./three/GLTFT'));
@@ -68,13 +69,12 @@ export default function NFT(properties) {
   const { id } = properties;
 
   const { isApple } = properties;
+  const environment = useAppStore((state) => state.environment);
 
   const { t } = useTranslation();
   const [query] = useLanguageQuery();
 
   const [asset, setAsset] = useState(initAsset || undefined);
-  const [value, setValue] = useState(0);
-  //const [activeTab, setActiveTab] = useState(0);
 
   if (!id || !id.includes('.')) {
     return (<Text size="lg">
@@ -120,7 +120,7 @@ export default function NFT(properties) {
   const narrative = nft_object && nft_object.narrative ? nft_object.narrative : undefined;
   const encoding = nft_object && nft_object.encoding ? nft_object.encoding : undefined;
 
-  const { image, imgURL, fileType } = getImage(nft_object);
+  const { image, imgURL, fileType } = getImage(nft_object, symbol);
 
   // Optional and Proposed Keys:
 
@@ -142,9 +142,16 @@ export default function NFT(properties) {
     ? nft_object.password_multihash
     : undefined;
 
-  const media_png_multihashes = nft_object && nft_object.media_png_multihashes
-    ? nft_object.media_png_multihashes
-    : undefined;
+  let media_png_multihashes;
+  if (nft_object && nft_object.media_png_multihashes) {
+    media_png_multihashes = nft_object.media_png_multihashes;
+  } else if (nft_object && nft_object.media_PNG_multihashes) {
+    media_png_multihashes = nft_object.media_PNG_multihashes;
+  } else if (nft_object && nft_object.media_webp_multihashes) {
+    media_png_multihashes = nft_object.media_webp_multihashes;
+  } else if (nft_object && nft_object.media_WEBP_multihashes) {
+    media_png_multihashes = nft_object.media_WEBP_multihashes;
+  }
 
   // Helmet
   const helmet_title = title && artist
@@ -154,10 +161,6 @@ export default function NFT(properties) {
   const helmet_description = title && artist
     ? `"${title}" (${symbol}) by ${artist} - Bitshares NFT`
     : 'Loading an NFT from the Bitshares blockchain';
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   const flagChips = asset_flags
     ? Object.keys(asset_flags).map(
@@ -196,49 +199,20 @@ export default function NFT(properties) {
     )
     : null;
 
-  const tagChips = tags
-    ? tags.map((tag) => <Badge key={`tag: ${tag}`}>{tag}</Badge>)
-    : null;
-
-  const nftFlagChips = nft_flags
-    ? nft_flags.map((flag) => <Badge key={`flagchip: ${flag}`}>{flag}</Badge>)
-    : null;
-
   const shareUrl = `https://www.${config.domain}/nft/${symbol}`;
 
-  const detailsOfIssuer = issuer
-    ? <IssuerDetails issuer={issuer} />
-    : null;
-
-  const holder = id
-    ? <NFTHolder id={id} />
-    : null;
-
-  let height = 500;
-  let width = 500;
+  const height = 500;
+  const width = 500;
   let imageComponent = null;
   if (imgURL && !media_png_multihashes) {
-    height = null;
-    width = null;
-    if (fileType === 'png') {
-      const dimensions = getPngDimensions(image);
-      if (dimensions) {
-        height = dimensions.height;
-        width = dimensions.width;
-      }
-    } else {
-      height = 500;
-      width = 500;
-    }
-
     imageComponent = isApple
       ? <a href={imgURL}>
-                          <img
-                            key={`${short_name}_apple_image`}
-                            src={imgURL}
-                            alt={`${short_name} NFT media contents`}
-                            sx={{ maxWidth: '100%' }}
-                          />
+          <img
+            key={`${short_name}_apple_image`}
+            src={imgURL}
+            alt={`${short_name} NFT media contents`}
+            sx={{ maxWidth: '100%' }}
+          />
         </a>
       : <Image
           key={`${short_name} Image`}
@@ -305,17 +279,21 @@ export default function NFT(properties) {
             <Tabs.Panel value="asset" pt="xs">
               <Group position="center" sx={{ marginTop: '5px' }}>
                 <Badge>
-                  <b>{`${t('nft.asset.name')}`}</b>{`: ${symbol || '???'}`}
+                  <b>{t('nft.asset.name')}</b>{`: ${symbol || '???'}`}
                 </Badge>
 
-                {holder}
+                {
+                  id && process.env.NODE_ENV !== 'development'
+                    ? <NFTHolder id={id} />
+                    : null
+                }
 
                 <Badge>
-                  <b>{`${t('nft.asset.quantity')}`}</b>{`: ${current_supply || '???'}`}
+                  <b>{t('nft.asset.quantity')}</b>{`: ${current_supply || '???'}`}
                 </Badge>
 
                 <Badge>
-                  <b>{`${t('nft.asset.file_type')}`}</b>{`: ${type || '???'}`}
+                  <b>{t('nft.asset.file_type')}</b>{`: ${type || '???'}`}
                 </Badge>
 
                 <Tooltip
@@ -327,7 +305,7 @@ export default function NFT(properties) {
                     }
                 >
                   <Badge>
-                    <b>{`${t('nft.asset.encoding')}`}</b>{`: ${encoding || '???'}`}
+                    <b>{t('nft.asset.encoding')}</b>{`: ${encoding || '???'}`}
                   </Badge>
                 </Tooltip>
 
@@ -340,11 +318,15 @@ export default function NFT(properties) {
                     }
                 >
                   <Badge>
-                  <b>{`${t('nft.asset.precision')}`}</b>{`: ${precision}`}
+                  <b>{t('nft.asset.precision')}</b>{`: ${precision}`}
                   </Badge>
                 </Tooltip>
 
-                {detailsOfIssuer}
+                {
+                  issuer && process.env.NODE_ENV !== 'development'
+                    ? <IssuerDetails issuer={issuer} />
+                    : null
+                }
 
                 <Badge>
                   <b>{t('nft.nft.creation_block')}</b>:  {creation_block_num}
@@ -357,14 +339,20 @@ export default function NFT(properties) {
 
             <Tabs.Panel value="tags" pt="xs">
               {
-                tagChips && tagChips.length
-                  ? <Group sx={{ marginTop: '5px' }} position="center">{tagChips}</Group>
+                tags && tags.length
+                  ? <Group sx={{ marginTop: '5px' }} position="center">
+                      {tags.map((tag) => <Badge key={`tag: ${tag}`}>{tag}</Badge>)}
+                    </Group>
                   : <Text>{t('nft.tags.no_tags')}</Text>
               }
               <br />
               {
-                nftFlagChips && nftFlagChips.length
-                  ? <Group sx={{ marginTop: '5px' }} position="center">{nftFlagChips}</Group>
+                nft_flags && nft_flags.length
+                  ? <Group sx={{ marginTop: '5px' }} position="center">
+                      {
+                        nft_flags.map((flag) => <Badge key={`flagchip: ${flag}`}>{flag}</Badge>)
+                      }
+                    </Group>
                   : <Text>{t('nft.tags.no_nft_tags')}</Text>
               }
             </Tabs.Panel>
@@ -447,15 +435,15 @@ export default function NFT(properties) {
               <Group position="center" sx={{ marginTop: '5px', paddingTop: '5px' }}>
                 <Button
                   component="a"
-                  href={`https://wallet.bitshares.org/#/market/${symbol}_${market || 'BTS'}`}
+                  href={`https://bts.exchange/#/market/${symbol}_${market || 'BTS'}${config.referrer?.length ? `?r=${config.referrer}` : ''}`}
                   sx={{ m: 0.25 }}
                   variant="outline"
                 >
-                  Bitshares.org
+                  bts.exchange
                 </Button>
                 <Button
                   component="a"
-                  href={`https://ex.xbts.io/market/${symbol}_${market || 'BTS'}`}
+                  href={`https://ex.xbts.io/market/${symbol}_${market || 'BTS'}${config.referrer?.length ? `?r=${config.referrer}` : ''}`}
                   sx={{ m: 0.25 }}
                   variant="outline"
                 >
@@ -463,15 +451,7 @@ export default function NFT(properties) {
                 </Button>
                 <Button
                   component="a"
-                  href={`https://dex.iobanker.com/market/${symbol}_${market || 'BTS'}`}
-                  sx={{ m: 0.25 }}
-                  variant="outline"
-                >
-                  ioBanker DEX
-                </Button>
-                <Button
-                  component="a"
-                  href={`https://wallet.btwty.com/market/${symbol}_${market || 'BTS'}`}
+                  href={`https://wallet.btwty.com/market/${symbol}_${market || 'BTS'}${config.referrer?.length ? `?r=${config.referrer}` : ''}`}
                   sx={{ m: 0.25 }}
                   variant="outline"
                 >
@@ -497,28 +477,28 @@ export default function NFT(properties) {
               </Text>
               <Group position="center" sx={{ marginTop: '5px', paddingTop: '5px' }}>
                 <Button
-                  component="a"
-                  href={`https://cryptofresh.com/a/${symbol}`}
-                  sx={{ m: 0.25 }}
-                  variant="outline"
-                >
-                  cryptofresh
-                </Button>
-                <Button
-                  sx={{ m: 0.25 }}
-                  variant="outline"
-                  href={`https://bts.ai/asset/${symbol}`}
-                  component="a"
-                >
-                  bts.ai
-                </Button>
-                <Button
                   sx={{ m: 0.25 }}
                   variant="outline"
                   href={`https://blocksights.info/#/assets/${symbol}`}
                   component="a"
                 >
-                  blocksights.info
+                  Blocksights.info
+                </Button>
+                <Button
+                  sx={{ m: 0.25 }}
+                  variant="outline"
+                  href={`https://wallet.btwty.com/asset/${symbol}`}
+                  component="a"
+                >
+                  BTWTY explorer
+                </Button>
+                <Button
+                  sx={{ m: 0.25 }}
+                  variant="outline"
+                  href={`https://${environment === 'staging' ? 'api.testnet' : 'api'}.bitshares.ws/openexplorer/asset?asset_id=${symbol}`}
+                  component="a"
+                >
+                  BitShares Insight API
                 </Button>
               </Group>
             </Tabs.Panel>

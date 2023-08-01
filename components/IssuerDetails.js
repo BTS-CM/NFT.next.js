@@ -25,7 +25,7 @@ export default function IssuerDetails(properties) {
 
   if (error || !data) {
     return (<Badge>
-              <b>{`${t('nft.asset.issuer')}`}</b>: ???
+              <b>{t('nft.asset.issuer')}</b>: ???
             </Badge>);
   }
 
@@ -41,7 +41,7 @@ export default function IssuerDetails(properties) {
       }
     >
       <Badge color={issuerName && issuerName === 'null-account' ? 'primary' : 'secondary'}>
-        <b>{`${t('nft.asset.issuer')}`}</b>{`: ${issuerName}`}
+        <b>{t('nft.asset.issuer')}</b>{`: ${issuerName}`}
       </Badge>
     </Tooltip>
   );

@@ -2,16 +2,10 @@ import { useState, useEffect } from 'react';
 import { Carousel } from '@mantine/carousel';
 
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 import { useViewportSize } from '@mantine/hooks';
 import { Card } from '@mantine/core';
 
 import { useAppStore } from './states';
-
-//import 'react-responsive-carousel/lib/styles/carousel.min.css';
-
-// requires a loader
-//const Carousel = dynamic(() => import('react-responsive-carousel').then((module) => module.Carousel));
 
 function CarouselItem(properties) {
   const { asset } = properties;

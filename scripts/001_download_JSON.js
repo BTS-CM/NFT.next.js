@@ -72,8 +72,9 @@ const stagingServers = [
 
     delete response.data.options;
 
-    fs.writeFile(`../components/assets/${name}.json`, JSON.stringify(response.data, null, 4), (err) => {
+    fs.writeFile(`./components/assets/${name}.json`, JSON.stringify(response.data, null, 4), (err) => {
       if (err) console.log(err);
+      console.log(`Successfully downloaded ${name}.json`);
     });
   }
 })();

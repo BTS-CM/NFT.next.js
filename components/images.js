@@ -1,6 +1,12 @@
 const atob = require('atob');
 
-function getImage(nft_object) {
+/**
+ * Parse the nft_object to return relevant image data
+ * @param {Object} nft_object
+ * @param {String} symbol
+ * @returns {Object}
+ */
+function getImage(nft_object, symbol) {
   let image;
   let imgURL;
   let fileType;
@@ -12,6 +18,8 @@ function getImage(nft_object) {
       fileType: undefined,
     };
   }
+
+  //console.log({nft_object})
 
   if (nft_object.media_png || nft_object.image_png) {
     image = nft_object.media_png || nft_object.image_png || undefined;
@@ -47,12 +55,18 @@ function getImage(nft_object) {
   } else if (nft_object.media_gltf) {
     image = nft_object.media_gltf;
     fileType = 'gltf';
-  } else if (nft_object.media_jpeg_multihash) {
-    image = `/images/${nft_object.symbol}/0.jpeg`;
+  } else if (nft_object.media_jpeg_multihash || nft_object.media_JPEG_multihash) {
+    imgURL = `/images/${symbol}/0.webp`;
+    //imgURL = nft_object.media_jpeg_multihash || nft_object.media_JPEG_multihash || undefined;
     fileType = 'jpeg';
-  } else if (nft_object.media_gif_multihash) {
-    image = `/images/${nft_object.symbol}/0.jpeg`;
+  } else if (nft_object.media_gif_multihash || nft_object.media_GIF_multihash) {
+    imgURL = `/images/${symbol}/0.gif`;
+    //imgURL = nft_object.media_gif_multihash || nft_object.media_GIF_multihash || undefined;
     fileType = 'gif';
+  } else if (nft_object.media_png_multihash || nft_object.media_PNG_multihash) {
+    imgURL = `/images/${symbol}/0.webp`;
+    //imgURL = nft_object.media_png_multihash || nft_object.media_PNG_multihash || undefined;
+    fileType = 'png';
   }
 
   return {

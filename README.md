@@ -18,7 +18,23 @@ Prior to running this locally, you'll need [NodeJS](https://nodejs.org/en/downlo
 
 3. Install the required packages: `npm install` or `yarn install`.
 
-Run the development server:
+4. Run the following scripts to fetch the NFT JSON & media:
+
+```
+npm run fetchJSON
+npm run downloadImages
+npm run shrinkImages
+```
+
+Or
+
+```
+yarn run fetchJSON
+yarn run downloadImages
+yarn run shrinkImages
+```
+
+Then you can run the development server:
 
 ```bash
 npm run dev
